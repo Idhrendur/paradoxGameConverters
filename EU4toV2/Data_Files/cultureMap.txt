@@ -221,11 +221,12 @@ link = { v2 = native_american_minor eu4 = chichimecan }
 link = { v2 = chibchan eu4 = muisca eu4 = cara eu4 = miskito }
 link = { v2 = maranon eu4 = jivaro eu4 = chachapoyan }
 link = { v2 = quechua eu4 = inca eu4 = chimuan }
-link = { v2 = aimara eu4 = aimara }
+link = { v2 = aimara eu4 = aimara eu4 = charruan}
 link = { v2 = amazonian eu4 = amazonian eu4 = maipurean }
 link = { v2 = tupi eu4 = tupinamba eu4 = tupi }
 link = { v2 = je eu4 = ge }
-link = { v2 = guarani eu4 = guarani eu4 = charruan }
+link = { v2 = guarani eu4 = guarani  }
+link = { v2 = chacoan eu4 = chacoan }
 link = { v2 = patagonian eu4 = patagonian eu4 = het }
 link = { v2 = araucanian eu4 = huarpe eu4 = mapuche eu4 = diaguita }
 
