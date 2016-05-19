@@ -1617,19 +1617,19 @@ if (hasBuilding("university"))
     // Base buildings
     if (hasBuilding("fort1"))
     {
-        building_weight += 1.5;
+        building_weight += 4;
     }
     if (hasBuilding("fort2"))
     {
-        building_weight += 3;
+        building_weight += 8;
     }
     if (hasBuilding("fort3"))
     {
-        building_weight += 4.5;
+        building_weight += 12;
     }
     if (hasBuilding("fort4"))
     {
-        building_weight += 6;
+        building_weight += 16;
 
     }
     if (hasBuilding("dock"))
