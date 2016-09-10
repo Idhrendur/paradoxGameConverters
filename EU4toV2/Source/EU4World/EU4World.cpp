@@ -1,4 +1,4 @@
-/*Copyright (c) 2014 The Paradox Game Converters Project
+/*Copyright (c) 2016 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -26,9 +26,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include <fstream>
 #include "Log.h"
 #include "../Configuration.h"
-#include "../Mapper.h"
+#include "../Mappers/Mapper.h"
+#include "../Mappers/ProvinceMapper.h"
 #include "Object.h"
-#include "ParadoxParser.h"
+#include "ParadoxParserUTF8.h"
 #include "EU4Province.h"
 #include "EU4Country.h"
 #include "EU4Diplomacy.h"
@@ -42,6 +43,7 @@ EU4World::EU4World(Object* obj, map<string, int> armyInvIdeas, map<string, int> 
 {
 	vector<Object*> versionObj = obj->getValue("savegame_version");	// the version of the save
 	(versionObj.size() > 0) ? version = new EU4Version(versionObj[0]) : version = new EU4Version();
+	Configuration::setEU4Version(*version);
 
 	vector<Object*> enabledDLCsObj = obj->getValue("dlc_enabled");
 	if (enabledDLCsObj.size() > 0)
@@ -311,11 +313,12 @@ EU4World::EU4World(Object* obj, map<string, int> armyInvIdeas, map<string, int> 
 }
 
 
-void EU4World::setEU4WorldProvinceMappings(const inverseProvinceMapping& inverseProvinceMap)
+void EU4World::setNumbersOfDestinationProvinces()
 {
-	for (map<int, EU4Province*>::iterator i = provinces.begin(); i != provinces.end(); i++)
+	for (auto province: provinces)
 	{
-		i->second->setNumDestV2Provs(inverseProvinceMap.find(i->first)->second.size());
+		auto Vic2Provinces = provinceMapper::getVic2ProvinceNumbers(province.first);
+		province.second->setNumDestV2Provs(Vic2Provinces.size());
 	}
 }
 
@@ -351,7 +354,7 @@ void EU4World::readCommonCountries(istream& in, const std::string& rootPath)
 				}
 				size_t equalPos	= countryLine.find('=', 3);
 				size_t beginPos	= countryLine.find_first_not_of(' ', equalPos + 1);
-				size_t endPos		= countryLine.find_last_not_of(' ') + 1;
+				size_t endPos		= countryLine.find_last_of('\"') + 1;
 				std::string fileName = countryLine.substr(beginPos, endPos - beginPos);
 				if (fileName.front() == '"' && fileName.back() == '"')
 				{
@@ -363,7 +366,7 @@ void EU4World::readCommonCountries(istream& in, const std::string& rootPath)
 				std::string path = rootPath + "\\common\\" + fileName;
 				size_t lastPathSeparatorPos = path.find_last_of('\\');
 				std::string localFileName = path.substr(lastPathSeparatorPos + 1, string::npos);
-				country->readFromCommonCountry(localFileName, doParseFile(path.c_str()));
+				country->readFromCommonCountry(localFileName, parser_UTF8::doParseFile(path.c_str()));
 			}
 		}
 	}
@@ -399,14 +402,14 @@ void EU4World::resolveRegimentTypes(const RegimentTypeMap& rtMap)
 }
 
 
-void EU4World::checkAllProvincesMapped(const inverseProvinceMapping& inverseProvinceMap) const
+void EU4World::checkAllProvincesMapped() const
 {
-	for (map<int, EU4Province*>::const_iterator i = provinces.begin(); i != provinces.end(); i++)
+	for (auto province: provinces)
 	{
-		inverseProvinceMapping::const_iterator j = inverseProvinceMap.find(i->first);
-		if (j == inverseProvinceMap.end())
+		auto Vic2Provinces = provinceMapper::getVic2ProvinceNumbers(province.first);
+		if (Vic2Provinces.size() == 0)
 		{
-			LOG(LogLevel::Warning) << "No mapping for province " << i->first;
+			LOG(LogLevel::Warning) << "No mapping for province " << province.first;
 		}
 	}
 }
