@@ -144,10 +144,16 @@ void HoI4Country::output(map<int, HoI4State*> states, vector<HoI4Faction*> Facti
 			output << "capital =  1" << endl;
 		}
 
-
 		output << "" << endl;
 		output << "oob = \"" << tag << "_OOB\"" << endl;
 		output << "" << endl;
+
+		//set_research_slots
+		if ( isMajorNation () )
+		{
+			output << "set_research_slots = 4"<< endl;
+		}
+
 		output << "# Starting tech" << endl;
 		output << "set_technology = {" << endl;
 		for (auto tech : technologies)
