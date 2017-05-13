@@ -73,6 +73,12 @@ provinceNeighborMapper::provinceNeighborMapper()
 			{
 				handleNeighbor(centerColor, leftColor, position);
 			}
+
+			if ((y == 0) || (y == (height - 1)))
+			{
+				int province = provinceDefinitions::getProvinceFromColor(centerColor);
+				addToBoundary(province, position);
+			}
 		}
 	}
 }
@@ -161,8 +167,25 @@ void provinceNeighborMapper::handleNeighbor(Color centerColor, Color otherColor,
 	int centerProvince = provinceDefinitions::getProvinceFromColor(centerColor);
 	int otherProvince = provinceDefinitions::getProvinceFromColor(otherColor);
 
+	addToBoundary(centerProvince, position);
 	addNeighbor(centerProvince, otherProvince);
 	addPointToBorder(centerProvince, otherProvince, position);
+}
+
+
+void provinceNeighborMapper::addToBoundary(int mainProvince, point position)
+{
+	auto boundary = provinceBoundaries.find(mainProvince);
+	if (boundary != provinceBoundaries.end())
+	{
+		boundary->second.insert(position);
+	}
+	else
+	{
+		borderPoints newBorder;
+		newBorder.insert(position);
+		provinceBoundaries[mainProvince] = newBorder;
+	}
 }
 
 
@@ -194,7 +217,7 @@ void provinceNeighborMapper::addPointToBorder(int mainProvince, int neighborProv
 	auto border = bordersWithNeighbors->second.find(neighborProvince);
 	if (border == bordersWithNeighbors->second.end())
 	{
-		borderPoints newBorder;
+		orderedBorderPoints newBorder;
 		bordersWithNeighbors->second.insert(make_pair(neighborProvince, newBorder));
 		border = bordersWithNeighbors->second.find(neighborProvince);
 	}

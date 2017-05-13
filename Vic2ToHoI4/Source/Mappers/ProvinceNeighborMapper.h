@@ -35,8 +35,9 @@ using namespace std;
 
 
 typedef pair<int, int> point;
-typedef vector<point> borderPoints;
-typedef map<int, borderPoints> bordersWith;
+typedef set<point> borderPoints;
+typedef vector<point> orderedBorderPoints;
+typedef map<int, orderedBorderPoints> bordersWith;
 
 
 
@@ -72,6 +73,7 @@ class provinceNeighborMapper
 		Color getLeftColor(bitmap_image& provinces, point position, int width);
 		Color getRightColor(bitmap_image& provinces, point position, int width);
 		void handleNeighbor(Color centerColor, Color otherColor, point position);
+		void addToBoundary(int mainProvince, point position);
 		void addNeighbor(int mainProvince, int neighborProvince);
 		void addPointToBorder(int mainProvince, int neighborProvince, point position);
 
@@ -80,6 +82,7 @@ class provinceNeighborMapper
 
 		map<int, set<int>> provinceNeighbors;
 		map<int, bordersWith> borders;
+		map<int, borderPoints> provinceBoundaries;
 };
 
 
