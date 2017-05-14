@@ -63,5 +63,8 @@ Ostheim			- Art
 
 Special thanks to LukyLucaz, who allowed us to incoroporate Increased Resources into the converter.
 
+This tool uses Triange: http://www.cs.cmu.edu/~quake/triangle.html
+This tool uses Targa reader/writer: http://dmr.ath.cx/gfx/targa/
+
 
  - AND ALL THE OTHERS WHO GAVE THEIR INPUT ON THE FORUM -
