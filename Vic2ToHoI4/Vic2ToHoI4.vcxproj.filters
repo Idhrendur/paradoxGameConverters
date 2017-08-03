@@ -203,6 +203,7 @@
     <ClCompile Include="Source\HOI4World\HoI4Advisor.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
+    <ClCompile Include="Source\triangle.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -394,5 +395,6 @@
     <ClInclude Include="Source\HOI4World\HoI4Advisor.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
+    <ClInclude Include="Source\triangle.h" />
   </ItemGroup>
 </Project>

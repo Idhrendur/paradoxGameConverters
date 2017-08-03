@@ -9,11 +9,12 @@ set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/Release-Linux)
 
 add_compile_options("-std=c++11")
 add_compile_options("-g")
+add_compile_options("-DTRILIBRARY")
 
 include_directories("../common_items")
 include_directories("${PROJECT_SOURCE_DIR}")
 
-file(GLOB MAIN_SOURCES "${PROJECT_SOURCE_DIR}/*.cpp")
+file(GLOB MAIN_SOURCES "${PROJECT_SOURCE_DIR}/*.c*")
 file(GLOB HOI4WORLD_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/*.cpp")
 file(GLOB MAPPER_SOURCES "${PROJECT_SOURCE_DIR}/Mappers/*.cpp")
 file(GLOB VIC2WORLD_SOURCES "${PROJECT_SOURCE_DIR}/V2World/*.cpp")

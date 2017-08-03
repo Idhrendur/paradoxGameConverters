@@ -35,8 +35,10 @@ using namespace std;
 
 
 typedef pair<int, int> point;
-typedef vector<point> borderPoints;
-typedef map<int, borderPoints> bordersWith;
+typedef pair<point, point> edge;
+typedef set<point> borderPoints;
+typedef vector<point> orderedBorderPoints;
+typedef map<int, orderedBorderPoints> bordersWith;
 
 
 
@@ -66,20 +68,27 @@ class provinceNeighborMapper
 		}
 		provinceNeighborMapper();
 
+		void processProvincesFile();
 		Color getCenterColor(bitmap_image& provinces, point position);
 		Color getAboveColor(bitmap_image& provinces, point position, int height);
 		Color getBelowColor(bitmap_image& provinces, point position, int height);
 		Color getLeftColor(bitmap_image& provinces, point position, int width);
 		Color getRightColor(bitmap_image& provinces, point position, int width);
 		void handleNeighbor(Color centerColor, Color otherColor, point position);
+		void addToBoundary(int mainProvince, point position);
 		void addNeighbor(int mainProvince, int neighborProvince);
 		void addPointToBorder(int mainProvince, int neighborProvince, point position);
+
+		void createDelaunayTriangulations();
+		set<edge> createDelaunayTriangulation(const borderPoints&);
 
 		const set<int> GetNeighbors(int province);
 		const point GetBorderCenter(int mainProvince, int neighbor);
 
 		map<int, set<int>> provinceNeighbors;
 		map<int, bordersWith> borders;
+		map<int, borderPoints> provinceBoundaries;
+		map<int, set<edge>> proviceEdges;
 };
 
 

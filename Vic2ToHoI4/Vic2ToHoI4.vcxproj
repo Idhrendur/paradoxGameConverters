@@ -42,7 +42,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>TRILIBRARY;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(BOOST_INCLUDE); $(DEVIL_SDK_INCLUDE)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -114,6 +114,7 @@
     <ClCompile Include="Source\Mappers\StateMapper.cpp" />
     <ClCompile Include="Source\Mappers\V2Localisations.cpp" />
     <ClCompile Include="Source\targa.cpp" />
+    <ClCompile Include="Source\triangle.c" />
     <ClCompile Include="Source\V2toHOI4Converter.cpp" />
     <ClCompile Include="Source\V2World\V2Army.cpp" />
     <ClCompile Include="Source\V2World\V2Country.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="Source\Mappers\V2Localisations.h" />
     <ClInclude Include="Source\Mappers\CultureGroupMapper.h" />
     <ClInclude Include="Source\targa.h" />
+    <ClInclude Include="Source\triangle.h" />
     <ClInclude Include="Source\V2World\Vic2Agreement.h" />
     <ClInclude Include="Source\V2World\V2Army.h" />
     <ClInclude Include="Source\V2World\V2Country.h" />

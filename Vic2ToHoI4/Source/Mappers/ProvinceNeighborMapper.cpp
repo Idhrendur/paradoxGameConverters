@@ -27,6 +27,14 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Configuration.h"
 #include "Log.h"
 
+extern "C"
+{
+	#define ANSI_DECLARATORS
+	#define REAL double
+	#define VOID int
+	#include "../triangle.h"
+}
+
 
 
 provinceNeighborMapper* provinceNeighborMapper::instance = nullptr;
@@ -34,6 +42,13 @@ provinceNeighborMapper* provinceNeighborMapper::instance = nullptr;
 
 
 provinceNeighborMapper::provinceNeighborMapper()
+{
+	processProvincesFile();
+	createDelaunayTriangulations();
+}
+
+
+void provinceNeighborMapper::processProvincesFile()
 {
 	bitmap_image provinces(Configuration::getHoI4Path() + "/map/provinces.bmp");
 	if (!provinces)
@@ -72,6 +87,12 @@ provinceNeighborMapper::provinceNeighborMapper()
 			if (centerColor != leftColor)
 			{
 				handleNeighbor(centerColor, leftColor, position);
+			}
+
+			if ((y == 0) || (y == (height - 1)))
+			{
+				int province = provinceDefinitions::getProvinceFromColor(centerColor);
+				addToBoundary(province, position);
 			}
 		}
 	}
@@ -161,8 +182,25 @@ void provinceNeighborMapper::handleNeighbor(Color centerColor, Color otherColor,
 	int centerProvince = provinceDefinitions::getProvinceFromColor(centerColor);
 	int otherProvince = provinceDefinitions::getProvinceFromColor(otherColor);
 
+	addToBoundary(centerProvince, position);
 	addNeighbor(centerProvince, otherProvince);
 	addPointToBorder(centerProvince, otherProvince, position);
+}
+
+
+void provinceNeighborMapper::addToBoundary(int mainProvince, point position)
+{
+	auto boundary = provinceBoundaries.find(mainProvince);
+	if (boundary != provinceBoundaries.end())
+	{
+		boundary->second.insert(position);
+	}
+	else
+	{
+		borderPoints newBorder;
+		newBorder.insert(position);
+		provinceBoundaries[mainProvince] = newBorder;
+	}
 }
 
 
@@ -194,7 +232,7 @@ void provinceNeighborMapper::addPointToBorder(int mainProvince, int neighborProv
 	auto border = bordersWithNeighbors->second.find(neighborProvince);
 	if (border == bordersWithNeighbors->second.end())
 	{
-		borderPoints newBorder;
+		orderedBorderPoints newBorder;
 		bordersWithNeighbors->second.insert(make_pair(neighborProvince, newBorder));
 		border = bordersWithNeighbors->second.find(neighborProvince);
 	}
@@ -211,6 +249,73 @@ void provinceNeighborMapper::addPointToBorder(int mainProvince, int neighborProv
 			border->second.push_back(position);
 		}
 	}
+}
+
+
+void provinceNeighborMapper::createDelaunayTriangulations()
+{
+	for (auto provinceBoundary: provinceBoundaries)
+	{
+		auto edges = createDelaunayTriangulation(provinceBoundary.second);
+		proviceEdges.insert(make_pair(provinceBoundary.first, edges));
+	}
+}
+
+
+set<edge> provinceNeighborMapper::createDelaunayTriangulation(const borderPoints& border)
+{
+	triangulateio in;
+	in.numberofpointattributes = 0;
+	in.pointmarkerlist = NULL;
+
+	in.numberofpoints = border.size();
+	in.pointlist = new REAL[border.size() * 2];
+
+	int i = 0;
+	for (auto borderPoint: border)
+	{
+		in.pointlist[i * 2 + 0] = borderPoint.first;
+		in.pointlist[i * 2 + 1] = borderPoint.second;
+		i++;
+	}
+
+	triangulateio out;
+	out.pointlist = NULL;
+	out.pointmarkerlist = NULL;
+	out.neighborlist = NULL;
+	out.edgelist = NULL;
+	out.edgemarkerlist = NULL;
+	out.trianglelist = NULL;
+	triangulate("-z -Q -e", &in, &out, NULL);
+
+	set<edge> edges;
+	for (int i = 0; i < out.numberofedges / 2; i++)
+	{
+		int pointOneIndex = out.edgelist[i * 2 + 0];
+		point pointOne;
+		pointOne.first = in.pointlist[pointOneIndex * 2 + 0];
+		pointOne.second = in.pointlist[pointOneIndex * 2 + 1];
+
+		int pointTwoIndex = out.edgelist[i * 2 + 1];
+		point pointTwo;
+		pointTwo.first = in.pointlist[pointTwoIndex * 2 + 0];
+		pointTwo.second = in.pointlist[pointTwoIndex * 2 + 1];
+
+		edge newEdge;
+		newEdge.first = pointOne;
+		newEdge.second = pointTwo;
+		edges.insert(newEdge);
+	}
+
+	delete[] in.pointlist;
+	trifree(reinterpret_cast<VOID*>(out.pointlist));
+	trifree(out.pointmarkerlist);
+	trifree(out.neighborlist);
+	trifree(out.edgelist);
+	trifree(out.edgemarkerlist);
+	trifree(out.trianglelist);
+
+	return edges;
 }
 
 
