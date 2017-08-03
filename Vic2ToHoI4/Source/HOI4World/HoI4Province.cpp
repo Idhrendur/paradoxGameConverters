@@ -49,15 +49,15 @@ HoI4Province::HoI4Province(string Owner, int State)
 	string temp		= _filename.substr(slash + 1, numDigits);
 	num				= stoi(temp);*/
 
-	Object* obj;
+	shared_ptr<Object> obj;
 	//obj = parser_UTF8::doParseFile((string("./blankMod/output/history/provinces") + _filename));
-	/*if (obj == NULL)
+	/*if (obj == nullptr)
 	{
 		LOG(LogLevel::Error) << "Could not parse ./blankMod/output/history/provinces" << _filename;
 		exit(-1);
 	}*/
 
-	vector<Object*> leaves = obj->getLeaves();
+	vector<shared_ptr<Object>> leaves = obj->getLeaves();
 	for (auto itr: leaves)
 	{
 		if (itr->getKey() == "owner")
@@ -106,9 +106,9 @@ void HoI4Province::output() const
 	for (auto filename: filenames)
 	{
 		FILE* output;
-		if (fopen_s(&output, ("Output/" + Configuration::getOutputName() + "/history/provinces/" + filename.first).c_str(), "w") != 0)
+		if (fopen_s(&output, ("output/" + Configuration::getOutputName() + "/history/provinces/" + filename.first).c_str(), "w") != 0)
 		{
-			LOG(LogLevel::Error) << "Could not create province history file Output/" << Configuration::getOutputName() << "/history/provinces/" << filename.first << " - " << Utils::GetLastErrorString();
+			LOG(LogLevel::Error) << "Could not create province history file output/" << Configuration::getOutputName() << "/history/provinces/" << filename.first << " - " << Utils::GetLastErrorString();
 			exit(-1);
 		}
 		if (owner != "")

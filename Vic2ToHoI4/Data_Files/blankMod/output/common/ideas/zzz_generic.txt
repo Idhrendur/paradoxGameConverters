@@ -1,10 +1,8 @@
 ideas = {
 
-	# Special ones that can be applied on other countries through focus system.
-	country = {
-		limited_interventionism = {
-			
-			
+	hidden_ideas = {
+
+		idea_continuous_naval_production = {
 			allowed = {
 				always = no
 			}
@@ -12,165 +10,94 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-
+			
 			removal_cost = -1
-
-			picture = generic_volunteer_expedition_bonus
 			
 			modifier = {
-				send_volunteers_tension = -0.20
-				send_volunteer_divisions_required = -0.25
+				industrial_capacity_dockyard = 0.2
 			}
 		}
 
-		nationalism = {
-			
+
+		idea_continuous_air_production = {
 			allowed = {
 				always = no
 			}
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = yes
 			}
-
+			
 			removal_cost = -1
-
-			picture = generic_infantry_bonus
-
 			
-			modifier = {
-				fascism_drift = 0.1
-			}
+			equipment_bonus = {
+				fighter_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				cv_fighter_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				jet_fighter_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				cv_CAS_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				CAS_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				nav_bomber_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				cv_nav_bomber_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				rocket_interceptor_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				tac_bomber_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				jet_tac_bomber_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				jet_strat_bomber_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				heavy_fighter_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				strat_bomber_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				transport_plane_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+				guided_missile_equipment = {
+					instant = yes
+					build_cost_ic = -0.20
+				}
+			}		
 		}
+	}
 
-		internationalism = {
-			
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				has_government = communism
-			}
-
-			removal_cost = -1
-
-			picture = generic_intel_bonus
-			
-			modifier = {
-				#justify_war_goal_time = -0.25
-				communism_drift = 0.1
-			}
-		}
-
-		fascist_influence = {
-			
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				has_government = fascism
-			}
-
-			removal_cost = -1
-
-			picture = generic_fascism_drift_bonus
-			
-			modifier = {
-				fascism_drift = 0.1
-				fascism_acceptance = 85
-			}
-		}
-		
-		communist_influence = {
-			
-			
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				has_government = communism
-			}
-
-			removal_cost = -1
-
-			picture = generic_communism_drift_bonus
-			
-			modifier = {
-				communism_drift = 0.1
-				communism_acceptance = 85
-			}
-		}
-		democratic_influence = {
-			
-			
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				has_government = democratic
-			}
-
-			removal_cost = -1
-
-			picture = generic_democratic_drift_bonus
-			
-			modifier = {
-				democratic_drift = 0.1
-				democratic_acceptance = 85
-			}
-		}
-		
-		
-		
-		communist_pressure = {
-			
-			
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				has_government = communism
-			}
-
-			removal_cost = -1
-
-			picture = generic_communism_drift_bonus
-			
-			modifier = {
-				communism_drift = 0.1
-			}
-		}
-		
-		
+	# Special ones that can be applied on other countries through focus system.
+	country = {		
 		# Generic Focus Ideas
-
-		
-		
-		collectivist_ethos_focus = {
-			
-		
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				has_government = communism
-			}
-		
-			removal_cost = -1
-
-			picture = generic_pp_unity_bonus
-
-			modifier = {
-				democratic_drift = -0.02
-			}
-		}
-	
 		liberty_ethos_focus = {
 			
 			
@@ -450,91 +377,6 @@ ideas = {
 			}			
 		}
 	}
-	
-	political_advisor = {
-		# POLITICAL	
-		generic_communist_revolutionary = {
-			
-			allowed = {
-				
-				NOT = {
-					has_available_idea_with_traits = { idea = communist_revolutionary limit = 1 }
-				}
-			}
-			
-			traits = { communist_revolutionary }
-	
-			on_add = {
-				country_event = political.1
-			}
-	
-			do_effect = {
-				NOT = {
-					has_government = communism
-				}
-			}
-	
-			ai_will_do = {
-				factor = 0
-			}
-		}
-			
-		generic_democratic_reformer = {
-			
-			allowed = {
-				
-				NOT = {
-					has_available_idea_with_traits = { idea = democratic_reformer limit = 1 }
-				}
-			}
-			
-
-			
-			traits = { democratic_reformer }
-	
-			on_add = {
-				country_event = political.13
-			}
-	
-			do_effect = {
-				NOT = {
-					has_government = democratic
-				}
-			}
-	
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		
-		generic_fascist_demagogue = {
-			
-			allowed = {
-				
-				NOT = {
-					has_available_idea_with_traits = { idea = fascist_demagogue limit = 1 }
-				}
-			}
-			
-
-			
-			traits = { fascist_demagogue }
-	
-			on_add = {
-				country_event = political.7
-			}
-	
-			do_effect = {
-				NOT = {
-					has_government = fascism
-				}
-			}
-	
-			ai_will_do = {
-				factor = 0
-			}
-		}
-	}
 		
 	
 
@@ -548,7 +390,6 @@ ideas = {
 			picture = generic_tank_manufacturer_1
 			
 			allowed = {
-				
 				NOT = {
 					has_available_idea_with_traits = { idea = tank_manufacturer limit = 1 }
 				}
@@ -574,7 +415,6 @@ ideas = {
 			picture = generic_naval_manufacturer_1
 
 			allowed = {
-				
 				NOT = {
 					has_available_idea_with_traits = { idea = naval_manufacturer limit = 1 }
 				}
@@ -600,7 +440,6 @@ ideas = {
 			picture = generic_air_manufacturer_1
 
 			allowed = {
-				
 				NOT = {
 					has_available_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }
 				}
@@ -621,7 +460,6 @@ ideas = {
 			picture = generic_air_manufacturer_3
 
 			allowed = {
-				
 				NOT = {
 					has_available_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }
 				}
@@ -642,7 +480,6 @@ ideas = {
 			picture = generic_air_manufacturer_2
 			
 			allowed = {
-				
 				NOT = {
 					has_available_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }
 				}
@@ -663,7 +500,6 @@ ideas = {
 			picture = generic_naval_manufacturer_2
 
 			allowed = {
-				
 				NOT = {
 					has_available_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }
 				}
@@ -687,7 +523,6 @@ ideas = {
 			picture = generic_industrial_concern_1
 
 			allowed = {
-				
 				NOT = {
 					has_available_idea_with_traits = { idea = industrial_concern limit = 1 }
 				}
@@ -708,7 +543,6 @@ ideas = {
 			picture = generic_electronics_concern_1
 
 			allowed = {
-				
 				NOT = {
 					has_available_idea_with_traits = { idea = electronics_concern limit = 1 }
 				}
@@ -734,7 +568,6 @@ ideas = {
 			picture = generic_motorized_equipment_manufacturer_3
 
 			allowed = {
-				
 				NOT = {
 					has_available_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }
 				}
@@ -755,7 +588,6 @@ ideas = {
 			picture = generic_infantry_equipment_manufacturer_2
 
 			allowed = {
-				
 				NOT = {
 					has_available_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }
 				}
@@ -776,7 +608,6 @@ ideas = {
 			picture = generic_artillery_manufacturer_2
 
 			allowed = {
-				
 				NOT = {
 					has_available_idea_with_traits = { idea = artillery_manufacturer limit = 1 }
 				}
@@ -798,7 +629,6 @@ ideas = {
 		generic_captain_of_industry = {
 
 			allowed = {
-				
 			}
 			
 			traits = { captain_of_industry }
@@ -807,19 +637,17 @@ ideas = {
 		generic_fortification_engineer = {
 
 			allowed = {
-				
 			}
 			
-			traits = { smooth_talking_charmer }
+			traits = { fortification_engineer }
 		}
 
 		generic_war_industrialist = {
 
 			allowed = {
-				
 			}
 			
-			traits = { compassionate_gentleman }
+			traits = { war_industrialist }
 		}
 	}
 
@@ -828,19 +656,17 @@ ideas = {
 		generic_army_chief_off = {
 			
 			allowed = {
-				
 			}
 			
-			traits = { army_chief_offensive_2 }
+			traits = { army_chief_offensive_1 }
 		}
 
 		generic_army_chief_def = {
 			
 			allowed = {
-				
 			}
 			
-			traits = { army_chief_defensive_2 }
+			traits = { army_chief_defensive_1 }
 		}
 	}
 
@@ -849,7 +675,6 @@ ideas = {
 		generic_navy_chief_decisive_bat = {
 			
 			allowed = {
-				
 			}
 			
 			traits = { navy_chief_decisive_battle_2 }
@@ -858,7 +683,6 @@ ideas = {
 		generic_navy_anti_submarine = {
 			
 			allowed = {
-				
 			}
 			
 			traits = { navy_anti_submarine_2 }
@@ -870,7 +694,6 @@ ideas = {
 		generic_air_close_air_sup = {
 			
 			allowed = {
-				
 			}
 			
 			traits = { air_close_air_support_2 }
@@ -879,7 +702,6 @@ ideas = {
 		generic_air_chief_all_weather = {
 			
 			allowed = {
-				
 			}
 			
 			traits = { air_chief_all_weather_2 }			
@@ -891,16 +713,14 @@ ideas = {
 		generic_army_art = {
 			
 			allowed = {
-				
 			}
 			
-			traits = { army_artillery_3 }			
+			traits = { army_artillery_1 }			
 		}
 		
 		generic_army_log = {
 
 			allowed = {
-				
 			}
 			
 			traits = { army_logistics_2 }			
@@ -909,7 +729,6 @@ ideas = {
 		generic_navy_fleet_log = {
 
 			allowed = {
-				
 			}
 			
 			traits = { navy_fleet_logistics_1 }			
@@ -918,7 +737,6 @@ ideas = {
 		generic_air_air_combat_trainer = {
 
 			allowed = {
-				
 			}
 			
 			traits = { air_air_combat_training_2 }			
@@ -930,7 +748,6 @@ ideas = {
 		generic_military_theorist = {
 			
 			allowed = {
-				
 			}
 			
 			research_bonus = {
@@ -943,7 +760,6 @@ ideas = {
 		generic_naval_theorist = {
 			
 			allowed = {
-				
 			}
 			
 			research_bonus = {
@@ -956,11 +772,10 @@ ideas = {
 		generic_air_warfare_theorist = {
 			
 			allowed = {
-				
 			}
 			
 			research_bonus = {
-				naval_doctrine = 0.07
+				air_warfare_doctrine = 0.07
 			}
 			
 			traits = { air_warfare_theorist }

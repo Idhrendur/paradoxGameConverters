@@ -1,4 +1,4 @@
-/*Copyright (c) 2016 The Paradox Game Converters Project
+/*Copyright (c) 2017 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -23,6 +23,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #ifndef CONFIGURATION_H_
 #define CONFIGURATION_H_
+
 
 
 #include <string>
@@ -113,9 +114,14 @@ class Configuration // Singleton
 			return getInstance()->version;
 		}
 
+		static bool getDropMinorIdeologies()
+		{
+			return getInstance()->dropMinorIdeologies;
+		}
+
 		static Configuration* getInstance()
 		{
-			if (instance == NULL)
+			if (instance == nullptr)
 			{
 				instance = new Configuration();
 			}
@@ -139,10 +145,17 @@ class Configuration // Singleton
 		double			icFactor;
 		bool ICStats;
 
+		// If true, only major idologies are kept. All minor ideologies are
+		// converted to neutrality. "Major ideologies" are defined by
+		// HoI4World::identifyMajorIdeologies.
+		bool dropMinorIdeologies;
+
 		unsigned int	leaderID;
 		unsigned int	leaderIDCountryIdx;
 
 		HOI4Version version;
 };
+
+
 
 #endif // CONFIGURATION_H_

@@ -27,6 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include <map>
+#include <memory>
 #include <random>
 #include <string>
 #include <vector>
@@ -43,10 +44,14 @@ typedef struct
 	map<string, vector<string>> element;
 } cultureGroupToPortraitsMap;
 
+
 typedef struct 
 {
 	map<string, cultureGroupToPortraitsMap> element;
 } ideologyToPortraitsMap;
+
+
+typedef map<string, string> cultureGroupToGraphicalCultureMap;
 
 
 
@@ -63,6 +68,16 @@ class graphicsMapper
 			return getInstance()->GetIdeologyMinisterPortrait(cultureGroup, ideology);
 		}
 
+		static string getGraphicalCulture(const string& cultureGroup)
+		{
+			return getInstance()->GetGraphicalCulture(cultureGroup);
+		}
+
+		static string get2dGraphicalCulture(const string& cultureGroup)
+		{
+			return getInstance()->Get2dGraphicalCulture(cultureGroup);
+		}
+
 	private:
 		static graphicsMapper* instance;
 		static graphicsMapper* getInstance()
@@ -74,16 +89,22 @@ class graphicsMapper
 			return instance;
 		}
 		graphicsMapper();
-		void loadLeaderPortraitMappings(const string& cultureGroup, Object* portraitMappings);
-		void loadIdeologyMinisterPortraitMappings(const string& cultureGroup, Object* portraitMappings);
+		void loadLeaderPortraitMappings(const string& cultureGroup, shared_ptr<Object> portraitMappings);
+		void loadIdeologyMinisterPortraitMappings(const string& cultureGroup, shared_ptr<Object> portraitMappings);
+		void loadGraphicalCultureMappings(const string& cultureGroup, shared_ptr<Object> graphicalCultureMappings);
+		void loadGraphicalCulture2dMappings(const string& cultureGroup, shared_ptr<Object> graphicalCulture2dMappings);
 
 		string GetLeaderPortrait(string cultureGroup, string ideology);
 		vector<string> GetLeaderPortraits(string cultureGroup, string ideology);
 		string GetIdeologyMinisterPortrait(string cultureGroup, string ideology);
 		vector<string> GetIdeologyMinisterPortraits(string cultureGroup, string ideology);
+		string GetGraphicalCulture(const string& cultureGroup);
+		string Get2dGraphicalCulture(const string& cultureGroup);
 
 		ideologyToPortraitsMap leaderPortraitMappings;
 		ideologyToPortraitsMap ideologyMinisterMappings;
+		cultureGroupToGraphicalCultureMap graphicalCultureMap;
+		cultureGroupToGraphicalCultureMap graphicalCulture2dMap;
 
 		std::mt19937 rng;
 };

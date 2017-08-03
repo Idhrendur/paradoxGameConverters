@@ -28,12 +28,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Configuration.h"
 #include "../V2World/V2Diplomacy.h"
 #include "../V2World/V2Party.h"
+#include "HoI4Advisor.h"
 #include "HoI4Agreement.h"
 #include "HoI4Buildings.h"
 #include "HoI4Country.h"
 #include "HoI4Diplomacy.h"
 #include "HoI4Events.h"
 #include "HoI4Faction.h"
+#include "HoI4FocusTree.h"
+#include "HOI4Ideology.h"
 #include "HoI4Localisation.h"
 #include "HoI4Province.h"
 #include "HoI4State.h"
@@ -67,11 +70,14 @@ HoI4World::HoI4World(const V2World* _sourceWorld)
 	convertStrategicRegions();
 	convertDiplomacy();
 	convertTechs();
-	generateLeaders();
 	convertArmies();
 	convertNavies();
 	convertAirforces();
 	determineGreatPowers();
+	importIdeologies();
+	importLeaderTraits();
+	importIdeologicalMinisters();
+	importIdeologicalIdeas();
 	identifyMajorIdeologies();
 	addNeutrality();
 	convertIdeologySupport();
@@ -111,7 +117,6 @@ void HoI4World::convertCountries()
 	//initLeaderTraitsMap(leaderTraits);
 	governmentJobsMap governmentJobs;
 	//initGovernmentJobTypes(governmentJobs);
-	cultureMapping cultureMap = initCultureMap();
 
 	personalityMap landPersonalityMap;
 	personalityMap seaPersonalityMap;
@@ -127,14 +132,14 @@ void HoI4World::convertCountries()
 
 	for (auto sourceItr : sourceWorld->getCountries())
 	{
-		convertCountry(sourceItr, leaderMap, governmentJobs, cultureMap, landPersonalityMap, seaPersonalityMap, landBackgroundMap, seaBackgroundMap);
+		convertCountry(sourceItr, leaderMap, governmentJobs, landPersonalityMap, seaPersonalityMap, landBackgroundMap, seaBackgroundMap);
 	}
 
 	HoI4Localisation::addNonenglishCountryLocalisations();
 }
 
 
-void HoI4World::convertCountry(pair<string, V2Country*> country, map<int, int>& leaderMap, governmentJobsMap governmentJobs, const cultureMapping& cultureMap, personalityMap& landPersonalityMap, personalityMap& seaPersonalityMap, backgroundMap& landBackgroundMap, backgroundMap& seaBackgroundMap)
+void HoI4World::convertCountry(pair<string, V2Country*> country, map<int, int>& leaderMap, governmentJobsMap governmentJobs, personalityMap& landPersonalityMap, personalityMap& seaPersonalityMap, backgroundMap& landBackgroundMap, backgroundMap& seaBackgroundMap)
 {
 	// don't convert rebels
 	if (country.first == "REB")
@@ -146,16 +151,28 @@ void HoI4World::convertCountry(pair<string, V2Country*> country, map<int, int>& 
 	const std::string& HoI4Tag = CountryMapper::getHoI4Tag(country.first);
 	if (!HoI4Tag.empty())
 	{
-		std::string countryFileName = country.second->getName("english") + ".txt";
-		destCountry = new HoI4Country(HoI4Tag, countryFileName, this);
-		V2Party* rulingParty = country.second->getRulingParty(sourceWorld->getParties());
-		if (rulingParty == nullptr)
+		std::string countryFileName = Utils::convert8859_15ToUTF8(country.second->getName("english")) + ".txt";
+		int pipe = countryFileName.find_first_of('|');
+		while (pipe != string::npos)
 		{
-			LOG(LogLevel::Error) << "Could not find the ruling party for " << country.first << ". Most likely a mod was not included.";
-			LOG(LogLevel::Error) << "Double-check your settings, and remember to included EU4 to Vic2 mods. See the FAQ for more information.";
-			exit(-1);
+			countryFileName.replace(pipe, 1, "");
+			pipe = countryFileName.find_first_of('|');
 		}
-		destCountry->initFromV2Country(*sourceWorld, country.second, rulingParty->ideology, leaderMap, governmentJobs, portraitMap, cultureMap, landPersonalityMap, seaPersonalityMap, landBackgroundMap, seaBackgroundMap, states->getProvinceToStateIDMap(), states->getStates());
+		int greater = countryFileName.find_first_of('>');
+		while (greater != string::npos)
+		{
+			countryFileName.replace(greater, 1, "");
+			greater = countryFileName.find_first_of('>');
+		}
+		int lesser = countryFileName.find_first_of('<');
+		while (lesser != string::npos)
+		{
+			countryFileName.replace(lesser, 1, "");
+			lesser = countryFileName.find_first_of('>');
+		}
+		destCountry = new HoI4Country(HoI4Tag, countryFileName, this);
+
+		destCountry->initFromV2Country(*sourceWorld, country.second, states->getProvinceToStateIDMap(), states->getStates());
 		countries.insert(make_pair(HoI4Tag, destCountry));
 	}
 	else
@@ -164,6 +181,66 @@ void HoI4World::convertCountry(pair<string, V2Country*> country, map<int, int>& 
 	}
 
 	HoI4Localisation::createCountryLocalisations(country.first, HoI4Tag);
+}
+
+
+void HoI4World::importIdeologies()
+{
+	importIdeologyFile("converterIdeologies.txt");
+	importIdeologyFile(Configuration::getHoI4Path() + "/common/ideologies/00_ideologies.txt");
+}
+
+
+void HoI4World::importIdeologyFile(const string& filename)
+{
+	shared_ptr<Object> fileObject = parser_UTF8::doParseFile(filename);
+	auto ideologiesObjects = fileObject->getLeaves();
+	if (ideologiesObjects.size() > 0)
+	{
+		for (auto ideologyObject: ideologiesObjects[0]->getLeaves())
+		{
+			string ideologyName = ideologyObject->getKey();
+			HoI4Ideology* newIdeology = new HoI4Ideology(ideologyObject);
+			ideologies.insert(make_pair(ideologyName, newIdeology));
+		}
+	}
+}
+
+
+void HoI4World::importLeaderTraits()
+{
+	shared_ptr<Object> fileObject = parser_UTF8::doParseFile("converterLeaderTraits.txt");
+	auto ideologyObjects = fileObject->getLeaves();
+	for (auto ideologyObject: ideologyObjects)
+	{
+		string ideaName = ideologyObject->getKey();
+		ideologicalLeaderTraits.insert(make_pair(ideaName, ideologyObject->getLeaves()));
+	}
+}
+
+
+void HoI4World::importIdeologicalMinisters()
+{
+	shared_ptr<Object> fileObject = parser_UTF8::doParseFile("ideologicalAdvisors.txt");
+	auto ideologyObjects = fileObject->getLeaves();
+	for (auto ideologyObject: ideologyObjects)
+	{
+		string ideaName = ideologyObject->getKey();
+		HoI4Advisor* newAdvisor = new HoI4Advisor(ideologyObject->getLeaves()[0]);
+		ideologicalAdvisors.insert(make_pair(ideaName, newAdvisor));
+	}
+}
+
+
+void HoI4World::importIdeologicalIdeas()
+{
+	shared_ptr<Object> fileObject = parser_UTF8::doParseFile("ideologicalIdeas.txt");
+	auto ideologyObjects = fileObject->getLeaves();
+	for (auto ideologyObject: ideologyObjects)
+	{
+		string ideaName = ideologyObject->getKey();
+		ideologicalIdeas.insert(make_pair(ideaName, ideologyObject->getLeaves()));
+	}
 }
 
 
@@ -181,6 +258,8 @@ void HoI4World::identifyMajorIdeologies()
 			majorIdeologies.insert(country.second->getGovernmentIdeology());
 		}
 	}
+
+	majorIdeologies.insert("neutrality");
 }
 
 
@@ -326,7 +405,13 @@ double HoI4World::getWorldwideWorkerFactoryRatio(map<string, double> workersInCo
 		baseIndustry += countryWorkers.second * 0.000019;
 	}
 
-	double deltaIndustry = baseIndustry - (1189 - landedCountries.size());
+	int defaultFactories = 1189;
+	HOI4Version onePointFour("1.4.0");
+	if (Configuration::getHOI4Version() >= onePointFour)
+	{
+		defaultFactories = 1201;
+	}
+	double deltaIndustry = baseIndustry - (defaultFactories - landedCountries.size());
 	double newIndustry = baseIndustry - Configuration::getIcFactor() * deltaIndustry;
 	double acutalWorkerFactoryRatio = newIndustry / totalWorldWorkers;
 
@@ -427,7 +512,7 @@ void HoI4World::reportDefaultIndustry()
 
 pair<string, array<int, 3>> HoI4World::getDefaultStateIndustry(string stateFilename)
 {
-	Object* fileObj = parser_UTF8::doParseFile(Configuration::getHoI4Path() + "/history/states/" + stateFilename);
+	shared_ptr<Object> fileObj = parser_UTF8::doParseFile(Configuration::getHoI4Path() + "/history/states/" + stateFilename);
 	if (fileObj == nullptr)
 	{
 		LOG(LogLevel::Error) << "Could not parse " << Configuration::getHoI4Path() << "/history/states/" << stateFilename;
@@ -510,7 +595,7 @@ map<int, map<string, double>> HoI4World::importResourceMap() const
 {
 	map<int, map<string, double>> resourceMap;
 
-	Object* fileObj = parser_UTF8::doParseFile("resources.txt");
+	shared_ptr<Object> fileObj = parser_UTF8::doParseFile("resources.txt");
 	if (fileObj == nullptr)
 	{
 		LOG(LogLevel::Error) << "Could not read resources.txt";
@@ -776,9 +861,9 @@ map<string, vector<pair<string, int>>> HoI4World::importTechMap() const
 {
 	map<string, vector<pair<string, int>>> techMap;
 
-	Object* fileObj = parser_UTF8::doParseFile("tech_mapping.txt");
+	shared_ptr<Object> fileObj = parser_UTF8::doParseFile("tech_mapping.txt");
 
-	vector<Object*> mapObj = fileObj->getValue("tech_map");
+	vector<shared_ptr<Object>> mapObj = fileObj->getValue("tech_map");
 	if (mapObj.size() < 1)
 	{
 		LOG(LogLevel::Error) << "Could not read tech map";
@@ -823,17 +908,6 @@ void HoI4World::addTechs(HoI4Country* country, const string& oldTech, const map<
 		{
 			country->setTechnology(HoI4TechItr.first, HoI4TechItr.second);
 		}
-	}
-}
-
-
-void HoI4World::generateLeaders()
-{
-	LOG(LogLevel::Info) << "Generating Leaders";
-
-	for (auto country: countries)
-	{
-		country.second->generateLeaders(leaderTraits, portraitMap);
 	}
 }
 
@@ -1004,7 +1078,7 @@ void HoI4World::createFactions()
 	ofstream factionsLog("factions-logs.csv");
 	factionsLog << "name,government,initial strength,factory strength per year,factory strength by 1939\n";
 
-	for (auto leader: greatPowers)
+	for (auto leader : greatPowers)
 	{
 		if (leader->isInFaction())
 		{
@@ -1025,7 +1099,7 @@ void HoI4World::createFactions()
 			alliesAndPuppets.insert(puppetTag);
 		}
 
-		for (auto allyTag: alliesAndPuppets)
+		for (auto allyTag : alliesAndPuppets)
 		{
 			HoI4Country* allycountry = findCountry(allyTag);
 			if (!allycountry)
@@ -1057,14 +1131,17 @@ void HoI4World::createFactions()
 			}
 		}
 
-		HoI4Faction* newFaction = new HoI4Faction(leader, factionMembers);
-		for (auto member: factionMembers)
+		if (factionMembers.size() > 1)
 		{
-			member->setFaction(newFaction);
-		}
-		factions.push_back(newFaction);
+			HoI4Faction* newFaction = new HoI4Faction(leader, factionMembers);
+			for (auto member : factionMembers)
+			{
+				member->setFaction(newFaction);
+			}
+			factions.push_back(newFaction);
 
-		factionsLog << "Faction Strength in 1939," << factionMilStrength << "\n";
+			factionsLog << "Faction Strength in 1939," << factionMilStrength << "\n";
+		}
 	}
 
 	factionsLog.close();
@@ -1134,9 +1211,9 @@ void HoI4World::output() const
 {
 	LOG(LogLevel::Info) << "Outputting world";
 
-	if (!Utils::TryCreateFolder("Output/" + Configuration::getOutputName() + "/history"))
+	if (!Utils::TryCreateFolder("output/" + Configuration::getOutputName() + "/history"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"Output/" + Configuration::getOutputName() + "/history";
+		LOG(LogLevel::Error) << "Could not create \"output/" + Configuration::getOutputName() + "/history";
 		exit(-1);
 	}
 
@@ -1149,22 +1226,26 @@ void HoI4World::output() const
 	outputMap();
 	supplyZones->output();
 	outputRelations();
+	outputGenericFocusTree();
 	outputCountries();
 	buildings->output();
 	events->output();
+	outputIdeologies();
+	outputLeaderTraits();
+	outputIdeologicalIdeas();
 }
 
 
 void HoI4World::outputCommonCountries() const
 {
-	if (!Utils::TryCreateFolder("Output/" + Configuration::getOutputName() + "/common/country_tags"))
+	if (!Utils::TryCreateFolder("output/" + Configuration::getOutputName() + "/common/country_tags"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"Output/" + Configuration::getOutputName() + "/common/country_tags\"";
+		LOG(LogLevel::Error) << "Could not create \"output/" + Configuration::getOutputName() + "/common/country_tags\"";
 		exit(-1);
 	}
 
 	LOG(LogLevel::Debug) << "Writing countries file";
-	ofstream allCountriesFile("Output/" + Configuration::getOutputName() + "/common/country_tags/00_countries.txt");
+	ofstream allCountriesFile("output/" + Configuration::getOutputName() + "/common/country_tags/00_countries.txt");
 	if (!allCountriesFile.is_open())
 	{
 		LOG(LogLevel::Error) << "Could not create countries file";
@@ -1186,16 +1267,16 @@ void HoI4World::outputCommonCountries() const
 
 void HoI4World::outputColorsfile() const
 {
-	if (!Utils::TryCreateFolder("Output/" + Configuration::getOutputName() + "/common/countries"))
+	if (!Utils::TryCreateFolder("output/" + Configuration::getOutputName() + "/common/countries"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"Output/" + Configuration::getOutputName() + "/common/countries\"";
+		LOG(LogLevel::Error) << "Could not create \"output/" + Configuration::getOutputName() + "/common/countries\"";
 		exit(-1);
 	}
 
-	ofstream output("Output/" + Configuration::getOutputName() + "/common/countries/colors.txt");
+	ofstream output("output/" + Configuration::getOutputName() + "/common/countries/colors.txt");
 	if (!output.is_open())
 	{
-		Log(LogLevel::Error) << "Could not open Output/" << Configuration::getOutputName() << "/common/countries/colors.txt";
+		Log(LogLevel::Error) << "Could not open output/" << Configuration::getOutputName() << "/common/countries/colors.txt";
 		exit(-1);
 	}
 
@@ -1214,12 +1295,12 @@ void HoI4World::outputColorsfile() const
 
 void HoI4World::outputNames() const
 {
-	ofstream namesFile("Output/" + Configuration::getOutputName() + "/common/names/01_names.txt");
+	ofstream namesFile("output/" + Configuration::getOutputName() + "/common/names/01_names.txt");
 	namesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
 
 	if (!namesFile.is_open())
 	{
-		Log(LogLevel::Error) << "Could not open Output/" << Configuration::getOutputName() << "/common/names/01_names.txt";
+		Log(LogLevel::Error) << "Could not open output/" << Configuration::getOutputName() << "/common/names/01_names.txt";
 		exit(-1);
 	}
 
@@ -1234,16 +1315,16 @@ void HoI4World::outputMap() const
 {
 	LOG(LogLevel::Debug) << "Writing Map Info";
 
-	if (!Utils::TryCreateFolder("Output/" + Configuration::getOutputName() + "/map"))
+	if (!Utils::TryCreateFolder("output/" + Configuration::getOutputName() + "/map"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"Output/" + Configuration::getOutputName() + "/map";
+		LOG(LogLevel::Error) << "Could not create \"output/" + Configuration::getOutputName() + "/map";
 		exit(-1);
 	}
 
-	ofstream rocketSitesFile("Output/" + Configuration::getOutputName() + "/map/rocketsites.txt");
+	ofstream rocketSitesFile("output/" + Configuration::getOutputName() + "/map/rocketsites.txt");
 	if (!rocketSitesFile.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not create Output/" << Configuration::getOutputName() << "/map/rocketsites.txt";
+		LOG(LogLevel::Error) << "Could not create output/" << Configuration::getOutputName() << "/map/rocketsites.txt";
 		exit(-1);
 	}
 	for (auto state: states->getStates())
@@ -1253,10 +1334,10 @@ void HoI4World::outputMap() const
 	}
 	rocketSitesFile.close();
 
-	ofstream airportsFile("Output/" + Configuration::getOutputName() + "/map/airports.txt");
+	ofstream airportsFile("output/" + Configuration::getOutputName() + "/map/airports.txt");
 	if (!airportsFile.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not create Output/" << Configuration::getOutputName() << "/map/airports.txt";
+		LOG(LogLevel::Error) << "Could not create output/" << Configuration::getOutputName() << "/map/airports.txt";
 		exit(-1);
 	}
 	for (auto state: states->getStates())
@@ -1266,51 +1347,65 @@ void HoI4World::outputMap() const
 	}
 	airportsFile.close();
 
-	if (!Utils::TryCreateFolder("Output/" + Configuration::getOutputName() + "/map/strategicregions"))
+	if (!Utils::TryCreateFolder("output/" + Configuration::getOutputName() + "/map/strategicregions"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"Output/" + Configuration::getOutputName() + "/map/strategicregions";
+		LOG(LogLevel::Error) << "Could not create \"output/" + Configuration::getOutputName() + "/map/strategicregions";
 		exit(-1);
 	}
 	for (auto strategicRegion: strategicRegions)
 	{
-		strategicRegion.second->output("Output/" + Configuration::getOutputName() + "/map/strategicregions/");
+		strategicRegion.second->output("output/" + Configuration::getOutputName() + "/map/strategicregions/");
 	}
+}
+
+
+void HoI4World::outputGenericFocusTree() const
+{
+	if (!Utils::TryCreateFolder("output/" + Configuration::getOutputName() + "/common/national_focus"))
+	{
+		LOG(LogLevel::Error) << "Could not create \"output/" + Configuration::getOutputName() + "/common/national_focus\"";
+		exit(-1);
+	}
+
+	HoI4FocusTree genericFocusTree;
+	genericFocusTree.addGenericFocusTree(majorIdeologies);
+	genericFocusTree.output("output/" + Configuration::getOutputName() + "/common/national_focus/generic.txt");
 }
 
 
 void HoI4World::outputCountries() const
 {
 	LOG(LogLevel::Debug) << "Writing countries";
-	if (!Utils::TryCreateFolder("Output/" + Configuration::getOutputName() + "/history"))
+	if (!Utils::TryCreateFolder("output/" + Configuration::getOutputName() + "/history"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"Output/" + Configuration::getOutputName() + "/history";
+		LOG(LogLevel::Error) << "Could not create \"output/" + Configuration::getOutputName() + "/history";
 		exit(-1);
 	}
-	if (!Utils::TryCreateFolder("Output/" + Configuration::getOutputName() + "/history/countries"))
+	if (!Utils::TryCreateFolder("output/" + Configuration::getOutputName() + "/history/countries"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"Output/" + Configuration::getOutputName() + "/history";
+		LOG(LogLevel::Error) << "Could not create \"output/" + Configuration::getOutputName() + "/history";
 		exit(-1);
 	}
-	if (!Utils::TryCreateFolder("Output/" + Configuration::getOutputName() + "/history/states"))
+	if (!Utils::TryCreateFolder("output/" + Configuration::getOutputName() + "/history/states"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"Output/" + Configuration::getOutputName() + "/history/states";
+		LOG(LogLevel::Error) << "Could not create \"output/" + Configuration::getOutputName() + "/history/states";
 		exit(-1);
 	}
-	if (!Utils::TryCreateFolder("Output/" + Configuration::getOutputName() + "/history/units"))
+	if (!Utils::TryCreateFolder("output/" + Configuration::getOutputName() + "/history/units"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"Output/" + Configuration::getOutputName() + "/history/units";
+		LOG(LogLevel::Error) << "Could not create \"output/" + Configuration::getOutputName() + "/history/units";
 		exit(-1);
 	}
 
 	for (auto country: countries)
 	{
-		country.second->output(states->getStates(), factions);
+		country.second->output(getActiveIdeologicalAdvisors());
 	}
 
-	ofstream ideasFile("Output/" + Configuration::getOutputName() + "/interface/converter_ideas.gfx");
+	ofstream ideasFile("output/" + Configuration::getOutputName() + "/interface/converter_ideas.gfx");
 	if (!ideasFile.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not open Output/" << Configuration::getOutputName() << "/interface/ideas.gfx";
+		LOG(LogLevel::Error) << "Could not open output/" << Configuration::getOutputName() << "/interface/ideas.gfx";
 		exit(-1);
 	}
 
@@ -1324,15 +1419,31 @@ void HoI4World::outputCountries() const
 }
 
 
+set<const HoI4Advisor*> HoI4World::getActiveIdeologicalAdvisors() const
+{
+	set<const HoI4Advisor*> theAdvisors;
+	for (auto ideology: majorIdeologies)
+	{
+		auto ideologicalAdvisor = ideologicalAdvisors.find(ideology);
+		if (ideologicalAdvisor != ideologicalAdvisors.end())
+		{
+			theAdvisors.insert(ideologicalAdvisor->second);
+		}
+	}
+
+	return theAdvisors;
+}
+
+
 void HoI4World::outputRelations() const
 {
-	if (!Utils::TryCreateFolder("Output/" + Configuration::getOutputName() + "/common/opinion_modifiers"))
+	if (!Utils::TryCreateFolder("output/" + Configuration::getOutputName() + "/common/opinion_modifiers"))
 	{
-		Log(LogLevel::Error) << "Could not create Output/" + Configuration::getOutputName() + "/common/opinion_modifiers/";
+		Log(LogLevel::Error) << "Could not create output/" + Configuration::getOutputName() + "/common/opinion_modifiers/";
 		exit(-1);
 	}
 
-	ofstream out("Output/" + Configuration::getOutputName() + "/common/opinion_modifiers/01_opinion_modifiers.txt");
+	ofstream out("output/" + Configuration::getOutputName() + "/common/opinion_modifiers/01_opinion_modifiers.txt");
 	if (!out.is_open())
 	{
 		LOG(LogLevel::Error) << "Could not create 01_opinion_modifiers.txt.";
@@ -1357,6 +1468,80 @@ void HoI4World::outputRelations() const
 	out << "}\n";
 
 	out.close();
+}
+
+
+void HoI4World::outputIdeologies() const
+{
+	if (!Utils::TryCreateFolder("output/" + Configuration::getOutputName() + "/common/ideologies/"))
+	{
+		Log(LogLevel::Error) << "Could not create output/" + Configuration::getOutputName() + "/common/ideologies/";
+	}
+	ofstream ideologyFile("output/" + Configuration::getOutputName() + "/common/ideologies/00_ideologies.txt");
+	ideologyFile << "ideologies = {\n";
+	ideologyFile << "\t\n";
+	if (Configuration::getDropMinorIdeologies())
+	{
+		for (auto ideologyName: majorIdeologies)
+		{
+			auto ideology = ideologies.find(ideologyName);
+			if (ideology != ideologies.end())
+			{
+				ideology->second->output(ideologyFile);
+			}
+		}
+	}
+	else
+	{
+		for (auto ideology: ideologies)
+		{
+			ideology.second->output(ideologyFile);
+		}
+	}
+	ideologyFile << "}";
+	ideologyFile.close();
+}
+
+
+void HoI4World::outputLeaderTraits() const
+{
+	ofstream traitsFile("output/" + Configuration::getOutputName() + "/common/country_leader/converterTraits.txt");
+	traitsFile << "leader_traits = {\n";
+	for (auto majorIdeology: majorIdeologies)
+	{
+		auto ideologyTraits = ideologicalLeaderTraits.find(majorIdeology);
+		if (ideologyTraits != ideologicalLeaderTraits.end())
+		{
+			for (auto trait: ideologyTraits->second)
+			{
+				traitsFile << "\n";
+				traitsFile << *trait;
+			}
+		}
+	}
+	traitsFile << "}";
+	traitsFile.close();
+}
+
+
+void HoI4World::outputIdeologicalIdeas() const
+{
+	ofstream ideasFile("output/" + Configuration::getOutputName() + "/common/ideas/convertedIdeas.txt");
+	ideasFile << "ideas = {\n";
+	ideasFile << "\tcountry = {\n";
+	for (auto majorIdeology: majorIdeologies)
+	{
+		auto ideologicalIdea = ideologicalIdeas.find(majorIdeology);
+		if (ideologicalIdea != ideologicalIdeas.end())
+		{
+			for (auto idea: ideologicalIdea->second)
+			ideasFile << *idea;
+			ideasFile << "\n";
+		}
+	}
+	ideasFile << "\t}\n";
+	ideasFile << "}";
+	ideasFile.close();
 }
 
 

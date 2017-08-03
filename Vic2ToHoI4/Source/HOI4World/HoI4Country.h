@@ -19,8 +19,12 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
+
+
 #ifndef HoI4COUNTRY_H_
 #define HoI4COUNTRY_H_
+
+
 
 #include "HoI4Airforce.h"
 #include "HoI4Alignment.h"
@@ -37,12 +41,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include <set>
 using namespace std;
 
-class HoI4World;
+
+
 class V2Country;
 struct V2Party;
-class HoI4Minister;
-class HoI4Leader;
+class HoI4Advisor;
 class HoI4Faction;
+class HoI4Leader;
+class HoI4Minister;
+class HoI4World;
 
 
 class HoI4Country
@@ -50,16 +57,14 @@ class HoI4Country
 	public:
 		HoI4Country(string _tag, string _commonCountryFile, HoI4World* _theWorld);
 
-		void initFromV2Country(const V2World& _srcWorld, const V2Country* _srcCountry, const string _vic2ideology, map<int, int>& leaderMap, governmentJobsMap governmentJobs, portraitMapping& portraitMap, const cultureMapping& cultureMap, personalityMap& landPersonalityMap, personalityMap& seaPersonalityMap, backgroundMap& landBackgroundMap, backgroundMap& seaBackgroundMap, const map<int, int>& stateMap, map<int, HoI4State*> states);
+		void initFromV2Country(const V2World& _srcWorld, const V2Country* _srcCountry, const map<int, int>& stateMap, map<int, HoI4State*> states);
 		void initFromHistory();
 		void setGovernmentToNeutral();
 		void convertIdeologySupport(const set<string>& majorIdeologies);
-		void generateLeaders(leaderTraitsMap leaderTraits, portraitMapping& portraitMap);
 		void		convertNavy(map<int, HoI4State*> states);
 		void		convertAirforce();
 		void		convertArmyDivisions();
 		void		setTechnology(string tech, int level);
-		void		addProvince(int _province);
 		void addState(HoI4State* _state);
 		void calculateIndustry();
 		void reportIndustry(ofstream& out);
@@ -67,7 +72,7 @@ class HoI4Country
 		void outputToCommonCountriesFile(ofstream& countriesFile) const;
 		void outputColors(ofstream& out) const;
 		void outputToNamesFiles(ofstream& namesFile) const;
-		void output(const map<int, HoI4State*>& states, const vector<HoI4Faction*>& Factions) const;
+		void output(const set<const HoI4Advisor*>& ideologicalMinisters) const;
 		void outputIdeaGraphics(ofstream& ideasFile) const;
 
 		void		setSphereLeader(string SphereLeader) { sphereLeader == SphereLeader; }
@@ -94,11 +99,9 @@ class HoI4Country
 		const set<string>&						getAllies() const { return allies; }
 		set<string>&								editAllies() { return allies; }
 		const set<string>&							getPuppets() const { return puppets; }
-		void										addPuppet(string countryTag);
-		const string&								getPuppetmaster() { return puppetMaster; }
-		void										setPuppetmaster(string _master) { puppetMaster = _master; }
-		map<string, double>&						getPracticals() { return practicals; }
-		int											getCapitalNum() { return capital; }
+		const string&								getPuppetmaster() const { return puppetMaster; }
+		const map<string, double>&						getPracticals() const { return practicals; }
+		int											getCapitalNum() const { return capital; }
 		vector<int>									getBrigs() const { return brigs; }
 		int											getCapitalProv() const { return capital; }
 		const string									getSphereLeader() const { return sphereLeader; }
@@ -111,10 +114,19 @@ class HoI4Country
 		int getTotalFactories() const { return totalfactories; }
 		int getTechnologyCount() const { return technologies.size(); }
 		int getProvinceCount() const { return provinceCount; }
-		void setProvinceCount(int count) { provinceCount = count; }
 		bool isGreatPower() const { return greatPower; }
 
+		void setProvinceCount(int count) { provinceCount = count; }
+		void setPuppetmaster(string _master) { puppetMaster = _master; }
+		void addPuppet(const string& countryTag) { puppets.insert(countryTag); }
+
 	private:
+		void determineFilename();
+		void convertGovernment(const V2World& _srcWorld);
+		void initIdeas();
+		//void convertLaws();
+		//void convertLeaders(portraitMapping& portraitMap, personalityMap& landPersonalityMap, personalityMap& seaPersonalityMap, backgroundMap& landBackgroundMap, backgroundMap& seaBackgroundMap);
+		void convertRelations();
 		void determineCapitalFromVic2(const map<int, int>& provinceToStateIDMap, const map<int, HoI4State*>& states);
 		bool isStateValidForCapital(map<int, int>::const_iterator capitalState, const map<int, HoI4State*>& states);
 		bool isThisStateOwnedByUs(const HoI4State* state) const;
@@ -122,15 +134,27 @@ class HoI4Country
 		void setCapitalInCapitalState(int capitalProvince, const map<int, HoI4State*>& states);
 		void findBestCapital();
 
-		vector<int>	getPortProvinces(vector<int> locationCandidates, map<int, HoI4Province*> allProvinces);
+		void addProvince(int _province);
 
 		void outputNamesSet(ofstream& namesFile, const vector<string>& names, const string& tabs) const;
-		void outputHistory(const map<int, HoI4State*>& states, const vector<HoI4Faction*>& Factions) const;
+		void outputHistory() const;
+		void outputCapital(ofstream& output) const;
+		void outputResearchSlots(ofstream& output) const;
+		void outputThreat(ofstream& output) const;
+		void outputOOB(ofstream& output) const;
+		void outputTechnology(ofstream& output) const;
+		void outputConvoys(ofstream& output) const;
+		void outputPuppets(ofstream& output) const;
+		void outputPolitics(ofstream& output) const;
 		void outputRelations(ofstream& output) const;
+		bool areElectionsAllowed(void) const;
+		void outputFactions(ofstream& output) const;
+		void outputIdeas(ofstream& output) const;
+		void outputNationalUnity(ofstream& output) const;
 		void outputCountryLeader(ofstream& output) const;
 		void outputOOB() const;
 		void outputCommonCountryFile() const;
-		void outputIdeas() const;
+		void outputIdeas(const set<const HoI4Advisor*>& ideologicalAdvisors) const;
 
 
 		HoI4World* theWorld;
@@ -160,13 +184,14 @@ class HoI4Country
 		HoI4Faction*						faction;
 		bool									factionLeader;
 		set<string>							allies;
-		set<string>							puppets;
-		string								puppetMaster;
+		set<string> puppets;
+		string puppetMaster;
 		map<string, double>				practicals;
 		vector<HoI4Minister>				ministers;
 		vector<HoI4Minister>				rulingMinisters;
 		vector<HoI4Leader>				leaders;
-		string								graphicalCulture;
+		string graphicalCulture;
+		string graphicalCulture2d;
 		bool									majorNation;
 		bool									civilized;
 		vector<int>							brigs;
