@@ -837,9 +837,10 @@ void HoI4World::convertRelations()
 
 void HoI4World::convertTechs()
 {
-	LOG(LogLevel::Info) << "Converting techs";
+	LOG(LogLevel::Info) << "Converting techs and research bonuses";
 
 	map<string, vector<pair<string, int>>> techMap = importTechMap();
+	map<string, vector<pair<string, int>>> researchBonusMap = importResearchBonusMap();
 
 	for (auto dstCountry: countries)
 	{
@@ -848,10 +849,12 @@ void HoI4World::convertTechs()
 		for (auto technology: sourceCountry->getTechs())
 		{
 			addTechs(dstCountry.second, technology, techMap);
+			addResearchBonuses(dstCountry.second, technology, researchBonusMap);
 		}
 		for (auto invention: sourceCountry->getInventions())
 		{
 			addTechs(dstCountry.second, invention, techMap);
+			addResearchBonuses(dstCountry.second, invention, researchBonusMap);
 		}
 	}
 }
@@ -894,6 +897,43 @@ map<string, vector<pair<string, int>>> HoI4World::importTechMap() const
 	return techMap;
 }
 
+map<string, vector<pair<string, int>>> HoI4World::importResearchBonusMap() const
+{
+	map<string, vector<pair<string, int>>> researchBonusMap;
+
+	Object* fileObj = parser_UTF8::doParseFile("tech_mapping.txt");
+
+	vector<Object*> mapObj = fileObj->getValue("bonus_map");
+	if (mapObj.size() < 1)
+	{
+		LOG(LogLevel::Error) << "Could not read tech map";
+		exit(-1);
+	}
+
+	for (auto link : mapObj[0]->getValue("link"))
+	{
+		vector<pair<string, int> > targetTechs;
+		string tech = "";
+
+		for (auto key : link->getKeys())
+		{
+			if (key == "vic2")
+			{
+				tech = link->getLeaf("vic2");
+			}
+			else
+			{
+				int value = stoi(link->getLeaf(key));
+				targetTechs.push_back(pair<string, int>(key, value));
+			}
+		}
+
+		researchBonusMap[tech] = targetTechs;
+	}
+
+	return researchBonusMap;
+}
+
 
 void HoI4World::addTechs(HoI4Country* country, const string& oldTech, const map<string, vector<pair<string, int>>>& techMap)
 {
@@ -907,6 +947,22 @@ void HoI4World::addTechs(HoI4Country* country, const string& oldTech, const map<
 		for (auto HoI4TechItr: mapItr->second)
 		{
 			country->setTechnology(HoI4TechItr.first, HoI4TechItr.second);
+		}
+	}
+}
+
+void HoI4World::addResearchBonuses(HoI4Country* country, const string& oldTech, const map<string, vector<pair<string, int>>>& researchBonusMap)
+{
+	auto mapItr = researchBonusMap.find(oldTech);
+	if (mapItr == researchBonusMap.end())
+	{
+		return;
+	}
+	if (mapItr != researchBonusMap.end())
+	{
+		for (auto HoI4TechItr : mapItr->second)
+		{
+			country->setResearchBonus(HoI4TechItr.first, HoI4TechItr.second);
 		}
 	}
 }
