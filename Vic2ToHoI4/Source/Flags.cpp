@@ -48,18 +48,20 @@ void copyFlags(const map<string, HoI4Country*>& countries)
 enum flagIdeologies
 {
 	BASE_FLAG			= 0,
-	COMMUNISM_FLAG		= 1,
-	DEMOCRATIC_FLAG	= 2,
-	FACISM_FLAG			= 3,
-	SYNDICALISM_FLAG = 4,
-	SOCIALIST_FLAG = 5,
-	LIBERAL_FLAG = 6,
-	AUTOCRATIC_FLAG = 7,
-	ANCAP_FLAG = 8,
-	FLAG_END				= 9
+	NEUTRALITY_FLAG		= 1,
+	COMMUNISM_FLAG		= 2,
+	DEMOCRATIC_FLAG	= 3,
+	FACISM_FLAG			= 4,
+	SYNDICALISM_FLAG = 5,
+	SOCIALIST_FLAG = 6,
+	LIBERAL_FLAG = 7,
+	AUTOCRATIC_FLAG = 8,
+	ANCAP_FLAG = 9,
+	FLAG_END				= 10
 };
 
 const char* vic2Suffixes[FLAG_END] = {
+	".tga",
 	".tga",
 	"_communist.tga",
 	".tga",
@@ -73,14 +75,15 @@ const char* vic2Suffixes[FLAG_END] = {
 
 const char* hoi4Suffixes[FLAG_END] = {
 	".tga",
+	"_neutrality.tga",
 	"_communism.tga",
 	"_democratic.tga",
 	"_fascism.tga",
-	"_syndicalism.tga",
-	"_socialist.tga",
-	"_liberal.tga",
-	"_autocratic.tga",
-	"_ancap.tga",
+	"_communism.tga",
+	"_democratic.tga",
+	"_democratic.tga",
+	"_absolutist.tga",
+	"_radical.tga",
 
 };
 
