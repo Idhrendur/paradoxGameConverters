@@ -721,7 +721,7 @@ double EU4Province::getTradeGoodPrice() const
 
 	if (tradeGoods == "chinaware")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.75;
 	}
 	else if (tradeGoods == "grain")
 	{
@@ -729,27 +729,27 @@ double EU4Province::getTradeGoodPrice() const
 	}
 	else if (tradeGoods == "fish")
 	{
-		tradeGoodsPrice = 2.5;
+		tradeGoodsPrice = 2.25;
 	}
 	else if (tradeGoods == "tabacco")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.75;
 	}
 	else if (tradeGoods == "iron")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.75;
 	}
 	else if (tradeGoods == "copper")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 4;
 	}
 	else if (tradeGoods == "cloth")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.75;
 	}
 	else if (tradeGoods == "slaves")
 	{
-		tradeGoodsPrice = 2;
+		tradeGoodsPrice = 2.5;
 	}
 	else if (tradeGoods == "salt")
 	{
@@ -761,59 +761,59 @@ double EU4Province::getTradeGoodPrice() const
 	}
 	else if (tradeGoods == "fur")
 	{
-		tradeGoodsPrice = 2;
+		tradeGoodsPrice = 3;
 	}
 	else if (tradeGoods == "sugar")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 4.5;
 	}
 	else if (tradeGoods == "naval_supplies")
 	{
-		tradeGoodsPrice = 2;
+		tradeGoodsPrice = 2.5;
 	}
 	else if (tradeGoods == "tea")
 	{
-		tradeGoodsPrice = 2;
+		tradeGoodsPrice = 2.25;
 	}
 	else if (tradeGoods == "coffee")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.75;
 	}
 	else if (tradeGoods == "spices")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.75;
 	}
 	else if (tradeGoods == "wine")
 	{
-		tradeGoodsPrice = 2.5;
+		tradeGoodsPrice = 2.75;
 	}
 	else if (tradeGoods == "cocoa")
 	{
-		tradeGoodsPrice = 4;
+		tradeGoodsPrice = 4.5;
 	}
 	else if (tradeGoods == "ivory")
 	{
-		tradeGoodsPrice = 4;
+		tradeGoodsPrice = 4.5;
 	}
 	else if (tradeGoods == "wool")
 	{
-		tradeGoodsPrice = 2.5;
+		tradeGoodsPrice = 2.25;
 	}
 	else if (tradeGoods == "cotton")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 4;
 	}
 	else if (tradeGoods == "dyes")
 	{
-		tradeGoodsPrice = 4;
+		tradeGoodsPrice = 4.5;
 	}
 	else if (tradeGoods == "tropical_wood")
 	{
-		tradeGoodsPrice = 2;
+		tradeGoodsPrice = 2.5;
 	}
 	else if (tradeGoods == "silk")
 	{
-		tradeGoodsPrice = 4;
+		tradeGoodsPrice = 4.5;
 	}
 	else
 	{
