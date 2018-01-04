@@ -28,7 +28,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include <fstream>
 #include <sstream>
 #include <queue>
-#include <boost/algorithm/string.hpp>
 #include "Log.h"
 #include "../Configuration.h"
 #include "../Mappers/ReligionMapper.h"
@@ -70,10 +69,10 @@ V2Country::V2Country(const string& countriesFileLine, const V2World* _theWorld, 
 	int size = countriesFileLine.find_last_of('\"') - start;
 	filename = countriesFileLine.substr(start, size);
 
-	Object* countryData = parseCountryFile(filename);
+	shared_ptr<Object> countryData = parseCountryFile(filename);
 
-	vector<Object*> partyData = countryData->getValue("party");
-	for (vector<Object*>::iterator itr = partyData.begin(); itr != partyData.end(); ++itr)
+	vector<shared_ptr<Object>> partyData = countryData->getValue("party");
+	for (vector<shared_ptr<Object>>::iterator itr = partyData.begin(); itr != partyData.end(); ++itr)
 	{
 		V2Party* newParty = new V2Party(*itr);
 		parties.push_back(newParty);
@@ -85,9 +84,9 @@ V2Country::V2Country(const string& countriesFileLine, const V2World* _theWorld, 
 
 	tag = countriesFileLine.substr(0, 3);
 	commonCountryFile	= localisation.convertCountryFileName(filename);
-	boost::replace_all(filename, ":", ";");
-	boost::replace_all(filename, "/", " ");
-	boost::replace_all(filename, "\\", " ");
+	std::replace(filename.begin(), filename.end(), ':', ';');
+	std::replace(filename.begin(), filename.end(), '/', ' ');
+	std::replace(filename.begin(), filename.end(), '\\', ' ');
 	commonCountryFile = commonCountryFile;
 	rulingParty			= "";
 
@@ -173,7 +172,7 @@ V2Country::V2Country(const string& countriesFileLine, const V2World* _theWorld, 
 }
 
 
-Object* V2Country::parseCountryFile(const string& filename)
+shared_ptr<Object> V2Country::parseCountryFile(const string& filename)
 {
 	string fileToParse;
 	if (Utils::DoesFileExist("./blankMod/output/common/countries/" + filename))
@@ -190,7 +189,7 @@ Object* V2Country::parseCountryFile(const string& filename)
 		return nullptr;
 	}
 
-	Object* countryData = parser_8859_15::doParseFile(fileToParse);
+	shared_ptr<Object> countryData = parser_8859_15::doParseFile(fileToParse);
 	if (countryData == nullptr)
 	{
 		LOG(LogLevel::Warning) << "Could not parse file " << fileToParse;
@@ -208,9 +207,9 @@ V2Country::V2Country(const string& _tag, const string& _commonCountryFile, const
 
 	tag					= _tag;
 	commonCountryFile	= localisation.convertCountryFileName(_commonCountryFile);
-	boost::replace_all(commonCountryFile, ":", ";");
-	boost::replace_all(commonCountryFile, "/", " ");
-	boost::replace_all(commonCountryFile, "\\", " ");
+	std::replace(commonCountryFile.begin(), commonCountryFile.end(), ':', ';');
+	std::replace(commonCountryFile.begin(), commonCountryFile.end(), '/', ' ');
+	std::replace(commonCountryFile.begin(), commonCountryFile.end(), '\\', ' ');
 	commonCountryFile = commonCountryFile;
 	parties.clear();
 	rulingParty			= "";
@@ -478,18 +477,7 @@ void V2Country::outputTech(FILE* output) const
 
 void V2Country::outputElection(FILE* output) const
 {
-	date electionDate = date("1836.1.1");
-
-	if (electionDate.month == 12)
-	{
-		electionDate.month = 1;
-		electionDate.year++;
-	}
-	else
-	{
-		electionDate.month++;
-	}
-	electionDate.year -= 4;
+	date electionDate = date("1832.1.1");
 	fprintf(output, "	last_election=%s\n", electionDate.toString().c_str());
 }
 
@@ -537,17 +525,22 @@ void V2Country::initFromEU4Country(EU4Country* _srcCountry, const vector<V2TechS
 		newCountry = true;
 	}
 
-	filename = Utils::GetFileFromTag("./blankMod/output/history/countries/", tag);
-	if (filename == "")
+	auto possibleFilename = Utils::GetFileFromTag("./blankMod/output/history/countries/", tag);
+	if (!possibleFilename)
 	{
-		filename = Utils::GetFileFromTag(Configuration::getV2Path() + "/history/countries/", tag);
+		possibleFilename = Utils::GetFileFromTag(Configuration::getV2Path() + "/history/countries/", tag);
 	}
-	if (filename == "")
+
+	if (!possibleFilename)
 	{
 		string countryName	= commonCountryFile;
 		int lastSlash			= countryName.find_last_of("/");
 		countryName				= countryName.substr(lastSlash + 1, countryName.size());
 		filename					= tag + " - " + countryName;
+	}
+	else
+	{
+		filename = *possibleFilename;
 	}
 
 	// Color
@@ -881,14 +874,22 @@ void V2Country::initFromHistory()
 {
 	string fullFilename;
 
-	filename = Utils::GetFileFromTag("./blankMod/output/history/countries/", tag);
-	fullFilename = "./blankMod/output/history/countries/" + filename;
-	if (filename == "")
+	auto possibleFilename = Utils::GetFileFromTag("./blankMod/output/history/countries/", tag);
+	if (possibleFilename)
 	{
-		filename = Utils::GetFileFromTag(Configuration::getV2Path() + "/history/countries/", tag);
-		fullFilename = Configuration::getV2Path() + "/history/countries/" + filename;
+		filename = *possibleFilename;
+		fullFilename = "./blankMod/output/history/countries/" + filename;
 	}
-	if (filename == "")
+	else
+	{
+		possibleFilename = Utils::GetFileFromTag(Configuration::getV2Path() + "/history/countries/", tag);
+		if (possibleFilename)
+		{
+			filename = *possibleFilename;
+			fullFilename = Configuration::getV2Path() + "/history/countries/" + filename;
+		}
+	}
+	if (!possibleFilename)
 	{
 		string countryName	= commonCountryFile;
 		int lastSlash			= countryName.find_last_of("/");
@@ -897,21 +898,21 @@ void V2Country::initFromHistory()
 		return;
 	}
 
-	Object* obj = parser_8859_15::doParseFile(fullFilename.c_str());
+	shared_ptr<Object> obj = parser_8859_15::doParseFile(fullFilename.c_str());
 	if (obj == nullptr)
 	{
 		LOG(LogLevel::Error) << "Could not parse file " << fullFilename;
 		exit(-1);
 	}
 
-	vector<Object*> results = obj->getValue("primary_culture");
+	vector<shared_ptr<Object>> results = obj->getValue("primary_culture");
 	if (results.size() > 0)
 	{
 		primaryCulture = results[0]->getLeaf();
 	}
 
 	results = obj->getValue("culture");
-	for (vector<Object*>::iterator itr = results.begin(); itr != results.end(); ++itr)
+	for (vector<shared_ptr<Object>>::iterator itr = results.begin(); itr != results.end(); ++itr)
 	{
 		acceptedCultures.insert((*itr)->getLeaf());
 	}
@@ -1388,22 +1389,6 @@ bool V2Country::addFactory(V2Factory* factory)
 			continue;
 		}
 
-		map<string,float> requiredProducts = factory->getRequiredRGO();
-		if (requiredProducts.size() > 0)
-		{
-			bool hasInput = false;
-			for (map<string,float>::iterator prod = requiredProducts.begin(); prod != requiredProducts.end(); ++prod)
-			{
-				if ( (*itr)->hasLocalSupply(prod->first) )
-				{
-					hasInput = true;
-					break;
-				}
-			}
-			if (!hasInput)
-				continue;
-		}
-
 		double candidateScore	 = (*itr)->getSuppliedInputs(factory) * 100;
 		candidateScore				-= (*itr)->getFactoryCount() * 10;
 		candidateScore				+= (*itr)->getManuRatio();
@@ -1556,7 +1541,7 @@ void V2Country::newCivConversionMethod(double topTech, int topInsitutions) // ci
 			// at 31 techs behind completely unciv
 			// each institution behind is equivalent to 2 techs behind
 
-			double civLevel = ((totalTechs + 31 - topTech) * 4);
+			int civLevel = static_cast<int>((totalTechs + 31 - topTech) * 4);
 			civLevel = civLevel + (srcCountry->numEmbracedInstitutions() - topInsitutions) * 8;
 			if (civLevel > 100) civLevel = 100;
 

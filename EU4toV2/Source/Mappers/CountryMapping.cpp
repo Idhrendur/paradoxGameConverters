@@ -1,4 +1,4 @@
-/*Copyright (c) 2016 The Paradox Game Converters Project
+/*Copyright (c) 2017 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -22,9 +22,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "CountryMapping.h"
+#include <algorithm>
 #include <iomanip>
 #include <sstream>
-#include <boost/algorithm/string.hpp>
 #include "../Configuration.h"
 #include "../EU4World/EU4World.h"
 #include "../EU4World/EU4Country.h"
@@ -57,7 +57,7 @@ CountryMapping::CountryMapping()
 void CountryMapping::readRules()
 {
 	LOG(LogLevel::Info) << "Reading country mapping rules";
-	vector<Object*> ruleNodes = getRules();
+	vector<shared_ptr<Object>> ruleNodes = getRules();
 	for (auto rule: ruleNodes)
 	{
 		importRule(rule);
@@ -65,15 +65,15 @@ void CountryMapping::readRules()
 }
 
 
-vector<Object*> CountryMapping::getRules()
+vector<shared_ptr<Object>> CountryMapping::getRules()
 {
-	Object* countryMappingsFile = parser_UTF8::doParseFile("country_mappings.txt");
+	shared_ptr<Object> countryMappingsFile = parser_UTF8::doParseFile("country_mappings.txt");
 	if (!countryMappingsFile)
 	{
 		LOG(LogLevel::Error) << "Failed to parse country_mappings.txt";
 		exit(-1);
 	}
-	vector<Object*> nodes = countryMappingsFile->getLeaves();
+	vector<shared_ptr<Object>> nodes = countryMappingsFile->getLeaves();
 	if (nodes.empty())
 	{
 		LOG(LogLevel::Error) << "country_mappings.txt does not contain a mapping";
@@ -84,22 +84,26 @@ vector<Object*> CountryMapping::getRules()
 }
 
 
-void CountryMapping::importRule(Object* rule)
+void CountryMapping::importRule(shared_ptr<Object> rule)
 {
-	vector<Object*> ruleItems = rule->getLeaves();
+	vector<shared_ptr<Object>> ruleItems = rule->getLeaves();
 
 	string newEU4Tag;
 	vector<string>	V2Tags;
 	for (auto item: ruleItems)
 	{
-		string key = boost::to_upper_copy(item->getKey());
+		string key = item->getKey();
+		std::transform(key.begin(), key.end(), key.begin(), ::toupper);
 		if (key == "EU4")
 		{
-			newEU4Tag = boost::to_upper_copy(item->getLeaf());
+			newEU4Tag = item->getLeaf();
+			std::transform(newEU4Tag.begin(), newEU4Tag.end(), newEU4Tag.begin(), ::toupper);
 		}
 		else if (key == "V2")
 		{
-			V2Tags.push_back(boost::to_upper_copy(item->getLeaf()));
+			string V2Tag = item->getLeaf();
+			std::transform(V2Tag.begin(), V2Tag.end(), V2Tag.begin(), ::toupper);
+			V2Tags.push_back(V2Tag);
 		}
 		else
 		{
@@ -135,11 +139,11 @@ void CountryMapping::readEU4Regions()
 }
 
 
-vector<Object*> CountryMapping::parseEU4RegionsFiles()
+vector<shared_ptr<Object>> CountryMapping::parseEU4RegionsFiles()
 {
-	vector<Object*> colonialRegionsObjs;
+	vector<shared_ptr<Object>> colonialRegionsObjs;
 
-	Object* colonialRegionsObj = parser_UTF8::doParseFile((Configuration::getEU4Path() + "/common/colonial_regions/00_colonial_regions.txt").c_str());
+	shared_ptr<Object> colonialRegionsObj = parser_UTF8::doParseFile((Configuration::getEU4Path() + "/common/colonial_regions/00_colonial_regions.txt").c_str());
 	if (colonialRegionsObj == NULL)
 	{
 		LOG(LogLevel::Error) << "Could not parse file " << Configuration::getEU4Path() << "/common/colonial_regions/00_colonial_regions.txt";
@@ -194,9 +198,9 @@ void CountryMapping::readVic2Regions()
 }
 
 
-Object* CountryMapping::parseVic2RegionsFile()
+shared_ptr<Object> CountryMapping::parseVic2RegionsFile()
 {
-	Object* Vic2RegionsObj;
+	shared_ptr<Object> Vic2RegionsObj;
 	if (Utils::DoesFileExist("./blankMod/output/map/region.txt"))
 	{
 		Vic2RegionsObj = parser_8859_15::doParseFile("./blankMod/output/map/region.txt");
@@ -324,7 +328,8 @@ bool CountryMapping::mapToExistingVic2Country(const vector<string>& possibleVic2
 	{
 		if ((Vic2Countries.find(possibleVic2Tag) != Vic2Countries.end()) && (!tagIsAlreadyAssigned(possibleVic2Tag)))
 		{
-			EU4TagToV2TagMap.left.insert(make_pair(EU4Tag, possibleVic2Tag));
+			EU4TagToV2TagMap.insert(make_pair(EU4Tag, possibleVic2Tag));
+			V2TagToEU4TagMap.insert(make_pair(possibleVic2Tag, EU4Tag));
 			logMapping(EU4Tag, possibleVic2Tag, "default V2 country");
 
 			return true;
@@ -341,7 +346,8 @@ bool CountryMapping::mapToFirstUnusedVic2Tag(const vector<string>& possibleVic2T
 	{
 		if (!tagIsAlreadyAssigned(possibleVic2Tag))
 		{
-			EU4TagToV2TagMap.left.insert(make_pair(EU4Tag, possibleVic2Tag));
+			EU4TagToV2TagMap.insert(make_pair(EU4Tag, possibleVic2Tag));
+			V2TagToEU4TagMap.insert(make_pair(possibleVic2Tag, EU4Tag));
 			logMapping(EU4Tag, possibleVic2Tag, "mapping rule, not a V2 country");
 
 			return true;
@@ -371,7 +377,8 @@ string CountryMapping::generateNewTag()
 
 void CountryMapping::mapToNewTag(const string& EU4Tag, const string& Vic2Tag)
 {
-	EU4TagToV2TagMap.left.insert(make_pair(EU4Tag, Vic2Tag));
+	EU4TagToV2TagMap.insert(make_pair(EU4Tag, Vic2Tag));
+	V2TagToEU4TagMap.insert(make_pair(Vic2Tag, EU4Tag));
 	logMapping(EU4Tag, Vic2Tag, "generated tag");
 }
 
@@ -383,7 +390,8 @@ map<string, vector<string>>::iterator CountryMapping::ifValidGetCK2MappingRule(c
 		string CK2Title = GetCK2Title(country->getTag(), country->getName("english"), availableFlags);
 		if (CK2Title != "")
 		{
-			mappingRule = EU4TagToV2TagsRules.find(boost::to_upper_copy(CK2Title));
+			std::transform(CK2Title.begin(), CK2Title.end(), CK2Title.begin(), ::toupper);
+			mappingRule = EU4TagToV2TagsRules.find(CK2Title);
 		}
 	}
 
@@ -423,7 +431,8 @@ bool CountryMapping::attemptColonialReplacement(EU4Country* country, const EU4Wo
 
 		if (tagIsAvailable(colony, Vic2Countries))
 		{
-			EU4TagToV2TagMap.left.insert(make_pair(country->getTag(), colony.tag));
+			EU4TagToV2TagMap.insert(make_pair(country->getTag(), colony.tag));
+			V2TagToEU4TagMap.insert(make_pair(colony.tag, country->getTag()));
 			logMapping(country->getTag(), colony.tag, "colonial replacement");
 			return true;
 		}
@@ -525,7 +534,7 @@ void CountryMapping::logMapping(const string& EU4Tag, const string& V2Tag, const
 
 bool CountryMapping::tagIsAlreadyAssigned(const string& Vic2Tag)
 {
-	return (EU4TagToV2TagMap.right.find(Vic2Tag) != EU4TagToV2TagMap.right.end());
+	return (V2TagToEU4TagMap.find(Vic2Tag) != V2TagToEU4TagMap.end());
 }
 
 
@@ -538,8 +547,8 @@ const string CountryMapping::GetV2Tag(const string& EU4Tag) const
 		return V2RebelTag;
 	}
 
-	auto findIter = EU4TagToV2TagMap.left.find(EU4Tag);
-	if (findIter != EU4TagToV2TagMap.left.end())
+	auto findIter = EU4TagToV2TagMap.find(EU4Tag);
+	if (findIter != EU4TagToV2TagMap.end())
 	{
 		return findIter->second;
 	}
