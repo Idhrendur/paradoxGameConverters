@@ -2318,10 +2318,10 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4Country> Home, ve
 		newFocus->aiWillDo += "			factor = 1";
 		newFocus->available += "			AND = {\n";
 		newFocus->available += "				" + puppetTag + " = {\n";
-		newFocus->available += "						exists = yes";
-		newFocus->available += "						is_puppet_of = " + Home->getTag() + "\n";
+		newFocus->available += "						exists = yes}\n";
+		newFocus->available += "				" + puppetTag + " = {\n";
+		newFocus->available += "				is_subject_of = " + Home->getTag() + "}\n";
 		newFocus->available += "				}\n";
-		newFocus->available += "			}\n";
 		newFocus->bypass += "			" + puppetTag + " = {\n";
 		newFocus->bypass += "				custom_trigger_tooltip = {\n";
 		newFocus->bypass += "					tooltip = construction_effort_tt\n";
