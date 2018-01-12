@@ -171,14 +171,14 @@ bonus_map = {
 		
 	link = {
 		vic2 = human_wave_vs_spearhead
-		cat_mobile_warfare = 90
-		cat_mass_assault = 90
+		cat_mobile_warfare = 1
+		cat_mass_assault = 1
 	}
 	
 	link = {
 		vic2 = grand_battle_plan_vs_superior_firepower
-		cat_superior_firepower = 90
-		cat_grand_battle_plan = 90
+		cat_superior_firepower = 1
+		cat_grand_battle_plan = 1
 	}
 	
 	# ================================
@@ -187,17 +187,17 @@ bonus_map = {
 	
 	link = {
 		vic2 = battlefield_destruction_doctrine
-		cat_battlefield_support = 90		
+		cat_battlefield_support = 1		
 	}
 	
 	link = {
 		vic2 = operational_destruction_doctrine
-		cat_operational_integrity = 90		
+		cat_operational_integrity = 1		
 	}
 	
 	link = {
 		vic2 = strategic_destruction_doctrine
-		cat_strategic_destruction = 90		
+		cat_strategic_destruction = 1		
 	}
 	
 	# ==================================
@@ -206,6 +206,6 @@ bonus_map = {
 	
 	link = {
 		vic2 = naval_firepower_doctrine
-		naval_doctrine = 90		
+		naval_doctrine = 1		
 	}
 }
