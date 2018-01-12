@@ -2285,7 +2285,34 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4Country> Home, ve
 		focuses.push_back(newFocus);
 	}
 
-	//Attempt at puppet interaction
+	//puppet top Focus
+	shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>();
+	newFocus->id = "serviceOverseas" + Home->getTag();
+	newFocus->icon = "GFX_goal_generic_position_armies";
+	newFocus->text += "Service Overseas";
+	newFocus->xPos = nextFreeColumn;
+	newFocus->yPos = 5;
+	newFocus->cost = 10;
+	newFocus->aiWillDo += "			factor = 3";
+	newFocus->completionReward += "			army_experience = 10";
+	newFocus->completionReward += "			navy_experience = 15";
+	newFocus->completionReward += "			add_manpower = 9000";
+	focuses.push_back(newFocus);
+
+	//extra test focus
+	shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>();
+	newFocus->id = "testfoci" + Home->getTag();
+	newFocus->icon = "GFX_goal_generic_propaganda";
+	newFocus->text += "testing";
+	newFocus->xPos = nextFreeColumn;
+	newFocus->yPos = 7;
+	newFocus->cost = 10;
+	newFocus->aiWillDo += "			factor = 10";
+	newFocus->completionReward += "			add_national_unity = 0.05";
+	focuses.push_back(newFocus);
+
+	//puppet specific focuses
+	nextFreeColumn -= 2;//move it back since it fits, for now.
 	std::set<std::string> Puppets;
 	int i = 0;
 	for (auto puppetTag : Home->getPuppets())
@@ -2296,14 +2323,15 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4Country> Home, ve
 		{
 			i++;
 			shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>();
-			newFocus->id = "Puppet" + Home->getTag();
-			newFocus->icon = "GFX_goal_generic_political_pressure";
+			newFocus->id = "DevPuppet" + Home->getTag();
+			newFocus->icon = "GFX_goal_generic_construct_civilian";
 			newFocus->text += "Develop " + puppetTag + "";
+			newFocus->prerequisites.push_back("focus =  serviceOverseas" + Home->getTag());
 			newFocus->xPos = nextFreeColumn;
-			newFocus->yPos = 5;
-			newFocus->cost = 2;
-			newFocus->aiWillDo += "			factor = 5";
-			newFocus->bypass += "			" + puppetTag + " = {";
+			newFocus->yPos = 6;
+			newFocus->cost = 10;
+			newFocus->aiWillDo += "			factor = 2";
+			newFocus->bypass += "			" + puppetTag + " = {\n";
 			newFocus->bypass += "				custom_trigger_tooltip = {\n";
 			newFocus->bypass += "					tooltip = construction_effort_tt\n";
 			newFocus->bypass += "					all_owned_state = {\n";
@@ -2313,18 +2341,18 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4Country> Home, ve
 			newFocus->bypass += "							include_locked = yes\n";
 			newFocus->bypass += "						}\n";
 			newFocus->bypass += "					}\n";
-			newFocus->bypass += "				}";
-			newFocus->bypass += "			}";
-			newFocus->completeTooltip += "			" + puppetTag + " = {";
+			newFocus->bypass += "				}\n";
+			newFocus->bypass += "			}\n";
+			newFocus->completeTooltip += "			" + puppetTag + " = {\n";
 			newFocus->completeTooltip += "				add_extra_state_shared_building_slots = 2\n";
 			newFocus->completeTooltip += "				add_building_construction = {\n";
 			newFocus->completeTooltip += "					type = industrial_complex\n";
 			newFocus->completeTooltip += "					level = 2\n";
 			newFocus->completeTooltip += "					instant_build = yes\n";
-			newFocus->completeTooltip += "				}";
-			newFocus->completeTooltip += "			}";
-			newFocus->completionReward += "			" + puppetTag + " = {";
-			newFocus->completionReward += "				add_opinion_modifier = { target = " + puppetTag + " modifier = offered_support }";
+			newFocus->completeTooltip += "				}\n";
+			newFocus->completeTooltip += "			}\n";
+			newFocus->completionReward += "			" + puppetTag + " = {\n";
+			newFocus->completionReward += "				add_opinion_modifier = { target = " + puppetTag + " modifier = offered_support }\n";
 			newFocus->completionReward += "				random_owned_controlled_state = {\n";
 			newFocus->completionReward += "					limit = {\n";
 			newFocus->completionReward += "						free_building_slots = {\n";
@@ -2354,13 +2382,12 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4Country> Home, ve
 			newFocus->completionReward += "						level = 2\n";
 			newFocus->completionReward += "						instant_build = yes\n";
 			newFocus->completionReward += "					}\n";
-			newFocus->completionReward += "				}";
+			newFocus->completionReward += "				}\n";
 			newFocus->completionReward += "			add_autonomy_ratio = {\n";
 			newFocus->completionReward += "			value = -0.1\n";
 			newFocus->completionReward += "			localization = developed_puppet }\n";
-			newFocus->completionReward += "			}";
+			newFocus->completionReward += "			}\n";
 			
-
 			focuses.push_back(newFocus);
 
 			nextFreeColumn += 2;
