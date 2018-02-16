@@ -280,6 +280,7 @@ EU4Province::EU4Province(shared_ptr<Object> obj)
 	checkBuilding(obj, "canal");
 	checkBuilding(obj, "road_network");
 	checkBuilding(obj, "post_office");
+	checkProvModifier(obj, "stora_kopparberget_modifier");
 
 	buildPopRatios();
 }
@@ -398,6 +399,17 @@ double EU4Province::getCulturePercent(string culture)
 	}
 
 	return culturePercent;
+}
+
+
+void EU4Province::checkProvModifier(const shared_ptr<Object> provinceObj, string building)
+{
+	vector<shared_ptr<Object>> buildingObj;	// the object holding the building
+	buildingObj = provinceObj->getValue(building);
+	if ((buildingObj.size() > 0))
+	{
+		buildings[building] = true;
+	}
 }
 
 
