@@ -687,6 +687,8 @@ double EU4Province::getTradeGoodPrice() const
 {
 	// Trade goods
 	/*
+	Trade good prices based on this : 
+	https://forum.paradoxplaza.com/forum/index.php?threads/analysis-of-trade-good-tiers-and-prices.914875/#post-23767415
 	chinaware
 	grain
 	fish
@@ -710,45 +712,50 @@ double EU4Province::getTradeGoodPrice() const
 	silk
 	dyes
 	tropical_wood
+	incense
+	glass
+	livestock
+	gems
+	paper
 	*/
 	//LOG(LogLevel::Info) << "Trade Goods Price";
 	double tradeGoodsPrice = 0;
 
 	if (tradeGoods == "chinaware")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.04;
 	}
 	else if (tradeGoods == "grain")
 	{
-		tradeGoodsPrice = 2;
+		tradeGoodsPrice = 2.03;
 	}
 	else if (tradeGoods == "fish")
 	{
-		tradeGoodsPrice = 2.5;
+		tradeGoodsPrice = 2.11;
 	}
 	else if (tradeGoods == "tabacco")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.84;
 	}
 	else if (tradeGoods == "iron")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.74;
 	}
 	else if (tradeGoods == "copper")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.79;
 	}
 	else if (tradeGoods == "cloth")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.62;
 	}
 	else if (tradeGoods == "slaves")
 	{
-		tradeGoodsPrice = 2;
+		tradeGoodsPrice = 2.68;
 	}
 	else if (tradeGoods == "salt")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.24;
 	}
 	else if (tradeGoods == "gold")
 	{
@@ -756,59 +763,79 @@ double EU4Province::getTradeGoodPrice() const
 	}
 	else if (tradeGoods == "fur")
 	{
-		tradeGoodsPrice = 2;
+		tradeGoodsPrice = 3.14;
 	}
 	else if (tradeGoods == "sugar")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.71;
 	}
 	else if (tradeGoods == "naval_supplies")
 	{
-		tradeGoodsPrice = 2;
+		tradeGoodsPrice = 2.35;
 	}
 	else if (tradeGoods == "tea")
 	{
-		tradeGoodsPrice = 2;
+		tradeGoodsPrice = 2.68;
 	}
 	else if (tradeGoods == "coffee")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 2.97;
 	}
 	else if (tradeGoods == "spices")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.68;
 	}
 	else if (tradeGoods == "wine")
 	{
-		tradeGoodsPrice = 2.5;
+		tradeGoodsPrice = 2.75;
 	}
 	else if (tradeGoods == "cocoa")
 	{
-		tradeGoodsPrice = 4;
+		tradeGoodsPrice = 4.39;
 	}
 	else if (tradeGoods == "ivory")
 	{
-		tradeGoodsPrice = 4;
+		tradeGoodsPrice = 4.19;
 	}
 	else if (tradeGoods == "wool")
 	{
-		tradeGoodsPrice = 2.5;
+		tradeGoodsPrice = 2.7;
 	}
 	else if (tradeGoods == "cotton")
 	{
-		tradeGoodsPrice = 3;
+		tradeGoodsPrice = 3.56;
 	}
 	else if (tradeGoods == "dyes")
 	{
-		tradeGoodsPrice = 4;
+		tradeGoodsPrice = 4.36;
 	}
 	else if (tradeGoods == "tropical_wood")
 	{
-		tradeGoodsPrice = 2;
+		tradeGoodsPrice = 2.52;
 	}
 	else if (tradeGoods == "silk")
 	{
-		tradeGoodsPrice = 4;
+		tradeGoodsPrice = 4.47;
+	}
+	else if (tradeGoods == "incense")
+	{
+		tradeGoodsPrice = 2.74;
+	}
+	else if (tradeGoods == "livestock")
+	{
+		tradeGoodsPrice = 2.94;
+	}
+	else if (tradeGoods == "glass")
+	{
+		tradeGoodsPrice = 3.23;
+	}
+	else if (tradeGoods == "gems")
+	{
+		tradeGoodsPrice = 3.67;
+	}
+	else if (tradeGoods == "paper")
+	{
+		tradeGoodsPrice = 4.42;
 	}
 	else
 	{
@@ -1759,6 +1786,53 @@ if (hasBuilding("university"))
     if (hasBuilding("spice_islands_modifier"))
     {
         manu_gp_mod = 3.0;
+    }
+
+    if (hasBuilding("skanemarket"))
+    {
+        manu_gp_mod = 1.5;
+    }
+
+    if (hasBuilding("granary_of_the_mediterranean"))
+    {
+        manu_gp_mod = 2.0;
+    }
+
+    if (hasBuilding("ven_murano_glass_industry"))
+    {
+        manu_gp_mod = 2.0;
+    }
+
+    if (hasBuilding("diamond_mines_of_golconda_modifier"))
+    {
+        manu_gp_mod = 4.0;
+    }
+
+    if (hasBuilding("coffea_arabica_modifier"))
+    {
+        manu_gp_mod = 3.0;
+    }
+
+    if (hasBuilding("bookmarket_of_x"))
+    {
+        manu_gp_mod = 1.0;
+    }
+
+    if (hasBuilding("grand_bank_fisheries"))
+    {
+        manu_gp_mod = 2.0;
+    }
+
+    if (hasBuilding("diamond_district"))
+    {
+        manu_gp_mod = 0.5
+	trade_value_eff = 0.15
+    }
+
+    if (hasBuilding("perfume_capital"))
+    {
+        manu_gp_mod = 0.5
+	trade_value_eff = 0.15
     }
 
 	std::vector<double> provBuildingWeightVec;
