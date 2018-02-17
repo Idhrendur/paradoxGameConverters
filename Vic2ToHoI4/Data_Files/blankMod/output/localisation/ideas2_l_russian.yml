@@ -1,3 +1,6 @@
 ﻿l_english:
  great_power:0 "Великая держава"
  uncivilized:0 "Нецивилизованная нация"
+ autonomy_vicereign:0 "Вице-королевство"
+ autonomy_vassal:0 "Вассал"
+ autonomy_demesne:0 "Домен"

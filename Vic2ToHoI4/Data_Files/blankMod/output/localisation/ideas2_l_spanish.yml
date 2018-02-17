@@ -1,3 +1,6 @@
 ﻿l_english:
  great_power:0 "Gran potencia"
  uncivilized:0 "Nación sin civilizar"
+ autonomy_vicereign:0 "Virreinato"
+ autonomy_vassal:0 "Vasallo"
+ autonomy_demesne:0 "Domínio"

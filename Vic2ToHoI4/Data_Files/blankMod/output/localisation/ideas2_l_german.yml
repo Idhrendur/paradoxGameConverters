@@ -1,3 +1,6 @@
 ﻿l_english:
  great_power:0 "Großmacht"
  uncivilized:0 "Unzivilisierte Nation"
+ autonomy_vicereign:0 "Vizekönigreich"
+ autonomy_vassal:0 "Vasall"
+ autonomy_demesne:0 "Landgut"
