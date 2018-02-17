@@ -753,72 +753,72 @@ south_slavic = {
 		Svetoslav Svetozar Teo Teodor Toma Tomislav Vicko Vladimir Vlaho Zlatan
 		}
 
-		last_names = { Alapić Bakarić Bettera Bilić Blazević Bondić Boroević Bosnajk Bunić Crnković
-		Cuvaj Drasković Džamanjić Eltz Erdödy Frankopan Gaj Getaldić Gradić Gregorić
-		Gučetić Gundulić Haulik Jelačić Kabuzić Keglević Kostrenčić Krstulović Lagimja Mazuranić
-		Mihailović Mohorovičić Mrazović Natali Nazor Njegovan Palecek Pejačević Philippović Preradović
-		Pucić Ranjina Sarkotić Šokčević Sorkočević Stankovaci Tomašić Tomlejnović Vakanović Vlašić
+		last_names = { Alapic Bakaric Bettera Bilic Blazevic Bondic Boroevic Bosnajk Bunic Crnkovic
+		Cuvaj Draskovic Džamanjic Eltz Erdödy Frankopan Gaj Getaldic Gradic Gregoric
+		Gucetic Gundulic Haulik Jelacic Kabuzic Keglevic Kostrencic Krstulovic Lagimja Mazuranic
+		Mihailovic Mohorovicic Mrazovic Natali Nazor Njegovan Palecek Pejacevic Philippovic Preradovic
+		Pucic Ranjina Sarkotic Šokcevic Sorkocevic Stankovaci Tomašic Tomlejnovic Vakanovic Vlašic
 		}
 	}
 	serb = {
 		color = {150 65 80}
 
-		first_names = { Alaksandar Blagoje Božidar Branko Danilo Dejan Đorđe Dragan Dragiša Dragoljub
+		first_names = { Alaksandar Blagoje Božidar Branko Danilo Dejan Ðorde Dragan Dragiša Dragoljub
 		Dragutin Draža Dušan Gavrilo Goran Janko Jovan Koca Kosta Krsto
 		Ljubisa Mihailo Milan Miliutin Milivoje Milojko Miloš Miodrag Mirko Miroslav
-		Momčilo Nebojsa Nikola Pavle Peko Petar Radomir Ratko Sava Slobodan
+		Momcilo Nebojsa Nikola Pavle Peko Petar Radomir Ratko Sava Slobodan
 		Stepa Stojan Veljko Vaselien Vladimir Vojislav Živojin Života Zoran Zvezdan
 		}
 
-		last_names = { Adžić Aranđelović Belimarković Blaznacac Bojović Božanović Božinović Branković Damjanić Dapčević
-		Dragutinović Grujić Hadžilić Horvatović Isaković Janković Jokić Jovanović Kadijević Karađorđević
-		Lešjanin Ljubičić Marić Mihailović Milutinović Miloradović Mišić Nad Nedić Novak
-		Obrenović Ojdanić Panić Paskaš Pavković Pešić Petrović Popović Putnik Radulović
-		Rašić Šijan Simović Sokolović Stepanović Vasiljević Verić Vojvodić Vukotić Živković
+		last_names = { Adžic Arandelovic Belimarkovic Blaznacac Bojovic Božanovic Božinovic Brankovic Damjanic Dapcevic
+		Dragutinovic Grujic Hadžilic Horvatovic Isakovic Jankovic Jokic Jovanovic Kadijevic Karadordevic
+		Lešjanin Ljubicic Maric Mihailovic Milutinovic Miloradovic Mišic Nad Nedic Novak
+		Obrenovic Ojdanic Panic Paskaš Pavkovic Pešic Petrovic Popovic Putnik Radulovic
+		Rašic Šijan Simovic Sokolovic Stepanovic Vasiljevic Veric Vojvodic Vukotic Živkovic
 		}
 		radicalism = 15
 	}
 	macedonian = {
 		color = {196 122 77}
 
-		first_names = { Aleksandar Andrey Asen Atanas Atila Bogdan Bončo Boris Damyan Dimitar
+		first_names = { Aleksandar Andrey Asen Atanas Atila Bogdan Bonco Boris Damyan Dimitar
 		Dobri Ferdinand Fyodor Georgi Hristo Ilya Ivan Kalin Kardam Kimon Kiril
-		Kliment Konstantin Krastyu Leonid Mihail Nikifor Niloa Penčo Petar Petko
-		Petur Pravoslav Račo Radko Radoy Sava Simeon Sotir Stanislav Stanko
+		Kliment Konstantin Krastyu Leonid Mihail Nikifor Niloa Penco Petar Petko
+		Petur Pravoslav Raco Radko Radoy Sava Simeon Sotir Stanislav Stanko
 		Stefan Stiliyan Stoyu Teodosi Todor Trifon Valko Vasil Veselin Velizar Vulko
-		Alaksandar Blagoje Božidar Branko Danilo Dejan Đorđe Dragan Dragiša Dragoljub
+		Alaksandar Blagoje Božidar Branko Danilo Dejan Ðorde Dragan Dragiša Dragoljub
 		Dragutin Draža Dušan Gavrilo Goran Janko Jovan Koca Kosta Krsto
 		Ljubisa Mihailo Milan Miliutin Milivoje Milojko Miloš Miodrag Mirko Miroslav
-		Momčilo Nebojsa Nikola Pavle Peko Petar Radomir Ratko Sava Slobodan
+		Momcilo Nebojsa Nikola Pavle Peko Petar Radomir Ratko Sava Slobodan
 		Stepa Stojan Veljko Vaselien Vladimir Vojislav Živojin Života Zoran Zvezdan	
 		}
 
-		last_names = { Agura Balabanov Balkanski Battemberg Blaskov Boyadžiev Bradistilov Čarakčiev Daskalov Dikov
-		Dimitriev Draganov Fičev Georgiev Hesapchiev Ilyev Ivanov Kirkov Kovačev Krayonski
-		Kutinčev Lazarov Lukov Marinkov Marinov Mutkorov Naydenov Nazlamov Nikiforov Nikolaev
+		last_names = { Agura Balabanov Balkanski Battemberg Blaskov Boyadžiev Bradistilov Carakciev Daskalov Dikov
+		Dimitriev Draganov Ficev Georgiev Hesapchiev Ilyev Ivanov Kirkov Kovacev Krayonski
+		Kutincev Lazarov Lukov Marinkov Marinov Mutkorov Naydenov Nazlamov Nikiforov Nikolaev
 		Pakoski Petroski Radev Saksokoburggotski Savoski Sirakoski Solaroski Stoyanoski Tenev Todoroski
 		Tsaklev Valkoski Valnaroski Vasilev Vazoski Velchev Veselinov Zafiroski Zhekoski Zlatarev Zlatev
-		Adžić Aranđelović Belimarković Blaznacac Bojović Božanović Božinović Branković Damjanić Dapčević
-		Dragutinović Grujić Hadžilić Horvatović Isaković Janković Jokić Jovanović Kadijević Karađorđević
-		Lešjanin Ljubičić Marić Mihailović Milutinović Miloradović Mišić Nad Nedić Novak
-		Obrenović Ojdanić Panić Paskaš Pavković Pešić Petrović Popović Putnik Radulović
-		Rašić Šijan Simović Sokolović Stepanović Vasiljević Verić Vojvodić Vukotić Živković
+		Adžic Arandelovic Belimarkovic Blaznacac Bojovic Božanovic Božinovic Brankovic Damjanic Dapcevic
+		Dragutinovic Grujic Hadžilic Horvatovic Isakovic Jankovic Jokic Jovanovic Kadijevic Karadordevic
+		Lešjanin Ljubicic Maric Mihailovic Milutinovic Miloradovic Mišic Nad Nedic Novak
+		Obrenovic Ojdanic Panic Paskaš Pavkovic Pešic Petrovic Popovic Putnik Radulovic
+		Rašic Šijan Simovic Sokolovic Stepanovic Vasiljevic Veric Vojvodic Vukotic Živkovic
 		}
 		radicalism = 15
 	}
 	bulgarian = {
 		color = {65 150 100}
 
-		first_names = { Aleksandar Andrey Asen Atanas Atila Bogdan Bončo Boris Damyan Dimitar
+		first_names = { Aleksandar Andrey Asen Atanas Atila Bogdan Bonco Boris Damyan Dimitar
 		Dobri Ferdinand Georgi Hristo Ilya Ivan Kalin Kardam Kimon Kiril
-		Kliment Konstantin Krastyu Leonid Mihail Nikifor Niloa Penčo Petar Petko
-		Petur Pravoslav Račo Radko Radoy Sava Simeon Sotir Stanislav Stanko
+		Kliment Konstantin Krastyu Leonid Mihail Nikifor Niloa Penco Petar Petko
+		Petur Pravoslav Raco Radko Radoy Sava Simeon Sotir Stanislav Stanko
 		Stefan Stiliyan Stoyu Teodosi Todor Trifon Valko Vasil Velizar Vulko		
 		}
 
-		last_names = { Agura Balabanov Balkanski Battemberg Blaskov Boyadžiev Bradistilov Čarakčiev Daskalov Dikov
-		Dimitriev Draganov Fičev Georgiev Hesapchiev Ilyev Ivanov Kirkov Kovačev Krayonski
-		Kutinčev Lazarov Lukov Marinkov Marinov Mutkorov Naydenov Nazlamov Nikiforov Nikolaev
+		last_names = { Agura Balabanov Balkanski Battemberg Blaskov Boyadžiev Bradistilov Carakciev Daskalov Dikov
+		Dimitriev Draganov Ficev Georgiev Hesapchiev Ilyev Ivanov Kirkov Kovacev Krayonski
+		Kutincev Lazarov Lukov Marinkov Marinov Mutkorov Naydenov Nazlamov Nikiforov Nikolaev
 		Pakov Petrov Radev Saksokoburggotski Savov Sirakov Solarov Stoyanov Tenev Todorov
 		Tsaklev Valkov Valnarov Vasilev Vazov Velchev Zafirov Zhekov Zlatarev Zlatev
 		}
@@ -848,14 +848,14 @@ south_slavic = {
 		Bostjian Božidar Ciril Danilo Demeter Drago Dušan Franc Gregorij Ivan
 		Ivo Janež Jernej Jože Jurij Karpo Lado Leon Lojze Miha
 		Milan Mladen Odilo Pino Rado Radovan Rudolf Slavko Slavoj Stane
-		Stanko Tomaš Tončka Tone Viktor Vilko Vladimir Vladko Vojko Željko
+		Stanko Tomaš Toncka Tone Viktor Vilko Vladimir Vladko Vojko Željko
 		}
 
-		last_names = { Arnič Avbelj Avsenik Bajuk Bitenc Cankar Čeč Černigoj Czipott Dolar
-		Drolc Duletič Globočnik Gobec Godina Golob Haus Hladnik Ivanek Kantušer
-		Kidrič Komar Kopitar Kraigher Lipovsek Lipušček Maček Maister Marinko Miklošič
-		Mravlajk Pengov Pešek Peterle Pirec Plecnik Rozman Rupnik Sarh Srebrnič
-		Tomažič Tomšič Urbančič Vega "Von Windisch-Grätz" Žagar Žerjal Žižke Zornada Zupančič
+		last_names = { Arnic Avbelj Avsenik Bajuk Bitenc Cankar Cec Cernigoj Czipott Dolar
+		Drolc Duletic Globocnik Gobec Godina Golob Haus Hladnik Ivanek Kantušer
+		Kidric Komar Kopitar Kraigher Lipovsek Lipušcek Macek Maister Marinko Miklošic
+		Mravlajk Pengov Pešek Peterle Pirec Plecnik Rozman Rupnik Sarh Srebrnic
+		Tomažic Tomšic Urbancic Vega "Von Windisch-Grätz" Žagar Žerjal Žižke Zornada Zupancic
 		}
 	}
 	bosniak = {
@@ -868,64 +868,64 @@ south_slavic = {
 		Sejad Semezdin Semir Skender Sokollu Sulejman Vedad Zija Zlatko Zuko
 		}
 
-		last_names = { Abdić Arapović Basgić Belkić Bijedić Ćatić Čaušević Cerić Čolaković Dizdar
-		Dizdarević Džikić Džumhur Ekrem Gradaščević Halilović Husrev Ibišević Ilhamija Imamović
-		Isaković Izetbegović Kodro Konjic Kulenović Lagumdžija Ljajić Ljubičić Ljubijankić Mehmedinović
-		Muradbegović Muzurović Osmanagić Peco Plakalo Pozderac Prazina Rizvanbegović Šabanadžović Salihović
-		Sarajlić Selimović Silajdžić Sokolović Spaho Terzić Tihić Turajlić Tükcan Ugljanin 
+		last_names = { Abdic Arapovic Basgic Belkic Bijedic Catic Cauševic Ceric Colakovic Dizdar
+		Dizdarevic Džikic Džumhur Ekrem Gradašcevic Halilovic Husrev Ibiševic Ilhamija Imamovic
+		Isakovic Izetbegovic Kodro Konjic Kulenovic Lagumdžija Ljajic Ljubicic Ljubijankic Mehmedinovic
+		Muradbegovic Muzurovic Osmanagic Peco Plakalo Pozderac Prazina Rizvanbegovic Šabanadžovic Salihovic
+		Sarajlic Selimovic Silajdžic Sokolovic Spaho Terzic Tihic Turajlic Tükcan Ugljanin 
 		}
 	}
 	novisvet = {
 		color = {119 100 129}
 
-		first_names = { Alaksandar Blagoje Božidar Branko Danilo Dejan Đorđe Dragan Dragiša Dragoljub
+		first_names = { Alaksandar Blagoje Božidar Branko Danilo Dejan Ðorde Dragan Dragiša Dragoljub
 		Dragutin Draža Dušan Gavrilo Goran Janko Jovan Koca Kosta Krsto
 		Ljubisa Mihailo Milan Miliutin Milivoje Milojko Miloš Miodrag Mirko Miroslav
-		Momčilo Nebojsa Nikola Pavle Peko Petar Radomir Ratko Sava Slobodan
+		Momcilo Nebojsa Nikola Pavle Peko Petar Radomir Ratko Sava Slobodan
 		Stepa Stojan Veljko Vaselien Vladimir Vojislav Živojin Života Zoran Zvezdan
 		}
 
-		last_names = { Adžić Aranđelović Belimarković Blaznacac Bojović Božanović Božinović Branković Damjanić Dapčević
-		Dragutinović Grujić Hadžilić Horvatović Isaković Janković Jokić Jovanović Kadijević Karađorđević
-		Lešjanin Ljubičić Marić Mihailović Milutinović Miloradović Mišić Nad Nedić Novak
-		Obrenović Ojdanić Panić Paskaš Pavković Pešić Petrović Popović Putnik Radulović
-		Rašić Šijan Simović Sokolović Stepanović Vasiljević Verić Vojvodić Vukotić Živković
+		last_names = { Adžic Arandelovic Belimarkovic Blaznacac Bojovic Božanovic Božinovic Brankovic Damjanic Dapcevic
+		Dragutinovic Grujic Hadžilic Horvatovic Isakovic Jankovic Jokic Jovanovic Kadijevic Karadordevic
+		Lešjanin Ljubicic Maric Mihailovic Milutinovic Miloradovic Mišic Nad Nedic Novak
+		Obrenovic Ojdanic Panic Paskaš Pavkovic Pešic Petrovic Popovic Putnik Radulovic
+		Rašic Šijan Simovic Sokolovic Stepanovic Vasiljevic Veric Vojvodic Vukotic Živkovic
 		}
 		radicalism = 15
 	}
 	juzhno = {
 		color = {140 50 59}
 
-		first_names = { Alaksandar Blagoje Božidar Branko Danilo Dejan Đorđe Dragan Dragiša Dragoljub
+		first_names = { Alaksandar Blagoje Božidar Branko Danilo Dejan Ðorde Dragan Dragiša Dragoljub
 		Dragutin Draža Dušan Gavrilo Goran Janko Jovan Koca Kosta Krsto
 		Ljubisa Mihailo Milan Miliutin Milivoje Milojko Miloš Miodrag Mirko Miroslav
-		Momčilo Nebojsa Nikola Pavle Peko Petar Radomir Ratko Sava Slobodan
+		Momcilo Nebojsa Nikola Pavle Peko Petar Radomir Ratko Sava Slobodan
 		Stepa Stojan Veljko Vaselien Vladimir Vojislav Živojin Života Zoran Zvezdan
 		}
 
-		last_names = { Adžić Aranđelović Belimarković Blaznacac Bojović Božanović Božinović Branković Damjanić Dapčević
-		Dragutinović Grujić Hadžilić Horvatović Isaković Janković Jokić Jovanović Kadijević Karađorđević
-		Lešjanin Ljubičić Marić Mihailović Milutinović Miloradović Mišić Nad Nedić Novak
-		Obrenović Ojdanić Panić Paskaš Pavković Pešić Petrović Popović Putnik Radulović
-		Rašić Šijan Simović Sokolović Stepanović Vasiljević Verić Vojvodić Vukotić Živković
+		last_names = { Adžic Arandelovic Belimarkovic Blaznacac Bojovic Božanovic Božinovic Brankovic Damjanic Dapcevic
+		Dragutinovic Grujic Hadžilic Horvatovic Isakovic Jankovic Jokic Jovanovic Kadijevic Karadordevic
+		Lešjanin Ljubicic Maric Mihailovic Milutinovic Miloradovic Mišic Nad Nedic Novak
+		Obrenovic Ojdanic Panic Paskaš Pavkovic Pešic Petrovic Popovic Putnik Radulovic
+		Rašic Šijan Simovic Sokolovic Stepanovic Vasiljevic Veric Vojvodic Vukotic Živkovic
 		}
 		radicalism = 15
 	}
 	crni = {
 		color = {91 39 48}
 
-		first_names = { Alaksandar Blagoje Božidar Branko Danilo Dejan Đorđe Dragan Dragiša Dragoljub
+		first_names = { Alaksandar Blagoje Božidar Branko Danilo Dejan Ðorde Dragan Dragiša Dragoljub
 		Dragutin Draža Dušan Gavrilo Goran Janko Jovan Koca Kosta Krsto
 		Ljubisa Mihailo Milan Miliutin Milivoje Milojko Miloš Miodrag Mirko Miroslav
-		Momčilo Nebojsa Nikola Pavle Peko Petar Radomir Ratko Sava Slobodan
+		Momcilo Nebojsa Nikola Pavle Peko Petar Radomir Ratko Sava Slobodan
 		Stepa Stojan Veljko Vaselien Vladimir Vojislav Živojin Života Zoran Zvezdan
 		}
 
-		last_names = { Adžić Aranđelović Belimarković Blaznacac Bojović Božanović Božinović Branković Damjanić Dapčević
-		Dragutinović Grujić Hadžilić Horvatović Isaković Janković Jokić Jovanović Kadijević Karađorđević
-		Lešjanin Ljubičić Marić Mihailović Milutinović Miloradović Mišić Nad Nedić Novak
-		Obrenović Ojdanić Panić Paskaš Pavković Pešić Petrović Popović Putnik Radulović
-		Rašić Šijan Simović Sokolović Stepanović Vasiljević Verić Vojvodić Vukotić Živković
+		last_names = { Adžic Arandelovic Belimarkovic Blaznacac Bojovic Božanovic Božinovic Brankovic Damjanic Dapcevic
+		Dragutinovic Grujic Hadžilic Horvatovic Isakovic Jankovic Jokic Jovanovic Kadijevic Karadordevic
+		Lešjanin Ljubicic Maric Mihailovic Milutinovic Miloradovic Mišic Nad Nedic Novak
+		Obrenovic Ojdanic Panic Paskaš Pavkovic Pešic Petrovic Popovic Putnik Radulovic
+		Rašic Šijan Simovic Sokolovic Stepanovic Vasiljevic Veric Vojvodic Vukotic Živkovic
 		}
 		radicalism = 15
 	}
@@ -940,8 +940,8 @@ pan_romanian = {
 		first_names = { Adrian Alexandru Andrei Anton Artur Bogdan Carol Cezar Constantin Constin
 		Cosmin Daniel Dumitru Emanuel Eremia Eugen Ferdinand Flaviu Florea Gheorghe
 		Grigore Henric Horatiu Iacob Ilie Ioan Ion "Ion Emanuel" Iosif Iulian
-		Iuliu Laurențiu Leontin Luca Lucian Mihai Mircea Nicolae Ovidiu Petru
-		Radu Sergiu Silviu Simion Ștefan Valeriu Vasile Victor Vintila Vlad
+		Iuliu Lauren?iu Leontin Luca Lucian Mihai Mircea Nicolae Ovidiu Petru
+		Radu Sergiu Silviu Simion ?tefan Valeriu Vasile Victor Vintila Vlad
 		}
 
 		last_names = { Angelescu Antonescu Argetoianu Averescu Baldescu Barozzi Berindei Cernat Christecu Cihoski
@@ -957,8 +957,8 @@ pan_romanian = {
 		first_names = { Adrian Alexandru Andrei Anton Artur Bogdan Carol Cezar Constantin Constin
 		Cosmin Daniel Dumitru Emanuel Eremia Eugen Ferdinand Flaviu Florea Gheorghe
 		Grigore Henric Horatiu Iacob Ilie Ioan Ion "Ion Emanuel" Iosif Iulian
-		Iuliu Laurențiu Leontin Luca Lucian Mihai Mircea Nicolae Ovidiu Petru
-		Radu Sergiu Silviu Simion Ștefan Valeriu Vasile Victor Vintila Vlad
+		Iuliu Lauren?iu Leontin Luca Lucian Mihai Mircea Nicolae Ovidiu Petru
+		Radu Sergiu Silviu Simion ?tefan Valeriu Vasile Victor Vintila Vlad
 		}
 
 		last_names = { Angelescu Antonescu Argetoianu Averescu Baldescu Barozzi Berindei Cernat Christecu Cihoski
@@ -974,8 +974,8 @@ pan_romanian = {
 		first_names = { Adrian Alexandru Andrei Anton Artur Bogdan Carol Cezar Constantin Constin
 		Cosmin Daniel Dumitru Emanuel Eremia Eugen Ferdinand Flaviu Florea Gheorghe
 		Grigore Henric Horatiu Iacob Ilie Ioan Ion "Ion Emanuel" Iosif Iulian
-		Iuliu Laurențiu Leontin Luca Lucian Mihai Mircea Nicolae Ovidiu Petru
-		Radu Sergiu Silviu Simion Ștefan Valeriu Vasile Victor Vintila Vlad
+		Iuliu Lauren?iu Leontin Luca Lucian Mihai Mircea Nicolae Ovidiu Petru
+		Radu Sergiu Silviu Simion ?tefan Valeriu Vasile Victor Vintila Vlad
 		}
 
 		last_names = { Angelescu Antonescu Argetoianu Averescu Baldescu Barozzi Berindei Cernat Christecu Cihoski
@@ -991,8 +991,8 @@ pan_romanian = {
 		first_names = { Adrian Alexandru Andrei Anton Artur Bogdan Carol Cezar Constantin Constin
 		Cosmin Daniel Dumitru Emanuel Eremia Eugen Ferdinand Flaviu Florea Gheorghe
 		Grigore Henric Horatiu Iacob Ilie Ioan Ion "Ion Emanuel" Iosif Iulian
-		Iuliu Laurențiu Leontin Luca Lucian Mihai Mircea Nicolae Ovidiu Petru
-		Radu Sergiu Silviu Simion Ștefan Valeriu Vasile Victor Vintila Vlad
+		Iuliu Lauren?iu Leontin Luca Lucian Mihai Mircea Nicolae Ovidiu Petru
+		Radu Sergiu Silviu Simion ?tefan Valeriu Vasile Victor Vintila Vlad
 		}
 
 		last_names = { Angelescu Antonescu Argetoianu Averescu Baldescu Barozzi Berindei Cernat Christecu Cihoski
@@ -1079,32 +1079,32 @@ polish_culture_group = {
 	polish = {
 		color = {255 120 120}
 
-		first_names = { Adam Aleksander Antoni Bolesław Bonawentura Bronisław Dezydery Edmund Edward Emil
-		Eustachy Felicjan Franciszek Gustaw Henryk Ignacy Jakub Jan Jędrzej Józef
+		first_names = { Adam Aleksander Antoni Boleslaw Bonawentura Bronislaw Dezydery Edmund Edward Emil
+		Eustachy Felicjan Franciszek Gustaw Henryk Ignacy Jakub Jan Jedrzej Józef
 		Juliusz Karol Kazimierz Klemens Konstanty Lech Leon Leopold Lucjan Ludwik
 		Maciej Marceli Marian Mariusz Melchior Michal Mieczyslaw Roman Romuald Samuel
-		Stanislaw Stefan Tadeusz Tomasz Wacław Wilhelm Witold Wladyslaw Wojciech Zygmunt }
+		Stanislaw Stefan Tadeusz Tomasz Waclaw Wilhelm Witold Wladyslaw Wojciech Zygmunt }
 
-		last_names = { Bem Bór-Komorowski Brzóska Chałasiński Chłapowski Chłopicki Chrzanowski Dąbrowski Dembiński Fabryvy
-		Hauke-Boask Iszikowski Jasiński Klicki Konopczyński Krukowiecki Kruszewski Langiewicz Madalinski Mierosławski
-		Mikołajczyk Mokronowski Niepokólczycki Ostrowski Pac Pilsudski Poniatowski Potocki Prądzyński Radziwiłł
-		Rokossowski Rola-Zymierski Rómmel Rózicky Rybinski Rydz-Śmigły Sanguszko Skrzynecki Sołtyk Sowiński
-		Taczanowski Traugutt Wawrzecki Wieniawa-Długoszowski Wybicki Wysocki Zajączek Załuski Zamoyski Żeligowski }
+		last_names = { Bem Bór-Komorowski Brzóska Chalasinski Chlapowski Chlopicki Chrzanowski Dabrowski Dembinski Fabryvy
+		Hauke-Boask Iszikowski Jasinski Klicki Konopczynski Krukowiecki Kruszewski Langiewicz Madalinski Mieroslawski
+		Mikolajczyk Mokronowski Niepokólczycki Ostrowski Pac Pilsudski Poniatowski Potocki Pradzynski Radziwill
+		Rokossowski Rola-Zymierski Rómmel Rózicky Rybinski Rydz-Smigly Sanguszko Skrzynecki Soltyk Sowinski
+		Taczanowski Traugutt Wawrzecki Wieniawa-Dlugoszowski Wybicki Wysocki Zajaczek Zaluski Zamoyski Zeligowski }
 		radicalism = 10
 	}
 	western_slavic = {
 		color = {147 63 109}
-		first_names = { Adam Aleksander Antoni Bolesław Bonawentura Bronisław Dezydery Edmund Edward Emil
-		Eustachy Felicjan Franciszek Gustaw Henryk Ignacy Jakub Jan Jędrzej Józef
+		first_names = { Adam Aleksander Antoni Boleslaw Bonawentura Bronislaw Dezydery Edmund Edward Emil
+		Eustachy Felicjan Franciszek Gustaw Henryk Ignacy Jakub Jan Jedrzej Józef
 		Juliusz Karol Kazimierz Klemens Konstanty Lech Leon Leopold Lucjan Ludwik
 		Maciej Marceli Marian Mariusz Melchior Michal Mieczyslaw Roman Romuald Samuel
-		Stanislaw Stefan Tadeusz Tomasz Wacław Wilhelm Witold Wladyslaw Wojciech Zygmunt }
+		Stanislaw Stefan Tadeusz Tomasz Waclaw Wilhelm Witold Wladyslaw Wojciech Zygmunt }
 
-		last_names = { Bem Bór-Komorowski Brzóska Chałasiński Chłapowski Chłopicki Chrzanowski Dąbrowski Dembiński Fabryvy
-		Hauke-Boask Iszikowski Jasiński Klicki Konopczyński Krukowiecki Kruszewski Langiewicz Madalinski Mierosławski
-		Mikołajczyk Mokronowski Niepokólczycki Ostrowski Pac Pilsudski Poniatowski Potocki Prądzyński Radziwiłł
-		Rokossowski Rola-Zymierski Rómmel Rózicky Rybinski Rydz-Śmigły Sanguszko Skrzynecki Sołtyk Sowiński
-		Taczanowski Traugutt Wawrzecki Wieniawa-Długoszowski Wybicki Wysocki Zajączek Załuski Zamoyski Żeligowski }
+		last_names = { Bem Bór-Komorowski Brzóska Chalasinski Chlapowski Chlopicki Chrzanowski Dabrowski Dembinski Fabryvy
+		Hauke-Boask Iszikowski Jasinski Klicki Konopczynski Krukowiecki Kruszewski Langiewicz Madalinski Mieroslawski
+		Mikolajczyk Mokronowski Niepokólczycki Ostrowski Pac Pilsudski Poniatowski Potocki Pradzynski Radziwill
+		Rokossowski Rola-Zymierski Rómmel Rózicky Rybinski Rydz-Smigly Sanguszko Skrzynecki Soltyk Sowinski
+		Taczanowski Traugutt Wawrzecki Wieniawa-Dlugoszowski Wybicki Wysocki Zajaczek Zaluski Zamoyski Zeligowski }
 	}
 	lithuanian = { 
 		color = {17 162 48}
@@ -1113,62 +1113,62 @@ polish_culture_group = {
 		Bronislovas Danielius Darius Gediminas Henrikas Jonas Jonusas Juozas Juras Jurgis
 		Justas Kazimieras Kazys Kipras Konstantinas Lukas Marijus Markas Mikalojus Mindaugas
 		Motejus Mykolas Paulius Petras Povilas Ramunas Ringaudas Rolandas Simonas Stasys
-		Steponas Valdas Valdemaras Viktoras Vilhelmas Visvaldas Vladimiras Vygantas Vytautas Žydrūnas
+		Steponas Valdas Valdemaras Viktoras Vilhelmas Visvaldas Vladimiras Vygantas Vytautas Žydrunas
 		}
 
-		last_names = { Adamkus Almenas Avizienis Baltrušaitis Brazauskas Basanavičius Birutis Brazdžiūnas Būga Čiurlionis
-		Danauskas Daukantas Dobkevičius Dubeneckis Dvarionas Galdikas Grinius Griškevičius Ivanauskas Jablonskis
-		Jucys Krupavičius Landsbergis Lozoraitis Merkys Paksas Paleckis Paulauskas Petrauskas Piskarkas
-		Požela Radvila Šabaniauskas Schatz Simonavičius Širvydas Šleževičius Semtona Sniečkus Stauaitis
+		last_names = { Adamkus Almenas Avizienis Baltrušaitis Brazauskas Basanavicius Birutis Brazdžiunas Buga Ciurlionis
+		Danauskas Daukantas Dobkevicius Dubeneckis Dvarionas Galdikas Grinius Griškevicius Ivanauskas Jablonskis
+		Jucys Krupavicius Landsbergis Lozoraitis Merkys Paksas Paleckis Paulauskas Petrauskas Piskarkas
+		Požela Radvila Šabaniauskas Schatz Simonavicius Širvydas Šleževicius Semtona Snieckus Stauaitis
 		Straižys Stulginkis Švedas Terleckas Urbšys Vagnorius Valeška Voldemaras Žemaitis Zuokas
 		}
 	}
 	nowyswiat = {
 		color = {182 134 154}
 
-		first_names = { Adam Aleksander Antoni Bolesław Bonawentura Bronisław Dezydery Edmund Edward Emil
-		Eustachy Felicjan Franciszek Gustaw Henryk Ignacy Jakub Jan Jędrzej Józef
+		first_names = { Adam Aleksander Antoni Boleslaw Bonawentura Bronislaw Dezydery Edmund Edward Emil
+		Eustachy Felicjan Franciszek Gustaw Henryk Ignacy Jakub Jan Jedrzej Józef
 		Juliusz Karol Kazimierz Klemens Konstanty Lech Leon Leopold Lucjan Ludwik
 		Maciej Marceli Marian Mariusz Melchior Michal Mieczyslaw Roman Romuald Samuel
-		Stanislaw Stefan Tadeusz Tomasz Wacław Wilhelm Witold Wladyslaw Wojciech Zygmunt }
+		Stanislaw Stefan Tadeusz Tomasz Waclaw Wilhelm Witold Wladyslaw Wojciech Zygmunt }
 
-		last_names = { Bem Bór-Komorowski Brzóska Chałasiński Chłapowski Chłopicki Chrzanowski Dąbrowski Dembiński Fabryvy
-		Hauke-Boask Iszikowski Jasiński Klicki Konopczyński Krukowiecki Kruszewski Langiewicz Madalinski Mierosławski
-		Mikołajczyk Mokronowski Niepokólczycki Ostrowski Pac Pilsudski Poniatowski Potocki Prądzyński Radziwiłł
-		Rokossowski Rola-Zymierski Rómmel Rózicky Rybinski Rydz-Śmigły Sanguszko Skrzynecki Sołtyk Sowiński
-		Taczanowski Traugutt Wawrzecki Wieniawa-Długoszowski Wybicki Wysocki Zajączek Załuski Zamoyski Żeligowski }
+		last_names = { Bem Bór-Komorowski Brzóska Chalasinski Chlapowski Chlopicki Chrzanowski Dabrowski Dembinski Fabryvy
+		Hauke-Boask Iszikowski Jasinski Klicki Konopczynski Krukowiecki Kruszewski Langiewicz Madalinski Mieroslawski
+		Mikolajczyk Mokronowski Niepokólczycki Ostrowski Pac Pilsudski Poniatowski Potocki Pradzynski Radziwill
+		Rokossowski Rola-Zymierski Rómmel Rózicky Rybinski Rydz-Smigly Sanguszko Skrzynecki Soltyk Sowinski
+		Taczanowski Traugutt Wawrzecki Wieniawa-Dlugoszowski Wybicki Wysocki Zajaczek Zaluski Zamoyski Zeligowski }
 		radicalism = 10
 	}
 	poludniowy = {
 		color = {204 83 83}
 
-		first_names = { Adam Aleksander Antoni Bolesław Bonawentura Bronisław Dezydery Edmund Edward Emil
-		Eustachy Felicjan Franciszek Gustaw Henryk Ignacy Jakub Jan Jędrzej Józef
+		first_names = { Adam Aleksander Antoni Boleslaw Bonawentura Bronislaw Dezydery Edmund Edward Emil
+		Eustachy Felicjan Franciszek Gustaw Henryk Ignacy Jakub Jan Jedrzej Józef
 		Juliusz Karol Kazimierz Klemens Konstanty Lech Leon Leopold Lucjan Ludwik
 		Maciej Marceli Marian Mariusz Melchior Michal Mieczyslaw Roman Romuald Samuel
-		Stanislaw Stefan Tadeusz Tomasz Wacław Wilhelm Witold Wladyslaw Wojciech Zygmunt }
+		Stanislaw Stefan Tadeusz Tomasz Waclaw Wilhelm Witold Wladyslaw Wojciech Zygmunt }
 
-		last_names = { Bem Bór-Komorowski Brzóska Chałasiński Chłapowski Chłopicki Chrzanowski Dąbrowski Dembiński Fabryvy
-		Hauke-Boask Iszikowski Jasiński Klicki Konopczyński Krukowiecki Kruszewski Langiewicz Madalinski Mierosławski
-		Mikołajczyk Mokronowski Niepokólczycki Ostrowski Pac Pilsudski Poniatowski Potocki Prądzyński Radziwiłł
-		Rokossowski Rola-Zymierski Rómmel Rózicky Rybinski Rydz-Śmigły Sanguszko Skrzynecki Sołtyk Sowiński
-		Taczanowski Traugutt Wawrzecki Wieniawa-Długoszowski Wybicki Wysocki Zajączek Załuski Zamoyski Żeligowski }
+		last_names = { Bem Bór-Komorowski Brzóska Chalasinski Chlapowski Chlopicki Chrzanowski Dabrowski Dembinski Fabryvy
+		Hauke-Boask Iszikowski Jasinski Klicki Konopczynski Krukowiecki Kruszewski Langiewicz Madalinski Mieroslawski
+		Mikolajczyk Mokronowski Niepokólczycki Ostrowski Pac Pilsudski Poniatowski Potocki Pradzynski Radziwill
+		Rokossowski Rola-Zymierski Rómmel Rózicky Rybinski Rydz-Smigly Sanguszko Skrzynecki Soltyk Sowinski
+		Taczanowski Traugutt Wawrzecki Wieniawa-Dlugoszowski Wybicki Wysocki Zajaczek Zaluski Zamoyski Zeligowski }
 		radicalism = 10
 	}
 	czarny = {
 		color = {155 72 72}
 
-		first_names = { Adam Aleksander Antoni Bolesław Bonawentura Bronisław Dezydery Edmund Edward Emil
-		Eustachy Felicjan Franciszek Gustaw Henryk Ignacy Jakub Jan Jędrzej Józef
+		first_names = { Adam Aleksander Antoni Boleslaw Bonawentura Bronislaw Dezydery Edmund Edward Emil
+		Eustachy Felicjan Franciszek Gustaw Henryk Ignacy Jakub Jan Jedrzej Józef
 		Juliusz Karol Kazimierz Klemens Konstanty Lech Leon Leopold Lucjan Ludwik
 		Maciej Marceli Marian Mariusz Melchior Michal Mieczyslaw Roman Romuald Samuel
-		Stanislaw Stefan Tadeusz Tomasz Wacław Wilhelm Witold Wladyslaw Wojciech Zygmunt }
+		Stanislaw Stefan Tadeusz Tomasz Waclaw Wilhelm Witold Wladyslaw Wojciech Zygmunt }
 
-		last_names = { Bem Bór-Komorowski Brzóska Chałasiński Chłapowski Chłopicki Chrzanowski Dąbrowski Dembiński Fabryvy
-		Hauke-Boask Iszikowski Jasiński Klicki Konopczyński Krukowiecki Kruszewski Langiewicz Madalinski Mierosławski
-		Mikołajczyk Mokronowski Niepokólczycki Ostrowski Pac Pilsudski Poniatowski Potocki Prądzyński Radziwiłł
-		Rokossowski Rola-Zymierski Rómmel Rózicky Rybinski Rydz-Śmigły Sanguszko Skrzynecki Sołtyk Sowiński
-		Taczanowski Traugutt Wawrzecki Wieniawa-Długoszowski Wybicki Wysocki Zajączek Załuski Zamoyski Żeligowski }
+		last_names = { Bem Bór-Komorowski Brzóska Chalasinski Chlapowski Chlopicki Chrzanowski Dabrowski Dembinski Fabryvy
+		Hauke-Boask Iszikowski Jasinski Klicki Konopczynski Krukowiecki Kruszewski Langiewicz Madalinski Mieroslawski
+		Mikolajczyk Mokronowski Niepokólczycki Ostrowski Pac Pilsudski Poniatowski Potocki Pradzynski Radziwill
+		Rokossowski Rola-Zymierski Rómmel Rózicky Rybinski Rydz-Smigly Sanguszko Skrzynecki Soltyk Sowinski
+		Taczanowski Traugutt Wawrzecki Wieniawa-Dlugoszowski Wybicki Wysocki Zajaczek Zaluski Zamoyski Zeligowski }
 		radicalism = 10
 	}
 	
@@ -1182,17 +1182,17 @@ czecho_slovak_culture_group = {
 	czech = {
 		color = {120 120 255}
 
-		first_names = { Abraham Alexander Alfred Alois Antonín August Bedřich Benedikt Bořivoj 
+		first_names = { Abraham Alexander Alfred Alois Antonín August Bedrich Benedikt Borivoj 
                 Cenek Dávid Drahoslav Edvard Emanuel Emil Evžen František "František Josef" "František Xaver" 
-                Hermenegild Ján "Ján Křtitel" "Ján Nepomuk" Jaroslav Jindřich Jiří Josef Kajetan Karel 
+                Hermenegild Ján "Ján Krtitel" "Ján Nepomuk" Jaroslav Jindrich Jirí Josef Kajetan Karel 
                 Konstantin Ladislav Ludvík Matyas Maxmilián Mikuláš Olbram Otakar Pavel Petr 
-                Radoľa Rafael Tomáš Václav Vincenc Vítězslav Vlastimil Vojtech Vratislav Zdenek }
+                Radola Rafael Tomáš Václav Vincenc Vítezslav Vlastimil Vojtech Vratislav Zdenek }
 
-		last_names = { Albert Balabán Basch Breisky Čelovský Dvorák Fibich Gajda Gellner Hálek 
-                Hrdlička Jireček Kadlec Kafka Koller Křížkovský Kucera Kuchar Lederer Makosky 
-                Mik Morávec Němeček Neruda Nováček Novotný Popper Radecký Rokytanský Šafárik 
+		last_names = { Albert Balabán Basch Breisky Celovský Dvorák Fibich Gajda Gellner Hálek 
+                Hrdlicka Jirecek Kadlec Kafka Koller Krížkovský Kucera Kuchar Lederer Makosky 
+                Mik Morávec Nemecek Neruda Novácek Novotný Popper Radecký Rokytanský Šafárik 
                 Šafránek Schack Schubert Škoda Skuherský Smetana Šnejdárek Suk Svoboda Syrový 
-                Tomášek Tyl Vitásek "von Mittrowitz-Nettolitzky" Voříšek Wankel Weber Zíbrt Zívr Zoubek }
+                Tomášek Tyl Vitásek "von Mittrowitz-Nettolitzky" Voríšek Wankel Weber Zíbrt Zívr Zoubek }
 	}
 	
 	slovak = {
@@ -1204,56 +1204,56 @@ czecho_slovak_culture_group = {
                 Michal Mikuláš Milan Miloš Miloslav Miroslav Pavel Pavol Peter Ratislav 
                 Rudolf Samuel Sergej Štefan Svetozár Tibor Tomáš Viliam Vladimír Vojtech }
 
-		last_names = { Áchim Bázlic Bella Beneš Blaho Čatloš Cikker Clementis Daxner Dubček 
-                Figuš-Bystrý Frešo Gojdič Golian Hlinka Hodža Hopko Hurban Hurban-Vajanský Husák 
-                Ivanka Kafenda Kardoš Kočak Kupkovič Mach Macudzinski Malár Malovec Markovič 
-                Masaryk Móry Moyses Rázus Roháček Rudnay Selepčéni Sidor Škultéty-Gábriš Šmik 
-                Sokol Štefánik Suchoň Šverma Tiso Trčka Tuka Turanec Viest Zoch }
+		last_names = { Áchim Bázlic Bella Beneš Blaho Catloš Cikker Clementis Daxner Dubcek 
+                Figuš-Bystrý Frešo Gojdic Golian Hlinka Hodža Hopko Hurban Hurban-Vajanský Husák 
+                Ivanka Kafenda Kardoš Kocak Kupkovic Mach Macudzinski Malár Malovec Markovic 
+                Masaryk Móry Moyses Rázus Rohácek Rudnay Selepcéni Sidor Škultéty-Gábriš Šmik 
+                Sokol Štefánik Suchon Šverma Tiso Trcka Tuka Turanec Viest Zoch }
 	}
 	novysvet = {
 		color = {100 134 236}
 
-		first_names = { Abraham Alexander Alfred Alois Antonín August Bedřich Benedikt Bořivoj 
+		first_names = { Abraham Alexander Alfred Alois Antonín August Bedrich Benedikt Borivoj 
                 Cenek Dávid Drahoslav Edvard Emanuel Emil Evžen František "František Josef" "František Xaver" 
-                Hermenegild Ján "Ján Křtitel" "Ján Nepomuk" Jaroslav Jindřich Jiří Josef Kajetan Karel 
+                Hermenegild Ján "Ján Krtitel" "Ján Nepomuk" Jaroslav Jindrich Jirí Josef Kajetan Karel 
                 Konstantin Ladislav Ludvík Matyas Maxmilián Mikuláš Olbram Otakar Pavel Petr 
-                Radoľa Rafael Tomáš Václav Vincenc Vítězslav Vlastimil Vojtech Vratislav Zdenek }
+                Radola Rafael Tomáš Václav Vincenc Vítezslav Vlastimil Vojtech Vratislav Zdenek }
 
-		last_names = { Albert Balabán Basch Breisky Čelovský Dvorák Fibich Gajda Gellner Hálek 
-                Hrdlička Jireček Kadlec Kafka Koller Křížkovský Kucera Kuchar Lederer Makosky 
-                Mik Morávec Němeček Neruda Nováček Novotný Popper Radecký Rokytanský Šafárik 
+		last_names = { Albert Balabán Basch Breisky Celovský Dvorák Fibich Gajda Gellner Hálek 
+                Hrdlicka Jirecek Kadlec Kafka Koller Krížkovský Kucera Kuchar Lederer Makosky 
+                Mik Morávec Nemecek Neruda Novácek Novotný Popper Radecký Rokytanský Šafárik 
                 Šafránek Schack Schubert Škoda Skuherský Smetana Šnejdárek Suk Svoboda Syrový 
-                Tomášek Tyl Vitásek "von Mittrowitz-Nettolitzky" Voříšek Wankel Weber Zíbrt Zívr Zoubek }
+                Tomášek Tyl Vitásek "von Mittrowitz-Nettolitzky" Voríšek Wankel Weber Zíbrt Zívr Zoubek }
 	}
 	jizni = {
 		color = {121 83 165}
 
-		first_names = { Abraham Alexander Alfred Alois Antonín August Bedřich Benedikt Bořivoj 
+		first_names = { Abraham Alexander Alfred Alois Antonín August Bedrich Benedikt Borivoj 
                 Cenek Dávid Drahoslav Edvard Emanuel Emil Evžen František "František Josef" "František Xaver" 
-                Hermenegild Ján "Ján Křtitel" "Ján Nepomuk" Jaroslav Jindřich Jiří Josef Kajetan Karel 
+                Hermenegild Ján "Ján Krtitel" "Ján Nepomuk" Jaroslav Jindrich Jirí Josef Kajetan Karel 
                 Konstantin Ladislav Ludvík Matyas Maxmilián Mikuláš Olbram Otakar Pavel Petr 
-                Radoľa Rafael Tomáš Václav Vincenc Vítězslav Vlastimil Vojtech Vratislav Zdenek }
+                Radola Rafael Tomáš Václav Vincenc Vítezslav Vlastimil Vojtech Vratislav Zdenek }
 
-		last_names = { Albert Balabán Basch Breisky Čelovský Dvorák Fibich Gajda Gellner Hálek 
-                Hrdlička Jireček Kadlec Kafka Koller Křížkovský Kucera Kuchar Lederer Makosky 
-                Mik Morávec Němeček Neruda Nováček Novotný Popper Radecký Rokytanský Šafárik 
+		last_names = { Albert Balabán Basch Breisky Celovský Dvorák Fibich Gajda Gellner Hálek 
+                Hrdlicka Jirecek Kadlec Kafka Koller Krížkovský Kucera Kuchar Lederer Makosky 
+                Mik Morávec Nemecek Neruda Novácek Novotný Popper Radecký Rokytanský Šafárik 
                 Šafránek Schack Schubert Škoda Skuherský Smetana Šnejdárek Suk Svoboda Syrový 
-                Tomášek Tyl Vitásek "von Mittrowitz-Nettolitzky" Voříšek Wankel Weber Zíbrt Zívr Zoubek }
+                Tomášek Tyl Vitásek "von Mittrowitz-Nettolitzky" Voríšek Wankel Weber Zíbrt Zívr Zoubek }
 	}
 	hnedy = {
 		color = {72 72 155}
 
-		first_names = { Abraham Alexander Alfred Alois Antonín August Bedřich Benedikt Bořivoj 
+		first_names = { Abraham Alexander Alfred Alois Antonín August Bedrich Benedikt Borivoj 
                 Cenek Dávid Drahoslav Edvard Emanuel Emil Evžen František "František Josef" "František Xaver" 
-                Hermenegild Ján "Ján Křtitel" "Ján Nepomuk" Jaroslav Jindřich Jiří Josef Kajetan Karel 
+                Hermenegild Ján "Ján Krtitel" "Ján Nepomuk" Jaroslav Jindrich Jirí Josef Kajetan Karel 
                 Konstantin Ladislav Ludvík Matyas Maxmilián Mikuláš Olbram Otakar Pavel Petr 
-                Radoľa Rafael Tomáš Václav Vincenc Vítězslav Vlastimil Vojtech Vratislav Zdenek }
+                Radola Rafael Tomáš Václav Vincenc Vítezslav Vlastimil Vojtech Vratislav Zdenek }
 
-		last_names = { Albert Balabán Basch Breisky Čelovský Dvorák Fibich Gajda Gellner Hálek 
-                Hrdlička Jireček Kadlec Kafka Koller Křížkovský Kucera Kuchar Lederer Makosky 
-                Mik Morávec Němeček Neruda Nováček Novotný Popper Radecký Rokytanský Šafárik 
+		last_names = { Albert Balabán Basch Breisky Celovský Dvorák Fibich Gajda Gellner Hálek 
+                Hrdlicka Jirecek Kadlec Kafka Koller Krížkovský Kucera Kuchar Lederer Makosky 
+                Mik Morávec Nemecek Neruda Novácek Novotný Popper Radecký Rokytanský Šafárik 
                 Šafránek Schack Schubert Škoda Skuherský Smetana Šnejdárek Suk Svoboda Syrový 
-                Tomášek Tyl Vitásek "von Mittrowitz-Nettolitzky" Voříšek Wankel Weber Zíbrt Zívr Zoubek }
+                Tomášek Tyl Vitásek "von Mittrowitz-Nettolitzky" Voríšek Wankel Weber Zíbrt Zívr Zoubek }
 	}
 	union = CZH
 }
@@ -1279,13 +1279,13 @@ east_slavic = {
 		color = {100 140 110}
 
 		first_names = { Aliaksandr Alieksiej Andrej Anton Borys Cyryl Dania Džmitry Hieorhij
-				Ivan Janka Jury Lavr Lieonid Lieŭ Mikalaj Paval Piotr Roman Ryhor
-				Stanislaŭ Sierhiej Valiery Vasilij Viktar Uladzimir Vladyslaŭ }
+				Ivan Janka Jury Lavr Lieonid Lieu Mikalaj Paval Piotr Roman Ryhor
+				Stanislau Sierhiej Valiery Vasilij Viktar Uladzimir Vladyslau }
      
-                        last_names = { Alieksiejev "Bulak-Balachowicz" Čybisov Dienykin Drahomyrov Holivin Hurko
-				Ivanov Kalinoŭski Kornjlov Kolčak Kuropatkin Lukašenka Mienšikov Nachimov
-				Niebohatov Nikolajevič Pavlov Putiatin Rožjestvienski Skobieliev Suchoj
-				Tuchačjeŭski Jehorov Voroncov Žaŭryd }
+                        last_names = { Alieksiejev "Bulak-Balachowicz" Cybisov Dienykin Drahomyrov Holivin Hurko
+				Ivanov Kalinouski Kornjlov Kolcak Kuropatkin Lukašenka Mienšikov Nachimov
+				Niebohatov Nikolajevic Pavlov Putiatin Rožjestvienski Skobieliev Suchoj
+				Tuchacjeuski Jehorov Voroncov Žauryd }
         }
 	ukrainian = {
 		color = {160 160 60}
@@ -1294,9 +1294,9 @@ east_slavic = {
 				Mykhayil Mykola Nikita Oleksandr Pavel Petro Roman Semion Serhyy Valeryy
 				Viktor Volodymyr Vladyslav Yuryy }
 
-                last_names = { Bezruchko Chernyakhovsʹkyy Dyachenko Hamula Hrihoriyev Hrekov Ivanenko Ivanov
-				Krapustiansʹkyy Kondratenko Leshchenko Lesh·chinskyy "Omelyanovych-Pavlenko"
-				Paskevych Petlyura Radchenko Shevchenko Skoropadsʹkyy Stefaniv Tymoshenko Vitovsʹkyy }
+                last_names = { Bezruchko Chernyakhovs'kyy Dyachenko Hamula Hrihoriyev Hrekov Ivanenko Ivanov
+				Krapustians'kyy Kondratenko Leshchenko Lesh·chinskyy "Omelyanovych-Pavlenko"
+				Paskevych Petlyura Radchenko Shevchenko Skoropads'kyy Stefaniv Tymoshenko Vitovs'kyy }
 		radicalism = 10
         }
 	ugrian = {  
@@ -1357,18 +1357,18 @@ baltic = {
 	latvian = { 
 		color = {162 17 48}
 
-		first_names = { Aaron Ābrams Alberts Aleksandrs Aloizs Andrejs Arkādij Armands Arnolds Atis 
-                Brunis Bruno Eduards Eliass Elmārs Emīls Evgenijs Filips Fricis Gustavs 
-                Heinrihs Hermanis Izaks Jānis Jāzeps Jēkabs Johans Juris Kārlis Krišjānis 
-                Leo Mark Mārtiņš Mihails Miķelis Nikolajs Oskars Pauls Pēteris Rihards 
-                Roberts Romans Sandis Sergejs Valdemārs Valeriāns Valter Vilis Vladimirs Zigfrīds
+		first_names = { Aaron Abrams Alberts Aleksandrs Aloizs Andrejs Arkadij Armands Arnolds Atis 
+                Brunis Bruno Eduards Eliass Elmars Emils Evgenijs Filips Fricis Gustavs 
+                Heinrihs Hermanis Izaks Janis Jazeps Jekabs Johans Juris Karlis Krišjanis 
+                Leo Mark Martinš Mihails Mikelis Nikolajs Oskars Pauls Peteris Rihards 
+                Roberts Romans Sandis Sergejs Valdemars Valerians Valter Vilis Vladimirs Zigfrids
 		}
 
-		last_names = { Abakovskis Apšenieks Balodis Baumanis Berķis Bērziņš Bētiņš Braons Čaks Čakste 
-                Caps Celmiņš Daliņš Dambītis Dārziņš "de Kolongs" Desslers Eizenteins Goppers Halsmans 
-                Irbītis Kalniņš Kalpaks Kučys Kovalevskis Krogzemis Kronvalds Kuks Kviesis Lacis 
-                Leiko Loskis Māters Matisons Meierovics Mihelssons Mīlenbahs Millers Needra Ozoliņš 
-                Petrovs Pliekšāns Pumpurs Rothko Sīmanis Stučka Tumins Ulmanis Veidenbaums
+		last_names = { Abakovskis Apšenieks Balodis Baumanis Berkis Berzinš Betinš Braons Caks Cakste 
+                Caps Celminš Dalinš Dambitis Darzinš "de Kolongs" Desslers Eizenteins Goppers Halsmans 
+                Irbitis Kalninš Kalpaks Kucys Kovalevskis Krogzemis Kronvalds Kuks Kviesis Lacis 
+                Leiko Loskis Maters Matisons Meierovics Mihelssons Milenbahs Millers Needra Ozolinš 
+                Petrovs Pliekšans Pumpurs Rothko Simanis Stucka Tumins Ulmanis Veidenbaums
 		}
 	}
 	estonian = {
@@ -1461,7 +1461,7 @@ levantine = {
 		Kolokotrónis Kondýlis Kountouriótis Kriezís Makriiánnis Mános Mavrokordátos Mavrovouniótis Metaxás Moúskos
 		Níder Othonaíos Paláskas Pan'galos Papadiamantópoulos Papadópoulos Papágos Papoúlas Parakevópoulos Plapoútas
 		Plastíras Sapountzákis Saráfis Smolénskis Sofoúlis Soútsos Spyromílios Staïkópoulos Stanotas "tis Elládas"
-		Trikoúpis Tsakalótos Tsolákoglou Typáldos-Alfonsátos Tzavélas Vássos Venizélos Voúlgaris Zaḯmis Zymvrakákis
+		Trikoúpis Tsakalótos Tsolákoglou Typáldos-Alfonsátos Tzavélas Vássos Venizélos Voúlgaris Za?mis Zymvrakákis
 		}
 		radicalism = 10
 	}
@@ -1560,7 +1560,7 @@ levantine = {
 		Kolokotrónis Kondýlis Kountouriótis Kriezís Makriiánnis Mános Mavrokordátos Mavrovouniótis Metaxás Moúskos
 		Níder Othonaíos Paláskas Pan'galos Papadiamantópoulos Papadópoulos Papágos Papoúlas Parakevópoulos Plapoútas
 		Plastíras Sapountzákis Saráfis Smolénskis Sofoúlis Soútsos Spyromílios Staïkópoulos Stanotas "tis Elládas"
-		Trikoúpis Tsakalótos Tsolákoglou Typáldos-Alfonsátos Tzavélas Vássos Venizélos Voúlgaris Zaḯmis Zymvrakákis
+		Trikoúpis Tsakalótos Tsolákoglou Typáldos-Alfonsátos Tzavélas Vássos Venizélos Voúlgaris Za?mis Zymvrakákis
 		}
 		radicalism = 10
 	}
@@ -1578,7 +1578,7 @@ levantine = {
 		Kolokotrónis Kondýlis Kountouriótis Kriezís Makriiánnis Mános Mavrokordátos Mavrovouniótis Metaxás Moúskos
 		Níder Othonaíos Paláskas Pan'galos Papadiamantópoulos Papadópoulos Papágos Papoúlas Parakevópoulos Plapoútas
 		Plastíras Sapountzákis Saráfis Smolénskis Sofoúlis Soútsos Spyromílios Staïkópoulos Stanotas "tis Elládas"
-		Trikoúpis Tsakalótos Tsolákoglou Typáldos-Alfonsátos Tzavélas Vássos Venizélos Voúlgaris Zaḯmis Zymvrakákis
+		Trikoúpis Tsakalótos Tsolákoglou Typáldos-Alfonsátos Tzavélas Vássos Venizélos Voúlgaris Za?mis Zymvrakákis
 		}
 		radicalism = 10
 	}
@@ -1596,7 +1596,7 @@ levantine = {
 		Kolokotrónis Kondýlis Kountouriótis Kriezís Makriiánnis Mános Mavrokordátos Mavrovouniótis Metaxás Moúskos
 		Níder Othonaíos Paláskas Pan'galos Papadiamantópoulos Papadópoulos Papágos Papoúlas Parakevópoulos Plapoútas
 		Plastíras Sapountzákis Saráfis Smolénskis Sofoúlis Soútsos Spyromílios Staïkópoulos Stanotas "tis Elládas"
-		Trikoúpis Tsakalótos Tsolákoglou Typáldos-Alfonsátos Tzavélas Vássos Venizélos Voúlgaris Zaḯmis Zymvrakákis
+		Trikoúpis Tsakalótos Tsolákoglou Typáldos-Alfonsátos Tzavélas Vássos Venizélos Voúlgaris Za?mis Zymvrakákis
 		}
 		radicalism = 10
 	}
