@@ -92,7 +92,7 @@ class EU4Province
 
 	private:
 		void	checkBuilding(const shared_ptr<Object> provinceObj, string building);
-+		void	checkProvModifier(const shared_ptr<Object> provinceObj, string building);
+		void	checkProvModifier(const shared_ptr<Object> provinceObj, string building);
 		void	buildPopRatios();
 		void	decayPopRatios(date oldDate, date newDate, EU4PopRatio& currentPop);
 
