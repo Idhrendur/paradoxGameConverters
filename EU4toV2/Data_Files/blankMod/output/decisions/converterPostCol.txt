@@ -13,11 +13,21 @@ political_decisions = {
 
 		effect = {
 			ENG_58 = {	#Quebec
-				limit = { is_culture = french }
+				limit = {
+					OR = {
+						is_primary_culture = french
+						is_primary_culture = french_canadian
+					}
+				}
 				add_core = QUE
 			}
 			ENG_13 = {	#Columbia
-				limit = { is_culture_group = british }
+				limit = {
+					OR = {
+						is_primary_culture = english
+						is_primary_culture = anglo_canadian
+					}
+				}
 				add_core = COL
 			}
 			ENG_74 = { add_core = NEW } #Newfoundland
@@ -32,9 +42,14 @@ political_decisions = {
 			ENG_68 = { add_core = CAN }
 			ENG_74 = { add_core = CAN }
 			ENG_9 = { add_core = CAN }
-			USA_1 = { add_core = CAN }
+			USA_1 = { add_core = LSK } #Alaska
 			USA_247 = {	#New England
-				limit = { is_culture_group = british }
+				limit = {
+					OR = {
+						is_primary_culture = english
+						is_primary_culture = yankee
+					}
+				}
 				add_core = NEN
 			}
 			USA_232 = { add_core = MAN } #Manhattan
@@ -78,7 +93,7 @@ political_decisions = {
 			USA_185 = { add_core = CSA }
 			USA_211 = { add_core = CSA }
 			USA_188 = { add_core = CSA }
-			USA_2566 = { add_core = CSA }
+			#USA_2566 = { add_core = CSA }
 			USA_201 = { add_core = CSA }
 			USA_196 = { add_core = CSA }
 			USA_194 = { add_core = CSA }
@@ -86,11 +101,21 @@ political_decisions = {
 			MEX_85 = { add_core = CAL } #California
 			SPA_2209 = { add_core = CUB } #Cuba
 			HAI_2213 = { #Haiti
-				limit = { NOT = { is_culture_group = spanish } }
+				limit = {
+					NOT = {
+						is_primary_culture = spanish
+						is_primary_culture = caribeno
+					}
+				}
 				add_core = HAI
 			}
 			HAI_2213 = { #Santo Domingo
-				limit = { is_culture_group = spanish }
+				limit = {
+					OR = {
+						is_primary_culture = spanish
+						is_primary_culture = caribeno
+					}
+				}
 				add_core = DOM
 			}
 			UCA_2201 = { #Costa Rica
@@ -189,9 +214,10 @@ political_decisions = {
 			BEL_1987 = { add_core = CNG }
 			BEL_1990 = { add_core = CNG }
 			BEL_1992 = { add_core = CNG }
-			3246 = { add_core = JMN } #Jan Mayen
+			3246 = { add_core = JAN } #Jan Mayen
 			EGY_921 = { add_core = ISR } #Israel
 			CHI_1476 = { add_core = TPG } #Taiping Heavenly Kingdom (for event)
+			TUR_806 = { add_core = MKD } #FYR Macedonia (if not working properly)
 			
 			set_global_flag = der_postcolonialism
 		}
@@ -202,6 +228,41 @@ political_decisions = {
 	}
 	
 	## Post-colonial country changes
+	postcol_LSK = {
+		potential = {
+			NOT = {
+				exists = LSK
+				tag = CAN
+				tag = COL
+				tag = USA
+			}
+			capital_scope = { is_core = LSK }
+		}	
+		allow = {
+			war = no
+			is_independant = yes
+			LSK = {
+				all_core = {
+					owned_by = THIS
+					owner = {
+						in_sphere = THIS
+					}
+				}
+			}
+		}
+		
+		effect = {
+			prestige = 10
+			any_owned = {
+				add_core = LSK
+			}
+			change_tag = LSK
+			capital = 3
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
 	postcol_QUE = {
 		potential = {
 			OR = {
@@ -211,6 +272,8 @@ political_decisions = {
 			NOT = {
 				exists = QUE
 				tag = CAN
+				tag = COL
+				tag = NEW
 			}
 			capital_scope = { is_core = QUE }
 		}	
@@ -253,6 +316,7 @@ political_decisions = {
 				exists = COL
 				tag = CAN
 				tag = NEW
+				tag = QUE
 			}
 			capital_scope = { is_core = COL }
 		}	
@@ -295,6 +359,7 @@ political_decisions = {
 				exists = NEW
 				tag = CAN
 				tag = COL
+				tag = QUE
 			}
 			capital_scope = { is_core = NEW }
 		}	
@@ -363,6 +428,10 @@ political_decisions = {
 			NOT = {
 				exists = NEN
 				tag = USA
+				tag = CAN
+				tag = QUE
+				tag = COL
+				tag = NEW
 			}
 			OR = {
 				primary_culture = british
@@ -406,6 +475,10 @@ political_decisions = {
 				exists = MAN
 				tag = USA
 				tag = NEN
+				tag = CAN
+				tag = QUE
+				tag = COL
+				tag = NEW
 			}
 			capital_scope = { is_core = MAN }
 		}	
@@ -443,6 +516,10 @@ political_decisions = {
 		potential = {
 			NOT = { exists = TEX }
 			capital_scope = { is_core = TEX }
+			NOT = {
+				tag = USA
+				tag = MEX
+			}
 		}	
 		allow = {
 			war = no
@@ -475,6 +552,7 @@ political_decisions = {
 		potential = {
 			NOT = { exists = USA }
 			capital_scope = { is_core = USA }
+			NOT = { tag = CAN }
 		}	
 		allow = {
 			war = no
@@ -507,6 +585,12 @@ political_decisions = {
 		potential = {
 			NOT = { exists = CAL }
 			capital_scope = { is_core = CAL }
+			NOT = {
+				tag = USA
+				tag = CAN
+				tag = MEX
+				tag = TEX
+			}
 		}	
 		allow = {
 			war = no
@@ -641,6 +725,7 @@ political_decisions = {
 		potential = {
 			NOT = { exists = COS }
 			NOT = { tag = UCA }
+			NOT = { tag = MEX }
 			capital_scope = { is_core = COS }
 		}	
 		allow = {
@@ -676,6 +761,7 @@ political_decisions = {
 		potential = {
 			NOT = { exists = HON }
 			NOT = { tag = UCA }
+			NOT = { tag = MEX }
 			capital_scope = { is_core = HON }
 		}	
 		allow = {
@@ -712,6 +798,7 @@ political_decisions = {
 			NOT = { exists = ELS }
 			NOT = { tag = HON }
 			NOT = { tag = UCA }
+			NOT = { tag = MEX }
 			capital_scope = { is_core = ELS }
 		}	
 		allow = {
@@ -748,6 +835,7 @@ political_decisions = {
 		potential = {
 			NOT = { exists = PNM }
 			NOT = { tag = UCA }
+			NOT = { tag = MEX }
 			capital_scope = { is_core = PNM }
 		}	
 		allow = {
@@ -784,6 +872,7 @@ political_decisions = {
 		potential = {
 			NOT = { exists = GUA }
 			NOT = { tag = UCA }
+			NOT = { tag = MEX }
 			capital_scope = { is_core = GUA }
 		}	
 		allow = {
@@ -817,7 +906,10 @@ political_decisions = {
 	}
 	postcol_UCA = {
 		potential = {
-			NOT = { tag = UCA }
+			NOT = {
+				tag = UCA
+				tag = MEX
+			}
 			capital_scope = { is_core = UCA }
 		}	
 		allow = {
@@ -850,6 +942,11 @@ political_decisions = {
 	postcol_ECU = {
 		potential = {
 			NOT = { exists = ECU }
+			NOT = { tag = GCO }
+			NOT = { tag = CLM }
+			NOT = { tag = PEU }
+			NOT = { tag = VNZ }
+			NOT = { tag = ECU }
 			capital_scope = { is_core = ECU }
 		}	
 		allow = {
@@ -885,6 +982,8 @@ political_decisions = {
 	postcol_MEX = {
 		potential = {
 			NOT = { exists = MEX }
+			NOT = { tag = USA }
+			NOT = { tag = UCA }
 			capital_scope = { is_core = MEX }
 		}	
 		allow = {
@@ -920,6 +1019,7 @@ political_decisions = {
 	postcol_BRZ = {
 		potential = {
 			NOT = { exists = BRZ }
+			NOT = { tag = URU }
 			capital_scope = { is_core = BRZ }
 		}	
 		allow = {
@@ -952,6 +1052,8 @@ political_decisions = {
 	postcol_PEU = {
 		potential = {
 			NOT = { exists = PEU }
+			NOT = { tag = GCO }
+			NOT = { tag = ECU }
 			capital_scope = { is_core = PEU }
 		}	
 		allow = {
@@ -986,6 +1088,8 @@ political_decisions = {
 	postcol_ARG = {
 		potential = {
 			NOT = { exists = ARG }
+			NOT = { tag = URU }
+			NOT = { tag = CHL }
 			capital_scope = { is_core = ARG }
 		}	
 		allow = {
@@ -1021,6 +1125,10 @@ political_decisions = {
 	postcol_PRG = {
 		potential = {
 			NOT = { exists = PRG }
+			NOT = { tag = ARG }
+			NOT = { tag = URU }
+			NOT = { tag = BOL }
+			NOT = { tag = CHL }
 			capital_scope = { is_core = PRG }
 		}	
 		allow = {
@@ -1056,6 +1164,10 @@ political_decisions = {
 	postcol_URU = {
 		potential = {
 			NOT = { exists = URU }
+			NOT = { tag = ARG }
+			NOT = { tag = PRG }
+			NOT = { tag = BOL }
+			NOT = { tag = CHL }
 			capital_scope = { is_core = URU }
 		}	
 		allow = {
@@ -1091,6 +1203,9 @@ political_decisions = {
 	postcol_CHL = {
 		potential = {
 			NOT = { exists = CHL }
+			NOT = { tag = ARG }
+			NOT = { tag = PEU }
+			NOT = { tag = BOL }
 			capital_scope = { is_core = CHL }
 		}	
 		allow = {
@@ -1146,6 +1261,10 @@ political_decisions = {
 	postcol_BOL = {
 		potential = {
 			NOT = { exists = BOL }
+			NOT = { tag = ARG }
+			NOT = { tag = BRZ }
+			NOT = { tag = BOL }
+			NOT = { tag = CHL }
 			capital_scope = { is_core = BOL }
 		}	
 		allow = {
@@ -1179,6 +1298,9 @@ political_decisions = {
 	postcol_CLM = {
 		potential = {
 			NOT = { exists = CLM }
+			NOT = { tag = VNZ }
+			NOT = { tag = GCO }
+			NOT = { tag = ECU }
 			capital_scope = { is_core = CLM }
 		}	
 		allow = {
@@ -1213,6 +1335,10 @@ political_decisions = {
 	postcol_VNZ = {
 		potential = {
 			NOT = { exists = VNZ }
+			NOT = { tag = GCO }
+			NOT = { tag = CLM }
+			NOT = { tag = ECU }
+			NOT = { tag = BRZ }
 			capital_scope = { is_core = VNZ }
 		}	
 		allow = {
