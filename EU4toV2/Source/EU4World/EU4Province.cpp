@@ -1837,14 +1837,14 @@ if (hasBuilding("university"))
 
     if (hasBuilding("diamond_district"))
     {
-        manu_gp_mod = 0.5
-	trade_value_eff = 0.15
+        manu_gp_mod = 0.5;
+	trade_value_eff = 0.15;
     }
 
     if (hasBuilding("perfume_capital"))
     {
-        manu_gp_mod = 0.5
-	trade_value_eff = 0.15
+        manu_gp_mod = 0.5;
+	trade_value_eff = 0.15;
     }
 
 	std::vector<double> provBuildingWeightVec;
