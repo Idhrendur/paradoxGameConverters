@@ -150,7 +150,7 @@ italian = {
 		communism = { "gfx/leaders/ITA/Portrait_Italy_Generic_1.dds" }
 		democratic = { "gfx/leaders/ITA/Portrait_Italy_Generic_2.dds" }
 		fascism = { "gfx/leaders/ITA/Portrait_Italy_Generic_3.dds" }
-		absolutist = { "gfx/leaders/ITA/Victor_Emmanuel_III.dds" }
+		absolutist = { "gfx/leaders/ITA/Portrait_Italy_Victor_Emmanuel_III.dds" }
 		neutrality = { "gfx/leaders/ITA/Portrait_Italy_Generic_2.dds" }
 		radical = { "gfx/leaders/ITA/Portrait_Italy_Generic_3.dds" }
 	}
@@ -839,6 +839,27 @@ bears = {
 	graphical_culture_2d = { western_european_2d }
 }
 equine = {
+	leader_portraits = {
+		communism = { "gfx/leaders/Portrait_Chancellor_Glitterhoof.dds" }
+		democratic = { "gfx/leaders/Portrait_Chancellor_Glitterhoof.dds" }
+		fascism = { "gfx/leaders/Portrait_Chancellor_Glitterhoof.dds" }
+		absolutist = { "gfx/leaders/Portrait_Chancellor_Glitterhoof.dds" }
+		neutrality = { "gfx/leaders/Portrait_Chancellor_Glitterhoof.dds" }
+		radical = { "gfx/leaders/Portrait_Chancellor_Glitterhoof.dds" }
+	}
+	ideology_minister_portraits = 
+	{
+		communism = { "gfx/interface/ideas/idea_heinrich_himmler.dds" }
+		democratic = { "gfx/interface/ideas/idea_heinrich_himmler.dds" }
+		fascism = { "gfx/interface/ideas/idea_heinrich_himmler.dds" }
+		absolutist = { "gfx/interface/ideas/idea_heinrich_himmler.dds" }
+		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" }
+		radical = { "gfx/interface/ideas/idea_heinrich_himmler.dds" }
+	}
+	graphical_culture = { western_european_gfx }
+	graphical_culture_2d = { western_european_2d }
+}
+non_human = {
 	leader_portraits = {
 		communism = { "gfx/leaders/Portrait_Chancellor_Glitterhoof.dds" }
 		democratic = { "gfx/leaders/Portrait_Chancellor_Glitterhoof.dds" }
