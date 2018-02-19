@@ -2285,38 +2285,32 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4Country> Home, ve
 		focuses.push_back(newFocus);
 	}
 
-	for (auto puppetExists : Home->getPuppets())
-	{
-		//If country has puppet it gets the first focus in puppet interaction branch
-
-		newFocus = make_shared<HoI4Focus>();
-		newFocus->id = "serviceOverseas" + Home->getTag();
-		newFocus->icon = "GFX_goal_generic_position_armies";
-		newFocus->text += "Service Overseas";
-		newFocus->xPos = nextFreeColumn;
-		newFocus->yPos = 5;
-		newFocus->cost = 10;
-		newFocus->aiWillDo += "			factor = 1";
-		newFocus->completionReward += "			army_experience = 10";
-		newFocus->completionReward += "			navy_experience = 15";
-		newFocus->completionReward += "			add_manpower = 9000";
-		focuses.push_back(newFocus);
-		break;
-	}
+	//puppet top Focus
+	
+	newFocus = make_shared<HoI4Focus>();
+	newFocus->id = "serviceOverseas" + Home->getTag();
+	newFocus->icon = "GFX_goal_generic_position_armies";
+	newFocus->text += "Service Overseas";
+	newFocus->xPos = nextFreeColumn;
+	newFocus->yPos = 5;
+	newFocus->cost = 10;
+	newFocus->aiWillDo += "			factor = 1";
+	newFocus->completionReward += "			army_experience = 10";
+	newFocus->completionReward += "			navy_experience = 15";
+	newFocus->completionReward += "			add_manpower = 9000";
+	focuses.push_back(newFocus);
 
 	//puppet specific focuses
 	
-	nextFreeColumn -= 4;//for saving space. would be better if dynamic positioning
-
 	std::set<std::string> Puppets;
 	for (auto puppetTag : Home->getPuppets())
 	{
 		Puppets.insert(puppetTag);
 
 		shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>();
-		newFocus->id = "DevPuppet" + puppetTag;
+		newFocus->id = "DevPuppet" + Home->getTag();
 		newFocus->icon = "GFX_goal_generic_construct_civilian";
-		newFocus->text += "Develop " + puppetTag;
+		newFocus->text += "Develop " + puppetTag + "";
 		newFocus->prerequisites.push_back("focus =  serviceOverseas" + Home->getTag());
 		newFocus->xPos = nextFreeColumn;
 		newFocus->yPos = 6;
