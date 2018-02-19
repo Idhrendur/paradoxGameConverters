@@ -2108,7 +2108,7 @@ void HoI4World::outputBookmarks() const
 	{
 		if (country.second->isGreatPower() != true)
 		{
-			if (country.second->getStrengthOverTime(1) > 1500)
+			if (country.second->getStrengthOverTime(3) > 4500)
 			{
 				//add minor countries to the bookmark, only those with custom focustree are visible due to Hoi4 limitations
 				//Bookmark window has room for 22 minor countries, going over this seems to not cause any issues however
