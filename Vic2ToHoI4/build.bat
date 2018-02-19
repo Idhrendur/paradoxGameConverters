@@ -8,8 +8,6 @@ rmdir Release /S /Q
 del ReleaseIntermediate/q
 rmdir ReleaseIntermediate /S /Q
 
-cd C:\paradoxGameConverters\Vic2ToHoI4
-
 msbuild.exe Vic2ToHoI4.sln /p:Configuration=Release /p:Platform=Win32 /m
 
 
