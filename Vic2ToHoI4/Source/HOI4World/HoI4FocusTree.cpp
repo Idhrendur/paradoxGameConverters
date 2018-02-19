@@ -2286,19 +2286,22 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4Country> Home, ve
 	}
 
 	//puppet top Focus
-	
-	newFocus = make_shared<HoI4Focus>();
-	newFocus->id = "serviceOverseas" + Home->getTag();
-	newFocus->icon = "GFX_goal_generic_position_armies";
-	newFocus->text += "Service Overseas";
-	newFocus->xPos = nextFreeColumn;
-	newFocus->yPos = 5;
-	newFocus->cost = 10;
-	newFocus->aiWillDo += "			factor = 1";
-	newFocus->completionReward += "			army_experience = 10";
-	newFocus->completionReward += "			navy_experience = 15";
-	newFocus->completionReward += "			add_manpower = 9000";
-	focuses.push_back(newFocus);
+
+	if (Home->getPuppets().size > 0)
+	{
+		newFocus = make_shared<HoI4Focus>();
+		newFocus->id = "serviceOverseas" + Home->getTag();
+		newFocus->icon = "GFX_goal_generic_position_armies";
+		newFocus->text += "Service Overseas";
+		newFocus->xPos = nextFreeColumn;
+		newFocus->yPos = 5;
+		newFocus->cost = 10;
+		newFocus->aiWillDo += "			factor = 1";
+		newFocus->completionReward += "			army_experience = 10";
+		newFocus->completionReward += "			navy_experience = 15";
+		newFocus->completionReward += "			add_manpower = 9000";
+		focuses.push_back(newFocus);
+	}
 
 	//puppet specific focuses
 	
@@ -2306,6 +2309,14 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4Country> Home, ve
 	for (auto puppetTag : Home->getPuppets())
 	{
 		Puppets.insert(puppetTag);
+		if (Puppets.size > 2)
+		{
+			nextFreeColumn -= 4;//long list so move it left as much as possible
+		}
+		else if(Puppets.size > 1)
+		{
+			nextFreeColumn -= 2;//move it back a little
+		}
 
 		shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>();
 		newFocus->id = "DevPuppet" + Home->getTag();
