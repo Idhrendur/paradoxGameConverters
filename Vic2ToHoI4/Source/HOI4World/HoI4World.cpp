@@ -2108,13 +2108,17 @@ void HoI4World::outputBookmarks() const
 	{
 		if (country.second->isGreatPower() != true)
 		{
-			//add minor countries, due to HOI4 limitations only those with custom focus tree appear ingame
-			bookmarkFile << "		" + country.second->getTag() + " = {\n";
-			bookmarkFile << "			minor = yes\n";
-			bookmarkFile << "			history = ""OTHER_GATHERING_STORM_DESC""\n";
-			bookmarkFile << "		ideology = Yes\n";
-			bookmarkFile << "		ideas = {}\n";
-			bookmarkFile << "		}\n";
+			if (country.second->getStrengthOverTime(1) > 1500)
+			{
+				//add minor countries to the bookmark, only those with custom focustree are visible due to Hoi4 limitations
+				//Bookmark window has room for 22 minor countries, going over this seems to not cause any issues however
+				bookmarkFile << "		" + country.second->getTag() + " = {\n";
+				bookmarkFile << "			minor = yes\n";
+				bookmarkFile << "			history = ""OTHER_GATHERING_STORM_DESC""\n";
+				bookmarkFile << "		ideology = Yes\n";
+				bookmarkFile << "		ideas = {}\n";
+				bookmarkFile << "		}\n";
+			}
 		}
 	}
 
