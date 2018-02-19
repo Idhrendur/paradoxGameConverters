@@ -2587,7 +2587,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4Country> H
 	newFocus->aiWillDo += "			factor = 10\n";
 	newFocus->aiWillDo += "			modifier = {\n";
 	newFocus->aiWillDo += "			}";
-	newFocus->completionReward += "			add_ideas = colonial_divisions";
+	newFocus->completionReward += "			add_ideas = militarism_focus";
 	focuses.push_back(newFocus);
 
 	//establish protectorate
@@ -2992,7 +2992,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4Country> H
 	newFocus->aiWillDo += "			factor = 10\n";
 	newFocus->aiWillDo += "			modifier = {\n";
 	newFocus->aiWillDo += "			}";
-	newFocus->completionReward += "			add_ideas = nationalistic_spirit";
+	newFocus->completionReward += "			add_ideas = paramilitarism_focus";
 	focuses.push_back(newFocus);
 
 	//ANNEX
