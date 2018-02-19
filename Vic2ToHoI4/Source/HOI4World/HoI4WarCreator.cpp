@@ -1,4 +1,4 @@
-/*Copyright (c) 2017 The Paradox Game Converters Project
+/*Copyright (c) 2018 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -269,13 +269,13 @@ vector<shared_ptr<HoI4Country>> HoI4WarCreator::findEvilCountries() const
 			evilness += 3;
 		if (country.second->getGovernmentIdeology() == "anarcho_liberal")
 			evilness += 3;
-		const V2Party* countryrulingparty = country.second->getRulingParty();
+		const V2Party countryrulingparty = country.second->getRulingParty();
 	
-		if (countryrulingparty->war_policy == "jingoism")
+		if (countryrulingparty.getWarPolicy() == "jingoism")
 			evilness += 3;
-		else if (countryrulingparty->war_policy == "pro_military")
+		else if (countryrulingparty.getWarPolicy() == "pro_military")
 			evilness += 2;
-		else if (countryrulingparty->war_policy == "anti_military")
+		else if (countryrulingparty.getWarPolicy() == "anti_military")
 			evilness -= 1;
 	
 		if (evilness > 2)
@@ -818,7 +818,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4C
 		}
 	}
 	//gives us generic focus tree start
-	auto FocusTree = genericFocusTree->makeCustomizedCopy(Leader);
+	auto FocusTree = genericFocusTree->makeCustomizedCopy(*Leader);
 
 	FocusTree->addFascistAnnexationBranch(Leader, nan, theWorld->getEvents());
 	nan.clear();
@@ -1038,13 +1038,13 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<H
 				if ((party.first == "socialist") || (party.first == "communist") || (party.first == "anarcho_liberal"))
 					com += party.second;
 			}
-			if (com > 25 && neigh.second->getRulingParty()->ideology != "communist" && HowToTakeLand(neigh.second, Leader, 2.5) == "coup")
+			if (com > 25 && neigh.second->getRulingParty().getIdeology() != "communist" && HowToTakeLand(neigh.second, Leader, 2.5) == "coup")
 			{
 				//look for neighboring countries to spread communism too(Need 25 % or more Communism support), Prioritizing those with "Communism Allowed" Flags, prioritizing those who are weakest
 				//	Method() Influence Ideology and Attempt Coup
 				coups.push_back(neigh.second);
 			}
-			else if (neighFaction->getMembers().size() == 1 && neigh.second->getRulingParty()->ideology != "communist")
+			else if (neighFaction->getMembers().size() == 1 && neigh.second->getRulingParty().getIdeology() != "communist")
 			{
 				//	Then look for neighboring countries to spread communism by force, prioritizing weakest first
 				forcedtakeover.push_back(neigh.second);
@@ -1158,7 +1158,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<H
 		if (GCTargets.size() >= maxGCWars) break;
 	}
 
-	auto FocusTree = genericFocusTree->makeCustomizedCopy(Leader);
+	auto FocusTree = genericFocusTree->makeCustomizedCopy(*Leader);
 	FocusTree->addCommunistCoupBranch(Leader, forcedtakeover);
 	FocusTree->addCommunistWarBranch(Leader, TargetsByTech, theWorld->getEvents());
 	FocusTree->addGPWarBranch(Leader, newAllies, GCTargets, "Communist", theWorld->getEvents());
@@ -1176,7 +1176,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr<H
 	set<string> Allies = Leader->getAllies();
 	int v1 = rand() % 100;
 	v1 = v1 / 100;
-	auto FocusTree = genericFocusTree->makeCustomizedCopy(Leader);
+	auto FocusTree = genericFocusTree->makeCustomizedCopy(*Leader);
 	for (auto GC: theWorld->getGreatPowers())
 	{
 		auto relations = Leader->getRelations(GC->getTag());
@@ -1207,7 +1207,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr<H
 
 vector<shared_ptr<HoI4Faction>> HoI4WarCreator::absolutistWarCreator(shared_ptr<HoI4Country> country)
 {
-	auto focusTree = genericFocusTree->makeCustomizedCopy(country);
+	auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
 
 	auto name = country->getSourceCountry()->getName("english");
 	if (name)
@@ -1341,7 +1341,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 
 	if (numWarsWithNeighbors > 0)
 	{
-		auto focusTree = genericFocusTree->makeCustomizedCopy(country);
+		auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
 		for (auto newFocus: newFocuses)
 		{
 			focusTree->addFocus(newFocus);

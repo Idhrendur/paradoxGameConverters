@@ -1,4 +1,4 @@
-/*Copyright (c) 2017 The Paradox Game Converters Project
+/*Copyright (c) 2018 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -106,6 +106,8 @@ HoI4World::HoI4World(const V2World* _sourceWorld):
 	createFactions();
 
 	HoI4WarCreator warCreator(this);
+
+	adjustResearchFocuses();
 }
 
 
@@ -173,8 +175,7 @@ void HoI4World::convertCountry(pair<string, V2Country*> country, map<int, int>& 
 		}
 		else
 		{
-			LOG(LogLevel::Error) << "Could not set country name when converting country";
-			exit(-1);
+			LOG(LogLevel::Warning) << "Could not set country name when converting country";
 		}
 
 		std::string countryFileName = Utils::convert8859_15ToUTF8(countryName) + ".txt";
@@ -839,12 +840,12 @@ void HoI4World::convertAgreements()
 {
 	for (auto agreement : sourceWorld->getDiplomacy()->getAgreements())
 	{
-		auto possibleHoI4Tag1 = CountryMapper::getHoI4Tag(agreement->country1);
+		auto possibleHoI4Tag1 = CountryMapper::getHoI4Tag(agreement->getCountry1());
 		if (!possibleHoI4Tag1)
 		{
 			continue;
 		}
-		auto possibleHoI4Tag2 = CountryMapper::getHoI4Tag(agreement->country2);
+		auto possibleHoI4Tag2 = CountryMapper::getHoI4Tag(agreement->getCountry2());
 		if (!possibleHoI4Tag2)
 		{
 			continue;
@@ -863,19 +864,19 @@ void HoI4World::convertAgreements()
 			continue;
 		}
 
-		if ((agreement->type == "alliance") || (agreement->type == "vassal"))
+		if ((agreement->getType() == "alliance") || (agreement->getType() == "vassal"))
 		{
 			HoI4Agreement* HoI4a = new HoI4Agreement(*possibleHoI4Tag1, *possibleHoI4Tag2, agreement);
 			diplomacy->addAgreement(HoI4a);
 		}
 
-		if (agreement->type == "alliance")
+		if (agreement->getType() == "alliance")
 		{
 			HoI4Country1->second->editAllies().insert(*possibleHoI4Tag2);
 			HoI4Country2->second->editAllies().insert(*possibleHoI4Tag1);
 		}
 
-		if (agreement->type == "vassal")
+		if (agreement->getType() == "vassal")
 		{
 			HoI4Country1->second->addPuppet(*possibleHoI4Tag2);
 			HoI4Country2->second->setPuppetmaster(*possibleHoI4Tag1);
@@ -1624,6 +1625,15 @@ bool HoI4World::governmentsAllowFaction(const string& leaderIdeology, const stri
 }
 
 
+void HoI4World::adjustResearchFocuses()
+{
+	for (auto country: countries)
+	{
+		country.second->adjustResearchFocuses(majorIdeologies);
+	}
+}
+
+
 void HoI4World::addCountryElectionEvents(const set<string>& majorIdeologies)
 {
 	for (auto country: countries)
@@ -1646,6 +1656,7 @@ void HoI4World::output() const
 	outputCommonCountries();
 	outputColorsfile();
 	outputNames();
+	outputUnitNames();
 	HoI4Localisation::output();
 	states->output();
 	diplomacy->output();
@@ -1737,6 +1748,23 @@ void HoI4World::outputNames() const
 	for (auto country: countries)
 	{
 		country.second->outputToNamesFiles(namesFile);
+	}
+}
+
+void HoI4World::outputUnitNames() const
+{
+	ofstream namesFile("output/" + Configuration::getOutputName() + "/common/units/names/01_names.txt");
+	namesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
+
+	if (!namesFile.is_open())
+	{
+		Log(LogLevel::Error) << "Could not open output/" << Configuration::getOutputName() << "/common/units/names/01_names.txt";
+		exit(-1);
+	}
+
+	for (auto country : countries)
+	{
+		country.second->outputToUnitNamesFiles(namesFile);
 	}
 }
 

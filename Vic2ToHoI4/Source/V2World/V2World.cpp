@@ -1,4 +1,4 @@
-/*Copyright (c) 2017 The Paradox Game Converters Project
+/*Copyright (c) 2018 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -343,6 +343,7 @@ bool V2World::processCountriesDotTxt(const string& countryListFile, const string
 			continue;
 		}
 		readCountryColor(countryData, line);
+		readShipNames(countryData, line);
 		inputPartyInformation(countryData->getLeaves());
 	}
 
@@ -418,6 +419,27 @@ void V2World::readCountryColor(shared_ptr<Object> countryData, const string& lin
 }
 
 
+void V2World::readShipNames(shared_ptr<Object> countryData, const string& line)
+{
+	string tag = line.substr(0, 3);
+	if (countries.find(tag) == countries.end()) return;
+
+	auto leaves = countryData->getLeaves();
+	for (auto leaf : leaves)
+	{
+		string key = leaf->getKey();
+		if (key == "unit_names")
+		{
+			auto unitTypes = leaf->getLeaves();
+			for (auto unitType : unitTypes)
+			{
+				countries[tag]->setShipNames(unitType->getKey(), unitType->getTokens());
+			}
+		}
+	}
+}
+
+
 void V2World::inputPartyInformation(const vector<shared_ptr<Object>>& leaves)
 {
 	for (auto leaf: leaves)
@@ -425,7 +447,7 @@ void V2World::inputPartyInformation(const vector<shared_ptr<Object>>& leaves)
 		string key = leaf->getKey();
 		if (key == "party")
 		{
-			parties.push_back(new V2Party(leaf));
+			parties.emplace_back(leaf);
 		}
 	}
 }

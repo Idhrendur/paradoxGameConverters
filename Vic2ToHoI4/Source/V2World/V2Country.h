@@ -1,4 +1,4 @@
-/*Copyright (c) 2017 The Paradox Game Converters Project
+/*Copyright (c) 2018 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -29,6 +29,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Mappers/Mapper.h"
 #include "../Color.h"
 #include "Date.h"
+#include "V2Party.h"
 #include <functional>
 #include <map>
 #include <memory>
@@ -42,7 +43,6 @@ using namespace std;
 
 class V2Army;
 class V2Leader;
-class V2Party;
 class V2Province;
 class V2Relations;
 class Vic2State;
@@ -59,6 +59,7 @@ class V2Country
 		void setAsGreatNation() { greatNation = true; }
 		void addCore(V2Province* core) { cores.push_back(core); }
 		void replaceCores(vector<V2Province*> newCores) { cores.swap(newCores); }
+		void setShipNames(string category, vector<string> newShipNames) { shipNames[category] = newShipNames; }
 
 		void eatCountry(V2Country* target);
 		void putProvincesInStates();
@@ -101,9 +102,10 @@ class V2Country
 		optional<string> getAdjective(const string& language) const;
 		double getUpperHousePercentage(const string& ideology) const;
 		long getEmployedWorkers() const;
-		optional<const V2Party*> getRulingParty(const vector<const V2Party*>& allParties) const;
-		set<const V2Party*, function<bool (const V2Party*, const V2Party*)>> getActiveParties(const vector<const V2Party*>& allParties) const;
+		optional<const V2Party> getRulingParty(const vector<V2Party>& allParties) const;
+		set<V2Party, function<bool (const V2Party&, const V2Party&)>> getActiveParties(const vector<V2Party>& allParties) const;
 		bool hasCoreOnCapital() const;
+		vector<string> getShipNames(string category) const;
 
 	private:
 		V2Country(const V2Country&) = delete;
@@ -169,6 +171,7 @@ class V2Country
 		string domainAdjective;
 		map<string, string> namesByLanguage;
 		map<string, string> adjectivesByLanguage;
+		map<string, vector<string> > shipNames;
 
 		bool human;
 };
