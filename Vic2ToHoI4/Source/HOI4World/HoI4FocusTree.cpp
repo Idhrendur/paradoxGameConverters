@@ -2312,22 +2312,6 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4Country> Home, ve
 	for (auto puppetTag : Home->getPuppets())
 	{
 		Puppets.insert(puppetTag);
-		
-		/*
-		Naming the country in the focus. Not working
-
-		auto possiblePuppetCountryName = puppetTag.getName("english");
-		string puppetCountryName;
-		if (possiblePuppetCountryName)
-		{
-			puppetCountryName = *possiblePuppetCountryName;
-		}
-		else
-		{
-			LOG(LogLevel::Warning) << "Could not determine target country name for focus target puppets";
-			puppetCountryName = "";
-		}
-		*/
 
 		shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>();
 		newFocus->id = "DevPuppet" + puppetTag;
