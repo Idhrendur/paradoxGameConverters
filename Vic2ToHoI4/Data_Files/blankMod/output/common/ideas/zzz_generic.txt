@@ -311,7 +311,8 @@ ideas = {
 			picture = Generic_constitutional_guarantee
 	
 			modifier = {
-				justify_war_goal_time = -0.2
+				justify_war_goal_time = -0.5
+				take_states_cost_factor = 0.5
 			}
 		}
 		

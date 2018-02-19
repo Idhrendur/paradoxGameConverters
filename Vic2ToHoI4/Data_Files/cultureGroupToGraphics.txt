@@ -465,7 +465,7 @@ central_asian = {
 		communism = { "gfx/leaders/Asia/Portrait_Asia_Generic_1.dds" }
 		democratic = { "gfx/leaders/Asia/Portrait_Asia_Generic_2.dds" }
 		fascism = { "gfx/leaders/Asia/Portrait_Asia_Generic_3.dds" }
-		absolutist = { "gfx/leaders/BHU/portrait_bhu_jigme_wangchuk.dds" }
+		absolutist = { "gfx/leaders/SAU/Portrait_Saudi_arabia_Abdulazis_Ibn_Saud.dds" }
 		neutrality = { "gfx/leaders/Asia/Portrait_Asia_Generic_2.dds" }
 		radical = { "gfx/leaders/Asia/Portrait_Asia_Generic_3.dds" }
 	}
@@ -507,7 +507,7 @@ southeast_asian = {
 		communism = { "gfx/leaders/Asia/Portrait_Asia_Generic_1.dds" }
 		democratic = { "gfx/leaders/Asia/Portrait_Asia_Generic_2.dds" }
 		fascism = { "gfx/leaders/Asia/Portrait_Asia_Generic_3.dds" }
-		absolutist = { "gfx/leaders/SIA/Portrait_Siam_Phraya_Phahon.dds" }
+		absolutist = { "gfx/leaders/JAP/Portrait_Japan_Hirohito.dds" }
 		neutrality = { "gfx/leaders/Asia/Portrait_Asia_Generic_2.dds" }
 		radical = { "gfx/leaders/Asia/Portrait_Asia_Generic_3.dds" }
 	}
@@ -549,7 +549,7 @@ chinese = {
 		communism = { "gfx/leaders/Asia/Portrait_Asia_Generic_1.dds" }
 		democratic = { "gfx/leaders/Asia/Portrait_Asia_Generic_2.dds" }
 		fascism = { "gfx/leaders/Asia/Portrait_Asia_Generic_3.dds" }
-		absolutist = { "gfx/leaders/Asia/Portrait_Asia_Generic_warlord2.dds" }
+		absolutist = { "gfx/leaders/JAP/Portrait_Japan_Hirohito.dds" }
 		neutrality = { "gfx/leaders/Asia/Portrait_Asia_Generic_2.dds" }
 		radical = { "gfx/leaders/Asia/Portrait_Asia_Generic_3.dds" }
 	}
