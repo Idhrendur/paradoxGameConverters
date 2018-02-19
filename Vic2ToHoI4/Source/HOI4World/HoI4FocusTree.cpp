@@ -2286,112 +2286,112 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4Country> Home, ve
 	}
 
 	//puppet top Focus
+	shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>();
+	newFocus->id = "serviceOverseas" + Home->getTag();
+	newFocus->icon = "GFX_goal_generic_position_armies";
+	newFocus->text += "Service Overseas";
+	newFocus->xPos = nextFreeColumn;
+	newFocus->yPos = 5;
+	newFocus->cost = 10;
+	newFocus->aiWillDo += "			factor = 3";
+	newFocus->completionReward += "			army_experience = 10";
+	newFocus->completionReward += "			navy_experience = 15";
+	newFocus->completionReward += "			add_manpower = 9000";
+	focuses.push_back(newFocus);
 
-	if (Home->getPuppets().size > 0)
-	{
-		newFocus = make_shared<HoI4Focus>();
-		newFocus->id = "serviceOverseas" + Home->getTag();
-		newFocus->icon = "GFX_goal_generic_position_armies";
-		newFocus->text += "Service Overseas";
-		newFocus->xPos = nextFreeColumn;
-		newFocus->yPos = 5;
-		newFocus->cost = 10;
-		newFocus->aiWillDo += "			factor = 1";
-		newFocus->completionReward += "			army_experience = 10";
-		newFocus->completionReward += "			navy_experience = 15";
-		newFocus->completionReward += "			add_manpower = 9000";
-		focuses.push_back(newFocus);
-	}
+	//extra test focus
+	shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>();
+	newFocus->id = "testfoci" + Home->getTag();
+	newFocus->icon = "GFX_goal_generic_propaganda";
+	newFocus->text += "testing";
+	newFocus->xPos = nextFreeColumn;
+	newFocus->yPos = 7;
+	newFocus->cost = 10;
+	newFocus->aiWillDo += "			factor = 10";
+	newFocus->completionReward += "			add_national_unity = 0.05";
+	focuses.push_back(newFocus);
 
 	//puppet specific focuses
-	
+	nextFreeColumn -= 2;//move it back since it fits, for now.
 	std::set<std::string> Puppets;
+	int i = 0;
 	for (auto puppetTag : Home->getPuppets())
 	{
 		Puppets.insert(puppetTag);
-		if (Puppets.size > 2)
+		//string puppetName = puppetTag->getSourceCountry()->getName("english"); Does not work like this???
+		if (Puppets.size() > i)
 		{
-			nextFreeColumn -= 4;//long list so move it left as much as possible
-		}
-		else if(Puppets.size > 1)
-		{
-			nextFreeColumn -= 2;//move it back a little
-		}
+			i++;
+			shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>();
+			newFocus->id = "DevPuppet" + Home->getTag();
+			newFocus->icon = "GFX_goal_generic_construct_civilian";
+			newFocus->text += "Develop " + puppetTag + "";
+			newFocus->prerequisites.push_back("focus =  serviceOverseas" + Home->getTag());
+			newFocus->xPos = nextFreeColumn;
+			newFocus->yPos = 6;
+			newFocus->cost = 10;
+			newFocus->aiWillDo += "			factor = 2";
+			newFocus->bypass += "			" + puppetTag + " = {\n";
+			newFocus->bypass += "				custom_trigger_tooltip = {\n";
+			newFocus->bypass += "					tooltip = construction_effort_tt\n";
+			newFocus->bypass += "					all_owned_state = {\n";
+			newFocus->bypass += "						free_building_slots = {\n";
+			newFocus->bypass += "							building = industrial_complex\n";
+			newFocus->bypass += "							size < 2\n";
+			newFocus->bypass += "							include_locked = yes\n";
+			newFocus->bypass += "						}\n";
+			newFocus->bypass += "					}\n";
+			newFocus->bypass += "				}\n";
+			newFocus->bypass += "			}\n";
+			newFocus->completeTooltip += "			" + puppetTag + " = {\n";
+			newFocus->completeTooltip += "				add_extra_state_shared_building_slots = 2\n";
+			newFocus->completeTooltip += "				add_building_construction = {\n";
+			newFocus->completeTooltip += "					type = industrial_complex\n";
+			newFocus->completeTooltip += "					level = 2\n";
+			newFocus->completeTooltip += "					instant_build = yes\n";
+			newFocus->completeTooltip += "				}\n";
+			newFocus->completeTooltip += "			}\n";
+			newFocus->completionReward += "			" + puppetTag + " = {\n";
+			newFocus->completionReward += "				add_opinion_modifier = { target = " + puppetTag + " modifier = offered_support }\n";
+			newFocus->completionReward += "				random_owned_controlled_state = {\n";
+			newFocus->completionReward += "					limit = {\n";
+			newFocus->completionReward += "						free_building_slots = {\n";
+			newFocus->completionReward += "							building = industrial_complex\n";
+			newFocus->completionReward += "							size > 0\n";
+			newFocus->completionReward += "							include_locked = yes\n";
+			newFocus->completionReward += "						}\n";
+			newFocus->completionReward += "						OR = {\n";
+			newFocus->completionReward += "							is_in_home_area = yes\n";
+			newFocus->completionReward += "							NOT = {\n";
+			newFocus->completionReward += "								owner = {\n";
+			newFocus->completionReward += "									any_owned_state = {\n";
+			newFocus->completionReward += "										free_building_slots = {\n";
+			newFocus->completionReward += "											building = industrial_complex\n";
+			newFocus->completionReward += "											size > 0\n";
+			newFocus->completionReward += "											include_locked = yes\n";
+			newFocus->completionReward += "										}\n";
+			newFocus->completionReward += "										is_in_home_area = yes\n";
+			newFocus->completionReward += "									}\n";
+			newFocus->completionReward += "								}\n";
+			newFocus->completionReward += "							}\n";
+			newFocus->completionReward += "						}\n";
+			newFocus->completionReward += "					}\n";
+			newFocus->completionReward += "					add_extra_state_shared_building_slots = 2\n";
+			newFocus->completionReward += "					add_building_construction = {\n";
+			newFocus->completionReward += "						type = industrial_complex\n";
+			newFocus->completionReward += "						level = 2\n";
+			newFocus->completionReward += "						instant_build = yes\n";
+			newFocus->completionReward += "					}\n";
+			newFocus->completionReward += "				}\n";
+			newFocus->completionReward += "			add_autonomy_ratio = {\n";
+			newFocus->completionReward += "			value = -0.1\n";
+			newFocus->completionReward += "			localization = developed_puppet }\n";
+			newFocus->completionReward += "			}\n";
+			
+			focuses.push_back(newFocus);
 
-		shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>();
-		newFocus->id = "DevPuppet" + Home->getTag();
-		newFocus->icon = "GFX_goal_generic_construct_civilian";
-		newFocus->text += "Develop " + puppetTag + "";
-		newFocus->prerequisites.push_back("focus =  serviceOverseas" + Home->getTag());
-		newFocus->xPos = nextFreeColumn;
-		newFocus->yPos = 6;
-		newFocus->cost = 10;
-		newFocus->aiWillDo += "			factor = 1";
-		newFocus->available += "			AND = {\n";
-		newFocus->available += "				" + puppetTag + " = {\n";
-		newFocus->available += "						exists = yes";
-		newFocus->available += "						is_puppet_of = " + Home->getTag() + "\n";
-		newFocus->available += "				}\n";
-		newFocus->available += "			}\n";
-		newFocus->bypass += "			" + puppetTag + " = {\n";
-		newFocus->bypass += "				custom_trigger_tooltip = {\n";
-		newFocus->bypass += "					tooltip = construction_effort_tt\n";
-		newFocus->bypass += "					all_owned_state = {\n";
-		newFocus->bypass += "						free_building_slots = {\n";
-		newFocus->bypass += "							building = industrial_complex\n";
-		newFocus->bypass += "							size < 2\n";
-		newFocus->bypass += "							include_locked = yes\n";
-		newFocus->bypass += "						}\n";
-		newFocus->bypass += "					}\n";
-		newFocus->bypass += "				}\n";
-		newFocus->bypass += "			}\n";
-		newFocus->completeTooltip += "			" + puppetTag + " = {\n";
-		newFocus->completeTooltip += "				add_extra_state_shared_building_slots = 2\n";
-		newFocus->completeTooltip += "				add_building_construction = {\n";
-		newFocus->completeTooltip += "					type = industrial_complex\n";
-		newFocus->completeTooltip += "					level = 2\n";
-		newFocus->completeTooltip += "					instant_build = yes\n";
-		newFocus->completeTooltip += "				}\n";
-		newFocus->completeTooltip += "			}\n";
-		newFocus->completionReward += "			" + puppetTag + " = {\n";
-		newFocus->completionReward += "				add_opinion_modifier = { target = " + puppetTag + " modifier = offered_support }\n";
-		newFocus->completionReward += "				random_owned_controlled_state = {\n";
-		newFocus->completionReward += "					limit = {\n";
-		newFocus->completionReward += "						free_building_slots = {\n";
-		newFocus->completionReward += "							building = industrial_complex\n";
-		newFocus->completionReward += "							size > 0\n";
-		newFocus->completionReward += "							include_locked = yes\n";
-		newFocus->completionReward += "						}\n";
-		newFocus->completionReward += "						OR = {\n";
-		newFocus->completionReward += "							is_in_home_area = yes\n";
-		newFocus->completionReward += "							NOT = {\n";
-		newFocus->completionReward += "								owner = {\n";
-		newFocus->completionReward += "									any_owned_state = {\n";
-		newFocus->completionReward += "										free_building_slots = {\n";
-		newFocus->completionReward += "											building = industrial_complex\n";
-		newFocus->completionReward += "											size > 0\n";
-		newFocus->completionReward += "											include_locked = yes\n";
-		newFocus->completionReward += "										}\n";
-		newFocus->completionReward += "										is_in_home_area = yes\n";
-		newFocus->completionReward += "									}\n";
-		newFocus->completionReward += "								}\n";
-		newFocus->completionReward += "							}\n";
-		newFocus->completionReward += "						}\n";
-		newFocus->completionReward += "					}\n";
-		newFocus->completionReward += "					add_extra_state_shared_building_slots = 2\n";
-		newFocus->completionReward += "					add_building_construction = {\n";
-		newFocus->completionReward += "						type = industrial_complex\n";
-		newFocus->completionReward += "						level = 2\n";
-		newFocus->completionReward += "						instant_build = yes\n";
-		newFocus->completionReward += "					}\n";
-		newFocus->completionReward += "				}\n";
-		newFocus->completionReward += "			add_autonomy_ratio = {\n";
-		newFocus->completionReward += "			value = -0.1\n";
-		newFocus->completionReward += "			localization = developed_puppet }\n";
-		newFocus->completionReward += "			}\n";
-
-		focuses.push_back(newFocus);
-		nextFreeColumn += 2;
+			nextFreeColumn += 2;
+		}
 	}
 }
 
