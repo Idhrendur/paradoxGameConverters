@@ -646,7 +646,8 @@ void EU4Province::determineProvinceWeight()
 	double production_eff_tech = 0.5; // used to be 1.0
 
 	double total_trade_value = ((getTradeGoodPrice() * goods_produced) + trade_value) * (1 + trade_value_eff);
-	double production_income = total_trade_value * (1 + production_eff_tech + production_eff);
+	double production_income = total_trade_value * (1.5 + production_eff_tech + production_eff); 
+	//the bonus 0.5 is supposed to show trade income from trade goods as there is no better way to show it atm, but it still has to be shown to show superiority of base production later on
 	//LOG(LogLevel::Info) << "province name: " << this->getProvName() 
 	//	<< " trade good: " << tradeGoods 
 	//	<< " Price: " << getTradeGoodPrice() 
@@ -659,7 +660,7 @@ void EU4Province::determineProvinceWeight()
 
 	total_tx *= 1.5;
 	manpower_weight *= 1;
-	production_income *= 1.5;
+	production_income *= 1.25;
 
 	provBuildingWeight	= building_weight;
 	provTaxIncome			= total_tx;
@@ -1006,7 +1007,7 @@ vector<double> EU4Province::getProvBuildingWeight() const
 	double trade_value					= 0.0;
 	double trade_value_eff				= 0.0;
 	double trade_power_eff				= 0.0;
-	double dev_modifier				= 0.0;
+	double dev_modifier				= 0.45; // representing forcelimit and trade power prov has from dev
 
 	// unique buildings
 	/*
