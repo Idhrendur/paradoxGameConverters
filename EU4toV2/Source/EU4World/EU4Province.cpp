@@ -359,6 +359,13 @@ bool EU4Province::hasBuilding(string building) const
 }
 
 
+bool EU4Province::hasProvModifier(string provmodifier) const
+{
+	const int num = provModifiers.count(provmodifier);	// the number of this building
+	return (num > 0);
+}
+
+
 vector<EU4Country*> EU4Province::getCores(const map<string, EU4Country*>& countries) const
 {
 	vector<EU4Country*> coreOwners;	// the core holders
@@ -402,14 +409,26 @@ double EU4Province::getCulturePercent(string culture)
 }
 
 
-void EU4Province::checkProvModifier(const shared_ptr<Object> provinceObj, string building)
+void EU4Province::checkProvModifier(const shared_ptr<Object> provinceObj, string modifierToFind)
 {
-	vector<shared_ptr<Object>> buildingObj;	// the object holding the building
-	buildingObj = provinceObj->getValue(building);
-	if ((buildingObj.size() > 0))
-	{
-		buildings[building] = true;
-	}
+    vector<shared_ptr<Object>> modifierObj;    // the object holding the modifiers
+    modifierObj = provinceObj->getValue("modifier");
+    if ((modifierObj.size() > 0))
+    {
+        vector<shared_ptr<Object>> modifierObjs = modifierObj[0]->getLeaves();
+        for (auto i : modifierObjs)
+        {
+            //LOG(LogLevel::Info) << "Leaf: " << i->getLeaf();
+
+            if (i->getLeaf() == modifierToFind)
+            {
+                std::cout << std::endl << "Modifier Found" << std::endl;
+                LOG(LogLevel::Info) << "Modifier Found";
+                provModifiers[modifierToFind] = true;
+                break;
+            }
+        }
+    }
 }
 
 
@@ -1771,78 +1790,78 @@ if (hasBuilding("university"))
         dev_modifier += 0.15;
     }
 
-    if (hasBuilding("center_of_trade"))
+    if (hasProvModifier("center_of_trade"))
     {
         building_weight += 24;
     }
 
-    if (hasBuilding("inland_center_of_trade"))
+    if (hasProvModifier("inland_center_of_trade"))
     {
         building_weight += 12;
     }
 
-    if (hasBuilding("natural_harbor"))
+    if (hasProvModifier("natural_harbor"))
     {
         building_weight += 15;
     }
 
-    if (hasBuilding("stora_kopparberget_modifier"))
+    if (hasProvModifier("stora_kopparberget_modifier"))
     {
         manu_gp_mod = 5.0;
     }
 
-    if (hasBuilding("cerro_rico_modifier"))
+    if (hasProvModifier("cerro_rico_modifier"))
     {
         manu_gp_mod = 3.0;
     }
 
-    if (hasBuilding("spice_islands_modifier"))
+    if (hasProvModifier("spice_islands_modifier"))
     {
         manu_gp_mod = 3.0;
     }
 
-    if (hasBuilding("skanemarket"))
+    if (hasProvModifier("skanemarket"))
     {
         manu_gp_mod = 1.5;
     }
 
-    if (hasBuilding("granary_of_the_mediterranean"))
+    if (hasProvModifier("granary_of_the_mediterranean"))
     {
         manu_gp_mod = 2.0;
     }
 
-    if (hasBuilding("ven_murano_glass_industry"))
+    if (hasProvModifier("ven_murano_glass_industry"))
     {
         manu_gp_mod = 2.0;
     }
 
-    if (hasBuilding("diamond_mines_of_golconda_modifier"))
+    if (hasProvModifier("diamond_mines_of_golconda_modifier"))
     {
         manu_gp_mod = 4.0;
     }
 
-    if (hasBuilding("coffea_arabica_modifier"))
+    if (hasProvModifier("coffea_arabica_modifier"))
     {
         manu_gp_mod = 3.0;
     }
 
-    if (hasBuilding("bookmarket_of_x"))
+    if (hasProvModifier("bookmarket_of_x"))
     {
         manu_gp_mod = 1.0;
     }
 
-    if (hasBuilding("grand_bank_fisheries"))
+    if (hasProvModifier("grand_bank_fisheries"))
     {
         manu_gp_mod = 2.0;
     }
 
-    if (hasBuilding("diamond_district"))
+    if (hasProvModifier("diamond_district"))
     {
         manu_gp_mod = 0.5;
 	trade_value_eff = 0.15;
     }
 
-    if (hasBuilding("perfume_capital"))
+    if (hasProvModifier("perfume_capital"))
     {
         manu_gp_mod = 0.5;
 	trade_value_eff = 0.15;
