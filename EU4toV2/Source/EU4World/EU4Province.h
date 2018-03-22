@@ -61,6 +61,7 @@ class EU4Province
 		bool						wasColonised() const;
 		bool						wasInfidelConquest() const;
 		bool						hasBuilding(string building) const;
+		bool						hasProvModifier(string provmodifier) const;
 		vector<EU4Country*>	getCores(const map<string, EU4Country*>& countries) const;
 		date						getLastPossessedDate(string tag) const;
 		double getCulturePercent(string culture);
@@ -92,7 +93,7 @@ class EU4Province
 
 	private:
 		void	checkBuilding(const shared_ptr<Object> provinceObj, string building);
-		void	checkProvModifier(const shared_ptr<Object> provinceObj, string building);
+		void	checkProvModifier(const shared_ptr<Object> provinceObj, string modifierToFind);
 		void	buildPopRatios();
 		void	decayPopRatios(date oldDate, date newDate, EU4PopRatio& currentPop);
 
@@ -117,6 +118,7 @@ class EU4Province
 		vector< pair<date, string> >	cultureHistory;		// the history of the cultural changes of this province
 		vector<EU4PopRatio>				popRatios;				// the population ratios of this province
 		map<string, bool>					buildings;				// the buildings in this province
+		map<string, bool>					provModifiers;				// the buildings in this province
 
 		string								tradeGoods;
 		int									numV2Provs;
