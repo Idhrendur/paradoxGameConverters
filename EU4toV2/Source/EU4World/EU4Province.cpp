@@ -281,6 +281,20 @@ EU4Province::EU4Province(shared_ptr<Object> obj)
 	checkBuilding(obj, "road_network");
 	checkBuilding(obj, "post_office");
 	checkProvModifier(obj, "stora_kopparberget_modifier");
+    checkProvModifier(obj, "center_of_trade_modifier");
+    checkProvModifier(obj, "inland_center_of_trade_modifier");
+    checkProvModifier(obj, "natural_harbor");
+	checkProvModifier(obj, "cerro_rico_modifier");
+    checkProvModifier(obj, "spice_islands_modifier");
+    checkProvModifier(obj, "skanemarket");
+    checkProvModifier(obj, "granary_of_the_mediterranean");
+    checkProvModifier(obj, "ven_murano_glass_industry");
+    checkProvModifier(obj, "diamond_mines_of_golconda_modifier");
+    checkProvModifier(obj, "coffea_arabica_modifier");
+    checkProvModifier(obj, "bookmarket_of_x");
+    checkProvModifier(obj, "grand_bank_fisheries");
+    checkProvModifier(obj, "diamond_district");
+    checkProvModifier(obj, "perfume_capital");
 
 	buildPopRatios();
 }
@@ -434,11 +448,21 @@ void EU4Province::checkProvModifier(const shared_ptr<Object> provinceObj, string
 
 void EU4Province::checkBuilding(const shared_ptr<Object> provinceObj, string building)
 {
-	vector<shared_ptr<Object>> buildingObj;	// the object holding the building
-	buildingObj = provinceObj->getValue(building);
-	if ((buildingObj.size() > 0) && (buildingObj[0]->getLeaf() == "yes"))
+	vector<shared_ptr<Object>> buildingsObj;	// the object holding the building
+	buildingsObj = provinceObj->getValue("buildings");
+	if ((buildingsObj.size() > 0))
 	{
-		buildings[building] = true;
+		vector<shared_ptr<Object>> buildingsObjs = buildingsObj[0]->getLeaves();
+        for (auto i : buildingsObjs)
+        {
+            //LOG(LogLevel::Info) << "Leaf: " << i->getLeaf();
+
+            if (i->getKey() == building && i->getLeaf() == "yes")
+            {
+                buildings[building] = true;
+                break;
+            }
+        }
 	}
 }
 
@@ -1790,12 +1814,12 @@ if (hasBuilding("university"))
         dev_modifier += 0.15;
     }
 
-    if (hasProvModifier("center_of_trade"))
+    if (hasProvModifier("center_of_trade_modifier"))
     {
         building_weight += 24;
     }
 
-    if (hasProvModifier("inland_center_of_trade"))
+    if (hasProvModifier("inland_center_of_trade_modifier"))
     {
         building_weight += 12;
     }
