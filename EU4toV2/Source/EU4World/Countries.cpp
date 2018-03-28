@@ -1,4 +1,4 @@
-/*Copyright (c) 2017 The Paradox Game Converters Project
+/*Copyright (c) 2018 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,56 +21,30 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef CONTINENT_MAPPER_H
-#define CONTINENT_MAPPER_H
+#include "Countries.h"
+#include "EU4Country.h"
 
 
 
-#include <map>
-#include <memory>
-#include <string>
-#include <vector>
-using namespace std;
-
-
-
-class Object;
-
-
-
-class continentMapper
+EU4::countries::countries(istream& theStream):
+	theCountries()
 {
-	public:
-		static string getEU4Continent(int EU4Province)
+	registerKeyword(std::regex("---"), commonItems::ignoreObject);
+	registerKeyword(std::regex("REB"), commonItems::ignoreObject);
+	registerKeyword(std::regex("PIR"), commonItems::ignoreObject);
+	registerKeyword(std::regex("NAT"), commonItems::ignoreObject);
+	registerKeyword(std::regex("[A-Z]{3}"), [this](const std::string& tag, std::istream& theStream)
 		{
-			return getInstance()->GetEU4Continent(EU4Province);
+			auto country = make_shared<EU4::Country>(tag, theStream);
+			theCountries.insert(make_pair(country->getTag(), country));
 		}
-
-	private:
-		static continentMapper* instance;
-		static continentMapper* getInstance()
+	);
+	registerKeyword(std::regex("[A-Z][0-9]{2}"), [this](const std::string& tag, std::istream& theStream)
 		{
-			if (instance == NULL)
-			{
-				instance = new continentMapper;
-			}
-
-			return instance;
+			auto country = make_shared<EU4::Country>(tag, theStream);
+			theCountries.insert(make_pair(country->getTag(), country));
 		}
+	);
 
-		continentMapper();
-		void initContinentMap(shared_ptr<Object> obj);
-
-		string GetEU4Continent(int EU4Province);
-
-
-		map<int, string> continentMap;
-};
-
-
-
-
-
-
-
-#endif // CONTINENT_MAPPER_H
+	parseStream(theStream);
+}
