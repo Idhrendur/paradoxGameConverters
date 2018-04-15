@@ -699,11 +699,11 @@ void EU4Province::determineProvinceWeight()
 
 	//LOG(LogLevel::Info) << "Manpower Weight: " << manpower_weight;
 
-	double total_tx = (baseTax + building_tx_income) * (1.0 + building_tx_eff + 0.15);
-	double production_eff_tech = 0.5; // used to be 1.0
+	double total_tx = (baseTax + building_tx_income) * (1.0 + building_tx_eff + 0.1);
+	double production_eff_tech = 0.2; // used to be 1.0
 
 	double total_trade_value = ((getTradeGoodPrice() * goods_produced) + trade_value) * (1 + trade_value_eff);
-	double production_income = total_trade_value * (1.5 + production_eff_tech + production_eff); 
+	double production_income = total_trade_value * (1.4 + production_eff_tech + production_eff); 
 	//the bonus 0.5 is supposed to show trade income from trade goods as there is no better way to show it atm, but it still has to be shown to show superiority of base production later on
 	//LOG(LogLevel::Info) << "province name: " << this->getProvName() 
 	//	<< " trade good: " << tradeGoods 
@@ -729,7 +729,7 @@ void EU4Province::determineProvinceWeight()
 	// dev modifier
 	dev_modifier *= ( baseTax + baseProd + manpower );
 
-	totalWeight = building_weight + dev_modifier + ( manpower_weight + production_income + total_tx );
+	totalWeight = building_weight + dev_modifier + ( manpower_weight + production_income + total_tx ) + 0.5 * ( baseTax + baseProd + manpower );
 	//i would change dev effect to 1, but your choice
 	if (owner == NULL)
 	{
