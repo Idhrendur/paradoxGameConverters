@@ -308,7 +308,125 @@ EU4Province::EU4Province(shared_ptr<Object> obj)
     checkProvModifier(obj, "bookmarket_of_x");
     checkProvModifier(obj, "grand_bank_fisheries");
     checkProvModifier(obj, "diamond_district");
-    checkProvModifier(obj, "perfume_capital");
+    checkProvModifier(obj, "perfume_capital");// to add
+    checkProvModifier(obj, "the_staple_port");
+    checkProvModifier(obj, "free_shipping_through_the_sound");
+    checkProvModifier(obj, "bosphorous_sound_toll");
+    checkProvModifier(obj, "sound_toll");
+    checkProvModifier(obj, "jingdezhen_kilns");
+    checkProvModifier(obj, "trade_post_modifier");
+    checkProvModifier(obj, "river_estuary_modifier");
+    checkProvModifier(obj, "neva_estuary_modifier");
+    checkProvModifier(obj, "daugava_estuary_modifier");
+    checkProvModifier(obj, "neman_estuary_modifier");
+    checkProvModifier(obj, "vistula_estuary_modifier");
+    checkProvModifier(obj, "oder_estuary_modifier");
+    checkProvModifier(obj, "elbe_estuary_modifier");
+    checkProvModifier(obj, "weser_estuary_modifier");
+    checkProvModifier(obj, "ems_estuary_modifier");
+    checkProvModifier(obj, "rhine_estuary_modifier");
+    checkProvModifier(obj, "thames_estuary_modifier");
+    checkProvModifier(obj, "rhone_estuary_modifier");
+    checkProvModifier(obj, "gironde_estuary_modifier");
+    checkProvModifier(obj, "loire_estuary_modifier");
+    checkProvModifier(obj, "seine_estuary_modifier");
+    checkProvModifier(obj, "ebro_estuary_modifier");
+    checkProvModifier(obj, "douro_estuary_modifier");
+    checkProvModifier(obj, "tagus_estuary_modifier");
+    checkProvModifier(obj, "guadiana_estuary_modifier");
+    checkProvModifier(obj, "po_estuary_modifier");
+    checkProvModifier(obj, "danube_estuary_modifier");
+    checkProvModifier(obj, "dnestr_estuary_modifier");
+    checkProvModifier(obj, "dnieper_estuary_modifier");
+    checkProvModifier(obj, "volga_estuary_modifier");
+    checkProvModifier(obj, "don_estuary_modifier");
+    checkProvModifier(obj, "yangtze_estuary_modifier");
+    checkProvModifier(obj, "huang_he_estuary_modifier");
+    checkProvModifier(obj, "ganges_estuary_modifier");
+    checkProvModifier(obj, "indus_estuary_modifier");
+    checkProvModifier(obj, "euphrates_estuary_modifier");
+    checkProvModifier(obj, "nile_estuary_modifier");
+    checkProvModifier(obj, "gambia_estuary_modifier");
+    checkProvModifier(obj, "pearl_estuary_modifier");
+    checkProvModifier(obj, "parana_estuary_modifier");
+    checkProvModifier(obj, "mekong_estuary_modifier");
+    checkProvModifier(obj, "mississippi_estuary_modifier");
+    checkProvModifier(obj, "rio_grande_estuary_modifier");
+    checkProvModifier(obj, "niger_estuary_modifier");
+    checkProvModifier(obj, "saint_lawrence_estuary_modifier");
+    checkProvModifier(obj, "hudson_estuary_modifier");
+    checkProvModifier(obj, "nelson_eastuary_modifier");
+    checkProvModifier(obj, "godavari_estuary_modifier");
+    checkProvModifier(obj, "krodavari_estuary_modifier");
+    checkProvModifier(obj, "krishna_estuary_modifier");
+    checkProvModifier(obj, "kura_estuary_modifier");
+    checkProvModifier(obj, "mangaeza_estuary_modifier");
+    checkProvModifier(obj, "columbia_estuary_modifier");
+    checkProvModifier(obj, "delaware_estuary_modifier");
+    checkProvModifier(obj, "james_estuary_modifier");
+    checkProvModifier(obj, "santee_estuary_modifier");
+    checkProvModifier(obj, "guayas_estuary_modifier");
+    checkProvModifier(obj, "senegal_estuary_modifier");
+    checkProvModifier(obj, "zambezi_estuary_modifier");
+    checkProvModifier(obj, "red_river_estuary_modifier");
+    checkProvModifier(obj, "irrawaddy_estuary_modifier");
+    checkProvModifier(obj, "kongo_estuary_modifier");
+    checkProvModifier(obj, "public_works_of_cairo");
+    checkProvModifier(obj, "port_to_the_new_world");
+    checkProvModifier(obj, "the_tower_or_belem");
+    checkProvModifier(obj, "merchant_council_of_sakai");
+    checkProvModifier(obj, "azuchi_castle");
+    checkProvModifier(obj, "ara_sindicat_remenca");
+    checkProvModifier(obj, "kni_martinengo");
+    checkProvModifier(obj, "kni_valetta");
+    checkProvModifier(obj, "mousquetaires_du_roi");
+    checkProvModifier(obj, "bah_bidar_fort");
+    checkProvModifier(obj, "guj_walls_of_ahmedabad");
+    checkProvModifier(obj, "guj_champaner");
+    checkProvModifier(obj, "mer_kumbalgarh");
+    checkProvModifier(obj, "jnp_jaunpur_qila");
+    checkProvModifier(obj, "kbo_gazargamu");
+    checkProvModifier(obj, "venice_ghetto");
+    checkProvModifier(obj, "fortezza_di_sant_andrea");
+    checkProvModifier(obj, "ven_ministers_of_waterways");
+    checkProvModifier(obj, "ven_black_gondolas");
+    checkProvModifier(obj, "ned_house_of_elzevir");
+    checkProvModifier(obj, "hab_schwaz_mine");
+    checkProvModifier(obj, "pru_unification_of_berlin");
+    checkProvModifier(obj, "nor_bohus_fortress");
+    checkProvModifier(obj, "nor_kongsberg_mine");
+    checkProvModifier(obj, "dansborg_factory");
+    checkProvModifier(obj, "city_of_the_kings");
+    checkProvModifier(obj, "red_fort");
+    checkProvModifier(obj, "dhimmi_residence");
+    checkProvModifier(obj, "last_of_the_mahican");
+    checkProvModifier(obj, "bng_delta_reclaimed");
+    checkProvModifier(obj, "bng_port_of_calcutta");
+    checkProvModifier(obj, "mca_salt_mines_of_zipaquira");
+    checkProvModifier(obj, "hub_of_orinoco_trade");
+    checkProvModifier(obj, "kizilirmak_estuary_modifier");
+    checkProvModifier(obj, "menderes_estuary_modifier");
+    checkProvModifier(obj, "el_dorado_mod");
+    checkProvModifier(obj, "sce_life_water");
+    checkProvModifier(obj, "sce_cibola_silver");
+    checkProvModifier(obj, "sce_sierradelaplata_quartz");
+    checkProvModifier(obj, "sce_golden_cups");
+    checkProvModifier(obj, "sce_norumbega_abandoned");
+    checkProvModifier(obj, "sce_saguenay_abandoned");
+    checkProvModifier(obj, "sce_city_of_caesars");
+    checkProvModifier(obj, "sce_quivira");
+    checkProvModifier(obj, "birthplace_of_the_renaissance");
+    checkProvModifier(obj, "birthplace_of_the_new_world");
+    checkProvModifier(obj, "birthplace_of_printing_press");
+    checkProvModifier(obj, "birthplace_of_global_trade");
+    checkProvModifier(obj, "birthplace_of_manufactories");
+    checkProvModifier(obj, "birthplace_of_enlightenment");
+    checkProvModifier(obj, "growth_of_global_trade");
+    checkProvModifier(obj, "slave_entrepot");
+    checkProvModifier(obj, "major_slave_market");
+    checkProvModifier(obj, "the_will_of_tano");
+    checkProvModifier(obj, "the_whim_of_anansi");
+    checkProvModifier(obj, "trading_post_modifier");
 
 	buildPopRatios();
 }
@@ -695,7 +813,7 @@ void EU4Province::determineProvinceWeight()
 	// manpower
 	manpower_weight *= 25;
 	manpower_weight += manpower_modifier;
-	manpower_weight *= ((1 + manpower_modifier) / 25); // should work now as intended
+	manpower_weight *= ((1 + manpower_eff) / 25); // should work now as intended
 
 	//LOG(LogLevel::Info) << "Manpower Weight: " << manpower_weight;
 
@@ -1903,6 +2021,365 @@ if (hasBuilding("university"))
     {
         manu_gp_mod = 0.5;
 	trade_value_eff = 0.15;
+    }
+
+    if (hasProvModifier("jingdezhen_kilns"))
+    {
+        manu_gp_mod = 2.5;
+    }
+
+    if (hasProvModifier("the_staple_port"))
+    {
+        dev_modifier += 0.0375;
+        building_tx_eff += 0.50;
+    }
+
+    if (hasProvModifier("free_shipping_through_the_sound"))
+    {
+        dev_modifier += 0.0375;
+        building_weight += 11.25;
+    }
+
+    if (hasProvModifier("bosphorous_sound_toll"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("sound_toll"))
+    {
+        building_weight += 15;
+    }
+
+    if (hasProvModifier("trade_post_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("ganges_estuary_modifier"))
+    {
+        building_weight += 3.75;
+    }
+
+    if (hasProvModifier("nile_estuary_modifier"))
+    {
+        building_weight += 3.75;
+    }
+
+    if (hasProvModifier("irrawaddy_estuary_modifier"))
+    {
+        building_weight += 3.75;
+    }
+
+    if (hasProvModifier("river_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("neva_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("daugava_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("neman_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("vistula_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("oder_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("elbe_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("weser_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("ems_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("rhine_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("thames_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("rhone_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("gironde_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("loire_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("seine_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("ebro_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("douro_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("tagus_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("guadiana_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("po_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("danube_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("dnestr_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("dnieper_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("volga_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("don_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("yangtze_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("huang_he_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("indus_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("euphrates_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("gambia_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("pearl_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("parana_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("mekong_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("mississippi_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("rio_grande_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("niger_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("saint_lawrence_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("hudson_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("nelson_eastuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("godavari_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("krodavari_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("krishna_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("kura_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("mangaeza_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("columbia_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("delaware_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("james_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("santee_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("guayas_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("senegal_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("zambezi_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("red_river_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("kongo_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("kizilirmak_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("menderes_estuary_modifier"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("trading_post_modifier"))
+    {
+        building_weight += 0.75;
+        dev_modifier += 0.03;
+        trade_value += 0.5;
+    }
+
+    if (hasProvModifier("birthplace_of_the_renaissance"))
+    {
+        building_weight += 3;
+    }
+
+    if (hasProvModifier("birthplace_of_the_new_world"))
+    {
+        building_weight += 7.5;
+    }
+
+    if (hasProvModifier("birthplace_of_printing_press"))
+    {
+        building_weight += 1.5;
+    }
+
+    if (hasProvModifier("birthplace_of_global_trade"))
+    {
+        dev_modifier += 0.06;
+    }
+
+    if (hasProvModifier("birthplace_of_manufactories"))
+    {
+        manu_gp_mod += 0.5;
+    }
+
+    if (hasProvModifier("birthplace_of_enlightenment"))
+    {
+        building_weight += 1.5;
     }
 
 	std::vector<double> provBuildingWeightVec;
