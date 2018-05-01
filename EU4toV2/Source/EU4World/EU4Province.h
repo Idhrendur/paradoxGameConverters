@@ -98,6 +98,7 @@ class EU4Province
 	private:
 		void	checkBuilding(const shared_ptr<Object> provinceObj, string building);
 		void	checkProvModifier(const shared_ptr<Object> provinceObj, string modifierToFind);
+		void	checkTerritory(const shared_ptr<Object> provinceObj);
 		void	buildPopRatios();
 		void	decayPopRatios(date oldDate, date newDate, EU4PopRatio& currentPop);
 
@@ -123,7 +124,8 @@ class EU4Province
 		vector<EU4PopRatio>				popRatios;				// the population ratios of this province
 		map<string, bool>					buildings;				// the buildings in this province
 		map<string, bool>					provModifiers;				// the buildings in this province
-
+		bool							territory;				// the buildings in this province
+	
 		string								tradeGoods;
 		int									numV2Provs;
 
