@@ -427,6 +427,7 @@ EU4Province::EU4Province(shared_ptr<Object> obj)
     checkProvModifier(obj, "the_will_of_tano");
     checkProvModifier(obj, "the_whim_of_anansi");
     checkProvModifier(obj, "trading_post_modifier");
+    checkTerritory(obj);
 
 	buildPopRatios();
 }
@@ -595,6 +596,18 @@ void EU4Province::checkBuilding(const shared_ptr<Object> provinceObj, string bui
                 break;
             }
         }
+	}
+}
+
+
+void EU4Province::checkTerritory(const shared_ptr<Object> provinceObj)
+{
+	
+	vector<shared_ptr<Object>> TerritoryObjs;			// the object holding the base tax
+	TerritoryObjs = provinceObj->getValue("territorial_core");
+	if ((TerritoryObjs.size() > 0))
+	{	
+            territory = true;
 	}
 }
 
@@ -817,11 +830,11 @@ void EU4Province::determineProvinceWeight()
 
 	//LOG(LogLevel::Info) << "Manpower Weight: " << manpower_weight;
 
-	double total_tx = (baseTax + building_tx_income) * (1.0 + building_tx_eff + 0.1);
+	double total_tx = (baseTax + building_tx_income) * (1.5 + building_tx_eff + 0.1);
 	double production_eff_tech = 0.2; // used to be 1.0
 
 	double total_trade_value = ((getTradeGoodPrice() * goods_produced) + trade_value) * (1 + trade_value_eff);
-	double production_income = total_trade_value * (1.4 + production_eff_tech + production_eff); 
+	double production_income = total_trade_value * (1.8 + production_eff_tech + production_eff); 
 	//the bonus 0.5 is supposed to show trade income from trade goods as there is no better way to show it atm, but it still has to be shown to show superiority of base production later on
 	//LOG(LogLevel::Info) << "province name: " << this->getProvName() 
 	//	<< " trade good: " << tradeGoods 
@@ -833,9 +846,9 @@ void EU4Province::determineProvinceWeight()
 	//	<< " production eff: " << production_eff 
 	//	<< " Production: " << production_income;
 
-	total_tx *= 1.5;
+	total_tx *= 1;
 	manpower_weight *= 1;
-	production_income *= 1.25;
+	production_income *= 1;
 
 	provBuildingWeight	= building_weight;
 	provTaxIncome			= total_tx;
@@ -846,9 +859,73 @@ void EU4Province::determineProvinceWeight()
 	
 	// dev modifier
 	dev_modifier *= ( baseTax + baseProd + manpower );
+	
+	if (baseTax + baseProd + manpower >= 10)
+	{	
+		building_weight += 1;
+	
+		if (baseTax + baseProd + manpower >= 20)
+		{	
+			building_weight += 2;
+	
+			if (baseTax + baseProd + manpower >= 30)
+			{	
+				building_weight += 4;
+	
+				if (baseTax + baseProd + manpower >= 40)
+				{	
+					building_weight += 6;
+	
+					if (baseTax + baseProd + manpower >= 50)
+					{	
+						building_weight += 9;
+	
+						if (baseTax + baseProd + manpower >= 60)
+						{	
+							building_weight += 12;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	if (baseTax + baseProd + manpower >= 15)
+	{	
+		building_weight += 1;
+	
+		if (baseTax + baseProd + manpower >= 25)
+		{	
+			building_weight += 2;
+	
+			if (baseTax + baseProd + manpower >= 35)
+			{	
+				building_weight += 4;
+	
+				if (baseTax + baseProd + manpower >= 45)
+				{	
+					building_weight += 6;
+	
+					if (baseTax + baseProd + manpower >= 55)
+					{	
+						building_weight += 9;
+	
+						if (baseTax + baseProd + manpower >= 65)
+						{	
+							building_weight += 12;
+						}
+					}
+				}
+			}
+		}
+	}
 
 	totalWeight = building_weight + dev_modifier + ( manpower_weight + production_income + total_tx ) + 0.5 * ( baseTax + baseProd + manpower );
 	//i would change dev effect to 1, but your choice
+	if (territory == true)
+	{
+		totalWeight *= 0.5;
+	}
 	if (owner == NULL)
 	{
 		totalWeight = 0;
