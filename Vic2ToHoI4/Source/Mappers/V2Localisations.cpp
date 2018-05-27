@@ -144,11 +144,11 @@ string V2Localisations::replaceBadCharacters(string localisation)
 	}
 
 	// Problem with apostrophe (Spanish)
-	int dash = localisation.find_first_of('');
-	while (dash != string::npos)
+	int apostrophe = localisation.find_first_of('');
+	while (apostrophe != string::npos)
 	{
-		localisation.replace(dash, 1, "'");
-		dash = localisation.find_first_of('');
+		localisation.replace(apostrophe, 1, "'");
+		apostrophe = localisation.find_first_of('');
 	}
 
 	return localisation;
