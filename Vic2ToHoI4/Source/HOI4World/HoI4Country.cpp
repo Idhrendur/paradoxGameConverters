@@ -1753,8 +1753,8 @@ void HoI4Country::outputOOB(const vector<HoI4DivisionTemplateType>& divisionTemp
 		output << "\t\t\ttype = destroyer_2\n";
 		output << "\t\t\tcreator = \"" << tag << "\"\n";
 		output << "\t\t}\n";
-		output << "\t\trequested_factories = 5\n";
-		output << "\t\tprogress = 0.88\n";
+		output << "\t\trequested_factories = 3\n";
+		output << "\t\tprogress = 0.25\n";
 		output << "\t\tamount = 10\n";
 		output << "\t}\n";
 	}
@@ -1765,8 +1765,8 @@ void HoI4Country::outputOOB(const vector<HoI4DivisionTemplateType>& divisionTemp
 		output << "\t\t\ttype = destroyer_1\n";
 		output << "\t\t\tcreator = \"" << tag << "\"\n";
 		output << "\t\t}\n";
-		output << "\t\trequested_factories = 5\n";
-		output << "\t\tprogress = 0.88\n";
+		output << "\t\trequested_factories = 3\n";
+		output << "\t\tprogress = 0.25\n";
 		output << "\t\tamount = 10\n";
 		output << "\t}\n";
 	}
@@ -1777,9 +1777,9 @@ void HoI4Country::outputOOB(const vector<HoI4DivisionTemplateType>& divisionTemp
 		output << "\t\t\ttype = battleship_2\n";
 		output << "\t\t\tcreator = \"" << tag << "\"\n";
 		output << "\t\t}\n";
-		output << "\t\trequested_factories = 10\n";
-		output << "\t\tprogress = 0.88\n";
-		output << "\t\tamount = 10\n";
+		output << "\t\trequested_factories = 8\n";
+		output << "\t\tprogress = 0.25\n";
+		output << "\t\tamount = 3\n";
 		output << "\t}\n";
 	}
 	else if (technologies.find("early_battleship") != technologies.end())
@@ -1789,9 +1789,9 @@ void HoI4Country::outputOOB(const vector<HoI4DivisionTemplateType>& divisionTemp
 		output << "\t\t\ttype = battleship_1\n";
 		output << "\t\t\tcreator = \"" << tag << "\"\n";
 		output << "\t\t}\n";
-		output << "\t\trequested_factories = 10\n";
-		output << "\t\tprogress = 0.88\n";
-		output << "\t\tamount = 10\n";
+		output << "\t\trequested_factories = 8\n";
+		output << "\t\tprogress = 0.25\n";
+		output << "\t\tamount = 3\n";
 		output << "\t}\n";
 	}
 	output << "\tadd_equipment_production = {\n";
@@ -1800,10 +1800,11 @@ void HoI4Country::outputOOB(const vector<HoI4DivisionTemplateType>& divisionTemp
 	output << "\t\t\tcreator = \"" << tag << "\"\n";
 	output << "\t\t}\n";
 	output << "\t\trequested_factories = 10\n";
-	output << "\t\tprogress = 0.88\n";
+	output << "\t\tprogress = 0.50\n";
 	output << "\t\tamount = 100\n";
 	output << "\t}\n";
 	output << "}\n";
+	output << "units = {";
 	for (auto& division : divisions)
 	{
 		output << division;
