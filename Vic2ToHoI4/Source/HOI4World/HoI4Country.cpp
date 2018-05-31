@@ -1804,7 +1804,7 @@ void HoI4Country::outputOOB(const vector<HoI4DivisionTemplateType>& divisionTemp
 	output << "\t\tamount = 100\n";
 	output << "\t}\n";
 	output << "}\n";
-	output << "units = {";
+	output << "units = {\n";
 	for (auto& division : divisions)
 	{
 		output << division;
