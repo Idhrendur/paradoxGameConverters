@@ -5,3 +5,6 @@
  improved_resource_industry:0 "Improved Resource Industry"
  established_traders:0 "Estabilished Traders"
  border_buildup:0 "Border Buildup"
+ autonomy_vicereign:0 "Vicereign"
+ autonomy_vassal:0 "Vassal"
+ autonomy_demesne:0 "Demesne"
