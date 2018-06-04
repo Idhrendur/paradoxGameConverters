@@ -4,6 +4,13 @@ formable_nations = { #Vic2-from unions
 
 	allowed = {
 		#has_dlc = "Waking the Tiger"
-		always = no #Until the tags are fully implemented to always-be, better not to risk
+		always = yes
 	}
+}
+
+TUR_name_category = {
+
+	icon = generic_formable_nations
+
+	allowed = { always = yes }
 }
