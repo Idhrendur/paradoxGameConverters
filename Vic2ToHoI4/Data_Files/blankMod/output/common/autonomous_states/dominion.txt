@@ -33,6 +33,8 @@ autonomy_state = {
 		}
 		has_dlc = "Together for Victory"
 		NOT = { has_government = absolutist }
+		NOT = { has_government = communism }
+		NOT = { has_government = radical }
 	}
 	
 	can_take_level = {

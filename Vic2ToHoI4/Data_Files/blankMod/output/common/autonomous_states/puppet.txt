@@ -34,6 +34,8 @@ autonomy_state = {
 
 	allowed = {
 		NOT = { has_government = absolutist }
+		NOT = { has_government = communism }
+		NOT = { has_government = radical }
 	}
 
 	can_take_level = {
