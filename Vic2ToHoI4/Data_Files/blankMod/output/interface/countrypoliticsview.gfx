@@ -587,5 +587,35 @@ spriteTypes = {
 		name = "GFX_autonomy_demesne_icon"
 		textureFile = "gfx/interface/autonomy/autonomy_demesne_icon.dds"
 	}
+		
+	spriteType = {
+		name = "GFX_autonomy_red_satellite_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_red_satellite_icon.dds"
+	}
+		
+	spriteType = {
+		name = "GFX_autonomy_red_protectorate_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_red_protectorate_icon.dds"
+	}
+		
+	spriteType = {
+		name = "GFX_autonomy_red_generalship_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_red_generalship_icon.dds"
+	}
+		
+	spriteType = {
+		name = "GFX_autonomy_chief_division_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_chief_division_icon.dds"
+	}
+		
+	spriteType = {
+		name = "GFX_autonomy_department_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_department_icon.dds"
+	}
+		
+	spriteType = {
+		name = "GFX_autonomy_clerkdom_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_clerkdom_icon.dds"
+	}
 	
 }
