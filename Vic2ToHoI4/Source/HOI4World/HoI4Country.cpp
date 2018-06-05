@@ -135,13 +135,13 @@ void HoI4Country::initFromV2Country(const Vic2::World& _srcWorld, const Vic2::Co
 
 	if (srcCountry->getProvinces().size() > 0)
 	{
-		stability -= (srcCountry->getAverageMilitancy() / 10 / 1.5);
+		/*stability -= (srcCountry->getAverageMilitancy() / 10 / 1.5);
 		if (stability < 0.15)
 		{
 			stability = 0.15;
 		}
 		LOG(LogLevel::Debug) << "stability," << tag << "," << stability;
-
+		*/
 		float warAttitude = srcCountry->getAverageIssueSupport("jingoism");
 		warAttitude += srcCountry->getAverageIssueSupport("pro_military") / 2;
 		warAttitude -= srcCountry->getAverageIssueSupport("anti_military") / 2;
