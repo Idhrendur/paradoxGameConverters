@@ -130,21 +130,24 @@ void HoI4Country::initFromV2Country(const Vic2::World& _srcWorld, const Vic2::Co
 	lastElection = srcCountry->getLastElection();
 	initIdeas();
 
-	stability = 0.70 + (srcCountry->getRevanchism() / 5.0) - (srcCountry->getWarExhaustion() / 100.0 / 2.5) - (srcCountry->getAverageMilitancy() / 10 / 1.5);
-	if (stability < 0.15)
-	{
-		stability = 0.15;
-	}
-	LOG(LogLevel::Debug) << "stability," << tag << "," << stability;
+	stability = 0.6;
+	warSupport = 0.6;
 
-	warSupport = 0.5;
 	if (srcCountry->getProvinces().size() > 0)
 	{
+		stability -= (srcCountry->getAverageMilitancy() / 10 / 1.5);
+		if (stability < 0.15)
+		{
+			stability = 0.15;
+		}
+		LOG(LogLevel::Debug) << "stability," << tag << "," << stability;
+
 		float warAttitude = srcCountry->getAverageIssueSupport("jingoism");
 		warAttitude += srcCountry->getAverageIssueSupport("pro_military") / 2;
 		warAttitude -= srcCountry->getAverageIssueSupport("anti_military") / 2;
 		warAttitude -= srcCountry->getAverageIssueSupport("pacifism");
 		warSupport += warAttitude * 0.00375;
+		warSupport += (srcCountry->getRevanchism() / 5.0) - (srcCountry->getWarExhaustion() / 100.0 / 2.5);
 		if (warSupport < 0.15)
 		{
 			warSupport = 0.15;
