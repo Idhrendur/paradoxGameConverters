@@ -644,6 +644,7 @@ ostream& operator << (ostream& out, const HoI4DivisionType& division)
 	out << "\t\tlocation = " << division.location << "\n";
 	out << "\t\tdivision_template = \"" << division.type << "\"\n";
 	out << "\t\tstart_experience_factor = 0.3\n";
+	out << "\t\tstart_equipment_factor = 0.7\n";
 	out << "\t}\n";
 
 	return out;
