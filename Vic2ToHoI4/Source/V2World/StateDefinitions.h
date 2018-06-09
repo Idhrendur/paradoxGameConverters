@@ -1,4 +1,4 @@
-/*Copyright (c) 2017 The Paradox Game Converters Project
+/*Copyright (c) 2018 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,43 +21,48 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "HoI4SupplyZone.h"
-#include "Log.h"
-#include "../Configuration.h"
-#include <fstream>
+#ifndef VIC2_STATE_DEFINITIONS_H
+#define VIC2_STATE_DEFINITIONS_H
 
 
 
-HoI4SupplyZone::HoI4SupplyZone(int _ID, int _value):
-	ID(_ID),
-	states(),
-	value(_value)
+#include "newParser.h"
+#include <map>
+#include <memory>
+#include <optional>
+#include <set>
+
+
+
+namespace Vic2
 {
+
+class StateDefinitions: commonItems::parser
+{
+	public:
+		StateDefinitions() = default;
+
+		void initialize();
+
+		std::set<int> getAllProvinces(int provinceNumber) const;
+		std::optional<std::string> getStateID(int provinceNumber) const;
+		std::optional<int> getCapitalProvince(const std::string& stateID) const;
+
+	private:
+		StateDefinitions(const StateDefinitions&) = delete;
+		StateDefinitions& operator=(const StateDefinitions&) = delete;
+
+		std::map<int, std::set<int>> stateMap; // < province, all other provinces in state >
+		std::map<int, std::string> provinceToIDMap;
+		std::map<std::string, int> stateToCapitalMap;
+};
+
+
+extern StateDefinitions theStateDefinitions;
+
 }
 
 
-void HoI4SupplyZone::output(const string& _filename) const
-{
-	string filename("output/" + theConfiguration.getOutputName() + "/map/supplyareas/" + _filename);
-	ofstream out(filename);
-	if (!out.is_open())
-	{
-		LOG(LogLevel::Error) << "Could not open \"output/input/map/supplyareas/" + _filename;
-		exit(-1);
-	}
-	out << "supply_area={" << endl;
-	out << "\tid=" << ID << endl;
-	out << "\tname= \"SUPPLYAREA_" << ID << "\"" << endl;
-	out << "\tvalue = " << value << endl;
-	out << "\tstates={" << endl;
-	out << "\t\t";
-	for (auto stateNum: states)
-	{
-		out << stateNum << " ";
-	}
-	out << endl;
-	out << "\t}" << endl;
-	out << "}" << endl;
 
-	out.close();
-}
+#endif // VIC2_STATE_DEFINITIONS_H
+

@@ -25,8 +25,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include <fstream>
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
-#include "ParadoxParser8859_15.h"
-#include "ParadoxParserUTF8.h"
 #include "ParserHelpers.h"
 #include "CommonCountryData.h"
 #include "Country.h"
@@ -35,6 +33,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "Party.h"
 #include "Province.h"
 #include "State.h"
+#include "StateDefinitions.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/MergeRules.h"
 #include "../Mappers/ProvinceMapper.h"
@@ -44,6 +43,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 Vic2::World::World(const string& filename)
 {
 	Vic2::issuesInstance.instantiate();
+	Vic2::theStateDefinitions.initialize();
 
 	std::vector<int> GPIndexes;
 	registerKeyword(std::regex("great_nations"), [&GPIndexes, this](const std::string& unused, std::istream& theStream)
@@ -86,7 +86,7 @@ Vic2::World::World(const string& filename)
 	setGreatPowerStatus(GPIndexes, tagsInOrder);
 	setProvinceOwners();
 	addProvinceCoreInfoToCountries();
-	if (Configuration::getRemoveCores())
+	if (theConfiguration.getRemoveCores())
 	{
 		removeSimpleLandlessNations();
 	}
@@ -261,18 +261,18 @@ void Vic2::World::readCountryFiles()
 {
 	bool countriesDotTxtRead = false;
 
-	for (auto vic2Mod: Configuration::getVic2Mods())
+	for (auto vic2Mod: theConfiguration.getVic2Mods())
 	{
-		if (processCountriesDotTxt(Configuration::getV2Path() + "/mod/" + vic2Mod + "/common/countries.txt", vic2Mod))
+		if (processCountriesDotTxt(theConfiguration.getVic2Path() + "/mod/" + vic2Mod + "/common/countries.txt", vic2Mod))
 		{
 			countriesDotTxtRead = true;
 		}
 	}
 	if (!countriesDotTxtRead)
 	{
-		if (!processCountriesDotTxt(Configuration::getV2Path() + "/common/countries.txt", ""))
+		if (!processCountriesDotTxt(theConfiguration.getVic2Path() + "/common/countries.txt", ""))
 		{
-			LOG(LogLevel::Error) << "Could not open " << Configuration::getV2Path() + "/common/countries.txt";
+			LOG(LogLevel::Error) << "Could not open " << theConfiguration.getVic2Path() + "/common/countries.txt";
 			exit(-1);
 		}
 	}

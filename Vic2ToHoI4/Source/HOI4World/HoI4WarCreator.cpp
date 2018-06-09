@@ -28,7 +28,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4World.h"
 #include "../Mappers/ProvinceDefinitions.h"
 #include "../Mappers/ProvinceNeighborMapper.h"
-#include "../Mappers/StateMapper.h"
 #include "../V2World/Party.h"
 #include "Log.h"
 
@@ -43,7 +42,7 @@ HoI4WarCreator::HoI4WarCreator(const HoI4World* world):
 	provinceToOwnerMap()
 {
 	ofstream AILog;
-	if (Configuration::getDebug())
+	if (theConfiguration.getDebug())
 	{
 		AILog.open("AI-log.txt");
 	}
@@ -60,7 +59,7 @@ HoI4WarCreator::HoI4WarCreator(const HoI4World* world):
 	LOG(LogLevel::Info) << "Generating additional wars";
 	generateAdditionalWars(AILog, factionsAtWar, worldStrength);
 
-	if (Configuration::getDebug())
+	if (theConfiguration.getDebug())
 	{
 		AILog.close();
 	}
@@ -145,7 +144,7 @@ double HoI4WarCreator::calculateWorldStrength(ofstream& AILog) const
 		worldStrength += GetFactionStrength(Faction, 3);
 	}
 
-	if (Configuration::getDebug())
+	if (theConfiguration.getDebug())
 	{
 		AILog << "Total world strength: " << worldStrength << "\n\n";
 	}
@@ -155,7 +154,7 @@ double HoI4WarCreator::calculateWorldStrength(ofstream& AILog) const
 
 void HoI4WarCreator::generateMajorWars(ofstream& AILog, set<shared_ptr<HoI4Faction>>& factionsAtWar, const std::set<std::string>& majorIdeologies, const HoI4World* world)
 {
-	if (Configuration::getDebug())
+	if (theConfiguration.getDebug())
 	{
 		AILog << "Creating major wars\n";
 	}
@@ -203,7 +202,7 @@ double HoI4WarCreator::calculatePercentOfWorldAtWar(ofstream& AILog, const set<s
 	}
 
 	double percentOfWorldAtWar = countriesAtWarStrength / worldStrength;
-	if (Configuration::getDebug())
+	if (theConfiguration.getDebug())
 	{
 		AILog << "Fraction of world at war " << percentOfWorldAtWar << "\n";
 	}
@@ -220,7 +219,7 @@ void HoI4WarCreator::generateAdditionalWars(ofstream& AILog, set<shared_ptr<HoI4
 	{
 		if (!isImportantCountry(countriesEvilnessSorted[i]))
 		{
-			if (Configuration::getDebug())
+			if (theConfiguration.getDebug())
 			{
 				auto name = countriesEvilnessSorted[i]->getSourceCountry()->getName("english");
 				if (name)
@@ -832,12 +831,15 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4C
 
 	//events for allies
 	auto newAllies = GetMorePossibleAllies(Leader);
-	if (newAllies.size() > 0 && Leader->getFaction() == nullptr)
+	if (theConfiguration.getCreateFactions())
 	{
-		vector<shared_ptr<HoI4Country>> self;
-		self.push_back(Leader);
-		auto newFaction = make_shared<HoI4Faction>(Leader, self);
-		Leader->setFaction(newFaction);
+		if (newAllies.size() > 0 && Leader->getFaction() == nullptr)
+		{
+			vector<shared_ptr<HoI4Country>> self;
+			self.push_back(Leader);
+			auto newFaction = make_shared<HoI4Faction>(Leader, self);
+			Leader->setFaction(newFaction);
+		}
 	}
 
 	vector<shared_ptr<HoI4Faction>> FactionsAttackingMe;
@@ -856,7 +858,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4C
 		{
 			FactionsAttackingMeStrength += GetFactionStrengthWithDistance(Leader, attackingFaction->getMembers(), 3);
 		}
-		if (Configuration::getDebug())
+		if (theConfiguration.getDebug())
 		{
 			if (name)
 			{
@@ -879,7 +881,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4C
 				auto relations = Leader->getRelations(GC->getTag());
 				if ((relations) && ((*relations)->getRelations() > 0) && (maxGCAlliance < 1))
 				{
-					if (Configuration::getDebug())
+					if (theConfiguration.getDebug())
 					{
 						if (name)
 						{
@@ -904,14 +906,17 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4C
 							}
 						}
 					}
-					if (GC->getFaction() == nullptr)
+					if (theConfiguration.getCreateFactions())
 					{
-						vector<shared_ptr<HoI4Country>> self;
-						self.push_back(GC);
-						auto newFaction = make_shared<HoI4Faction>(GC, self);
-						GC->setFaction(newFaction);
+						if (GC->getFaction() == nullptr)
+						{
+							vector<shared_ptr<HoI4Country>> self;
+							self.push_back(GC);
+							auto newFaction = make_shared<HoI4Faction>(GC, self);
+							GC->setFaction(newFaction);
+						}
+						theWorld->getEvents()->createFactionEvents(Leader, GC);
 					}
-					theWorld->getEvents()->createFactionEvents(Leader, GC);
 					newAllies.push_back(GC);
 					maxGCAlliance++;
 				}
@@ -1224,7 +1229,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 	int numWarsWithNeighbors = 0;
 	vector<shared_ptr<HoI4Focus>> newFocuses;
 
-	if (Configuration::getDebug())
+	if (theConfiguration.getDebug())
 	{
 		auto name = country->getSourceCountry()->getName("english");
 		if (name)
@@ -1274,7 +1279,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 			}
 
 			countriesAtWar.push_back(findFaction(country));
-			if (Configuration::getDebug())
+			if (theConfiguration.getDebug())
 			{
 				AILog << "Creating focus to attack " + targetName << "\n";
 			}
