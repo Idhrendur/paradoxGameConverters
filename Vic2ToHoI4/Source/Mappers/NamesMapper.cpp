@@ -113,6 +113,7 @@ void namesMapper::processNamesFile()
 			string culture = cultureObj->getKey();
 
 			femaleNamesMap.insert(make_pair(culture, cultureObj->safeGetTokens("female_names")));
+			femaleSurnamesMap.insert(make_pair(culture, cultureObj->safeGetTokens("female_surnames")));
 			callsignsMap.insert(make_pair(culture, cultureObj->safeGetTokens("callsigns")));
 			carCompanyNames.insert(make_pair(culture, cultureObj->safeGetTokens("car_companies")));
 			weaponCompanyNames.insert(make_pair(culture, cultureObj->safeGetTokens("weapon_companies")));
@@ -140,6 +141,11 @@ void namesMapper::checkForNames()
 		{
 			LOG(LogLevel::Warning) << "No female names for " << culture;
 		}
+		//Hashed out cause only few have female surnames
+		//if (femaleNamesMap.find(culture) == femaleNamesMap.end())
+		//{
+		//	LOG(LogLevel::Warning) << "No female surnames for " << culture;
+		//}
 		if (callsignsMap.find(culture) == callsignsMap.end())
 		{
 			LOG(LogLevel::Warning) << "No callsigns for " << culture;
@@ -190,6 +196,20 @@ optional<vector<string>> namesMapper::GetFemaleNames(const string& culture) cons
 {
 	auto namesItr = femaleNamesMap.find(culture);
 	if (namesItr != femaleNamesMap.end())
+	{
+		return namesItr->second;
+	}
+	else
+	{
+		return {};
+	}
+}
+
+
+optional<vector<string>> namesMapper::GetFemaleSurnames(const string& culture) const
+{
+	auto namesItr = femaleSurnamesMap.find(culture);
+	if (namesItr != femaleSurnamesMap.end())
 	{
 		return namesItr->second;
 	}
@@ -255,6 +275,22 @@ optional<string> namesMapper::GetFemaleName(const string& culture)
 	else
 	{
 		LOG(LogLevel::Warning) << "No female name could be found for " << culture;
+		return {};
+	}
+}
+
+
+optional<string> namesMapper::GetFemaleSurname(const string& culture)
+{
+	auto surnames = GetFemaleSurnames(culture);
+	if (firstNames)
+	{
+		std::uniform_int_distribution<int> firstNameGen(0, firstNames->size() - 1);
+		return (*surnames)[surnameGen(rng)];
+	}
+	else
+	{
+		LOG(LogLevel::Warning) << "No female surname could be found for " << culture;
 		return {};
 	}
 }
