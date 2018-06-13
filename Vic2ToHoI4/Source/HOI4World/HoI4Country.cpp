@@ -1215,6 +1215,9 @@ void HoI4Country::outputToNamesFiles(ofstream& namesFile) const
 	namesFile << "\t\tnames = {\n";
 	outputNamesSet(namesFile, namesMapper::getFemaleNames(srcCountry->getPrimaryCulture()), "\t\t\t");
 	namesFile << "\t\t}\n";
+	namesFile << "\t\tsurnames = {\n";
+	outputNamesSet(namesFile, namesMapper::getFemaleSurnames(srcCountry->getPrimaryCulture()), "\t\t\t");
+	namesFile << "\t\t}\n";
 	namesFile << "\t}\n";
 
 	namesFile << "\tsurnames = {\n";
