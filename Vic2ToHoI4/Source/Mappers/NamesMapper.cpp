@@ -36,6 +36,7 @@ namesMapper* namesMapper::instance = nullptr;
 namesMapper::namesMapper():
 	maleNamesMap(),
 	femaleNamesMap(),
+	femaleSurnamesMap(),
 	surnamesMap(),
 	callsignsMap(),
 	carCompanyNames(),
