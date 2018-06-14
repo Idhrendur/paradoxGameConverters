@@ -46,6 +46,10 @@ class namesMapper
 		{
 			return getInstance()->GetFemaleNames(culture);
 		}
+		static optional<vector<string>> getFemaleSurnames(const string& culture)
+		{
+			return getInstance()->GetFemaleSurnames(culture);
+		}
 		static optional<vector<string>> getSurnames(const string& culture)
 		{
 			return getInstance()->GetSurnames(culture);
@@ -62,6 +66,10 @@ class namesMapper
 		static optional<string> getFemaleName(const string& culture)
 		{
 			return getInstance()->GetFemaleName(culture);
+		}
+		static optional<string> getFemaleSurname(const string& culture)
+		{
+			return getInstance()->GetFemaleSurname(culture);
 		}
 		static optional<string> getSurname(const string& culture)
 		{
@@ -116,10 +124,12 @@ class namesMapper
 
 		optional<vector<string>> GetMaleNames(const string& culture) const;
 		optional<vector<string>> GetFemaleNames(const string& culture) const;
+		optional<vector<string>> GetFemaleSurnames(const string& culture) const;
 		optional<vector<string>> GetSurnames(const string& culture) const;
 		optional<vector<string>> GetCallsigns(const string& culture) const;
 		optional<string> GetMaleName(const string& culture);
 		optional<string> GetFemaleName(const string& culture);
+		optional<string> GetFemaleSurname(const string& culture);
 		optional<string> GetSurname(const string& culture);
 		optional<string> GetCallsign(const string& culture);
 		optional<string> GetCarCompanyName(const string& culture);
@@ -132,6 +142,7 @@ class namesMapper
 
 		map<string, vector<string>> maleNamesMap;
 		map<string, vector<string>> femaleNamesMap;
+		map<string, vector<string>> femaleSurnamesMap;
 		map<string, vector<string>> surnamesMap;
 		map<string, vector<string>> callsignsMap;
 		map<string, vector<string>> carCompanyNames;

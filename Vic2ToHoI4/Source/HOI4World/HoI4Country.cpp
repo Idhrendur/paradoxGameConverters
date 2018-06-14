@@ -1215,6 +1215,15 @@ void HoI4Country::outputToNamesFiles(ofstream& namesFile) const
 	namesFile << "\t\tnames = {\n";
 	outputNamesSet(namesFile, namesMapper::getFemaleNames(srcCountry->getPrimaryCulture()), "\t\t\t");
 	namesFile << "\t\t}\n";
+	//To avoid conflict, somebody should mod it this way:
+	//If there are female surnames, create the appropriate section, and move general surnames to male only.
+	//If no female surnames found, there should only be the generic section.
+	//Sorry I don't know how to code if statements here
+	//~IohannesIohannium
+
+	namesFile << "\t\tsurnames = {\n";
+	outputNamesSet(namesFile, namesMapper::getFemaleSurnames(srcCountry->getPrimaryCulture()), "\t\t\t");
+	namesFile << "\t\t}\n";
 	namesFile << "\t}\n";
 
 	namesFile << "\tsurnames = {\n";
