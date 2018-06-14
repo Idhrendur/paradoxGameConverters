@@ -48,7 +48,7 @@ class namesMapper
 		}
 		static optional<vector<string>> getFemaleSurnames(const string& culture)
 		{
-			return getInstance()->GetFemaleSurames(culture);
+			return getInstance()->GetFemaleSurnames(culture);
 		}
 		static optional<vector<string>> getSurnames(const string& culture)
 		{
