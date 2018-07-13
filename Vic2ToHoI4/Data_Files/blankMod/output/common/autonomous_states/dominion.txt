@@ -27,7 +27,14 @@ autonomy_state = {
 	}
 
 	allowed = {
+		if = {
+			limit = { has_dlc = "Death or Dishonor" }
+			NOT = { has_government = fascism }
+		}
 		has_dlc = "Together for Victory"
+		NOT = { has_government = absolutist }
+		NOT = { has_government = communism }
+		NOT = { has_government = radical }
 	}
 	
 	can_take_level = {

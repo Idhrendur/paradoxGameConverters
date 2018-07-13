@@ -1,3 +1,12 @@
 ﻿l_spanish:
  great_power:0 "Potencia mundial"
  uncivilized:0 "Nación incivilizada"
+ autonomy_vicereign:0 "Virreinato"
+ autonomy_vassal:0 "Vasallo"
+ autonomy_demesne:0 "Domínio"
+ autonomy_red_satellite:0 "Satélite Rojo"
+ autonomy_red_protectorate:0 "Protectorado Rojo"
+ autonomy_red_generalship:0 "Generalía Roja"
+ autonomy_chief_division:0 "División Jefe"
+ autonomy_department:0 "Departamento"
+ autonomy_clerkdom:0 "Vendedorea"
