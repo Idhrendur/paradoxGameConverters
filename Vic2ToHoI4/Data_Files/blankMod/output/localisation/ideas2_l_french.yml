@@ -83,3 +83,6 @@
  form_country_india_required_states_tt:0 "Contrôle tous les États §Yindiens§!."
  form_country_commonwealth_required_states_tt:0 "Contrôle tous les États §Ypolonais-lituaniens§!."
  form_country_baltic_required_states_tt:0 "Contrôle tous les États §Ybaltes§!."
+ CHI_union:0 "Le Mandat du Ciel"
+ CHI_union_desc:0 "Pendant longtemps, le Moyen Empire a été divisé en luttes féodales entre les différents bureaucrates. Mais aujourd'hui, un nouvel empire est né des cendres de ces États en guerre."
+ form_country_chinese_required_state_tt:0 "Contrôle tous les États §chinois§!." 
