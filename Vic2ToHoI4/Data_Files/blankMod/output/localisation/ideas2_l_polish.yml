@@ -83,3 +83,6 @@
  form_country_india_required_states_tt:0 "Kontroluje wszystkie §YIndianie§! stany."
  form_country_commonwealth_required_states_tt:0 "Kontroluje wszystkie §YPolsko-Litwini§! stany."
  form_country_baltic_required_states_tt:0 "Kontroluje wszystkie §YBałtyckie§! stany."
+ CHI_union:0 "Mandat Nieba"
+ CHI_union_desc:0 "Przez wiele czasu Królestwo Środkowe podzielone było na feudalne walki różnych biurokratów. Ale dzisiaj, z popiołów walczących państw narodziło się nowe Imperium."
+ form_country_chinese_required_state_tt:0 "Kontroluje wszystkie §YChińskie§! stany." 
