@@ -83,3 +83,6 @@
  form_country_india_required_states_tt:0 "Controla todos los estados §YIndios§!."
  form_country_commonwealth_required_states_tt:0 "Controla todos los estados §YPolaco-lituanos§!."
  form_country_baltic_required_states_tt:0 "Controla todos los estados §YBálticos§!."
+ CHI_union:0 "El Mandato del Cielo"
+ CHI_union_desc:0 "Durante mucho tiempo, el Reino Medio se ha dividido en luchas feudales entre los diversos burócratas. Pero hoy, un nuevo Imperio nació de las cenizas de esos estados en guerra."
+ form_country_chinese_required_state_tt:0 "Controla todos los estados §YChinos§!." 
