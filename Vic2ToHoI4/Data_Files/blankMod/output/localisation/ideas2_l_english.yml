@@ -83,3 +83,6 @@
  form_country_india_required_states_tt:0 "Controls all §YIndian§! states."
  form_country_commonwealth_required_states_tt:0 "Controls all §YPolish-Lithuanian§! states."
  form_country_baltic_required_states_tt:0 "Controls all §YBaltic§! states."
+ CHI_union:0 "The Mandate of Heaven"
+ CHI_union_desc:0 "For a lot of time, the Middle Kingdom has been divided in feudal fights among the various bureaucrats. But today, a new Empire was born from the ashes of those warring states."
+ form_country_chinese_required_state_tt:0 "Controls all §YChinese§! states." 
