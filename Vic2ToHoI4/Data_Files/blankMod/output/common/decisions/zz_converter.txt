@@ -116,9 +116,14 @@ formable_nations = {
 			hidden_effect = {
 				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = GER }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = GER
+					set_state_flag = GER_state
+				}
+				every_state = {
+					limit = { has_state_flag = GER_state }
 					add_core_of = ROOT
-					#remove_core_of = GER
+					clr_state_flag = GER_state
 				}
 			}
 		}
@@ -163,9 +168,14 @@ formable_nations = {
 			hidden_effect = {
 				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = ITA }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = ITA
+					set_state_flag = ITA_state
+				}
+				every_state = {
+					limit = { has_state_flag = ITA_state }
 					add_core_of = ROOT
-					#remove_core_of = ITA
+					clr_state_flag = ITA_state
 				}
 			}
 		}
@@ -206,12 +216,17 @@ formable_nations = {
 			set_cosmetic_tag = ARA_UNIFIED
 			add_stability = 0.05
 			hidden_effect = {
-				set_country_flag = conv_unified
 				news_event = { id = wtt_news.67 hours = 6 }
+				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = SAU }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = SAU
+					set_state_flag = SAU_state
+				}
+				every_state = {
+					limit = { has_state_flag = SAU_state }
 					add_core_of = ROOT
-					#remove_core_of = SAU
+					clr_state_flag = SAU_state
 				}
 			}
 		}
@@ -252,12 +267,17 @@ formable_nations = {
 			set_cosmetic_tag = SCA
 			add_stability = 0.05
 			hidden_effect = {
-				set_country_flag = conv_unified
 				news_event = { id = wtt_news.53 hours = 6 }
+				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = SCA }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = SCA
+					set_state_flag = SCA_state
+				}
+				every_state = {
+					limit = { has_state_flag = SCA_state }
 					add_core_of = ROOT
-					#remove_core_of = SCA
+					clr_state_flag = SCA_state
 				}
 			}
 		}
@@ -300,9 +320,14 @@ formable_nations = {
 			hidden_effect = {
 				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = ENG }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = ENG
+					set_state_flag = ENG_state
+				}
+				every_state = {
+					limit = { has_state_flag = ENG_state }
 					add_core_of = ROOT
-					#remove_core_of = ENG
+					clr_state_flag = ENG_state
 				}
 			}
 		}
@@ -345,9 +370,14 @@ formable_nations = {
 			hidden_effect = {
 				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = FRA }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = FRA
+					set_state_flag = FRA_state
+				}
+				every_state = {
+					limit = { has_state_flag = FRA_state }
 					add_core_of = ROOT
-					#remove_core_of = FRA
+					clr_state_flag = FRA_state
 				}
 			}
 		}
@@ -390,9 +420,14 @@ formable_nations = {
 			hidden_effect = {
 				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = YUG }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = YUG
+					set_state_flag = YUG_state
+				}
+				every_state = {
+					limit = { has_state_flag = YUG_state }
 					add_core_of = ROOT
-					#remove_core_of = YUG
+					clr_state_flag = YUG_state
 				}
 			}
 		}
@@ -435,9 +470,14 @@ formable_nations = {
 			hidden_effect = {
 				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = ROM }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = ROM
+					set_state_flag = ROM_state
+				}
+				every_state = {
+					limit = { has_state_flag = ROM_state }
 					add_core_of = ROOT
-					#remove_core_of = ROM
+					clr_state_flag = ROM_state
 				}
 			}
 		}
@@ -480,9 +520,14 @@ formable_nations = {
 			hidden_effect = {
 				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = HUN }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = HUN
+					set_state_flag = HUN_state
+				}
+				every_state = {
+					limit = { has_state_flag = HUN_state }
 					add_core_of = ROOT
-					#remove_core_of = HUN
+					clr_state_flag = HUN_state
 				}
 			}
 		}
@@ -525,9 +570,14 @@ formable_nations = {
 			hidden_effect = {
 				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = CZE }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = CZE
+					set_state_flag = CZE_state
+				}
+				every_state = {
+					limit = { has_state_flag = CZE_state }
 					add_core_of = ROOT
-					#remove_core_of = CZE
+					clr_state_flag = CZE_state
 				}
 			}
 		}
@@ -570,9 +620,14 @@ formable_nations = {
 			hidden_effect = {
 				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = SOV }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = SOV
+					set_state_flag = SOV_state
+				}
+				every_state = {
+					limit = { has_state_flag = SOV_state }
 					add_core_of = ROOT
-					#remove_core_of = SOV
+					clr_state_flag = SOV_state
 				}
 			}
 		}
@@ -615,9 +670,14 @@ formable_nations = {
 			hidden_effect = {
 				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = RAJ }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = RAJ
+					set_state_flag = RAJ_state
+				}
+				every_state = {
+					limit = { has_state_flag = RAJ_state }
 					add_core_of = ROOT
-					#remove_core_of = RAJ
+					clr_state_flag = RAJ_state
 				}
 			}
 		}
@@ -658,12 +718,17 @@ formable_nations = {
 			set_cosmetic_tag = PLC_unified
 			add_stability = 0.05
 			hidden_effect = {
-				set_country_flag = conv_unified
 				news_event = { id = wtt_news.57 hours = 6 }
+				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = PLC }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = PLC
+					set_state_flag = PLC_state
+				}
+				every_state = {
+					limit = { has_state_flag = PLC_state }
 					add_core_of = ROOT
-					#remove_core_of = PLC
+					clr_state_flag = PLC_state
 				}
 			}
 		}
@@ -704,12 +769,68 @@ formable_nations = {
 			set_cosmetic_tag = BAL_unified
 			add_stability = 0.05
 			hidden_effect = {
-				set_country_flag = conv_unified
 				news_event = { id = wtt_news.60 hours = 6 }
+				set_country_flag = conv_unified
 				every_state = {
-					limit = { is_core_of = BAL }
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = BAL
+					set_state_flag = BAL_state
+				}
+				every_state = {
+					limit = { has_state_flag = BAL_state }
 					add_core_of = ROOT
-					#remove_core_of = BAL
+					clr_state_flag = BAL_state
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	CHI_union = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			NOT = { country_exists = CHI }
+			has_dlc = "Waking the Tiger"
+		}
+
+		available = {
+			is_subject = no
+			capital_scope = { is_core_of = CHI }
+			custom_trigger_tooltip = {
+				tooltip = form_country_chinese_required_states_tt
+				NOT = {
+					any_state = {
+						is_core_of = CHI
+						NOT = { is_owned_by = ROOT }
+					}
+				}
+			}
+		}
+
+		visible = {
+			NOT = { country_exists = CHI }
+			NOT = { has_country_flag = conv_unified }
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = CHI_unified
+			add_stability = 0.05
+			hidden_effect = {
+				news_event = { id = wtt_news.60 hours = 6 }
+				set_country_flag = conv_unified
+				every_state = {
+					limit = { NOT = { is_core_of = ROOT } }
+					remove_core_of = CHI
+					set_state_flag = CHI_state
+				}
+				every_state = {
+					limit = { has_state_flag = CHI_state }
+					add_core_of = ROOT
+					clr_state_flag = CHI_state
 				}
 			}
 		}
