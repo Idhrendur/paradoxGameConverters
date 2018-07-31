@@ -110,3 +110,6 @@
  form_country_india_required_states_tt:0 "Управляет всеми §YИндейцы§! состояния."
  form_country_commonwealth_required_states_tt:0 "Управляет всеми §YПольско-литовцы§! состояния."
  form_country_baltic_required_states_tt:0 "Управляет всеми §YБалтия§! состояния."
+ CHI_union:0 "Мандат Небес"
+ CHI_union_desc:0 "В течение долгого времени Поднебесное разделялось в феодальных боях среди различных бюрократов. Но сегодня новая империя родилась из пепла этих воюющих государств."
+ form_country_chinese_required_state_tt:0 "Управляет всеми §YКитайские§! состояния." 
