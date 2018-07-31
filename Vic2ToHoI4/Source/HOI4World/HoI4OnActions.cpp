@@ -140,6 +140,15 @@ void HoI4OnActions::output(const std::set<std::string>& majorIdeologies) const
 	onActionsFile << "			set_province_name = { id = 7371 name = \"Kuching\"} #Brunei\n";
 	onActionsFile << "			set_province_name = { id = 11437 name = \"Dnipropetrovsk\"} #Ekaterinoslav\n";
 	onActionsFile << "			set_province_name = { id = 12674 name = \"Reykjavik\"} #Iceland\n";
+	onActionsFile << "			AUS = { set_country_flag = conv_unified } #Austria\n";
+	onActionsFile << "			JAP = { set_country_flag = conv_unified } #Japan\n";
+	onActionsFile << "			PAK = { set_country_flag = conv_unified } #Pakistan or Mughalistan\n";
+	onActionsFile << "			PER = { set_country_flag = conv_unified } #Persia\n";
+	onActionsFile << "			SWI = { set_country_flag = conv_unified } #Switzerland\n";
+	onActionsFile << "			TUR = { set_country_flag = conv_unified } #Turkey or the Ottomans\n";
+	onActionsFile << "			VAT = { set_country_flag = conv_unified } #Vatican\n";
+	onActionsFile << "			RME = { set_country_flag = conv_unified } #the Roman Empire\n";
+	onActionsFile << "			HRE = { set_country_flag = conv_unified } #the Holy Roman Empire\n";
 	onActionsFile << "		}\n";
 	onActionsFile << "	}\n";
 
