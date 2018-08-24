@@ -12,7 +12,6 @@ news_event = {
 		has_civil_war = no
 		is_subject = no
 		has_war = no
-		capital_scope = { is_on_continent = europe }
 		NOT = { has_global_flag = olympics_1936 }
 		NOT = { has_global_flag = civil_war_olympics }
 		#country_exists = GER
@@ -87,7 +86,6 @@ news_event = {
 	fire_only_once = yes
 
 	trigger = {
-		#tag = GER
 		has_tech = rocket_engines
 	}
 
@@ -108,22 +106,6 @@ news_event = {
 	id = news.159
 	title = news.159.t
 	desc = news.159.d_01
-	#desc = {
-	#	text = news.159.d_01
-	#	trigger = { FROM = { has_government = neutrality } }
-	#}
-	#desc = {
-	#	text = news.159.d_02
-	#	trigger = { FROM = { has_government = democratic } }
-	#}
-	#desc = {
-	#	text = news.159.d_03
-	#	trigger = { FROM = { has_government = fascism } }
-	#}
-	#desc = {
-	#	text = news.159.d_04
-	#	trigger = { FROM = { has_government = communism } }
-	#}
 
 	picture = GFX_news_event_009
 	
@@ -163,128 +145,20 @@ news_event = {
 
 	trigger = {
 		NOT = { has_global_flag = SOV_fourth_international_fired }
-		#SOV = {
-		#	OR = {
-		#		has_completed_focus = SOV_great_purge
-		#		NOT = { has_country_flag = SOV_purge_started }
-		#	}
-		#	has_government = communism
-		#}		
 		date > 1938.9.1
 	}
 
 	immediate = {
 		set_global_flag = SOV_fourth_international_fired
-
-		# Set flag for amount of purges (completing focus counts as 1)
-		#SOV = {
-		#	#1
-		#	if = {
-		#		limit = {
-		#			has_completed_focus = SOV_great_purge
-		#			has_country_flag = no_political_purge
-		#			has_country_flag = purge_1_no_purge
-		#			has_country_flag = purge_2_no_purge
-		#		}
-		#		set_country_flag = SOV_purged_1
-		#	}
-		#	#2
-		#	if = {
-		#		limit = {
-		#			has_completed_focus = SOV_great_purge
-		#			OR = {
-		#				AND = {
-		#					NOT = { has_country_flag = no_political_purge }
-		#					has_country_flag = purge_1_no_purge
-		#					has_country_flag = purge_2_no_purge
-		#				}
-		#				AND = {
-		#					has_country_flag = no_political_purge
-		#					NOT = { has_country_flag = purge_1_no_purge }
-		#					has_country_flag = purge_2_no_purge
-		#				}
-		#				AND = {
-		#					has_country_flag = no_political_purge
-		#					has_country_flag = purge_1_no_purge
-		#					NOT = { has_country_flag = purge_2_no_purge }
-		#				}
-		#			}
-		#		}
-		#		set_country_flag = SOV_purged_2
-		#	}
-		#	#3
-		#	if = {
-		#		limit = {
-		#			has_completed_focus = SOV_great_purge
-		#			OR = {
-		#				AND = {
-		#					NOT = { has_country_flag = no_political_purge }
-		#					NOT = { has_country_flag = purge_1_no_purge }
-		#					has_country_flag = purge_2_no_purge
-		#				}
-		#				AND = {
-		#					has_country_flag = no_political_purge
-		#					NOT = { has_country_flag = purge_1_no_purge }
-		#					NOT = { has_country_flag = purge_2_no_purge }
-		#				}
-		#				AND = {
-		#					NOT = { has_country_flag = no_political_purge }
-		#					has_country_flag = purge_1_no_purge
-		#					NOT = { has_country_flag = purge_2_no_purge }
-		#				}
-		#			}
-		#		}
-		#		set_country_flag = SOV_purged_3
-		#	}
-		#	#4
-		#	if = {
-		#		limit = {
-		#			SOV = {
-		#				has_completed_focus = SOV_great_purge
-		#				NOT = { has_country_flag = no_political_purge }
-		#				NOT = { has_country_flag = purge_1_no_purge }
-		#				NOT = { has_country_flag = purge_2_no_purge	}
-		#			}
-		#		}
-		#		set_country_flag = SOV_purged_4
-		#	}
-		#}
 	}
 
 	mean_time_to_happen = { days = 2 }
 
 	desc = {
-		#not enough ppl killed
 		text = news.173.d_1
-		#trigger = {
-		#	SOV = {
-		#		OR = {
-		#			NOT = { has_completed_focus = SOV_great_purge }
-		#			has_country_flag = no_political_purge
-		#			has_country_flag = purge_1_no_purge
-		#			has_country_flag = purge_2_no_purge
-		#		}
-		#	}
-		#}
 	}
-	#desc = {
-	#	text = news.173.d_2
-	#	trigger = {
-	#		SOV = {
-	#			has_completed_focus = SOV_great_purge
-	#			NOT = { has_country_flag = no_political_purge }
-	#			NOT = { has_country_flag = purge_1_no_purge }
-	#			NOT = { has_country_flag = purge_2_no_purge	}
-	#		}
-	#	}
-	#}
 
 	option = {
 		name = news.173.a
-		#trigger = { NOT = {	tag = SOV } }
 	}
-	#option = {
-	#	name = news.173.b
-	#	trigger = { tag = SOV }
-	#}
 }
