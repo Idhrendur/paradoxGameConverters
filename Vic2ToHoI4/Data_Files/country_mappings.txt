@@ -210,5 +210,5 @@ link = { vic = NIG hoi = U94 } # Niger
 link = { vic = RWA hoi = U95 } # Rwanda
 link = { vic = TTB hoi = U98 } # Trinidad and Tobago
 
-link = { vic = RME hoi = RME } # Roman Empire
+link = { vic = SPQ hoi = RME } # Roman Empire
 link = { vic = HRE hoi = HRE } # Holy Roman Empire
