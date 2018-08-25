@@ -23,8 +23,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "ParserHelpers.h"
 #include "Log.h"
+#include <cctype>
 #include <sstream>
-
 
 
 namespace commonItems
@@ -175,7 +175,7 @@ commonItems::simpleObject::simpleObject(std::istream& theStream) : values()
                         values[key] = *value;
                         key.clear();
                 }
-                else
+                else if (!isspace(inputChar))
                 {
                         key += inputChar;
                 }
