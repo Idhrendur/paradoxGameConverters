@@ -129,13 +129,77 @@ commonItems::singleInt::singleInt(std::istream& theStream):
 	{
 		theInt = stoi(token);
 	}
-	catch (std::exception& e)
+	catch (std::exception&)
 	{
 		LOG(LogLevel::Warning) << "Expected an int, but instead got " << token;
 		theInt = 0;
 	}
 }
 
+
+commonItems::simpleObject::simpleObject(std::istream& theStream) : values()
+{
+        auto equals = getNextTokenWithoutMatching(theStream);
+        int braceDepth = 0;
+        std::string key;
+        while (true)
+        {
+                if (theStream.eof())
+                {
+                        return;
+                }
+
+                char inputChar;
+                theStream >> inputChar;
+
+                if (inputChar == '{')
+                {
+                        braceDepth++;
+                }
+                else if (inputChar == '}')
+                {
+                        braceDepth--;
+                        if (braceDepth == 0)
+                        {
+                                return;
+                        }
+                }
+                else if (braceDepth > 1)
+                {
+                        // Internal object; ignore.
+                        continue;
+                }
+                else if (inputChar == '=')
+                {
+                        auto value = getNextTokenWithoutMatching(theStream);
+                        values[key] = *value;
+                        key.clear();
+                }
+                else
+                {
+                        key += inputChar;
+                }
+        }
+}
+
+std::string commonItems::simpleObject::getValue(const std::string& key) const
+{
+        if (values.find(key) == values.end())
+        {
+                return "";
+        }
+        return values.at(key);
+}
+
+int commonItems::simpleObject::getValueAsInt(const std::string& key) const
+{
+        auto value = getValue(key);
+        if (value.empty())
+        {
+                return 0;
+        }
+        return std::stoi(value);
+}
 
 commonItems::doubleList::doubleList(std::istream& theStream):
 	doubles()
@@ -169,7 +233,7 @@ commonItems::singleDouble::singleDouble(std::istream& theStream):
 	{
 		theDouble = stof(token);
 	}
-	catch (std::exception& e)
+	catch (std::exception&)
 	{
 		LOG(LogLevel::Warning) << "Expected a double, but instead got " << token;
 		theDouble = 0.0;
@@ -275,3 +339,26 @@ commonItems::stringOfItem::stringOfItem(std::istream& theStream)
 		}
 	}
 }
+
+
+commonItems::stringsOfItems::stringsOfItems(std::istream& theStream)
+{
+	registerKeyword(std::regex("[a-zA-Z0-9_]+"), [this](const std::string& itemName, std::istream& theStream){
+		stringOfItem theItem(theStream);
+		theStrings.push_back(itemName + theItem.getString() + "\n");
+	});
+
+	parseStream(theStream);
+}
+
+
+commonItems::stringsOfItemNames::stringsOfItemNames(std::istream& theStream)
+{
+	registerKeyword(std::regex("[a-zA-Z0-9_]+"), [this](const std::string& itemName, std::istream& theStream){
+		ignoreItem(itemName, theStream);
+		theStrings.push_back(itemName);
+	});
+
+	parseStream(theStream);
+}
+
