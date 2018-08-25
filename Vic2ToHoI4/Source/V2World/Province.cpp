@@ -130,7 +130,16 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 	{
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
-	});
+	});	
+	registerKeyword(std::regex("goods_type"),  [this](const std::string& unused, std::istream& theStream)
+	{
+		commonItems::singleString rgoString(theStream);
+		rgo = rgoString.getString();
+		if (rgo.substr(0, 1) == "\"")
+		{
+			rgo = rgo.substr(1, rgo.size() - 2);
+		}
+	});																								  
 
 	// ignored items
 	registerKeyword(std::regex("name"), commonItems::ignoreItem);
@@ -149,7 +158,8 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 	registerKeyword(std::regex("nationalism"), commonItems::ignoreItem);
 	registerKeyword(std::regex("colonial"), commonItems::ignoreItem);
 	registerKeyword(std::regex("flags"), commonItems::ignoreItem);
-	registerKeyword(std::regex("rgo"), commonItems::ignoreItem);
+	registerKeyword(std::regex("employment"), commonItems::ignoreItem);
+	registerKeyword(std::regex("last_income"), commonItems::ignoreItem);						 
 
 	parseStream(theStream);
 }

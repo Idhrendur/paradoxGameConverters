@@ -127,6 +127,12 @@ class State: commonItems::parser
 		int dockyards = 0;
 		std::string category = "pastoral";
 		int infrastructure = 0;
+		int oil = 0;
+		int rubber = 0;
+		int aluminium = 0;
+		int steel = 0;
+		int tungsten = 0;
+		int chromium = 0;
 	
 		std::vector<std::pair<int, int>> navalBases;
 

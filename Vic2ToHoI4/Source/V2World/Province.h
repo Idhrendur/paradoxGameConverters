@@ -68,6 +68,8 @@ class Province: commonItems::parser
 		int getFortLevel() const { return fortLevel; }
 		int getNavalBaseLevel() const { return navalBaseLevel; }
 		std::vector<std::shared_ptr<const Pop>> getPops() const { return pops; }
+		
+		std::string getRgo() const { return rgo; }										
 
 	private:
 		Province(const Province&) = delete;
@@ -88,6 +90,8 @@ class Province: commonItems::parser
 		int fortLevel = 0;
 		int navalBaseLevel = 0;
 		int railLevel = 0;
+		
+		std::string rgo = "";
 };
 
 }

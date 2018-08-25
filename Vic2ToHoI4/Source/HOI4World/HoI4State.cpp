@@ -189,15 +189,33 @@ void HoI4::State::output(const std::string& _filename) const
 	out << "\tname= \"STATE_" << ID << "\"\n";
 	out << "\tmanpower = " << manpower << "\n";
 	out << "\n";
-	if (resources.size() > 0)
-	{
-		out << "\tresources={\n";
-		for (auto resource: resources)
+	
+	out << "\tresources={\n";
+		if (oil > 0)
 		{
-			out << "\t\t" << resource.first << " = " << resource.second << "\n";
+			out << "\t\toil = " << oil << "\n";
 		}
-		out << "\t}\n";
-	}
+		if (rubber > 0)
+		{
+			out << "\t\trubber = " << rubber << "\n";
+		}
+		if (aluminium > 0)
+		{
+			out << "\t\taluminium = " << aluminium << "\n";
+		}
+		if (steel > 0)
+		{
+			out << "\t\tsteel = " << steel << "\n";
+		}
+		if (tungsten > 0)
+		{
+			out << "\t\ttungsten = " << tungsten << "\n";
+		}
+		if (chromium > 0)
+		{
+			out << "\t\tchromium = " << chromium << "\n";
+		}
+	out << "\t}\n";
 	out << "\tstate_category = "<< category << "\n";
 	if (impassable)
 	{
@@ -546,6 +564,13 @@ void HoI4::State::setInfrastructure(int factories)
 {
 	infrastructure = 3;
 	infrastructure += sourceState->getAverageRailLevel() / 2;
+	int *rgohoi = sourceState->setRgo();//oil, rubber, aluminium, steel, tungsten, chromium
+	oil = rgohoi[0];
+	rubber = rgohoi[1];
+	aluminium = rgohoi[2];
+	steel = rgohoi[3];
+	tungsten = rgohoi[4];
+	chromium = rgohoi[5];
 
 	if (factories > 4)
 	{
