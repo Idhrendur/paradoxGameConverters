@@ -44,6 +44,8 @@ namespace Vic2
 {
 
 class Army;
+class cultureGroups;
+class inventions;
 class Leader;
 class Province;
 class Relations;
@@ -53,21 +55,21 @@ class State;
 class Country: commonItems::parser
 {
 	public:
-		explicit Country(const std::string& theTag, std::istream& theStream);
+		explicit Country(const std::string& theTag, std::istream& theStream, const inventions& theInventions, const cultureGroups& theCultureGroups);
 
 		void addProvince(const std::pair<const int, Province*>& province) { provinces.insert(province); }
 		void setColor(const ConverterColor::Color& newColor) { color = newColor; }
 		void setAsGreatNation() { greatNation = true; }
 		void addCore(Province* core) { cores.push_back(core); }
 		void replaceCores(std::vector<Province*> newCores) { cores.swap(newCores); }
-		void setShipNames(std::map<std::string, std::vector<std::string>> newShipNames) { shipNames = newShipNames; }
+		void setShipNames(const std::map<std::string, std::vector<std::string>>& newShipNames) { shipNames = newShipNames; }
 
 		void eatCountry(Country* target);
 		void putProvincesInStates();
 		void determineEmployedWorkers();
 		void setLocalisationNames();
 		void setLocalisationAdjectives();
-		void handleMissingCulture();
+		void handleMissingCulture(const cultureGroups& theCultureGroups);
 
 		std::map<std::string, const Relations*> getRelations() const { return relations; }
 		std::vector<State*> getStates() const { return states; }
@@ -77,7 +79,7 @@ class Country: commonItems::parser
 		std::string getPrimaryCultureGroup() const { return primaryCultureGroup; }
 		std::set<std::string> getAcceptedCultures() const { return acceptedCultures; }
 		bool isAnAcceptedCulture(const std::string& culture) const { return (acceptedCultures.count(culture) > 0); }
-		std::set<std::string> getInventions() const { return inventions; }
+		std::set<std::string> getInventions() const { return discoveredInventions; }
 		std::string getGovernment() const { return government; }
 		date getLastElection() const { return lastElection; }
 		int getCapital() const { return capital; }
@@ -88,7 +90,6 @@ class Country: commonItems::parser
 		double getRevanchism() const { return revanchism; }
 		double getWarExhaustion() const { return warExhaustion; }
 		double getBadBoy() const { return badboy; }
-		std::map<std::string, std::string> getAllReforms() const { return reformsArray; }
 		bool isGreatNation() const { return greatNation; }
 		std::map<int, Province*> getProvinces() const { return provinces; }
 		std::vector<Province*> getCores() const { return cores; }
@@ -97,7 +98,6 @@ class Country: commonItems::parser
 		bool isHuman() const { return human; }
 		std::map<std::string, double> getUpperHouseComposition() const { return upperHouseComposition; }
 
-		std::optional<std::string> getReform(const std::string& reform) const;
 		std::optional<std::string> getName(const std::string& language) const;
 		std::optional<std::string> getAdjective(const std::string& language) const;
 		double getUpperHousePercentage(const std::string& ideology) const;
@@ -128,11 +128,11 @@ class Country: commonItems::parser
 		int capital = 0;
 
 		std::string primaryCulture = "";
-		std::string primaryCultureGroup = "";
+		std::string primaryCultureGroup;
 		std::set<std::string> acceptedCultures;
 
 		std::set<std::string> techs;
-		std::set<std::string> inventions;
+		std::set<std::string> discoveredInventions;
 
 		std::map<std::string, const Relations*> relations;
 		bool greatNation = false;
@@ -146,7 +146,6 @@ class Country: commonItems::parser
 		double badboy = 0.0;
 
 		std::string government = "";
-		std::map<std::string, std::string> reformsArray;
 		std::map<std::string, double> upperHouseComposition;
 		unsigned	int rulingPartyID = 0; 	// Bad value, but normal for Rebel faction.
 		std::vector<unsigned int> activePartyIDs;

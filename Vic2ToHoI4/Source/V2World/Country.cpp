@@ -22,12 +22,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "Country.h"
+#include "CultureGroups.h"
 #include "Log.h"
-#include "../Mappers/CultureGroupMapper.h"
-#include "../Mappers/InventionsMapper.h"
-#include "../Mappers/ReformMapper.h"
 #include "../Mappers/V2Localisations.h"
 #include "Army.h"
+#include "Inventions.h"
 #include "Leader.h"
 #include "Party.h"
 #include "Pop.h"
@@ -39,7 +38,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-Vic2::Country::Country(const std::string& theTag, std::istream& theStream):
+Vic2::Country::Country(const std::string& theTag, std::istream& theStream, const inventions& theInventions, const cultureGroups& theCultureGroups):
 	tag(theTag)
 {
 	registerKeyword(std::regex("capital"), [this](const std::string& unused, std::istream& theStream){
@@ -82,7 +81,7 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream):
 		commonItems::ignoreItem(unused, theStream);
 		human = true;
 	});
-	registerKeyword(std::regex("primary_culture"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("primary_culture"), [this, &theCultureGroups](const std::string& unused, std::istream& theStream){
 		commonItems::singleString cultureString(theStream);
 		primaryCulture = cultureString.getString();
 		if (primaryCulture.substr(0,1) == "\"")
@@ -91,7 +90,7 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream):
 		}
 		acceptedCultures.insert(primaryCulture);
 
-		auto cultureGroupOption = cultureGroupMapper::getCultureGroup(primaryCulture);
+		auto cultureGroupOption = theCultureGroups.getGroup(primaryCulture);
 		if (cultureGroupOption)
 		{
 			primaryCultureGroup = *cultureGroupOption;
@@ -123,14 +122,14 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream):
 			token = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerKeyword(std::regex("active_inventions"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("active_inventions"), [this, &theInventions](const std::string& unused, std::istream& theStream){
 		commonItems::intList inventionNums(theStream);
 		for (auto inventionNum: inventionNums.getInts())
 		{
-			auto inventionName = inventionsMapper::getInventionName(inventionNum);
+			auto inventionName = theInventions.getInventionName(inventionNum);
 			if (inventionName)
 			{
-				inventions.insert(*inventionName);
+				discoveredInventions.insert(*inventionName);
 			}
 		}
 	});
@@ -146,13 +145,6 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream):
 		commonItems::singleInt partyNum(theStream);
 		rulingPartyID = partyNum.getInt();
 	});
-	for (auto reform: reformMapper::getReformTypes())
-	{
-		registerKeyword(std::regex(reform.first), [this](const std::string& reformType, std::istream& theStream){
-			commonItems::singleString reformValue(theStream);
-			reformsArray[reformType] = reformValue.getString();
-		});
-	}
 	registerKeyword(std::regex("upper_house"), [this](const std::string& unused, std::istream& theStream){
 		auto equals = getNextTokenWithoutMatching(theStream);
 		auto openBrace = getNextTokenWithoutMatching(theStream);
@@ -230,9 +222,9 @@ void Vic2::Country::eatCountry(Vic2::Country* target)
 		techs.insert(tech);
 	}
 
-	for (auto itr : target->inventions)
+	for (auto itr : target->discoveredInventions)
 	{
-		inventions.insert(itr);
+		discoveredInventions.insert(itr);
 	}
 
 	armies.insert(armies.end(), target->armies.begin(), target->armies.end());
@@ -310,13 +302,13 @@ void Vic2::Country::setLocalisationAdjectives()
 }
 
 
-void Vic2::Country::handleMissingCulture()
+void Vic2::Country::handleMissingCulture(const cultureGroups& theCultureGroups)
 {
 	if (primaryCulture == "")
 	{
 		auto cultureSizes = determineCultureSizes();
 		primaryCulture = selectLargestCulture(cultureSizes);
-		auto cultureGroupOption = cultureGroupMapper::getCultureGroup(primaryCulture);
+		auto cultureGroupOption = theCultureGroups.getGroup(primaryCulture);
 		if (cultureGroupOption)
 		{
 			primaryCultureGroup = *cultureGroupOption;
@@ -391,18 +383,6 @@ std::string Vic2::Country::getIdentifier() const
         }
         return ret;
 }
-
-optional<string> Vic2::Country::getReform(const string& reform) const
-{
-	map<string, string>::const_iterator itr = reformsArray.find(reform);
-	if (itr == reformsArray.end())
-	{
-		return {};
-	}
-
-	return itr->second;
-}
-
 
 optional<string> Vic2::Country::getName(const string& language) const
 {

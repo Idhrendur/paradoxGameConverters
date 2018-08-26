@@ -44,7 +44,7 @@ void ignoreString(const std::string& unused, std::istream& theStream);
 class intList: commonItems::parser
 {
 	public:
-		intList(std::istream& theStream);
+		explicit intList(std::istream& theStream);
 
 		std::vector<int> getInts() const { return ints; }
 
@@ -56,9 +56,9 @@ class intList: commonItems::parser
 class singleInt: commonItems::parser
 {
 	public:
-		singleInt(std::istream& theStream);
+		explicit singleInt(std::istream& theStream);
 
-		int getInt() const { return theInt; }
+		int getInt() const noexcept { return theInt; }
 
 	private:
 		int theInt;
@@ -81,7 +81,7 @@ class simpleObject : commonItems::parser
 class doubleList: commonItems::parser
 {
 	public:
-		doubleList(std::istream& theStream);
+		explicit doubleList(std::istream& theStream);
 
 		std::vector<double> getDoubles() const { return doubles; }
 
@@ -93,9 +93,9 @@ class doubleList: commonItems::parser
 class singleDouble: commonItems::parser
 {
 	public:
-		singleDouble(std::istream& theStream);
+		explicit singleDouble(std::istream& theStream);
 
-		double getDouble() const { return theDouble; }
+		double getDouble() const noexcept { return theDouble; }
 
 	private:
 		double theDouble;
@@ -105,7 +105,7 @@ class singleDouble: commonItems::parser
 class stringList: commonItems::parser
 {
 	public:
-		stringList(std::istream& theStream);
+		explicit stringList(std::istream& theStream);
 
 		std::vector<std::string> getStrings() const { return strings; }
 
@@ -117,7 +117,7 @@ class stringList: commonItems::parser
 class singleString: commonItems::parser
 {
 	public:
-		singleString(std::istream& theStream);
+		explicit singleString(std::istream& theStream);
 
 		std::string getString() const { return theString; }
 
@@ -129,7 +129,7 @@ class singleString: commonItems::parser
 class stringOfObject: commonItems::parser
 {
 	public:
-		stringOfObject(std::istream& theStream);
+		explicit stringOfObject(std::istream& theStream);
 
 		std::string getString() const { return theString; }
 
@@ -141,12 +141,36 @@ class stringOfObject: commonItems::parser
 class stringOfItem: commonItems::parser
 {
 	public:
-		stringOfItem(std::istream& theStream);
+		explicit stringOfItem(std::istream& theStream);
 
 		std::string getString() const { return theString; }
 
 	private:
 		std::string theString;
+};
+
+
+class stringsOfItems: commonItems::parser
+{
+	public:
+		explicit stringsOfItems(std::istream& theStream);
+
+		std::vector<std::string> getStrings() const { return theStrings; }
+
+	private:
+		std::vector<std::string> theStrings;
+};
+
+
+class stringsOfItemNames: commonItems::parser
+{
+	public:
+		explicit stringsOfItemNames(std::istream& theStream);
+
+		std::vector<std::string> getStrings() const { return theStrings; }
+
+	private:
+		std::vector<std::string> theStrings;
 };
 
 }
