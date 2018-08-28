@@ -538,7 +538,7 @@ void HoI4Country::convertAirforce(const map<string, HoI4::UnitMap>& unitMap)
 	}	
 }
 
-bool sufficientUnits(map<string, int>& units, map<string, string> subs,
+bool sufficientUnits(map<string, double>& units, map<string, string> subs,
                      map<string, int>& req)
 {
         for (auto unit : req)
@@ -561,8 +561,6 @@ void HoI4Country::convertArmies(const map<string, HoI4::UnitMap>& unitMap, const
 	}
 
 	map<string, double> remainingBattalionsAndCompanies;
-        map<string, string> substitutes;
-        substitutes["artillery"] = "artillery_brigade";
 
 	for (auto army : srcCountry->getArmies())
 	{
@@ -614,6 +612,8 @@ void HoI4Country::convertArmies(const map<string, HoI4::UnitMap>& unitMap, const
 
 void HoI4Country::convertArmyDivisions(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates, std::map<std::string, double>& BattalionsAndCompanies, int location)
 {
+        map<string, string> substitutes;
+        substitutes["artillery"] = "artillery_brigade";
 	for (auto& divTemplate: divisionTemplates)
 	{
 		// For each template determine the Battalion and Company requirements.
