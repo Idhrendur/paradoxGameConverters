@@ -121,14 +121,30 @@ void checkMods()
 }
 
 
-void setOutputName(const string& V2SaveFileName)
+void setOutputName(const std::string& V2SaveFileName)
 {
-	int slash = V2SaveFileName.find_last_of("\\");
-	if (slash == string::npos)
+	std::string outputName = V2SaveFileName;
+
+	const int lastBackslash = V2SaveFileName.find_last_of("\\");
+	const int lastSlash = V2SaveFileName.find_last_of("/");
+	if ((lastBackslash == std::string::npos) && (lastSlash != std::string::npos))
 	{
-		slash = V2SaveFileName.find_last_of("/");
+		outputName = outputName.substr(lastSlash + 1, outputName.length());
 	}
-	string outputName = V2SaveFileName.substr(slash + 1, V2SaveFileName.length());
+	else if ((lastBackslash != std::string::npos) && (lastSlash == std::string::npos))
+	{
+		outputName = outputName.substr(lastBackslash + 1, outputName.length());
+	}
+	else if ((lastBackslash != std::string::npos) && (lastSlash != std::string::npos))
+	{
+		const int slash = max(lastBackslash, lastSlash);
+		outputName = outputName.substr(slash + 1, outputName.length());
+	}
+	else if ((lastBackslash == std::string::npos) && (lastSlash == std::string::npos))
+	{
+		// no change, but explicitly considered
+	}
+
 	const int length = outputName.find_first_of(".");
 	outputName = outputName.substr(0, length);
 
