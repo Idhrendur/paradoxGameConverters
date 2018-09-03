@@ -287,7 +287,6 @@ HoI4::allMilitaryMappings::allMilitaryMappings()
 	{
 		militaryMappings newMappings(theStream);
 		theMappings.insert(make_pair(mod, newMappings));
-		commonItems::ignoreItem(mod, theStream);
 	});
 
 	parseFile("unit_mappings.txt");
