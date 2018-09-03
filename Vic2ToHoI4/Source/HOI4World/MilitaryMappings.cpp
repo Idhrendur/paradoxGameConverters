@@ -257,8 +257,13 @@ void HoI4::militaryMappings::importDivisionTemplates()
 HoI4::allMilitaryMappings::allMilitaryMappings()
 {
 	militaryMappings newMappings;
-	theMappings.insert(std::make_pair("default", newMappings));
-	theMappings.insert(std::make_pair("PDM", newMappings));
+	registerKeyword(std::regex("[a-zA-Z0-9]+"), [this, newMappings](const std::string& mod, std::istream& theStream)
+	{
+		theMappings.insert(make_pair(mod, newMappings));
+		commonItems::ignoreItem(mod, theStream);
+	});
+
+	parseFile("unit_mappings.txt");
 }
 
 

@@ -1,15 +1,15 @@
 # Copyright (c) 2016 The Paradox Game Converters Project
-# 
+#
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
 # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,55 +20,55 @@
 
 # Overall structure :
 #
-# default = { 
-#	map = { 
-#		... 
-#	} 
+# default = {
+#	map = {
+#		...
+#	}
 #	division_templates = {
 #		...
-#	}		
+#	}
 # }
 #
 # Vic2 Mod-specific mappings can be defined by copying the "default = { map = { ... } division_templates = { ... } }"  section
 # and pasting it by replacing "default" with the appropriate mod name
 #
-# For example : 
-# PDM = { 
-#	map = { 
-#		... 
-#	} 
-#	division_templates = { 
-#		... 
-#	} 
+# For example :
+# PDM = {
+#	map = {
+#		...
+#	}
+#	division_templates = {
+#		...
+#	}
 # }
-# 
+#
 # The "map" section format is used to establish which HoI4 units the Vic2 units are transformed into. It has the following structure :
-# 
+#
 # map = {
-# 	link = { 
+# 	link = {
 #		vic = <Vic2 unit type>
-£
+#
 #		hoi = {
 #			type = <land/air/naval/convoy>
 #			unit = <HoI4 unit type> (Valid Battalion/Support Company, Aircraft type or Naval Vessel type)
 #			equipment = <equipment_type>
-#			size = <integer number>	
-#		}		
+#			size = <integer number>
+#		}
 # 	}
 #	...
 #	link = {
 #		...
 #	}
 # }
-# 
-#  
+#
+#
 # EXAMPLE :
 #
 # map = {
 # 	# Map every Vic2 Infantry Brigade to 3 x HoI4 Infantry Battalion with the most basic equipment
 # 	link = {
-# 		vic = infantry 
-# 		
+# 		vic = infantry
+#
 # 		hoi = {
 # 			type = land
 # 			unit = infantry
@@ -79,29 +79,29 @@
 # 	# Map every Vic2 Plane units to 10 x Interwar Fighter
 # 	link = {
 # 		vic = plane
-# 		
+#
 # 		hoi = {
 # 			type = air
 # 			unit = fighter
 # 			equipment = fighter_equipment_0
 # 			size = 10
 # 		}
-# 		
+#
 #
 # 	}
 # 	# Map every Vic2 Commerce Raider to a HoI4 Destroyer of the most basic model
 # 	link = {
 # 		vic = commerce_raider
-# 		
+#
 # 		hoi = {
 # 			type = naval
 # 			unit = destroyer
 # 			equipment = destroyer_1
 # 			size = 1
-# 		}		
-# 	}	
+# 		}
+# 	}
 # }
-# 
+#
 # Specifying no "hoi" section means that those Vic2 units will not be mapped.
 #
 # In addition to the above, Division Templates must be defined so that mapped Vic2 ground units are grouped in viable formations.
@@ -109,7 +109,7 @@
 # The order in which the templates are defined matters. The converter will first try to convert as many divisions of the current type
 # and when there are no longer sufficient mapped units available it moves to the next template.
 #
-# 
+#
 # EXAMPLE :
 #
 # division_templates = {
@@ -117,64 +117,64 @@
 # 	# This is a Regular-Priority Infantry Division with 2 x Infantry Regiments, 3 x Battalions Each + 1 x Artillery Regiment with 3 x Battalions and an Engineer Company
 #	division_template = {
 #		name = "Infantry Division"
-#	
+#
 #		regiments = {
 #			infantry = { x = 0 y = 0 }
 #			infantry = { x = 0 y = 1 }
-#			infantry = { x = 0 y = 2 }			
-#						
+#			infantry = { x = 0 y = 2 }
+#
 #			infantry = { x = 1 y = 0 }
 #			infantry = { x = 1 y = 1 }
 #			infantry = { x = 1 y = 2 }
-#			
+#
 #			artillery_brigade = { x = 2 y = 0 }
 #			artillery_brigade = { x = 2 y = 1 }
 #			artillery_brigade = { x = 2 y = 2 }
 #		}
-#		
+#
 #		support = {
 #			engineer = { x = 0 y = 0 }
 #		}
-#		
+#
 #		priority = 1
 #	}
-#	
+#
 # 	# This is an Elite-Priority Cavalry Division with 3 x Cavalry Regiments, 3 x Battalions Each and a Recon Company
 #	division_template = {
 #		name = "Cavalry Division"
-#	
+#
 #		regiments = {
 #			cavalry = { x = 0 y = 0 }
 #			cavalry = { x = 0 y = 1 }
-#			cavalry = { x = 0 y = 2 }			
-#						
+#			cavalry = { x = 0 y = 2 }
+#
 #			cavalry = { x = 1 y = 0 }
 #			cavalry = { x = 1 y = 1 }
 #			cavalry = { x = 1 y = 2 }
-#			
+#
 #			cavalry = { x = 2 y = 0 }
 #			cavalry = { x = 2 y = 1 }
 #			cavalry = { x = 2 y = 2 }
 #		}
-#		
+#
 #		support = {
 #			recon = { x = 0 y = 0 }
 #		}
-#		
+#
 #		priority = 2
 #	}
 #}
 
 default = {
 	map = {
-	
+
 		link = {
-			vic = irregular		
+			vic = irregular
 		}
-	
+
 		link = {
 			vic = infantry
-			
+
 			hoi = {
 				type = land
 				unit = infantry
@@ -182,10 +182,10 @@ default = {
 				size = 3
 			}
 		}
-		
+
 		link = {
 			vic = engineer
-			
+
 			hoi = {
 				type = land
 				unit = infantry
@@ -193,10 +193,10 @@ default = {
 				size = 3
 			}
 		}
-		
+
 		link = {
 			vic = guard
-			
+
 			hoi = {
 				type = land
 				unit = infantry
@@ -204,10 +204,10 @@ default = {
 				size = 3
 			}
 		}
-		
+
 		link = {
 			vic = artillery
-			
+
 			hoi = {
 				type = land
 				unit = artillery_brigade
@@ -215,14 +215,14 @@ default = {
 				size = 3
 			}
 		}
-		
+
 		link = {
-			vic = cavalry			
+			vic = cavalry
 		}
-		
+
 		link = {
 			vic = hussar
-			
+
 			hoi = {
 				type = land
 				unit = cavalry
@@ -230,10 +230,10 @@ default = {
 				size = 3
 			}
 		}
-		
+
 		link = {
 			vic = cuirassier
-			
+
 			hoi = {
 				type = land
 				unit = cavalry
@@ -241,10 +241,10 @@ default = {
 				size = 3
 			}
 		}
-		
+
 		link = {
 			vic = dragoon
-			
+
 			hoi = {
 				type = land
 				unit = cavalry
@@ -252,10 +252,10 @@ default = {
 				size = 3
 			}
 		}
-		
+
 		link = {
 			vic = tank
-			
+
 			hoi = {
 				type = land
 				unit = light_armor
@@ -263,29 +263,29 @@ default = {
 				size = 50
 			}
 		}
-		
+
 		link = {
 			vic = plane
-			
+
 			hoi = {
 				type = air
 				unit = fighter
 				equipment = fighter_equipment_0
 				size = 50
-			}			
+			}
 		}
-		
+
 		link = {
 			vic = manowar
 		}
-		
+
 		link = {
 			vic = frigate
 		}
-		
+
 		link = {
 			vic = commerce_raider
-			
+
 			hoi = {
 				type = naval
 				unit = destroyer
@@ -293,18 +293,18 @@ default = {
 				size = 1
 			}
 		}
-		
+
 		link = {
 			vic = ironclad
 		}
-		
+
 		link = {
 			vic = monitor
 		}
-		
+
 		link = {
 			vic = cruiser
-			
+
 			hoi = {
 				type = naval
 				unit = light_cruiser
@@ -312,10 +312,10 @@ default = {
 				size = 1
 			}
 		}
-		
+
 		link = {
 			vic = battleship
-			
+
 			hoi = {
 				type = naval
 				unit = heavy_cruiser
@@ -323,10 +323,10 @@ default = {
 				size = 1
 			}
 		}
-		
+
 		link = {
 			vic = dreadnought
-			
+
 			hoi = {
 				type = naval
 				unit = battleship
@@ -334,14 +334,14 @@ default = {
 				size = 1
 			}
 		}
-		
+
 		link = {
 			vic = clipper_transport
 		}
-		
+
 		link = {
 			vic = steam_transport
-			
+
 			hoi = {
 				type = convoy
 				unit = convoy
@@ -350,154 +350,491 @@ default = {
 			}
 		}
 	}
-	
-	division_templates = {		
-	
+
+	division_templates = {
+
 		division_template = {
 			name = "Assault Division"
-		
+
 			regiments = {
 				infantry = { x = 0 y = 0 }
 				infantry = { x = 0 y = 1 }
-				infantry = { x = 0 y = 2 }			
-							
+				infantry = { x = 0 y = 2 }
+
 				infantry = { x = 1 y = 0 }
 				infantry = { x = 1 y = 1 }
 				infantry = { x = 1 y = 2 }
-				
+
 				infantry = { x = 2 y = 0 }
 				infantry = { x = 2 y = 1 }
 				infantry = { x = 2 y = 2 }
-				
+
 				artillery_brigade = { x = 3 y = 0 }
 				artillery_brigade = { x = 3 y = 1 }
 				artillery_brigade = { x = 3 y = 2 }
-				
+
 				light_armor = { x = 4 y = 0 }
 				light_armor = { x = 4 y = 1 }
 				light_armor = { x = 4 y = 2 }
-			}		
-			
+			}
+
 			priority = 2
 		}
-		
+
 		division_template = {
 			name = "Assault Brigade"
-		
+
 			regiments = {
 				infantry = { x = 0 y = 0 }
 				infantry = { x = 0 y = 1 }
-				infantry = { x = 0 y = 2 }				
-				
-				artillery_brigade = { x = 1 y = 0 }				
-				
+				infantry = { x = 0 y = 2 }
+
+				artillery_brigade = { x = 1 y = 0 }
+
 				light_armor = { x = 2 y = 0 }
-			}		
-			
+			}
+
 			priority = 2
 		}
-		
+
 		division_template = {
 			name = "Cavalry Division"
-		
+
 			regiments = {
 				cavalry = { x = 0 y = 0 }
 				cavalry = { x = 0 y = 1 }
-				cavalry = { x = 0 y = 2 }			
-							
+				cavalry = { x = 0 y = 2 }
+
 				cavalry = { x = 1 y = 0 }
 				cavalry = { x = 1 y = 1 }
 				cavalry = { x = 1 y = 2 }
-				
+
 				cavalry = { x = 2 y = 0 }
 				cavalry = { x = 2 y = 1 }
-				cavalry = { x = 2 y = 2 }				
-			}		
-			
+				cavalry = { x = 2 y = 2 }
+			}
+
 			priority = 2
 		}
-		
+
 		division_template = {
 			name = "Cavalry Brigade"
-		
+
 			regiments = {
 				cavalry = { x = 0 y = 0 }
 				cavalry = { x = 0 y = 1 }
-				cavalry = { x = 0 y = 2 }							
-			}		
-			
+				cavalry = { x = 0 y = 2 }
+			}
+
 			priority = 2
 		}
-		
+
 		division_template = {
 			name = "Infantry Division"
-		
+
 			regiments = {
 				infantry = { x = 0 y = 0 }
 				infantry = { x = 0 y = 1 }
-				infantry = { x = 0 y = 2 }			
-							
+				infantry = { x = 0 y = 2 }
+
 				infantry = { x = 1 y = 0 }
 				infantry = { x = 1 y = 1 }
 				infantry = { x = 1 y = 2 }
-				
+
 				infantry = { x = 2 y = 0 }
 				infantry = { x = 2 y = 1 }
 				infantry = { x = 2 y = 2 }
-				
+
 				artillery_brigade = { x = 3 y = 0 }
 				artillery_brigade = { x = 3 y = 1 }
-				artillery_brigade = { x = 3 y = 2 }				
-			}		
-			
+				artillery_brigade = { x = 3 y = 2 }
+			}
+
 			priority = 1
 		}
-		
+
 		division_template = {
 			name = "Infantry Brigade"
-		
+
 			regiments = {
 				infantry = { x = 0 y = 0 }
 				infantry = { x = 0 y = 1 }
-				infantry = { x = 0 y = 2 }				
-				
-				artillery_brigade = { x = 1 y = 0 }						
-			}		
-			
+				infantry = { x = 0 y = 2 }
+
+				artillery_brigade = { x = 1 y = 0 }
+			}
+
 			priority = 1
 		}
-		
+
 		division_template = {
 			name = "Light Infantry Division"
-		
+
 			regiments = {
 				infantry = { x = 0 y = 0 }
 				infantry = { x = 0 y = 1 }
-				infantry = { x = 0 y = 2 }			
-							
+				infantry = { x = 0 y = 2 }
+
 				infantry = { x = 1 y = 0 }
 				infantry = { x = 1 y = 1 }
 				infantry = { x = 1 y = 2 }
-				
+
 				infantry = { x = 2 y = 0 }
 				infantry = { x = 2 y = 1 }
-				infantry = { x = 2 y = 2 }				
-			}		
-			
+				infantry = { x = 2 y = 2 }
+			}
+
 			priority = 0
 		}
-		
+
 		division_template = {
 			name = "Light Infantry Brigade"
-		
+
 			regiments = {
 				infantry = { x = 0 y = 0 }
 				infantry = { x = 0 y = 1 }
-				infantry = { x = 0 y = 2 }							
-			}		
-			
+				infantry = { x = 0 y = 2 }
+			}
+
 			priority = 0
 		}
-		
+
+	}
+}
+
+PDM = {
+	map = {
+
+		link = {
+			vic = irregular
+		}
+
+		link = {
+			vic = infantry
+
+			hoi = {
+				type = land
+				unit = infantry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = engineer
+
+			hoi = {
+				type = land
+				unit = infantry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = guard
+
+			hoi = {
+				type = land
+				unit = infantry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = artillery
+
+			hoi = {
+				type = land
+				unit = artillery_brigade
+				equipment = artillery_equipment_1
+				size = 3
+			}
+		}
+
+		link = {
+			vic = cavalry
+		}
+
+		link = {
+			vic = hussar
+
+			hoi = {
+				type = land
+				unit = cavalry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = cuirassier
+
+			hoi = {
+				type = land
+				unit = cavalry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = dragoon
+
+			hoi = {
+				type = land
+				unit = cavalry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = tank
+
+			hoi = {
+				type = land
+				unit = light_armor
+				equipment = gw_tank_equipment
+				size = 50
+			}
+		}
+
+		link = {
+			vic = plane
+
+			hoi = {
+				type = air
+				unit = fighter
+				equipment = fighter_equipment_0
+				size = 50
+			}
+		}
+
+		link = {
+			vic = manowar
+		}
+
+		link = {
+			vic = frigate
+		}
+
+		link = {
+			vic = commerce_raider
+
+			hoi = {
+				type = naval
+				unit = destroyer
+				equipment = destroyer_1
+				size = 1
+			}
+		}
+
+		link = {
+			vic = ironclad
+		}
+
+		link = {
+			vic = monitor
+		}
+
+		link = {
+			vic = cruiser
+
+			hoi = {
+				type = naval
+				unit = light_cruiser
+				equipment = light_cruiser_1
+				size = 1
+			}
+		}
+
+		link = {
+			vic = battleship
+
+			hoi = {
+				type = naval
+				unit = heavy_cruiser
+				equipment = heavy_cruiser_1
+				size = 1
+			}
+		}
+
+		link = {
+			vic = dreadnought
+
+			hoi = {
+				type = naval
+				unit = battleship
+				equipment = battleship_1
+				size = 1
+			}
+		}
+
+		link = {
+			vic = clipper_transport
+		}
+
+		link = {
+			vic = steam_transport
+
+			hoi = {
+				type = convoy
+				unit = convoy
+				equipment = convoy_1
+				size = 1
+			}
+		}
+	}
+
+	division_templates = {
+
+		division_template = {
+			name = "Assault Division"
+
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
+				infantry = { x = 2 y = 2 }
+
+				artillery_brigade = { x = 3 y = 0 }
+				artillery_brigade = { x = 3 y = 1 }
+				artillery_brigade = { x = 3 y = 2 }
+
+				light_armor = { x = 4 y = 0 }
+				light_armor = { x = 4 y = 1 }
+				light_armor = { x = 4 y = 2 }
+			}
+
+			priority = 2
+		}
+
+		division_template = {
+			name = "Assault Brigade"
+
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+
+				artillery_brigade = { x = 1 y = 0 }
+
+				light_armor = { x = 2 y = 0 }
+			}
+
+			priority = 2
+		}
+
+		division_template = {
+			name = "Cavalry Division"
+
+			regiments = {
+				cavalry = { x = 0 y = 0 }
+				cavalry = { x = 0 y = 1 }
+				cavalry = { x = 0 y = 2 }
+
+				cavalry = { x = 1 y = 0 }
+				cavalry = { x = 1 y = 1 }
+				cavalry = { x = 1 y = 2 }
+
+				cavalry = { x = 2 y = 0 }
+				cavalry = { x = 2 y = 1 }
+				cavalry = { x = 2 y = 2 }
+			}
+
+			priority = 2
+		}
+
+		division_template = {
+			name = "Cavalry Brigade"
+
+			regiments = {
+				cavalry = { x = 0 y = 0 }
+				cavalry = { x = 0 y = 1 }
+				cavalry = { x = 0 y = 2 }
+			}
+
+			priority = 2
+		}
+
+		division_template = {
+			name = "Infantry Division"
+
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
+				infantry = { x = 2 y = 2 }
+
+				artillery_brigade = { x = 3 y = 0 }
+				artillery_brigade = { x = 3 y = 1 }
+				artillery_brigade = { x = 3 y = 2 }
+			}
+
+			priority = 1
+		}
+
+		division_template = {
+			name = "Infantry Brigade"
+
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+
+				artillery_brigade = { x = 1 y = 0 }
+			}
+
+			priority = 1
+		}
+
+		division_template = {
+			name = "Light Infantry Division"
+
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
+				infantry = { x = 2 y = 2 }
+			}
+
+			priority = 0
+		}
+
+		division_template = {
+			name = "Light Infantry Brigade"
+
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+			}
+
+			priority = 0
+		}
+
 	}
 }

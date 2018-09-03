@@ -27,6 +27,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4Army.h"
+#include "newParser.h"
+#include "ParserHelpers.h"
 #include <map>
 #include <string>
 #include <vector>
@@ -75,7 +77,7 @@ class militaryMappings
 };
 
 
-class allMilitaryMappings
+class allMilitaryMappings: commonItems::parser
 {
 	public:
 		allMilitaryMappings();
