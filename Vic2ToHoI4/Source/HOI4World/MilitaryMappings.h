@@ -74,6 +74,18 @@ class militaryMappings
 		std::vector<HoI4::DivisionTemplateType> divisionTemplates;
 };
 
+
+class allMilitaryMappings
+{
+	public:
+		allMilitaryMappings();
+
+		militaryMappings getMilitaryMappings(const std::vector<std::string>& mods);
+
+	private:
+		std::map<std::string, militaryMappings> theMappings;
+};
+
 }
 
 

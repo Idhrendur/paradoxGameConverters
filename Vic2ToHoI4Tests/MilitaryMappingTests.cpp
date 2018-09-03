@@ -72,4 +72,31 @@ TEST_CLASS(MilitaryMappingsTests)
 		}
 };
 
+
+TEST_CLASS(AllMilitaryMappingsTests)
+{
+	public:
+		TEST_METHOD(getDefaultMappingsWithNoMods)
+		{
+			HoI4::allMilitaryMappings allTheMappings;
+			std::vector<std::string> mods;
+			auto specificMappings = allTheMappings.getMilitaryMappings(mods);
+			Assert::AreEqual(size_t(28), specificMappings.getUnitMap().size());
+		}
+		TEST_METHOD(getDefaultMappingsWithInvalidMod)
+		{
+			HoI4::allMilitaryMappings allTheMappings;
+			std::vector<std::string> mods = { "NotAMod" };
+			auto specificMappings = allTheMappings.getMilitaryMappings(mods);
+			Assert::AreEqual(size_t(28), specificMappings.getUnitMap().size());
+		}
+		TEST_METHOD(getPDMMappingsWithPDM)
+		{
+			HoI4::allMilitaryMappings allTheMappings;
+			std::vector<std::string> mods = { "PDM" };
+			auto specificMappings = allTheMappings.getMilitaryMappings(mods);
+			Assert::AreEqual(size_t(28), specificMappings.getUnitMap().size());
+		}
+};
+
 }

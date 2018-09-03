@@ -252,3 +252,25 @@ void HoI4::militaryMappings::importDivisionTemplates()
 
 	divisionTemplates.push_back(cavalryBrigadeTemplate);
 }
+
+
+HoI4::allMilitaryMappings::allMilitaryMappings()
+{
+	militaryMappings newMappings;
+	theMappings.insert(std::make_pair("default", newMappings));
+	theMappings.insert(std::make_pair("PDM", newMappings));
+}
+
+
+HoI4::militaryMappings HoI4::allMilitaryMappings::getMilitaryMappings(const std::vector<std::string>& Vic2Mods)
+{
+	for (auto mod: Vic2Mods)
+	{
+		if (auto mapping = theMappings.find(mod); mapping != theMappings.end())
+		{
+			return mapping->second;
+		}
+	}
+
+	return theMappings.at("default");
+}
