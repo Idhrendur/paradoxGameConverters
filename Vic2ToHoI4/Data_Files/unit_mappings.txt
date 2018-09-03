@@ -42,16 +42,16 @@
 #	}
 # }
 #
-# The "map" section format is used to establish which HoI4 units the Vic2 units are transformed into. It has the following structure :
+# The "map" section format is used to establish which HoI4 types the Vic2 types are transformed into. It has the following structure :
 #
 # map = {
 # 	link = {
-#		vic = <Vic2 unit type>
+#		vic = <Vic2 type category>
 #
 #		hoi = {
-#			type = <land/air/naval/convoy>
-#			unit = <HoI4 unit type> (Valid Battalion/Support Company, Aircraft type or Naval Vessel type)
-#			equipment = <equipment_type>
+#			category = <land/air/naval/convoy>
+#			type = <HoI4 type category> (Valid Battalion/Support Company, Aircraft category or Naval Vessel category)
+#			equipment = <equipment_category>
 #			size = <integer number>
 #		}
 # 	}
@@ -70,19 +70,19 @@
 # 		vic = infantry
 #
 # 		hoi = {
-# 			type = land
-# 			unit = infantry
+# 			category = land
+# 			type = infantry
 # 			equipment = infantry_equipment_0
 # 			size = 3
 # 		}
 # 	}
-# 	# Map every Vic2 Plane units to 10 x Interwar Fighter
+# 	# Map every Vic2 Plane types to 10 x Interwar Fighter
 # 	link = {
 # 		vic = plane
 #
 # 		hoi = {
-# 			type = air
-# 			unit = fighter
+# 			category = air
+# 			type = fighter
 # 			equipment = fighter_equipment_0
 # 			size = 10
 # 		}
@@ -94,20 +94,20 @@
 # 		vic = commerce_raider
 #
 # 		hoi = {
-# 			type = naval
-# 			unit = destroyer
+# 			category = naval
+# 			type = destroyer
 # 			equipment = destroyer_1
 # 			size = 1
 # 		}
 # 	}
 # }
 #
-# Specifying no "hoi" section means that those Vic2 units will not be mapped.
+# Specifying no "hoi" section means that those Vic2 types will not be mapped.
 #
-# In addition to the above, Division Templates must be defined so that mapped Vic2 ground units are grouped in viable formations.
+# In addition to the above, Division Templates must be defined so that mapped Vic2 ground types are grouped in viable formations.
 # The Division Templates have the same structure as found in HoI4.
-# The order in which the templates are defined matters. The converter will first try to convert as many divisions of the current type
-# and when there are no longer sufficient mapped units available it moves to the next template.
+# The order in which the templates are defined matters. The converter will first try to convert as many divisions of the current category
+# and when there are no longer sufficient mapped types available it moves to the next template.
 #
 #
 # EXAMPLE :
@@ -176,8 +176,8 @@ default = {
 			vic = infantry
 
 			hoi = {
-				type = land
-				unit = infantry
+				category = land
+				type = infantry
 				equipment = infantry_equipment_0
 				size = 3
 			}
@@ -187,8 +187,8 @@ default = {
 			vic = engineer
 
 			hoi = {
-				type = land
-				unit = infantry
+				category = land
+				type = infantry
 				equipment = infantry_equipment_0
 				size = 3
 			}
@@ -198,8 +198,8 @@ default = {
 			vic = guard
 
 			hoi = {
-				type = land
-				unit = infantry
+				category = land
+				type = infantry
 				equipment = infantry_equipment_0
 				size = 3
 			}
@@ -209,8 +209,8 @@ default = {
 			vic = artillery
 
 			hoi = {
-				type = land
-				unit = artillery_brigade
+				category = land
+				type = artillery_brigade
 				equipment = artillery_equipment_1
 				size = 3
 			}
@@ -224,8 +224,8 @@ default = {
 			vic = hussar
 
 			hoi = {
-				type = land
-				unit = cavalry
+				category = land
+				type = cavalry
 				equipment = infantry_equipment_0
 				size = 3
 			}
@@ -235,8 +235,8 @@ default = {
 			vic = cuirassier
 
 			hoi = {
-				type = land
-				unit = cavalry
+				category = land
+				type = cavalry
 				equipment = infantry_equipment_0
 				size = 3
 			}
@@ -246,8 +246,8 @@ default = {
 			vic = dragoon
 
 			hoi = {
-				type = land
-				unit = cavalry
+				category = land
+				type = cavalry
 				equipment = infantry_equipment_0
 				size = 3
 			}
@@ -257,8 +257,8 @@ default = {
 			vic = tank
 
 			hoi = {
-				type = land
-				unit = light_armor
+				category = land
+				type = light_armor
 				equipment = gw_tank_equipment
 				size = 50
 			}
@@ -268,8 +268,8 @@ default = {
 			vic = plane
 
 			hoi = {
-				type = air
-				unit = fighter
+				category = air
+				type = fighter
 				equipment = fighter_equipment_0
 				size = 50
 			}
@@ -287,8 +287,8 @@ default = {
 			vic = commerce_raider
 
 			hoi = {
-				type = naval
-				unit = destroyer
+				category = naval
+				type = destroyer
 				equipment = destroyer_1
 				size = 1
 			}
@@ -306,8 +306,8 @@ default = {
 			vic = cruiser
 
 			hoi = {
-				type = naval
-				unit = light_cruiser
+				category = naval
+				type = light_cruiser
 				equipment = light_cruiser_1
 				size = 1
 			}
@@ -317,8 +317,8 @@ default = {
 			vic = battleship
 
 			hoi = {
-				type = naval
-				unit = heavy_cruiser
+				category = naval
+				type = heavy_cruiser
 				equipment = heavy_cruiser_1
 				size = 1
 			}
@@ -328,8 +328,8 @@ default = {
 			vic = dreadnought
 
 			hoi = {
-				type = naval
-				unit = battleship
+				category = naval
+				type = battleship
 				equipment = battleship_1
 				size = 1
 			}
@@ -343,8 +343,8 @@ default = {
 			vic = steam_transport
 
 			hoi = {
+				category = convoy
 				type = convoy
-				unit = convoy
 				equipment = convoy_1
 				size = 1
 			}
@@ -513,8 +513,19 @@ PDM = {
 			vic = infantry
 
 			hoi = {
-				type = land
-				unit = infantry
+				category = land
+				type = infantry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+		
+		link = {
+			vic = regular
+
+			hoi = {
+				category = land
+				type = infantry
 				equipment = infantry_equipment_0
 				size = 3
 			}
@@ -524,8 +535,8 @@ PDM = {
 			vic = engineer
 
 			hoi = {
-				type = land
-				unit = infantry
+				category = land
+				type = infantry
 				equipment = infantry_equipment_0
 				size = 3
 			}
@@ -535,8 +546,8 @@ PDM = {
 			vic = guard
 
 			hoi = {
-				type = land
-				unit = infantry
+				category = land
+				type = infantry
 				equipment = infantry_equipment_0
 				size = 3
 			}
@@ -546,8 +557,19 @@ PDM = {
 			vic = artillery
 
 			hoi = {
-				type = land
-				unit = artillery_brigade
+				category = land
+				type = artillery_brigade
+				equipment = artillery_equipment_1
+				size = 3
+			}
+		}
+		
+		link = {
+			vic = horse_artillery
+
+			hoi = {
+				category = land
+				type = artillery_brigade
 				equipment = artillery_equipment_1
 				size = 3
 			}
@@ -561,8 +583,8 @@ PDM = {
 			vic = hussar
 
 			hoi = {
-				type = land
-				unit = cavalry
+				category = land
+				type = cavalry
 				equipment = infantry_equipment_0
 				size = 3
 			}
@@ -572,8 +594,8 @@ PDM = {
 			vic = cuirassier
 
 			hoi = {
-				type = land
-				unit = cavalry
+				category = land
+				type = cavalry
 				equipment = infantry_equipment_0
 				size = 3
 			}
@@ -583,8 +605,8 @@ PDM = {
 			vic = dragoon
 
 			hoi = {
-				type = land
-				unit = cavalry
+				category = land
+				type = cavalry
 				equipment = infantry_equipment_0
 				size = 3
 			}
@@ -594,8 +616,8 @@ PDM = {
 			vic = tank
 
 			hoi = {
-				type = land
-				unit = light_armor
+				category = land
+				type = light_armor
 				equipment = gw_tank_equipment
 				size = 50
 			}
@@ -605,8 +627,8 @@ PDM = {
 			vic = plane
 
 			hoi = {
-				type = air
-				unit = fighter
+				category = air
+				type = fighter
 				equipment = fighter_equipment_0
 				size = 50
 			}
@@ -624,8 +646,8 @@ PDM = {
 			vic = commerce_raider
 
 			hoi = {
-				type = naval
-				unit = destroyer
+				category = naval
+				type = destroyer
 				equipment = destroyer_1
 				size = 1
 			}
@@ -643,8 +665,8 @@ PDM = {
 			vic = cruiser
 
 			hoi = {
-				type = naval
-				unit = light_cruiser
+				category = naval
+				type = light_cruiser
 				equipment = light_cruiser_1
 				size = 1
 			}
@@ -654,8 +676,8 @@ PDM = {
 			vic = battleship
 
 			hoi = {
-				type = naval
-				unit = heavy_cruiser
+				category = naval
+				type = heavy_cruiser
 				equipment = heavy_cruiser_1
 				size = 1
 			}
@@ -665,9 +687,20 @@ PDM = {
 			vic = dreadnought
 
 			hoi = {
-				type = naval
-				unit = battleship
+				category = naval
+				type = battleship
 				equipment = battleship_1
+				size = 1
+			}
+		}
+		
+		link = {
+			vic = submarine
+
+			hoi = {
+				category = naval
+				type = submarine
+				equipment = submarine_1
 				size = 1
 			}
 		}
@@ -680,8 +713,8 @@ PDM = {
 			vic = steam_transport
 
 			hoi = {
+				category = convoy
 				type = convoy
-				unit = convoy
 				equipment = convoy_1
 				size = 1
 			}
