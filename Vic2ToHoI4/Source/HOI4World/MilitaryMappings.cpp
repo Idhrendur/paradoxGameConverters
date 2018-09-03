@@ -106,42 +106,6 @@ void HoI4::militaryMappings::importUnitMap(std::istream& theStream)
 	});
 
 	parseStream(theStream);
-
-	/*unitMap["irregular"] = HoI4::UnitMap();
-
-	unitMap["infantry"] = HoI4::UnitMap("land","infantry","infantry_equipment_0",3);
-	unitMap["regular"] = HoI4::UnitMap("land","infantry","infantry_equipment_0",3);
-	unitMap["engineer"] = HoI4::UnitMap("land", "infantry", "infantry_equipment_0", 3);
-	unitMap["guard"] = HoI4::UnitMap("land", "infantry", "infantry_equipment_0", 3);
-	unitMap["specops"] = HoI4::UnitMap("land", "infantry", "infantry_equipment_0", 3);
-
-	unitMap["artillery"] = HoI4::UnitMap("land", "artillery_brigade", "artillery_equipment_1", 3);
-	unitMap["horse_artillery"] = HoI4::UnitMap("land", "artillery_brigade", "artillery_equipment_1", 3);
-
-	unitMap["cavalry"] = HoI4::UnitMap();
-
-	unitMap["hussar"] = HoI4::UnitMap("land", "cavalry", "infantry_equipment_0", 3);
-	unitMap["cuirassier"] = HoI4::UnitMap("land", "cavalry", "infantry_equipment_0", 3);
-	unitMap["dragoon"] = HoI4::UnitMap("land", "cavalry", "infantry_equipment_0", 3);
-
-	unitMap["tank"] = HoI4::UnitMap("land", "light_armor", "gw_tank_equipment", 1);
-
-	unitMap["plane"] = HoI4::UnitMap("air", "fighter", "fighter_equipment_0", 20);
-	unitMap["bomber"] = HoI4::UnitMap("air", "tac_bomber", "tac_bomber_equipment_0", 20);
-	unitMap["transport_plane"] = HoI4::UnitMap("air", "transport_plane", "transport_plane_equipment_0", 20);
-
-	unitMap["manowar"] = HoI4::UnitMap();
-	unitMap["frigate"] = HoI4::UnitMap();
-	unitMap["commerce_raider"] = HoI4::UnitMap("naval", "destroyer", "destroyer_1", 1);
-	unitMap["ironclad"] = HoI4::UnitMap();
-	unitMap["monitor"] = HoI4::UnitMap();
-	unitMap["cruiser"] = HoI4::UnitMap("naval", "light_cruiser", "light_cruiser_1", 1);
-	unitMap["battleship"] = HoI4::UnitMap("naval", "heavy_cruiser", "heavy_cruiser_1", 1);
-	unitMap["dreadnought"] = HoI4::UnitMap("naval", "battleship", "battleship_1", 1);
-	unitMap["submarine"] = HoI4::UnitMap("naval", "submarine", "submarine_1", 1);
-	unitMap["carrier"] = HoI4::UnitMap("naval", "carrier", "carrier", 1);
-	unitMap["clipper_transport"] = HoI4::UnitMap();
-	unitMap["steam_transport"] = HoI4::UnitMap("convoy", "convoy", "convoy_1", 1);*/
 }
 
 void HoI4::militaryMappings::importDivisionTemplates(std::istream& theStream)
