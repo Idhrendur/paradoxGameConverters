@@ -34,6 +34,37 @@ HoI4::UnitMap::UnitMap(const std::string& _category, const std::string& _type, c
 }
 
 
+namespace HoI4
+{
+
+class UnitMapping: commonItems::parser
+{
+	public:
+		UnitMapping(std::istream& theStream);
+
+		std::string getVic2Type() const { return Vic2Type; }
+		auto getHoI4Type() const { return HoI4Type; }
+
+	private:
+		std::string Vic2Type;
+		UnitMap HoI4Type;
+};
+
+}
+
+
+HoI4::UnitMapping::UnitMapping(std::istream& theStream)
+{
+	registerKeyword(std::regex("vic"), [this](const std::string& unused, std::istream& theStream)
+	{
+		commonItems::singleString typeString(theStream);
+		Vic2Type = typeString.getString();
+	});
+
+	parseStream(theStream);
+}
+
+
 HoI4::militaryMappings::militaryMappings(std::istream& theStream)
 {
 	registerKeyword(std::regex("map"), [this](const std::string& unused, std::istream& theStream){
@@ -49,10 +80,15 @@ HoI4::militaryMappings::militaryMappings(std::istream& theStream)
 
 void HoI4::militaryMappings::importUnitMap(std::istream& theStream)
 {
-	commonItems::ignoreItem("", theStream);
-	/* HARDCODED! TO DO : IMPLEMENT PARSING of unit_mapping.txt */
+	registerKeyword(std::regex("link"), [this](const std::string& unused, std::istream&theStream)
+	{
+		UnitMapping newMapping(theStream);
+		unitMap.insert(make_pair(newMapping.getVic2Type(), newMapping.getHoI4Type()));
+	});
 
-	unitMap["irregular"] = HoI4::UnitMap();
+	parseStream(theStream);
+
+	/*unitMap["irregular"] = HoI4::UnitMap();
 
 	unitMap["infantry"] = HoI4::UnitMap("land","infantry","infantry_equipment_0",3);
 	unitMap["regular"] = HoI4::UnitMap("land","infantry","infantry_equipment_0",3);
@@ -86,7 +122,7 @@ void HoI4::militaryMappings::importUnitMap(std::istream& theStream)
 	unitMap["submarine"] = HoI4::UnitMap("naval", "submarine", "submarine_1", 1);
 	unitMap["carrier"] = HoI4::UnitMap("naval", "carrier", "carrier", 1);
 	unitMap["clipper_transport"] = HoI4::UnitMap();
-	unitMap["steam_transport"] = HoI4::UnitMap("convoy", "convoy", "convoy_1", 1);
+	unitMap["steam_transport"] = HoI4::UnitMap("convoy", "convoy", "convoy_1", 1);*/
 }
 
 void HoI4::militaryMappings::importDivisionTemplates(std::istream& theStream)
@@ -275,7 +311,7 @@ HoI4::allMilitaryMappings::allMilitaryMappings()
 }
 
 
-HoI4::militaryMappings HoI4::allMilitaryMappings::getMilitaryMappings(const std::vector<std::string>& Vic2Mods)
+HoI4::militaryMappings HoI4::allMilitaryMappings::getMilitaryMappings(const std::vector<std::string>& Vic2Mods) const
 {
 	for (auto mod: Vic2Mods)
 	{

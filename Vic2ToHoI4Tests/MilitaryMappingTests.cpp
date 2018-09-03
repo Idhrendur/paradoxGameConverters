@@ -60,16 +60,30 @@ TEST_CLASS(UnitMapTests)
 TEST_CLASS(MilitaryMappingsTests)
 {
 	public:
-		TEST_METHOD(allUnitsInMapping)
+		TEST_METHOD(emptyMappingStaysEmpty)
 		{
 			std::stringstream input(
-				"= {"\
-				"\tmap = {"\
+				"= {\n"\
+				"\tmap = {\n"\
 				"\t}"\
 				"}"
 			);
 			HoI4::militaryMappings theMappings(input);
-			Assert::AreEqual(size_t(28), theMappings.getUnitMap().size());
+			Assert::AreEqual(size_t(0), theMappings.getUnitMap().size());
+		}
+		TEST_METHOD(unitAddedToMapping)
+		{
+			std::stringstream input(
+				"= {\n"\
+				"\tmap = {\n"\
+				"\t\tlink = {\n"\
+				"\t\t\tvic = irregular\n"\
+				"\t\t}\n"\
+				"\t}"\
+				"}"
+			);
+			HoI4::militaryMappings theMappings(input);
+			Assert::AreEqual(size_t(1), theMappings.getUnitMap().count("irregular"));
 		}
 		TEST_METHOD(allDivisionTemplatesInMapping)
 		{
