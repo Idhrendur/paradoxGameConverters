@@ -41,7 +41,7 @@ namespace HoI4
 
 class UnitMap
 {
-	public: 
+	public:
 		UnitMap(const std::string& category, const std::string& type, const std::string& equipment, int size);
 		UnitMap() = default;
 		UnitMap(const UnitMap&) = default;
@@ -65,8 +65,8 @@ class militaryMappings: commonItems::parser
 	public:
 		militaryMappings(std::istream& theStream);
 
-		auto getUnitMap() { return unitMap; }
-		auto getDivisionTemplates() { return divisionTemplates; }
+		auto getUnitMap() const { return unitMap; }
+		auto getDivisionTemplates() const { return divisionTemplates; }
 
 	private:
 		void importUnitMap(std::istream& theStream);
@@ -82,7 +82,7 @@ class allMilitaryMappings: commonItems::parser
 	public:
 		allMilitaryMappings();
 
-		militaryMappings getMilitaryMappings(const std::vector<std::string>& mods);
+		militaryMappings getMilitaryMappings(const std::vector<std::string>& mods) const;
 
 	private:
 		std::map<std::string, militaryMappings> theMappings;
