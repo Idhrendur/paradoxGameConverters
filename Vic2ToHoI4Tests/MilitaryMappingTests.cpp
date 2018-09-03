@@ -62,12 +62,24 @@ TEST_CLASS(MilitaryMappingsTests)
 	public:
 		TEST_METHOD(allUnitsInMapping)
 		{
-			HoI4::militaryMappings theMappings;
+			std::stringstream input(
+				"= {"\
+				"\tmap = {"\
+				"\t}"\
+				"}"
+			);
+			HoI4::militaryMappings theMappings(input);
 			Assert::AreEqual(size_t(28), theMappings.getUnitMap().size());
 		}
 		TEST_METHOD(allDivisionTemplatesInMapping)
 		{
-			HoI4::militaryMappings theMappings;
+			std::stringstream input(
+				"= {"\
+				"\tdivision_templates = {"\
+				"\t}"\
+				"}"
+			);
+			HoI4::militaryMappings theMappings(input);
 			Assert::AreEqual(size_t(11), theMappings.getDivisionTemplates().size());
 		}
 };

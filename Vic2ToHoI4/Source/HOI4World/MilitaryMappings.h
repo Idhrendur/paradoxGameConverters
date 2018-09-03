@@ -60,17 +60,17 @@ class UnitMap
 };
 
 
-class militaryMappings
+class militaryMappings: commonItems::parser
 {
 	public:
-		militaryMappings();
+		militaryMappings(std::istream& theStream);
 
 		auto getUnitMap() { return unitMap; }
 		auto getDivisionTemplates() { return divisionTemplates; }
 
 	private:
-		void importUnitMap();
-		void importDivisionTemplates();
+		void importUnitMap(std::istream& theStream);
+		void importDivisionTemplates(std::istream& theStream);
 
 		std::map<std::string, HoI4::UnitMap> unitMap;
 		std::vector<HoI4::DivisionTemplateType> divisionTemplates;

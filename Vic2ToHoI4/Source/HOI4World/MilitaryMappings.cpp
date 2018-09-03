@@ -34,15 +34,22 @@ HoI4::UnitMap::UnitMap(const std::string& _category, const std::string& _type, c
 }
 
 
-HoI4::militaryMappings::militaryMappings()
+HoI4::militaryMappings::militaryMappings(std::istream& theStream)
 {
-	importUnitMap();
-	importDivisionTemplates();
+	registerKeyword(std::regex("map"), [this](const std::string& unused, std::istream& theStream){
+		importUnitMap(theStream);
+	});
+	registerKeyword(std::regex("division_templates"), [this](const std::string& unused, std::istream& theStream){
+		importDivisionTemplates(theStream);
+	});
+
+	parseStream(theStream);
 }
 
 
-void HoI4::militaryMappings::importUnitMap()
+void HoI4::militaryMappings::importUnitMap(std::istream& theStream)
 {
+	commonItems::ignoreItem("", theStream);
 	/* HARDCODED! TO DO : IMPLEMENT PARSING of unit_mapping.txt */
 
 	unitMap["irregular"] = HoI4::UnitMap();
@@ -82,8 +89,9 @@ void HoI4::militaryMappings::importUnitMap()
 	unitMap["steam_transport"] = HoI4::UnitMap("convoy", "convoy", "convoy_1", 1);
 }
 
-void HoI4::militaryMappings::importDivisionTemplates()
+void HoI4::militaryMappings::importDivisionTemplates(std::istream& theStream)
 {
+	commonItems::ignoreItem("", theStream);
 	/* HARDCODED! TO DO : IMPLEMENT PARSING of unit_mapping.txt */
 
 	HoI4::DivisionTemplateType armoredTemplate("Armored Division");
@@ -256,9 +264,9 @@ void HoI4::militaryMappings::importDivisionTemplates()
 
 HoI4::allMilitaryMappings::allMilitaryMappings()
 {
-	militaryMappings newMappings;
-	registerKeyword(std::regex("[a-zA-Z0-9]+"), [this, newMappings](const std::string& mod, std::istream& theStream)
+	registerKeyword(std::regex("[a-zA-Z0-9]+"), [this](const std::string& mod, std::istream& theStream)
 	{
+		militaryMappings newMappings(theStream);
 		theMappings.insert(make_pair(mod, newMappings));
 		commonItems::ignoreItem(mod, theStream);
 	});
