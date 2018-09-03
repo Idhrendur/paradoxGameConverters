@@ -25,12 +25,26 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-HoI4::UnitMap::UnitMap(const std::string& _category, const std::string& _type, const std::string& _equipment, int _size):
-	category(_category),
-	type(_type),
-	equipment(_equipment),
-	size(_size)
+HoI4::UnitMap::UnitMap(std::istream& theStream)
 {
+	registerKeyword(std::regex("category"), [this](const std::string& unused, std::istream& theStream){
+		commonItems::singleString categoryString(theStream);
+		category = categoryString.getString();
+	});
+	registerKeyword(std::regex("type"), [this](const std::string& unused, std::istream& theStream){
+		commonItems::singleString typeString(theStream);
+		type = typeString.getString();
+	});
+	registerKeyword(std::regex("equipment"), [this](const std::string& unused, std::istream& theStream){
+		commonItems::singleString equipmentString(theStream);
+		equipment = equipmentString.getString();
+	});
+	registerKeyword(std::regex("size"), [this](const std::string& unused, std::istream& theStream){
+		commonItems::singleInt sizeInt(theStream);
+		size = sizeInt.getInt();
+	});
+
+	parseStream(theStream);
 }
 
 
@@ -59,6 +73,11 @@ HoI4::UnitMapping::UnitMapping(std::istream& theStream)
 	{
 		commonItems::singleString typeString(theStream);
 		Vic2Type = typeString.getString();
+	});
+	registerKeyword(std::regex("hoi"), [this](const std::string& unused, std::istream& theStream)
+	{
+		HoI4::UnitMap theUnit(theStream);
+		HoI4Type = theUnit;
 	});
 
 	parseStream(theStream);

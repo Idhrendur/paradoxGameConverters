@@ -39,10 +39,10 @@ namespace HoI4
 {
 
 
-class UnitMap
+class UnitMap: commonItems::parser
 {
 	public:
-		UnitMap(const std::string& category, const std::string& type, const std::string& equipment, int size);
+		UnitMap(std::istream& theStream);
 		UnitMap() = default;
 		UnitMap(const UnitMap&) = default;
 		UnitMap& operator=(const UnitMap&) = default;
