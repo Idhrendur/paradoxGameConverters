@@ -84,7 +84,8 @@ HoI4::UnitMapping::UnitMapping(std::istream& theStream)
 }
 
 
-HoI4::militaryMappings::militaryMappings(std::istream& theStream)
+HoI4::militaryMappings::militaryMappings(const std::string& name, std::istream& theStream):
+	mappingsName(name)
 {
 	registerKeyword(std::regex("map"), [this](const std::string& unused, std::istream& theStream){
 		importUnitMap(theStream);
@@ -285,7 +286,7 @@ HoI4::allMilitaryMappings::allMilitaryMappings()
 {
 	registerKeyword(std::regex("[a-zA-Z0-9]+"), [this](const std::string& mod, std::istream& theStream)
 	{
-		militaryMappings newMappings(theStream);
+		militaryMappings newMappings(mod, theStream);
 		theMappings.insert(make_pair(mod, newMappings));
 	});
 

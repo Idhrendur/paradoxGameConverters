@@ -75,9 +75,6 @@ TEST_CLASS(MilitaryMappingsTests)
 			std::stringstream input(
 				"= {\n"\
 				"\t\t\t\tcategory = land\n"\
-				"\t\t\t\ttype = infantry\n"\
-				"\t\t\t\tequipment = infantry_equipment_0\n"\
-				"\t\t\t\tsize = 3\n"\
 				"\t\t\t}"
 			);
 			HoI4::UnitMap theMap(input);
@@ -87,10 +84,7 @@ TEST_CLASS(MilitaryMappingsTests)
 		{
 			std::stringstream input(
 				"= {\n"\
-				"\t\t\t\tcategory = land\n"\
 				"\t\t\t\ttype = infantry\n"\
-				"\t\t\t\tequipment = infantry_equipment_0\n"\
-				"\t\t\t\tsize = 3\n"\
 				"\t\t\t}"
 			);
 			HoI4::UnitMap theMap(input);
@@ -100,10 +94,7 @@ TEST_CLASS(MilitaryMappingsTests)
 		{
 			std::stringstream input(
 				"= {\n"\
-				"\t\t\t\tcategory = land\n"\
-				"\t\t\t\ttype = infantry\n"\
 				"\t\t\t\tequipment = infantry_equipment_0\n"\
-				"\t\t\t\tsize = 3\n"\
 				"\t\t\t}"
 			);
 			HoI4::UnitMap theMap(input);
@@ -113,9 +104,6 @@ TEST_CLASS(MilitaryMappingsTests)
 		{
 			std::stringstream input(
 				"= {\n"\
-				"\t\t\t\tcategory = land\n"\
-				"\t\t\t\ttype = infantry\n"\
-				"\t\t\t\tequipment = infantry_equipment_0\n"\
 				"\t\t\t\tsize = 3\n"\
 				"\t\t\t}"
 			);
@@ -130,7 +118,7 @@ TEST_CLASS(MilitaryMappingsTests)
 				"\t}"\
 				"}"
 			);
-			HoI4::militaryMappings theMappings(input);
+			HoI4::militaryMappings theMappings("", input);
 			Assert::AreEqual(size_t(0), theMappings.getUnitMap().size());
 		}
 		TEST_METHOD(Vic2UnitAddedToUnitMapping)
@@ -144,7 +132,7 @@ TEST_CLASS(MilitaryMappingsTests)
 				"\t}"\
 				"}"
 			);
-			HoI4::militaryMappings theMappings(input);
+			HoI4::militaryMappings theMappings("", input);
 			Assert::AreEqual(size_t(1), theMappings.getUnitMap().count("irregular"));
 		}
 		TEST_METHOD(UnitMappingHandlesBlankHoI4UnitTypeCorrectly)
@@ -158,7 +146,7 @@ TEST_CLASS(MilitaryMappingsTests)
 				"\t}"\
 				"}"
 			);
-			HoI4::militaryMappings theMappings(input);
+			HoI4::militaryMappings theMappings("", input);
 			Assert::AreEqual(std::string(""), theMappings.getUnitMap().at("irregular").getType());
 		}
 		TEST_METHOD(UnitMappingHandlesFilledHoI4UnitTypeCorrectly)
@@ -170,15 +158,12 @@ TEST_CLASS(MilitaryMappingsTests)
 				"\t\t\tvic = infantry\n"\
 				"\t\t\thoi = {\n"\
 				"\t\t\t\ttype = land\n"\
-				"\t\t\t\tunit = infantry\n"\
-				"\t\t\tequipment = infantry_equipment_0\n"\
-				"\t\t\tsize = 3\n"\
 				"\t\t\t}\n"\
 				"\t\t}\n"\
 				"\t}"\
 				"}"
 			);
-			HoI4::militaryMappings theMappings(input);
+			HoI4::militaryMappings theMappings("", input);
 			Assert::AreEqual(std::string("land"), theMappings.getUnitMap().at("infantry").getType());
 		}
 		TEST_METHOD(allDivisionTemplatesInMapping)
@@ -189,7 +174,7 @@ TEST_CLASS(MilitaryMappingsTests)
 				"\t}"\
 				"}"
 			);
-			HoI4::militaryMappings theMappings(input);
+			HoI4::militaryMappings theMappings("", input);
 			Assert::AreEqual(size_t(11), theMappings.getDivisionTemplates().size());
 		}
 		TEST_METHOD(getDefaultMappingsWithNoMods)
@@ -197,21 +182,21 @@ TEST_CLASS(MilitaryMappingsTests)
 			HoI4::allMilitaryMappings allTheMappings;
 			std::vector<std::string> mods;
 			auto specificMappings = allTheMappings.getMilitaryMappings(mods);
-			Assert::AreEqual(size_t(21), specificMappings.getUnitMap().size());
+			Assert::AreEqual(std::string("default"), specificMappings.getMappingsName());
 		}
 		TEST_METHOD(getDefaultMappingsWithInvalidMod)
 		{
 			HoI4::allMilitaryMappings allTheMappings;
 			std::vector<std::string> mods = { "NotAMod" };
 			auto specificMappings = allTheMappings.getMilitaryMappings(mods);
-			Assert::AreEqual(size_t(21), specificMappings.getUnitMap().size());
+			Assert::AreEqual(std::string("default"), specificMappings.getMappingsName());
 		}
 		TEST_METHOD(getPDMMappingsWithPDM)
 		{
 			HoI4::allMilitaryMappings allTheMappings;
 			std::vector<std::string> mods = { "PDM" };
 			auto specificMappings = allTheMappings.getMilitaryMappings(mods);
-			Assert::AreEqual(size_t(24), specificMappings.getUnitMap().size());
+			Assert::AreEqual(std::string("PDM"), specificMappings.getMappingsName());
 		}
 };
 
