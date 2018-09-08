@@ -260,7 +260,7 @@ default = {
 				category = land
 				type = light_armor
 				equipment = gw_tank_equipment
-				size = 50
+				size = 1
 			}
 		}
 
@@ -271,7 +271,7 @@ default = {
 				category = air
 				type = fighter
 				equipment = fighter_equipment_0
-				size = 50
+				size = 20
 			}
 		}
 
@@ -354,6 +354,78 @@ default = {
 	division_templates = {
 
 		division_template = {
+			name = "Armored Division"
+
+			regiments = {
+				light_armor = { x = 0 y = 0 }
+				light_armor = { x = 0 y = 1 }
+				light_armor = { x = 0 y = 2 }
+
+				light_armor = { x = 1 y = 0 }
+				light_armor = { x = 1 y = 1 }
+				light_armor = { x = 1 y = 2 }
+
+				motorized = { x = 2 y = 0 }
+				motorized = { x = 2 y = 1 }
+				motorized = { x = 2 y = 2 }
+			}
+
+			support = {
+				artillery = { x = 0 y = 0 }
+			}
+
+			priority = 2
+		}
+
+		division_template = {
+			name = "Mechanized Division"
+
+			regiments = {
+				light_armor = { x = 0 y = 0 }
+				light_armor = { x = 0 y = 1 }
+				light_armor = { x = 0 y = 2 }
+
+				motorized = { x = 1 y = 0 }
+				motorized = { x = 1 y = 1 }
+				motorized = { x = 1 y = 2 }
+
+				motorized = { x = 2 y = 0 }
+				motorized = { x = 2 y = 1 }
+				motorized = { x = 2 y = 2 }
+			}
+
+			support = {
+				artillery = { x = 0 y = 0 }
+			}
+
+			priority = 2
+		}
+
+		division_template = {
+			name = "Motorized Division"
+
+			regiments = {
+				motorized = { x = 0 y = 0 }
+				motorized = { x = 0 y = 1 }
+				motorized = { x = 0 y = 2 }
+
+				motorized = { x = 1 y = 0 }
+				motorized = { x = 1 y = 1 }
+				motorized = { x = 1 y = 2 }
+
+				motorized = { x = 2 y = 0 }
+				motorized = { x = 2 y = 1 }
+				motorized = { x = 2 y = 2 }
+			}
+
+			support = {
+				artillery = { x = 0 y = 0 }
+			}
+
+			priority = 2
+		}
+
+		division_template = {
 			name = "Assault Division"
 
 			regiments = {
@@ -374,8 +446,6 @@ default = {
 				artillery_brigade = { x = 3 y = 2 }
 
 				light_armor = { x = 4 y = 0 }
-				light_armor = { x = 4 y = 1 }
-				light_armor = { x = 4 y = 2 }
 			}
 
 			priority = 2
@@ -392,38 +462,6 @@ default = {
 				artillery_brigade = { x = 1 y = 0 }
 
 				light_armor = { x = 2 y = 0 }
-			}
-
-			priority = 2
-		}
-
-		division_template = {
-			name = "Cavalry Division"
-
-			regiments = {
-				cavalry = { x = 0 y = 0 }
-				cavalry = { x = 0 y = 1 }
-				cavalry = { x = 0 y = 2 }
-
-				cavalry = { x = 1 y = 0 }
-				cavalry = { x = 1 y = 1 }
-				cavalry = { x = 1 y = 2 }
-
-				cavalry = { x = 2 y = 0 }
-				cavalry = { x = 2 y = 1 }
-				cavalry = { x = 2 y = 2 }
-			}
-
-			priority = 2
-		}
-
-		division_template = {
-			name = "Cavalry Brigade"
-
-			regiments = {
-				cavalry = { x = 0 y = 0 }
-				cavalry = { x = 0 y = 1 }
-				cavalry = { x = 0 y = 2 }
 			}
 
 			priority = 2
@@ -499,6 +537,37 @@ default = {
 			priority = 0
 		}
 
+		division_template = {
+			name = "Cavalry Division"
+
+			regiments = {
+				cavalry = { x = 0 y = 0 }
+				cavalry = { x = 0 y = 1 }
+				cavalry = { x = 0 y = 2 }
+
+				cavalry = { x = 1 y = 0 }
+				cavalry = { x = 1 y = 1 }
+				cavalry = { x = 1 y = 2 }
+
+				cavalry = { x = 2 y = 0 }
+				cavalry = { x = 2 y = 1 }
+				cavalry = { x = 2 y = 2 }
+			}
+
+			priority = 2
+		}
+
+		division_template = {
+			name = "Cavalry Brigade"
+
+			regiments = {
+				cavalry = { x = 0 y = 0 }
+				cavalry = { x = 0 y = 1 }
+				cavalry = { x = 0 y = 2 }
+			}
+
+			priority = 2
+		}
 	}
 }
 
@@ -519,7 +588,7 @@ PDM = {
 				size = 3
 			}
 		}
-		
+
 		link = {
 			vic = regular
 
@@ -563,7 +632,7 @@ PDM = {
 				size = 3
 			}
 		}
-		
+
 		link = {
 			vic = horse_artillery
 
@@ -619,7 +688,7 @@ PDM = {
 				category = land
 				type = light_armor
 				equipment = gw_tank_equipment
-				size = 50
+				size = 1
 			}
 		}
 
@@ -630,7 +699,7 @@ PDM = {
 				category = air
 				type = fighter
 				equipment = fighter_equipment_0
-				size = 50
+				size = 20
 			}
 		}
 
@@ -693,7 +762,7 @@ PDM = {
 				size = 1
 			}
 		}
-		
+
 		link = {
 			vic = submarine
 
@@ -724,6 +793,78 @@ PDM = {
 	division_templates = {
 
 		division_template = {
+			name = "Armored Division"
+
+			regiments = {
+				light_armor = { x = 0 y = 0 }
+				light_armor = { x = 0 y = 1 }
+				light_armor = { x = 0 y = 2 }
+
+				light_armor = { x = 1 y = 0 }
+				light_armor = { x = 1 y = 1 }
+				light_armor = { x = 1 y = 2 }
+
+				motorized = { x = 2 y = 0 }
+				motorized = { x = 2 y = 1 }
+				motorized = { x = 2 y = 2 }
+			}
+
+			support = {
+				artillery = { x = 0 y = 0 }
+			}
+
+			priority = 2
+		}
+
+		division_template = {
+			name = "Mechanized Division"
+
+			regiments = {
+				light_armor = { x = 0 y = 0 }
+				light_armor = { x = 0 y = 1 }
+				light_armor = { x = 0 y = 2 }
+
+				motorized = { x = 1 y = 0 }
+				motorized = { x = 1 y = 1 }
+				motorized = { x = 1 y = 2 }
+
+				motorized = { x = 2 y = 0 }
+				motorized = { x = 2 y = 1 }
+				motorized = { x = 2 y = 2 }
+			}
+
+			support = {
+				artillery = { x = 0 y = 0 }
+			}
+
+			priority = 2
+		}
+
+		division_template = {
+			name = "Motorized Division"
+
+			regiments = {
+				motorized = { x = 0 y = 0 }
+				motorized = { x = 0 y = 1 }
+				motorized = { x = 0 y = 2 }
+
+				motorized = { x = 1 y = 0 }
+				motorized = { x = 1 y = 1 }
+				motorized = { x = 1 y = 2 }
+
+				motorized = { x = 2 y = 0 }
+				motorized = { x = 2 y = 1 }
+				motorized = { x = 2 y = 2 }
+			}
+
+			support = {
+				artillery = { x = 0 y = 0 }
+			}
+
+			priority = 2
+		}
+
+		division_template = {
 			name = "Assault Division"
 
 			regiments = {
@@ -744,8 +885,6 @@ PDM = {
 				artillery_brigade = { x = 3 y = 2 }
 
 				light_armor = { x = 4 y = 0 }
-				light_armor = { x = 4 y = 1 }
-				light_armor = { x = 4 y = 2 }
 			}
 
 			priority = 2
@@ -762,38 +901,6 @@ PDM = {
 				artillery_brigade = { x = 1 y = 0 }
 
 				light_armor = { x = 2 y = 0 }
-			}
-
-			priority = 2
-		}
-
-		division_template = {
-			name = "Cavalry Division"
-
-			regiments = {
-				cavalry = { x = 0 y = 0 }
-				cavalry = { x = 0 y = 1 }
-				cavalry = { x = 0 y = 2 }
-
-				cavalry = { x = 1 y = 0 }
-				cavalry = { x = 1 y = 1 }
-				cavalry = { x = 1 y = 2 }
-
-				cavalry = { x = 2 y = 0 }
-				cavalry = { x = 2 y = 1 }
-				cavalry = { x = 2 y = 2 }
-			}
-
-			priority = 2
-		}
-
-		division_template = {
-			name = "Cavalry Brigade"
-
-			regiments = {
-				cavalry = { x = 0 y = 0 }
-				cavalry = { x = 0 y = 1 }
-				cavalry = { x = 0 y = 2 }
 			}
 
 			priority = 2
@@ -869,5 +976,36 @@ PDM = {
 			priority = 0
 		}
 
+		division_template = {
+			name = "Cavalry Division"
+
+			regiments = {
+				cavalry = { x = 0 y = 0 }
+				cavalry = { x = 0 y = 1 }
+				cavalry = { x = 0 y = 2 }
+
+				cavalry = { x = 1 y = 0 }
+				cavalry = { x = 1 y = 1 }
+				cavalry = { x = 1 y = 2 }
+
+				cavalry = { x = 2 y = 0 }
+				cavalry = { x = 2 y = 1 }
+				cavalry = { x = 2 y = 2 }
+			}
+
+			priority = 2
+		}
+
+		division_template = {
+			name = "Cavalry Brigade"
+
+			regiments = {
+				cavalry = { x = 0 y = 0 }
+				cavalry = { x = 0 y = 1 }
+				cavalry = { x = 0 y = 2 }
+			}
+
+			priority = 2
+		}
 	}
 }
