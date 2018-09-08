@@ -34,7 +34,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 namespace HoI4WorldTests
 {
 
-TEST_CLASS(MilitaryMappingsTests)
+TEST_CLASS(militaryMappingsTests)
 {
 	public:
 		TEST_METHOD(defaultUnitMapCategoryIsBlank)
@@ -189,17 +189,37 @@ TEST_CLASS(MilitaryMappingsTests)
 			HoI4::militaryMappings theMappings("", input);
 			Assert::AreEqual(std::string("land"), theMappings.getUnitMap().at("infantry").getType());
 		}
-		TEST_METHOD(allDivisionTemplatesInMapping)
+		TEST_METHOD(emptyDivisionTemplatesStaysEmpty)
 		{
 			std::stringstream input(
-				"= {"\
-				"\tdivision_templates = {"\
+				"= {\n"\
+				"\tmap = {\n"\
 				"\t}"\
 				"}"
 			);
 			HoI4::militaryMappings theMappings("", input);
-			Assert::AreEqual(size_t(11), theMappings.getDivisionTemplates().size());
+			Assert::AreEqual(size_t(0), theMappings.getDivisionTemplates().size());
 		}
+		TEST_METHOD(TemplateAddedToDivisionTemplateMapping)
+		{
+			std::stringstream input(
+				"= {\n"\
+				"\tdivision_templates = {\n"\
+				"\t\tdivision_template = {\n"\
+				"\t\t\tname = \"Light Infantry Brigade\"\n"\
+				"\t\t}\n"\
+				"\t}"\
+				"}"
+			);
+			HoI4::militaryMappings theMappings("", input);
+			auto templates = theMappings.getDivisionTemplates();
+			Assert::IsFalse(std::find(templates.begin(), templates.end(), "Light Infantry Brigade") == templates.end());
+		}
+};
+
+TEST_CLASS(allMilitaryMappingsTests)
+{
+	public:
 		TEST_METHOD(getDefaultMappingsWithNoMods)
 		{
 			HoI4::allMilitaryMappings allTheMappings;
