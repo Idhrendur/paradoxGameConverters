@@ -516,7 +516,9 @@ void HoI4Country::convertConvoys(const map<string, HoI4::UnitMap>& unitMap)
 
 void HoI4Country::convertAirforce(const map<string, HoI4::UnitMap>& unitMap)
 {
-	for (auto army : srcCountry->getArmies())
+        static std::map<std::string, vector<std::string>> backups = {
+            {"fighter_equipment_0", {"tac_bomber_equipment_0"}}};
+        for (auto army : srcCountry->getArmies())
 	{
 		for (auto regiment : army->getRegiments())
 		{
@@ -526,12 +528,26 @@ void HoI4Country::convertAirforce(const map<string, HoI4::UnitMap>& unitMap)
 			{
 				HoI4::UnitMap unitInfo = unitMap.at(type);
 
-				if (unitInfo.getCategory() == "air") {
-					// Air units get placed in national stockpile
-					equipmentStockpile[unitInfo.getEquipment()] = equipmentStockpile[unitInfo.getEquipment()] + unitInfo.getSize();
-				}
-			}
-			else
+                                if (unitInfo.getCategory() != "air")
+                                {
+                                        continue;
+                                }
+
+                                // Air units get placed in national stockpile.
+                                string equip = unitInfo.getEquipment();
+                                int amount = unitInfo.getSize();
+                                const auto& bkup = backups.find(equip);
+                                if (bkup != backups.end())
+                                {
+                                  amount /= (1 + bkup->second.size());
+                                        for (const auto& b : bkup->second)
+                                        {
+                                                equipmentStockpile[b] += amount;
+                                        }
+                                }
+                                equipmentStockpile[equip] += amount;
+                        }
+                        else
 			{
 				LOG(LogLevel::Warning) << "Unknown unit type: " << type;
 			}
