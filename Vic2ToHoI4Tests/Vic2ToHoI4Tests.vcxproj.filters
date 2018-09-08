@@ -41,5 +41,8 @@
     <ClCompile Include="MilitaryMappingTests.cpp">
       <Filter>Source Files\HoI4WorldTests</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4ArmyTests.cpp">
+      <Filter>Source Files\HoI4WorldTests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
