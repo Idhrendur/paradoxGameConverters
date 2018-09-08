@@ -50,11 +50,50 @@ std::ostream& HoI4::operator << (std::ostream& out, const HoI4::RegimentType& re
 }
 
 
-HoI4::DivisionTemplateType::DivisionTemplateType(const std::string& _name):
-	name(_name),
-	regiments(),
-	supportRegiments()
+namespace HoI4
 {
+
+class RegimentTypeGroup: commonItems::parser
+{
+	public:
+	RegimentTypeGroup(std::istream& theStream);
+
+		auto getRegimentTypes() const { return regimentTypes; }
+
+	private:
+		std::vector<RegimentType> regimentTypes;
+};
+
+}
+
+
+HoI4::RegimentTypeGroup::RegimentTypeGroup(std::istream& theStream)
+{
+	registerKeyword(std::regex("[a-zA-Z0-9_]+"), [this](const std::string& name, std::istream& theStream){
+		HoI4::RegimentType regimentType(name, theStream);
+		regimentTypes.push_back(regimentType);
+	});
+
+	parseStream(theStream);
+}
+
+
+HoI4::DivisionTemplateType::DivisionTemplateType(std::istream& theStream)
+{
+	registerKeyword(std::regex("name"), [this](const std::string& unused, std::istream& theStream){
+		commonItems::singleString nameString(theStream);
+		name = nameString.getString();
+	});
+	registerKeyword(std::regex("regiments"), [this](const std::string& unused, std::istream& theStream){
+		HoI4::RegimentTypeGroup regimentsGroup(theStream);
+		regiments = regimentsGroup.getRegimentTypes();
+	});
+	registerKeyword(std::regex("support"), [this](const std::string& unused, std::istream& theStream){
+		HoI4::RegimentTypeGroup supportRegimentsGroup(theStream);
+		supportRegiments = supportRegimentsGroup.getRegimentTypes();
+	});
+
+	parseStream(theStream);
 }
 
 
