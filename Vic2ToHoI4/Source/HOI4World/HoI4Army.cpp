@@ -92,6 +92,7 @@ HoI4::DivisionTemplateType::DivisionTemplateType(std::istream& theStream)
 		HoI4::RegimentTypeGroup supportRegimentsGroup(theStream);
 		supportRegiments = supportRegimentsGroup.getRegimentTypes();
 	});
+	registerKeyword(std::regex("priority"),  commonItems::ignoreItem);
 
 	parseStream(theStream);
 }
