@@ -21,19 +21,51 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "stdafx.h"
-#include "CppUnitTest.h"
-#include "../Vic2ToHoI4/Source/HoI4World/HoI4Army.h"
+#ifndef HOI4_DIVISION_TEMPLATE_H_
+#define HOI4_DIVISION_TEMPLATE_H_
 
 
 
-using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+#include "newParser.h"
+#include "Regiment.h"
+#include <istream>
+#include <ostream>
+#include <string>
+#include <vector>
 
 
 
-namespace HoI4WorldTests
+namespace HoI4
 {
 
 
+class DivisionTemplateType: commonItems::parser
+{
+	public:
+		explicit DivisionTemplateType(std::istream& theStream);
+		DivisionTemplateType(const DivisionTemplateType&) = default;
+		DivisionTemplateType& operator=(const DivisionTemplateType&) = delete;
+
+		bool operator==(const std::string& rhs) { return name == rhs; }
+
+		friend std::ostream& operator << (std::ostream& out, const DivisionTemplateType& rhs);
+
+		std::string getName() const { return name; }
+		std::vector<RegimentType> getRegiments() const { return regiments; }
+		std::vector<RegimentType> getSupportRegiments() const { return supportRegiments; }
+
+	private:
+		std::string name;
+		std::vector<RegimentType> regiments;
+		std::vector<RegimentType> supportRegiments;
+};
+
+
+std::ostream& operator << (std::ostream& out, const DivisionTemplateType& rhs);
+
 
 }
+
+
+
+#endif // HOI4_DIVISION_TEMPLATE_H_

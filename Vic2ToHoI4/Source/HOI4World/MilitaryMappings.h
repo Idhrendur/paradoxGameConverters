@@ -26,7 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "HoI4Army.h"
+#include "DivisionTemplate.h"
 #include "newParser.h"
 #include "ParserHelpers.h"
 #include <map>

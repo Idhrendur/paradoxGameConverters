@@ -21,19 +21,27 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "stdafx.h"
-#include "CppUnitTest.h"
-#include "../Vic2ToHoI4/Source/HoI4World/HoI4Army.h"
+#include "Division.h"
 
 
 
-using namespace Microsoft::VisualStudio::CppUnitTestFramework;
-
-
-
-namespace HoI4WorldTests
+HoI4::DivisionType::DivisionType(const std::string& _name, const std::string& _type, int _location):
+	name(_name),
+	type(_type),
+	location(_location)
 {
+}
 
 
+std::ostream& HoI4::operator << (std::ostream& out, const HoI4::DivisionType& division)
+{
+	out << "\tdivision = {\n";
+	out << "\t\tname = \"" << division.name << "\"\n";
+	out << "\t\tlocation = " << division.location << "\n";
+	out << "\t\tdivision_template = \"" << division.type << "\"\n";
+	out << "\t\tstart_experience_factor = 0.3\n";
+	out << "\t\tstart_equipment_factor = 0.7\n";
+	out << "\t}\n";
 
+	return out;
 }

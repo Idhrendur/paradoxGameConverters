@@ -27,7 +27,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4Airforce.h"
-#include "HoI4Army.h"
+#include "Division.h"
+#include "DivisionTemplate.h"
 #include "HoI4FocusTree.h"
 #include "HOI4Ideology.h"
 #include "HoI4Leader.h"
