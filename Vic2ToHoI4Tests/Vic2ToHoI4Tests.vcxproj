@@ -165,7 +165,6 @@
     <ClCompile Include="DivisionTemplateTests.cpp" />
     <ClCompile Include="DivisionTests.cpp" />
     <ClCompile Include="HoI4ArmyTests.cpp" />
-    <ClCompile Include="HoI4CountryTests.cpp" />
     <ClCompile Include="MilitaryMappingTests.cpp" />
     <ClCompile Include="RegimentTests.cpp" />
     <ClCompile Include="stdafx.cpp">

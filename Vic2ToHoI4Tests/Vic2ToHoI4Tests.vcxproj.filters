@@ -44,9 +44,6 @@
     <ClCompile Include="HoI4ArmyTests.cpp">
       <Filter>Source Files\HoI4WorldTests</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4CountryTests.cpp">
-      <Filter>Source Files\HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="DivisionTests.cpp">
       <Filter>Source Files\HoI4WorldTests</Filter>
     </ClCompile>
