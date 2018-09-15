@@ -26,17 +26,46 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "newParser.h"
+#include "Division.h"
+#include "DivisionTemplate.h"
+#include "MilitaryMappings.h"
 #include <string>
+#include <map>
 #include <vector>
-#include <fstream>
 
+
+
+namespace Vic2
+{
+
+class Army;
+
+}
 
 
 namespace HoI4
 {
 
+class Army
+{
+	public:
+		Army() = default;
 
+		void addSourceArmies(std::vector<const Vic2::Army*> _sourceArmies) { sourceArmies = _sourceArmies; }
+
+		void convertArmies(const std::map<std::string, HoI4::UnitMap>& unitMap, const std::vector<HoI4::DivisionTemplateType>& divisionTemplates, int backupLocation);
+
+		friend std::ostream& operator << (std::ostream& output, const Army& theArmy);
+
+	private:
+		void convertArmyDivisions(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates, std::map<std::string, double>& BattalionsAndCompanies, int location);
+		bool sufficientUnits(const std::map<std::string, double>& units, const std::map<std::string, std::string>& subs, const std::map<std::string, int>& req);
+
+		std::vector<const Vic2::Army*> sourceArmies;
+		std::vector<DivisionType> divisions;
+};
+
+std::ostream& operator << (std::ostream& output, const Army& theArmy);
 
 }
 

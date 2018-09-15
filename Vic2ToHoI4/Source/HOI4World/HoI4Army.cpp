@@ -22,6 +22,145 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4Army.h"
-#include "ParserHelpers.h"
+#include "Division.h"
+#include "../Configuration.h"
+#include "../Mappers/ProvinceMapper.h"
+#include "../V2World/Army.h"
+#include "Log.h"
 
 
+
+void HoI4::Army::convertArmies(const std::map<std::string, HoI4::UnitMap>& unitMap, const std::vector<HoI4::DivisionTemplateType>& divisionTemplates, int backupLocation)
+{
+	std::map<std::string, double> remainingBattalionsAndCompanies;
+
+	for (auto army: sourceArmies)
+	{
+		auto provinceMapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army->getLocation());
+		if (!provinceMapping)
+		{
+			continue;
+		}
+
+		std::map<std::string, double> localBattalionsAndCompanies;
+		for (auto regiment : army->getRegiments())
+		{
+			std::string type = regiment->getType();
+
+			if (unitMap.count(type) > 0)
+			{
+				HoI4::UnitMap unitInfo = unitMap.at(type);
+
+				if (unitInfo.getCategory() == "land")
+				{
+					// Calculate how many Battalions and Companies are available after mapping Vic2 armies
+					localBattalionsAndCompanies[unitInfo.getType()] += (unitInfo.getSize() * theConfiguration.getForceMultiplier());
+				}
+			}
+			else
+			{
+				LOG(LogLevel::Warning) << "Unknown unit type: " << type;
+			}
+		}
+
+		convertArmyDivisions(divisionTemplates, localBattalionsAndCompanies, *provinceMapping->begin());
+		for (auto unit: localBattalionsAndCompanies)
+		{
+			auto remainingUnit = remainingBattalionsAndCompanies.find(unit.first);
+			if (remainingUnit != remainingBattalionsAndCompanies.end())
+			{
+				remainingUnit->second += unit.second;
+			}
+			else
+			{
+				remainingBattalionsAndCompanies.insert(unit);
+			}
+		}
+	}
+
+	convertArmyDivisions(divisionTemplates, remainingBattalionsAndCompanies, backupLocation);
+}
+
+
+void HoI4::Army::convertArmyDivisions(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates, std::map<std::string, double>& BattalionsAndCompanies, int location)
+{
+	std::map<std::string, std::string> substitutes;
+	substitutes["artillery"] = "artillery_brigade";
+	for (auto& divTemplate: divisionTemplates)
+	{
+		// For each template determine the Battalion and Company requirements.
+		int divisionCounter = 1;
+
+		std::map<std::string, int> templateRequirements;
+		for (auto regiment : divTemplate.getRegiments())
+		{
+			templateRequirements[regiment.getType()] = templateRequirements[regiment.getType()] + 1;
+		}
+		for (auto regiment : divTemplate.getSupportRegiments())
+		{
+			templateRequirements[regiment.getType()] = templateRequirements[regiment.getType()] + 1;
+		}
+
+		// Create new divisions as long as sufficient Victoria units exist,
+		// otherwise move on to next template.
+		while (sufficientUnits(BattalionsAndCompanies, substitutes,
+									  templateRequirements))
+		{
+			HoI4::DivisionType newDivision(std::to_string(divisionCounter) + ". " + divTemplate.getName(), divTemplate.getName(), location);
+
+			for (auto& unit : templateRequirements)
+			{
+				for (int i = 0; i < unit.second; ++i)
+				{
+					if (BattalionsAndCompanies[unit.first] > 0)
+					{
+						BattalionsAndCompanies[unit.first]--;
+					}
+					else
+					{
+						BattalionsAndCompanies[substitutes[unit.first]]--;
+					}
+				}
+			}
+			divisionCounter++;
+			divisions.push_back(newDivision);
+		}
+	}
+}
+
+
+bool HoI4::Army::sufficientUnits(const std::map<std::string, double>& units, const std::map<std::string, std::string>& substitutes, const std::map<std::string, int>& requiredUnits)
+{
+	for (auto requiredUnit: requiredUnits)
+	{
+		int available = 0;
+		if (units.find(requiredUnit.first) != units.end())
+		{
+			available += static_cast<int>(units.at(requiredUnit.first));
+		}
+		if (substitutes.find(requiredUnit.first) != substitutes.end())
+		{
+			if (units.find(substitutes.at(requiredUnit.first)) != units.end())
+			{
+				available += static_cast<int>(units.at(substitutes.at(requiredUnit.first)));
+			}
+		}
+		if (available < requiredUnit.second)
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+
+std::ostream& HoI4::operator << (std::ostream& output, const HoI4::Army& theArmy)
+{
+	for (auto& division: theArmy.divisions)
+	{
+		output << division;
+	}
+
+	return output;
+}
