@@ -193,7 +193,7 @@ TEST_CLASS(militaryMappingsTests)
 		{
 			std::stringstream input(
 				"= {\n"\
-				"\tmap = {\n"\
+				"\tdivision_templates = {\n"\
 				"\t}"\
 				"}"
 			);

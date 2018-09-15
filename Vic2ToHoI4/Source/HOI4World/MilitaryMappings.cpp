@@ -98,7 +98,24 @@ HoI4::militaryMappings::militaryMappings(const std::string& name, std::istream& 
 }
 
 
-void HoI4::militaryMappings::importUnitMap(std::istream& theStream)
+namespace HoI4
+{
+
+class UnitMappingsImporter: commonItems::parser
+{
+	public:
+	UnitMappingsImporter(std::istream& theStream);
+
+		auto getUnitMap() const { return unitMap; }
+
+	private:
+		std::map<std::string, HoI4::UnitMap> unitMap;
+};
+
+}
+
+
+HoI4::UnitMappingsImporter::UnitMappingsImporter(std::istream& theStream)
 {
 	registerKeyword(std::regex("link"), [this](const std::string& unused, std::istream&theStream)
 	{
@@ -109,7 +126,31 @@ void HoI4::militaryMappings::importUnitMap(std::istream& theStream)
 	parseStream(theStream);
 }
 
-void HoI4::militaryMappings::importDivisionTemplates(std::istream& theStream)
+
+void HoI4::militaryMappings::importUnitMap(std::istream& theStream)
+{
+	UnitMappingsImporter importer(theStream);
+	unitMap = importer.getUnitMap();
+}
+
+
+namespace HoI4
+{
+
+class DivisionTemplatesImporter: commonItems::parser
+{
+	public:
+		DivisionTemplatesImporter(std::istream& theStream);
+
+		auto getDivisionTemplates() const { return divisionTemplates; }
+
+	private:
+		std::vector<HoI4::DivisionTemplateType> divisionTemplates;
+};
+
+}
+
+HoI4::DivisionTemplatesImporter::DivisionTemplatesImporter(std::istream& theStream)
 {
 	registerKeyword(std::regex("division_template"), [this](const std::string& unused, std::istream& theStream)
 	{
@@ -118,6 +159,13 @@ void HoI4::militaryMappings::importDivisionTemplates(std::istream& theStream)
 	});
 
 	parseStream(theStream);
+}
+
+
+void HoI4::militaryMappings::importDivisionTemplates(std::istream& theStream)
+{
+	DivisionTemplatesImporter importer(theStream);
+	divisionTemplates = importer.getDivisionTemplates();
 }
 
 
