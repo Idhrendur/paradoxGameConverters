@@ -68,14 +68,17 @@ class militaryMappings: commonItems::parser
 		auto getMappingsName() const { return mappingsName; }
 		auto getUnitMap() const { return unitMap; }
 		auto getDivisionTemplates() const { return divisionTemplates; }
+		auto getSubstitutes() const { return substitutes; }
 
 	private:
 		void importUnitMap(std::istream& theStream);
 		void importDivisionTemplates(std::istream& theStream);
+		void importSubstitutes(std::istream& theStream);
 
 		std::string mappingsName = "";
 		std::map<std::string, HoI4::UnitMap> unitMap;
 		std::vector<HoI4::DivisionTemplateType> divisionTemplates;
+		std::map<std::string, std::string> substitutes;
 };
 
 

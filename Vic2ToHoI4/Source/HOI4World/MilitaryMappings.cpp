@@ -93,6 +93,9 @@ HoI4::militaryMappings::militaryMappings(const std::string& name, std::istream& 
 	registerKeyword(std::regex("division_templates"), [this](const std::string& unused, std::istream& theStream){
 		importDivisionTemplates(theStream);
 	});
+	registerKeyword(std::regex("substitutes"), [this](const std::string& unused, std::istream& theStream){
+		importSubstitutes(theStream);
+	});
 
 	parseStream(theStream);
 }
@@ -167,6 +170,43 @@ void HoI4::militaryMappings::importDivisionTemplates(std::istream& theStream)
 	DivisionTemplatesImporter importer(theStream);
 	divisionTemplates = importer.getDivisionTemplates();
 }
+
+
+namespace HoI4
+{
+
+class substitutesImporter: commonItems::parser
+{
+	public:
+		substitutesImporter(std::istream& theStream);
+
+		auto getSubstitutes() const { return substitutes; }
+
+	private:
+		std::map<std::string, std::string> substitutes;
+};
+
+}
+
+
+HoI4::substitutesImporter::substitutesImporter(std::istream& theStream)
+{
+	registerKeyword(std::regex("[a-zA-Z_]+"), [this](const std::string& left, std::istream& theStream)
+	{
+		commonItems::singleString right(theStream);
+		substitutes.insert(std::make_pair(left, right.getString()));
+	});
+
+	parseStream(theStream);
+}
+
+
+void HoI4::militaryMappings::importSubstitutes(std::istream& theStream)
+{
+	substitutesImporter importer(theStream);
+	substitutes = importer.getSubstitutes();
+}
+
 
 
 HoI4::allMilitaryMappings::allMilitaryMappings()

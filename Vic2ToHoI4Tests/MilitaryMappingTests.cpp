@@ -215,6 +215,53 @@ TEST_CLASS(militaryMappingsTests)
 			auto templates = theMappings.getDivisionTemplates();
 			Assert::IsFalse(std::find(templates.begin(), templates.end(), "Light Infantry Brigade") == templates.end());
 		}
+		TEST_METHOD(emptySubstitutesStaysEmpty)
+		{
+			std::stringstream input(
+				"= {\n"\
+				"\tsubstitutes = {\n"\
+				"\t}"\
+				"}"
+			);
+			HoI4::militaryMappings theMappings("", input);
+			Assert::AreEqual(size_t(0), theMappings.getSubstitutes().size());
+		}
+		TEST_METHOD(substituteAddedToSubstitutes)
+		{
+			std::stringstream input(
+				"= {\n"\
+				"\tsubstitutes = {\n"\
+				"\t\tartillery = artillery_brigade\n"\
+				"\t}"\
+				"}"
+			);
+			HoI4::militaryMappings theMappings("", input);
+			Assert::AreEqual(size_t(1), theMappings.getSubstitutes().size());
+		}
+		TEST_METHOD(substituteNameInList)
+		{
+			std::stringstream input(
+				"= {\n"\
+				"\tsubstitutes = {\n"\
+				"\t\tartillery = artillery_brigade\n"\
+				"\t}"\
+				"}"
+			);
+			HoI4::militaryMappings theMappings("", input);
+			Assert::AreEqual(size_t(1), theMappings.getSubstitutes().count("artillery"));
+		}
+		TEST_METHOD(substituteAlternateInMapping)
+		{
+			std::stringstream input(
+				"= {\n"\
+				"\tsubstitutes = {\n"\
+				"\t\tartillery = artillery_brigade\n"\
+				"\t}"\
+				"}"
+			);
+			HoI4::militaryMappings theMappings("", input);
+			Assert::AreEqual(std::string("artillery_brigade"), theMappings.getSubstitutes().at("artillery"));
+		}
 };
 
 TEST_CLASS(allMilitaryMappingsTests)
