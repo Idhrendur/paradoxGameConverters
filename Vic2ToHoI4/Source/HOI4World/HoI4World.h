@@ -34,7 +34,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "Names.h"
 #include "HoI4States.h"
 #include "MapData.h"
-#include "MilitaryMappings.h"
+#include "AllMilitaryMappings.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/GovernmentMapper.h"
 #include "../Mappers/GraphicsMapper.h"
