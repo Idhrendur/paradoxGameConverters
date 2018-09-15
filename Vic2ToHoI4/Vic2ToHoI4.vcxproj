@@ -182,6 +182,7 @@
     <ClCompile Include="Source\HOI4World\Advisor.cpp" />
     <ClCompile Include="Source\HOI4World\AIPeace.cpp" />
     <ClCompile Include="Source\HOI4World\AIPeaces.cpp" />
+    <ClCompile Include="Source\HOI4World\AllMilitaryMappings.cpp" />
     <ClCompile Include="Source\HOI4World\CoastalProvinces.cpp" />
     <ClCompile Include="Source\HOI4World\Decision.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions.cpp" />
@@ -224,6 +225,7 @@
     <ClCompile Include="Source\HOI4World\Resources.cpp" />
     <ClCompile Include="Source\HOI4World\StateCategories.cpp" />
     <ClCompile Include="Source\HOI4World\SupplyZones.cpp" />
+    <ClCompile Include="Source\HOI4World\UnitMap.cpp" />
     <ClCompile Include="Source\Mappers\CountryMapping.cpp" />
     <ClCompile Include="Source\Mappers\GovernmentMapper.cpp" />
     <ClCompile Include="Source\Mappers\GraphicsMapper.cpp" />
@@ -266,6 +268,7 @@
     <ClInclude Include="Source\HOI4World\Advisor.h" />
     <ClInclude Include="Source\HOI4World\AIPeace.h" />
     <ClInclude Include="Source\HOI4World\AIPeaces.h" />
+    <ClInclude Include="Source\HOI4World\AllMilitaryMappings.h" />
     <ClInclude Include="Source\HOI4World\CoastalProvinces.h" />
     <ClInclude Include="Source\HOI4World\Decision.h" />
     <ClInclude Include="Source\HOI4World\Decisions.h" />
@@ -309,6 +312,7 @@
     <ClInclude Include="Source\HOI4World\StateCategories.h" />
     <ClInclude Include="Source\HOI4World\SupplyZones.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings.h" />
+    <ClInclude Include="Source\HOI4World\UnitMap.h" />
     <ClInclude Include="Source\Mappers\GraphicsMapper.h" />
     <ClInclude Include="Source\Mappers\MergeRules.h" />
     <ClInclude Include="Source\Mappers\ProvinceDefinitions.h" />

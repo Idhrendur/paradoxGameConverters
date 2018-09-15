@@ -22,30 +22,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "MilitaryMappings.h"
+#include "ParserHelpers.h"
 
-
-
-HoI4::UnitMap::UnitMap(std::istream& theStream)
-{
-	registerKeyword(std::regex("category"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleString categoryString(theStream);
-		category = categoryString.getString();
-	});
-	registerKeyword(std::regex("type"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleString typeString(theStream);
-		type = typeString.getString();
-	});
-	registerKeyword(std::regex("equipment"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleString equipmentString(theStream);
-		equipment = equipmentString.getString();
-	});
-	registerKeyword(std::regex("size"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleInt sizeInt(theStream);
-		size = sizeInt.getInt();
-	});
-
-	parseStream(theStream);
-}
 
 
 namespace HoI4
@@ -205,31 +183,4 @@ void HoI4::militaryMappings::importSubstitutes(std::istream& theStream)
 {
 	substitutesImporter importer(theStream);
 	substitutes = importer.getSubstitutes();
-}
-
-
-
-HoI4::allMilitaryMappings::allMilitaryMappings()
-{
-	registerKeyword(std::regex("[a-zA-Z0-9]+"), [this](const std::string& mod, std::istream& theStream)
-	{
-		militaryMappings newMappings(mod, theStream);
-		theMappings.insert(make_pair(mod, newMappings));
-	});
-
-	parseFile("unit_mappings.txt");
-}
-
-
-HoI4::militaryMappings HoI4::allMilitaryMappings::getMilitaryMappings(const std::vector<std::string>& Vic2Mods) const
-{
-	for (auto mod: Vic2Mods)
-	{
-		if (auto mapping = theMappings.find(mod); mapping != theMappings.end())
-		{
-			return mapping->second;
-		}
-	}
-
-	return theMappings.at("default");
 }

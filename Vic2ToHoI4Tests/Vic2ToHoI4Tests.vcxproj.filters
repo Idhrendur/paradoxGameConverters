@@ -56,5 +56,11 @@
     <ClCompile Include="RegimentTests.cpp">
       <Filter>Source Files\HoI4WorldTests</Filter>
     </ClCompile>
+    <ClCompile Include="UnitMapTests.cpp">
+      <Filter>Source Files\HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="AllMilitaryMappingsTests.cpp">
+      <Filter>Source Files\HoI4WorldTests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
