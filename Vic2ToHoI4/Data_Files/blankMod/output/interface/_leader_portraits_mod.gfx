@@ -1,6 +1,7 @@
 spriteTypes = {
-	#overwritten portraits (mod creator gave no answer yet)
-	#The mod is https://steamcommunity.com/sharedfiles/filedetails/?id=895764577
+	#overwritten portraits
+	#originally implying a mod that has given no answer
+	#kept here as to remind me who to use to create new portraits
   spriteType = {   name =	"GFX_BEL_Joseph_Jacquemotte"	   texturefile =	"gfx/leaders/Europe/Portrait_Europe_Generic_1.dds"	    }
   spriteType = {   name =	"GFX_BEL_Leopold_III"	   texturefile =	"gfx/leaders/Europe/Portrait_Europe_Generic_1.dds"	    }
   spriteType = {   name =	"GFX_HOL_Anton_Mussert"	   texturefile =	"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"	    }
