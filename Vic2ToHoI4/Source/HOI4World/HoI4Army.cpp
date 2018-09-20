@@ -30,7 +30,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-void HoI4::Army::convertArmies(const std::map<std::string, HoI4::UnitMap>& unitMap, const std::vector<HoI4::DivisionTemplateType>& divisionTemplates, int backupLocation)
+void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int backupLocation)
 {
 	std::map<std::string, double> remainingBattalionsAndCompanies;
 
@@ -47,9 +47,9 @@ void HoI4::Army::convertArmies(const std::map<std::string, HoI4::UnitMap>& unitM
 		{
 			std::string type = regiment->getType();
 
-			if (unitMap.count(type) > 0)
+			if (theMilitaryMappings.getUnitMap().count(type) > 0)
 			{
-				HoI4::UnitMap unitInfo = unitMap.at(type);
+				HoI4::UnitMap unitInfo = theMilitaryMappings.getUnitMap().at(type);
 
 				if (unitInfo.getCategory() == "land")
 				{
@@ -63,7 +63,7 @@ void HoI4::Army::convertArmies(const std::map<std::string, HoI4::UnitMap>& unitM
 			}
 		}
 
-		convertArmyDivisions(divisionTemplates, localBattalionsAndCompanies, *provinceMapping->begin());
+		convertArmyDivisions(theMilitaryMappings, localBattalionsAndCompanies, *provinceMapping->begin());
 		for (auto unit: localBattalionsAndCompanies)
 		{
 			auto remainingUnit = remainingBattalionsAndCompanies.find(unit.first);
@@ -78,15 +78,15 @@ void HoI4::Army::convertArmies(const std::map<std::string, HoI4::UnitMap>& unitM
 		}
 	}
 
-	convertArmyDivisions(divisionTemplates, remainingBattalionsAndCompanies, backupLocation);
+	convertArmyDivisions(theMilitaryMappings, remainingBattalionsAndCompanies, backupLocation);
 }
 
 
-void HoI4::Army::convertArmyDivisions(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates, std::map<std::string, double>& BattalionsAndCompanies, int location)
+void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMappings, std::map<std::string, double>& BattalionsAndCompanies, int location)
 {
 	std::map<std::string, std::string> substitutes;
 	substitutes["artillery"] = "artillery_brigade";
-	for (auto& divTemplate: divisionTemplates)
+	for (auto divTemplate: theMilitaryMappings.getDivisionTemplates())
 	{
 		// For each template determine the Battalion and Company requirements.
 		int divisionCounter = 1;

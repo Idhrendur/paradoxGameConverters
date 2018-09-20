@@ -151,7 +151,7 @@ class World: commonItems::parser
 		void addResearchBonuses(shared_ptr<HoI4Country> countryaddBonuses, const string& oldTech, const techMapper& researchBonusMap);
 
 		void convertMilitaries();
-		void convertArmies(const map<string, HoI4::UnitMap>& unitMap, const vector<HoI4::DivisionTemplateType>& divisionTemplates);
+		void convertArmies(const militaryMappings& theMilitaryMappings);
 		void convertNavies(const map<string, HoI4::UnitMap>& unitMap);
 		void convertAirforces(const map<string, HoI4::UnitMap>& unitMap);
 

@@ -557,9 +557,9 @@ void HoI4Country::convertAirforce(const map<string, HoI4::UnitMap>& unitMap)
 }
 
 
-void HoI4Country::convertArmies(const map<string, HoI4::UnitMap>& unitMap, const vector<HoI4::DivisionTemplateType>& divisionTemplates)
+void HoI4Country::convertArmies(const HoI4::militaryMappings& theMilitaryMappings)
 {
-	theArmy.convertArmies(unitMap, divisionTemplates, capitalState->getVPLocation());
+	theArmy.convertArmies(theMilitaryMappings, capitalState->getVPLocation());
 }
 
 
