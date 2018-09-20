@@ -39,25 +39,25 @@ TEST_CLASS(allMilitaryMappingsTests)
 	public:
 		TEST_METHOD(getDefaultMappingsWithNoMods)
 		{
-			HoI4::allMilitaryMappings allTheMappings;
 			std::vector<std::string> mods;
 			auto specificMappings = allTheMappings.getMilitaryMappings(mods);
 			Assert::AreEqual(std::string("default"), specificMappings.getMappingsName());
 		}
 		TEST_METHOD(getDefaultMappingsWithInvalidMod)
 		{
-			HoI4::allMilitaryMappings allTheMappings;
 			std::vector<std::string> mods = { "NotAMod" };
 			auto specificMappings = allTheMappings.getMilitaryMappings(mods);
 			Assert::AreEqual(std::string("default"), specificMappings.getMappingsName());
 		}
 		TEST_METHOD(getPDMMappingsWithPDM)
 		{
-			HoI4::allMilitaryMappings allTheMappings;
 			std::vector<std::string> mods = { "PDM" };
 			auto specificMappings = allTheMappings.getMilitaryMappings(mods);
 			Assert::AreEqual(std::string("PDM"), specificMappings.getMappingsName());
 		}
+
+	private:
+		HoI4::allMilitaryMappings allTheMappings;
 };
 
 }
