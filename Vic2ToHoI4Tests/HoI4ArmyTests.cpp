@@ -279,7 +279,7 @@ TEST_CLASS(HoI4ArmyTests)
 													  "\t\t\tvic = artillery\n"\
 													  "\t\t\thoi = {\n"\
 													  "\t\t\t\tcategory = land\n"\
-													  "\t\t\t\ttype = artillery\n"\
+													  "\t\t\t\ttype = artillery_brigade\n"\
 													  "\t\t\t\tequipment = artillery_equipment_0\n"\
 													  "\t\t\t\tsize = 1\n"\
 													  "\t\t\t}\n"\
@@ -295,6 +295,9 @@ TEST_CLASS(HoI4ArmyTests)
 													  "\t\t\t\tartillery = { x = 0 y = 0 }\n"\
 													  "\t\t\t}\n"\
 													  "\t\t}\n"\
+													  "\t}\n"\
+													  "\tsubstitutes = {\n"\
+													  "\t\tartillery = artillery_brigade\n"\
 													  "\t}\n"\
 													  "}"
 			);

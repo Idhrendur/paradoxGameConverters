@@ -84,8 +84,6 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int 
 
 void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMappings, std::map<std::string, double>& BattalionsAndCompanies, int location)
 {
-	std::map<std::string, std::string> substitutes;
-	substitutes["artillery"] = "artillery_brigade";
 	for (auto divTemplate: theMilitaryMappings.getDivisionTemplates())
 	{
 		// For each template determine the Battalion and Company requirements.
@@ -101,10 +99,8 @@ void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMapping
 			templateRequirements[regiment.getType()] = templateRequirements[regiment.getType()] + 1;
 		}
 
-		// Create new divisions as long as sufficient Victoria units exist,
-		// otherwise move on to next template.
-		while (sufficientUnits(BattalionsAndCompanies, substitutes,
-									  templateRequirements))
+		// Create new divisions as long as sufficient Victoria units exist, otherwise move on to next template.
+		while (sufficientUnits(BattalionsAndCompanies, theMilitaryMappings.getSubstitutes(), templateRequirements))
 		{
 			HoI4::DivisionType newDivision(std::to_string(divisionCounter) + ". " + divTemplate.getName(), divTemplate.getName(), location);
 
@@ -118,7 +114,7 @@ void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMapping
 					}
 					else
 					{
-						BattalionsAndCompanies[substitutes[unit.first]]--;
+						BattalionsAndCompanies[theMilitaryMappings.getSubstitutes().at(unit.first)]--;
 					}
 				}
 			}
