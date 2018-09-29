@@ -255,6 +255,7 @@ EU4Province::EU4Province(shared_ptr<Object> obj)
 	checkBuilding(obj, "plantations");
 	checkBuilding(obj, "farm_estate");
 	checkBuilding(obj, "tradecompany");
+	checkBuilding(obj, "furnace");
 
 	//LOG(LogLevel::Info) << "Check buildings...";
 	// base buildings 
@@ -417,11 +418,27 @@ double EU4Province::getCulturePercent(string culture)
 
 void EU4Province::checkBuilding(const shared_ptr<Object> provinceObj, string building)
 {
-	vector<shared_ptr<Object>> buildingObj;	// the object holding the building
-	buildingObj = provinceObj->getValue(building);
-	if ((buildingObj.size() > 0) && (buildingObj[0]->getLeaf() == "yes"))
+	vector<shared_ptr<Object>> buildingsObj;	// the object holding the building
+	buildingsObj = provinceObj->getValue("buildings");
+	if (buildingsObj.size() > 0)
 	{
-		buildings[building] = true;
+		vector<shared_ptr<Object>> buildingObjs = buildingsObj[0]->getLeaves();
+		for (unsigned int i = 0; i < buildingObjs.size(); i++)
+		{
+			if (buildingObjs[i]->getKey() == building && buildingObjs[i]->getLeaf() == "yes")
+			{
+				buildings[building] = true;
+			}
+		}
+	}
+	else
+	{
+		vector<shared_ptr<Object>> buildingObj;
+		buildingObj = provinceObj->getValue(building);
+		if ((buildingObj.size() > 0) && (buildingObj[0]->getLeaf() == "yes"))
+		{
+			buildings[building] = true;
+		}
 	}
 }
 
@@ -1639,6 +1656,11 @@ if (hasBuilding("university"))
     if (hasBuilding("tradecompany"))
     {
         manu_gp_mod = 1.0;
+    }
+
+    if (hasBuilding("furnace"))
+    {
+    	manu_gp_mod = 1.0;
     }
 
     // Base buildings

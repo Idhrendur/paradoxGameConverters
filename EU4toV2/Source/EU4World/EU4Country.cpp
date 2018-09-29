@@ -621,6 +621,7 @@ int EU4::Country::getManufactoryCount() const
 		if ((*itr)->hasBuilding("wharf"))		++retval;
 		if ((*itr)->hasBuilding("textile"))		++retval;
 		if ((*itr)->hasBuilding("refinery"))	++retval;
+		if ((*itr)->hasBuilding("furnace"))	    ++retval;
 	}
 	return retval;
 }

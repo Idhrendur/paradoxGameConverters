@@ -150,7 +150,8 @@ double V2State::getManuRatio() const
 			(*itr)->hasBuilding("textile") ||
 			(*itr)->hasBuilding("farm_estate") ||
 			(*itr)->hasBuilding("plantations") ||
-			(*itr)->hasBuilding("tradecompany")
+			(*itr)->hasBuilding("tradecompany") ||
+			(*itr)->hasBuilding("furnace")
 			)
 		{
 			numManus++;
