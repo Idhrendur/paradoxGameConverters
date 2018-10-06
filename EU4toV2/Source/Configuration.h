@@ -77,6 +77,15 @@ class Configuration
 			getInstance()->version = version;
 		}
 
+		static bool versionLessThan(string strVersion)
+		{
+			EU4Version version(strVersion);
+			if (version >= getEU4Version()) {
+				return true;
+			}
+			return false;
+		}
+
 		static date	getFirstEU4Date()
 		{
 			return getInstance()->firstEU4Date;

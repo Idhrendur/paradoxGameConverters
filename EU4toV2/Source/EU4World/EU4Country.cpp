@@ -231,8 +231,16 @@ EU4::Country::Country(const std::string& countryTag, std::istream& theStream):
 	);
 	registerKeyword(std::regex("culture_group_union"), [this](const std::string& unused, std::istream& theStream)
 		{
-			EU4::cultureGroup newUnion(tag + "_union", theStream);
-			culturalUnion = newUnion;
+			if (Configuration::versionLessThan("1.7.0.0"))
+			{
+				commonItems::singleString cultureGroup(theStream);
+				culturalUnion = EU4::cultureGroups::getCulturalGroup(cultureGroup.getString());
+			}
+			else
+			{
+				EU4::cultureGroup newUnion(tag + "_union", theStream);
+				culturalUnion = newUnion;
+			}
 		}
 	);
 	registerKeyword(std::regex("religion"), [this](const std::string& unused, std::istream& theStream)
