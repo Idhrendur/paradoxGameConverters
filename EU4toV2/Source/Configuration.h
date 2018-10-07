@@ -77,10 +77,11 @@ class Configuration
 			getInstance()->version = version;
 		}
 
-		static bool versionLessThan(string strVersion)
+		static bool versionLessThan(string versionString)
 		{
-			EU4Version version(strVersion);
-			if (version >= getEU4Version()) {
+			EU4Version inputVersion(versionString);
+			auto saveVersion = getEU4Version();
+			if (inputVersion >= saveVersion) {
 				return true;
 			}
 			return false;
