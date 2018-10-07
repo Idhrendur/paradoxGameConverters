@@ -41,6 +41,16 @@ class governmentSection: commonItems::parser
 	public:
 		governmentSection(std::istream& theStream);
 		std::string getGovernment() const { return government; }
+		static std::string readGovernment(std::istream& theStream)
+		{
+			commonItems::singleString governmentString(theStream);
+			std::string governmentStr = governmentString.getString();
+			if (governmentStr.substr(0, 1) == "\"")
+			{
+				governmentStr = governmentStr.substr(1, governmentStr.size() - 2);
+			}
+			return governmentStr;
+		}
 
 	private:
 		std::string government;
@@ -51,12 +61,8 @@ governmentSection::governmentSection(std::istream& theStream)
 {
 	registerKeyword(std::regex("government"), [this](const std::string& unused, std::istream& theStream)
 	{
-		commonItems::singleString governmentString(theStream);
-		government = governmentString.getString();
-		if (government.substr(0,1) == "\"")
-		{
-			government = government.substr(1,government.size()-2);
-		}
+		government = governmentSection::readGovernment(theStream);
+
 	});
 	registerKeyword(std::regex("[a-zA-Z0-9_]+"), commonItems::ignoreItem);
 
@@ -313,8 +319,15 @@ EU4::Country::Country(const std::string& countryTag, std::istream& theStream):
 		}
 	);
 	registerKeyword(std::regex("government"), [this](const std::string& unused, std::istream& theStream){
-		governmentSection theSection(theStream);
-		government = theSection.getGovernment();
+		if (Configuration::versionLessThan("1.7.0.0"))
+		{
+			government = governmentSection::readGovernment(theStream);
+		}
+		else
+		{
+			governmentSection theSection(theStream);
+			government = theSection.getGovernment();
+		}
 	});
 	registerKeyword(std::regex("active_relations"), [this](const std::string& unused, std::istream& theStream)
 		{
