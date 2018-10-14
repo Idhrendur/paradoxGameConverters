@@ -53,10 +53,13 @@ class Ship
 };
 
 
+std::ofstream& operator << (std::ofstream& output, const Ship& instance);
+
+
 class Navy
 {
 	public:
-		Navy(const std::string& _name, int _location);
+		Navy(const std::string& _name, int _location, int _base);
 
 		void addShip(const Ship& newShip) { ships.push_back(newShip); }
 
@@ -67,8 +70,13 @@ class Navy
 	private:
 		std::string name;
 		int location;
+		int base;
 		std::vector<Ship> ships;
 };
+
+
+std::ofstream& operator << (std::ofstream& output, const Navy& instance);
+
 
 }
 

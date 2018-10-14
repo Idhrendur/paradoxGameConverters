@@ -29,10 +29,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Focus.h"
 #include "HoI4Leader.h"
 #include "HoI4Localisation.h"
+#include "MilitaryMappings.h"
 #include "Names.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/GovernmentMapper.h"
 #include "../Mappers/GraphicsMapper.h"
+#include "../Mappers/ProvinceDefinitions.h"
 #include "../Mappers/V2Localisations.h"
 #include "../V2World/Relations.h"
 #include "../V2World/Party.h"
@@ -87,7 +89,6 @@ HoI4Country::HoI4Country(const string& _tag, const string& _commonCountryFile, c
 	economicLaw("civilian_economy"),
 	tradeLaw("export_focus"),
 	greatPower(false),
-	divisions(),
 	planes(),
 	equipmentStockpile(),
 	nationalFocus(nullptr)
@@ -161,6 +162,8 @@ void HoI4Country::initFromV2Country(const Vic2::World& _srcWorld, const Vic2::Co
 	}
 
 	majorNation = srcCountry->isGreatNation();
+
+	theArmy.addSourceArmies(srcCountry->getArmies());
 }
 
 
@@ -404,7 +407,7 @@ void HoI4Country::convertIdeologySupport(const set<string>& majorIdeologies, con
 }
 
 
-void HoI4Country::convertNavies(const map<string, HoI4::UnitMap>& unitMap, const HoI4::coastalProvinces& theCoastalProvinces)
+void HoI4Country::convertNavies(const map<string, HoI4::UnitMap>& unitMap, const HoI4::coastalProvinces& theCoastalProvinces, const std::map<int, int>& provinceToStateIDMap)
 {
 	int backupNavalLocation = 0;
 	for (auto state: states)
@@ -423,20 +426,40 @@ void HoI4Country::convertNavies(const map<string, HoI4::UnitMap>& unitMap, const
 	for (auto army: srcCountry->getArmies())
 	{
 		int navalLocation = backupNavalLocation;
+		int base = backupNavalLocation;
+
 		auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army->getLocation());
 		if (mapping)
 		{
 			for (auto possibleProvince: *mapping)
 			{
-				if (theCoastalProvinces.isProvinceCoastal(possibleProvince))
+				if (provinceDefinitions::isSeaProvince(possibleProvince))
 				{
 					navalLocation = possibleProvince;
 					break;
 				}
+				else
+				{
+					if (provinceToStateIDMap.find(possibleProvince) != provinceToStateIDMap.end())
+					{
+						int stateID = provinceToStateIDMap.at(possibleProvince);
+						if (states.find(stateID) != states.end())
+						{
+							auto state = states.at(stateID);
+							auto mainNavalLocation = state->getMainNavalLocation();
+							if (mainNavalLocation)
+							{
+								navalLocation = *mainNavalLocation;
+								base = *mainNavalLocation;
+								break;
+							}
+						}
+					}
+				}
 			}
 		}
 
-		HoI4::Navy newNavy(army->getName(), navalLocation);
+		HoI4::Navy newNavy(army->getName(), navalLocation, base);
 
 		for (auto regiment : army->getRegiments())
 		{
@@ -494,7 +517,9 @@ void HoI4Country::convertConvoys(const map<string, HoI4::UnitMap>& unitMap)
 
 void HoI4Country::convertAirforce(const map<string, HoI4::UnitMap>& unitMap)
 {
-	for (auto army : srcCountry->getArmies())
+        static std::map<std::string, vector<std::string>> backups = {
+            {"fighter_equipment_0", {"tac_bomber_equipment_0"}}};
+        for (auto army : srcCountry->getArmies())
 	{
 		for (auto regiment : army->getRegiments())
 		{
@@ -504,12 +529,26 @@ void HoI4Country::convertAirforce(const map<string, HoI4::UnitMap>& unitMap)
 			{
 				HoI4::UnitMap unitInfo = unitMap.at(type);
 
-				if (unitInfo.getCategory() == "air") {
-					// Air units get placed in national stockpile
-					equipmentStockpile[unitInfo.getEquipment()] = equipmentStockpile[unitInfo.getEquipment()] + unitInfo.getSize();
-				}
-			}
-			else
+                                if (unitInfo.getCategory() != "air")
+                                {
+                                        continue;
+                                }
+
+                                // Air units get placed in national stockpile.
+                                string equip = unitInfo.getEquipment();
+                                int amount = unitInfo.getSize();
+                                const auto& bkup = backups.find(equip);
+                                if (bkup != backups.end())
+                                {
+                                  amount /= (1 + bkup->second.size());
+                                        for (const auto& b : bkup->second)
+                                        {
+                                                equipmentStockpile[b] += amount;
+                                        }
+                                }
+                                equipmentStockpile[equip] += amount;
+                        }
+                        else
 			{
 				LOG(LogLevel::Warning) << "Unknown unit type: " << type;
 			}
@@ -517,111 +556,15 @@ void HoI4Country::convertAirforce(const map<string, HoI4::UnitMap>& unitMap)
 	}	
 }
 
-void HoI4Country::convertArmies(const map<string, HoI4::UnitMap>& unitMap, const vector<HoI4::DivisionTemplateType>& divisionTemplates)
+
+void HoI4Country::convertArmies(const HoI4::militaryMappings& theMilitaryMappings)
 {
-	if (capitalState == nullptr)
+	int backupLocation = 0;
+	if (capitalState != nullptr)
 	{
-		return;
+		backupLocation = capitalState->getVPLocation();
 	}
-
-	map<string, double> remainingBattalionsAndCompanies;
-
-	for (auto army : srcCountry->getArmies())
-	{
-		auto provinceMapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army->getLocation());
-		if (!provinceMapping)
-		{
-			continue;
-		}
-
-		map<string, double> localBattalionsAndCompanies;
-		for (auto regiment : army->getRegiments())
-		{
-			string type = regiment->getType();
-
-			if (unitMap.count(type) > 0)
-			{
-				HoI4::UnitMap unitInfo = unitMap.at(type);
-
-				if (unitInfo.getCategory() == "land")
-				{
-					// Calculate how many Battalions and Companies are available after mapping Vic2 armies
-					localBattalionsAndCompanies[unitInfo.getType()] = localBattalionsAndCompanies[unitInfo.getType()] + (unitInfo.getSize() * theConfiguration.getForceMultiplier());
-				}
-			}
-			else
-			{
-				LOG(LogLevel::Warning) << "Unknown unit type: " << type;
-			}
-		}
-
-		convertArmyDivisions(divisionTemplates, localBattalionsAndCompanies, *provinceMapping->begin());
-		for (auto unit: localBattalionsAndCompanies)
-		{
-			auto remainingUnit = remainingBattalionsAndCompanies.find(unit.first);
-			if (remainingUnit != remainingBattalionsAndCompanies.end())
-			{
-				remainingUnit->second += unit.second;
-			}
-			else
-			{
-				remainingBattalionsAndCompanies.insert(unit);
-			}
-		}
-	}
-
-	convertArmyDivisions(divisionTemplates, remainingBattalionsAndCompanies, capitalState->getVPLocation());
-}
-
-
-void HoI4Country::convertArmyDivisions(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates, std::map<std::string, double>& BattalionsAndCompanies, int location)
-{
-	for (auto& divTemplate: divisionTemplates)
-	{
-		// for each template determine the Battalion and Company requirements
-		int divisionCounter = 1;
-
-		map<string, int> templateRequirements;
-		for (auto regiment : divTemplate.getRegiments())
-		{
-			templateRequirements[regiment.getType()] = templateRequirements[regiment.getType()] + 1;
-		}
-		for (auto regiment : divTemplate.getSupportRegiments())
-		{
-			templateRequirements[regiment.getType()] = templateRequirements[regiment.getType()] + 1;
-		}
-
-		bool sufficientUnits = true;
-		for (auto unit : templateRequirements)
-		{
-			if (BattalionsAndCompanies[unit.first] < unit.second)
-			{
-				sufficientUnits = false;
-			}
-		}
-
-		// Create new divisions as long as sufficient units exist, otherwise move on to next template
-		while (sufficientUnits == true) 
-		{
-			HoI4::DivisionType newDivision(to_string(divisionCounter) + ". " + divTemplate.getName(), divTemplate.getName(), location);
-			divisionCounter = divisionCounter + 1;
-			divisions.push_back(newDivision);
-
-			for (auto unit : templateRequirements)
-			{
-				BattalionsAndCompanies[unit.first] = BattalionsAndCompanies[unit.first] - unit.second;
-			}
-
-			sufficientUnits = true;
-			for (auto unit : templateRequirements)
-			{
-				if (BattalionsAndCompanies[unit.first] < unit.second)
-				{
-					sufficientUnits = false;
-				}
-			}
-		}	
-	}
+	theArmy.convertArmies(theMilitaryMappings, backupLocation);
 }
 
 
@@ -1417,10 +1360,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 	output << "\t}\n";
 	output << "}\n";
 	output << "units = {\n";
-	for (auto& division : divisions)
-	{
-		output << division;
-	}
+	output << theArmy;
 	for (auto& navy: navies)
 	{
 		output << navy;
