@@ -76,7 +76,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_alien"
-		texturefile = "gfx/interface/goals/goal_tfv_generic_tech_sharing.dds"
+		texturefile = "gfx/interface/culture/culture_alien.dds"
 	}
 
 	spriteType = {
@@ -536,7 +536,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_german"
-		texturefile = "gfx/interface/goals/focus_chi_mission_to_germany.dds"
+		texturefile = "gfx/interface/ideas/idea_ger_rebuild_the_nation.dds"
 	}
 
 	spriteType = {
@@ -606,7 +606,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_horse"
-		texturefile = "gfx/interface/goals/goal_generic_cavalry.dds"
+		texturefile = "gfx/interface/ideas/idea_porsche.dds"
 	}
 
 	spriteType = {
@@ -1046,7 +1046,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_noculture"
-		texturefile = "gfx/interface/ideas/idea_chi_incompetent_officers.dds"
+		texturefile = "gfx/interface/thisisdog.dds"
 	}
 
 	spriteType = {
@@ -1061,7 +1061,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_north_german"
-		texturefile = "gfx/interface/goals/focus_chi_mission_to_germany.dds"
+		texturefile = "gfx/interface/ideas/idea_ger_rebuild_the_nation.dds"
 	}
 
 	spriteType = {
@@ -1556,7 +1556,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_undead"
-		texturefile = "gfx/interface/goals/focus_ger_strike_at_the_source.dds"
+		texturefile = "gfx/interface/lobby_player_mapmode_button_selected.dds"
 	}
 
 	spriteType = {
@@ -1915,4 +1915,33 @@ spriteTypes = {
 		texturefile = "gfx/interface/culture/culture_african_native.dds"
 	}
 
+	spriteType = {
+		name = "GFX_idea_culture_afro_norse"
+		texturefile = "gfx/interface/goals/focus_SAF_german_coup.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_culture_afro_carpathian"
+		texturefile = "gfx/interface/culture/culture_negru.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_culture_afro_italian"
+		texturefile = "gfx/interface/culture/culture_africano.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_culture_afro_greek"
+		texturefile = "gfx/interface/culture/culture_mavro.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_culture_afro_slavic"
+		texturefile = "gfx/interface/culture/culture_smugly.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_culture_aromanian"
+		texturefile = "gfx/interface/culture/culture_aromanian.dds"
+	}
 }

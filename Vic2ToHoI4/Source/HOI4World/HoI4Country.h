@@ -28,6 +28,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "HoI4Airforce.h"
 #include "HoI4Army.h"
+#include "Division.h"
+#include "DivisionTemplate.h"
 #include "HoI4FocusTree.h"
 #include "HOI4Ideology.h"
 #include "HoI4Leader.h"
@@ -62,8 +64,10 @@ class HoI4Ideology;
 namespace HoI4
 {
 class Advisor;
+class coastalProvinces;
 class namesMapper;
 class State;
+class UnitMap;
 class World;
 struct advisorCompare;
 }
@@ -85,10 +89,10 @@ class HoI4Country
 		void convertGovernment(const Vic2::World& _srcWorld, const governmentMapper& governmentMap);
 		void convertParties(const set<string>& majorIdeologies, const governmentMapper& governmentMap);
 		void convertIdeologySupport(const set<string>& majorIdeologies, const governmentMapper& governmentMap);
-		void convertNavy(const map<string, HoI4::UnitMap>& unitMap);
+		void convertNavies(const map<string, HoI4::UnitMap>& unitMap, const HoI4::coastalProvinces& theCoastalProvinces, const std::map<int, int>& provinceToStateIDMap);
 		void convertConvoys(const map<string, HoI4::UnitMap>& unitMap);
 		void convertAirforce(const map<string, HoI4::UnitMap>& unitMap);
-		void convertArmyDivisions(const map<string, HoI4::UnitMap>& unitMap, const vector<HoI4::DivisionTemplateType>& divisionTemplates);
+		void convertArmies(const HoI4::militaryMappings& theMilitaryMappings);
 		void		setTechnology(const string& tech, int level);
 		void		setResearchBonus(const string& tech, int bonus);
 		void addState(HoI4::State* _state);
@@ -155,7 +159,7 @@ class HoI4Country
 		void determineFilename();
 		void initIdeas(HoI4::namesMapper& theNames);
 		void convertLaws();
-		//void convertLeaders(portraitMapping& portraitMap, personalityMap& landPersonalityMap, personalityMap& seaPersonalityMap, backgroundMap& landBackgroundMap, backgroundMap& seaBackgroundMap);
+		void convertLeaders(const graphicsMapper& theGraphics);
 		void convertRelations(const CountryMapper& countryMap);
 		void determineCapitalFromVic2(const map<int, int>& provinceToStateIDMap, const map<int, HoI4::State*>& states);
 		bool isStateValidForCapital(int capitalState, const map<int, HoI4::State*>& states);
@@ -185,6 +189,7 @@ class HoI4Country
 		void outputStability(ofstream& output) const;
 		void outputWarSupport(ofstream& output) const;
 		void outputCountryLeader(ofstream& output, HoI4::namesMapper& theNames, graphicsMapper& theGraphics) const;
+		void outputCommanders(ofstream& output) const;
 		void outputOOBLine(ofstream& output) const;
 		void outputCommonCountryFile() const;
 		void outputAdvisorIdeas(const set<const HoI4::Advisor*, HoI4::advisorCompare>& ideologicalAdvisors) const;
@@ -223,7 +228,6 @@ class HoI4Country
 		set<string> puppets;
 		string puppetMaster;
 		map<string, double>				practicals;
-		vector<HoI4Leader>				leaders;
 		string graphicalCulture;
 		string graphicalCulture2d;
 		bool									majorNation;
@@ -246,11 +250,12 @@ class HoI4Country
 		bool greatPower;
 
 		// military stuff
-		vector<HoI4::DivisionType>				divisions;
-		vector<HoI4Ship>							ships;
-		vector<HoI4Airplane>						planes;
-		int											navalLocation;
-		map<string, int>							equipmentStockpile;
+		HoI4::Army theArmy;
+		vector<HoI4::Navy> navies;
+		vector<HoI4Airplane> planes;
+		map<string, int> equipmentStockpile;
+		std::vector<HoI4::General> generals;
+		std::vector<HoI4::Admiral> admirals;
 
 		shared_ptr<HoI4FocusTree> nationalFocus;
 };

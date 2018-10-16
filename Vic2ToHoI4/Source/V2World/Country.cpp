@@ -64,6 +64,10 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream, const
 		commonItems::singleDouble badboyDouble(theStream);
 		badboy = badboyDouble.getDouble();
 	});
+	registerKeyword(std::regex("prestige"), [this](const std::string& unused, std::istream& theStream){
+		commonItems::singleDouble prestigeDouble(theStream);
+		prestige = prestigeDouble.getDouble();
+	});
 	registerKeyword(std::regex("government"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::singleString governmentString(theStream);
 		government = governmentString.getString();
@@ -373,6 +377,16 @@ void Vic2::Country::setLocalisationAdjective(const string& language, const strin
 	}
 }
 
+std::string Vic2::Country::getIdentifier() const
+{
+        std::string ret = getTag();
+        auto name = getName("english");
+        if (name)
+        {
+                ret += " (" + name.value() + ")";
+        }
+        return ret;
+}
 
 optional<string> Vic2::Country::getName(const string& language) const
 {

@@ -23,6 +23,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "ProvinceMapper.h"
 #include "Log.h"
+#include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 #include "../Configuration.h"
 #include <fstream>
@@ -144,7 +145,20 @@ void provinceMapper::initialize()
 	});
 
 	LOG(LogLevel::Info) << "Parsing province mappings";
-	parseFile("province_mappings.txt");
+	bool mapped = false;
+	for (auto mod: theConfiguration.getVic2Mods())
+	{
+		if (Utils::DoesFileExist(mod + "_province_mappings.txt"))
+		{
+			parseFile(mod + "_province_mappings.txt");
+			mapped = true;
+			break;
+		}
+	}
+	if (!mapped)
+	{
+		parseFile("province_mappings.txt");
+	}
 
 	checkAllHoI4ProvinesMapped();
 }
@@ -203,7 +217,7 @@ void provinceMapper::verifyProvinceIsMapped(int provNum) const
 }
 
 
-std::optional<std::vector<int>> provinceMapper::getVic2ToHoI4ProvinceMapping(int Vic2Province)
+std::optional<std::vector<int>> provinceMapper::getVic2ToHoI4ProvinceMapping(int Vic2Province) const
 {
 	if (auto mapping = Vic2ToHoI4ProvinceMap.find(Vic2Province); mapping != Vic2ToHoI4ProvinceMap.end())
 	{
@@ -216,7 +230,7 @@ std::optional<std::vector<int>> provinceMapper::getVic2ToHoI4ProvinceMapping(int
 }
 
 
-std::optional<std::vector<int>> provinceMapper::getHoI4ToVic2ProvinceMapping(int HoI4Province)
+std::optional<std::vector<int>> provinceMapper::getHoI4ToVic2ProvinceMapping(int HoI4Province) const
 {
 	if (auto mapping = HoI4ToVic2ProvinceMap.find(HoI4Province); mapping != HoI4ToVic2ProvinceMap.end())
 	{
