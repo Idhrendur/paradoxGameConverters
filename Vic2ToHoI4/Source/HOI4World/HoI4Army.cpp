@@ -32,7 +32,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int backupLocation)
 {
-	std::map<std::string, double> remainingBattalionsAndCompanies;
+	std::map<std::string, std::vector<sizedRegiment>> remainingBattalionsAndCompanies;
 
 	for (auto army: sourceArmies)
 	{
@@ -42,8 +42,8 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int 
 			continue;
 		}
 
-		std::map<std::string, double> localBattalionsAndCompanies;
-		for (auto regiment : army->getRegiments())
+		std::map<std::string, std::vector<sizedRegiment>> localBattalionsAndCompanies;
+		for (auto regiment: army->getRegiments())
 		{
 			std::string type = regiment->getType();
 
@@ -54,7 +54,10 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int 
 				if (unitInfo.getCategory() == "land")
 				{
 					// Calculate how many Battalions and Companies are available after mapping Vic2 armies
-					localBattalionsAndCompanies[unitInfo.getType()] += (unitInfo.getSize() * theConfiguration.getForceMultiplier());
+					sizedRegiment theRegiment;
+					theRegiment.unitSize = unitInfo.getSize() * theConfiguration.getForceMultiplier();
+					theRegiment.regiment = regiment;
+					localBattalionsAndCompanies[unitInfo.getType()].push_back(theRegiment);
 				}
 			}
 			else
@@ -66,14 +69,25 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int 
 		convertArmyDivisions(theMilitaryMappings, localBattalionsAndCompanies, *provinceMapping->begin());
 		for (auto unit: localBattalionsAndCompanies)
 		{
+			std::vector<sizedRegiment> remainingRegiments;
+			for (auto regiment: unit.second)
+			{
+				if (regiment.unitSize > 0)
+				{
+					remainingRegiments.push_back(regiment);
+				}
+			}
 			auto remainingUnit = remainingBattalionsAndCompanies.find(unit.first);
 			if (remainingUnit != remainingBattalionsAndCompanies.end())
 			{
-				remainingUnit->second += unit.second;
+				for (auto regiment: remainingRegiments)
+				{
+					remainingUnit->second.push_back(regiment);
+				}
 			}
 			else
 			{
-				remainingBattalionsAndCompanies.insert(unit);
+				remainingBattalionsAndCompanies.insert(make_pair(unit.first, remainingRegiments));
 			}
 		}
 	}
@@ -82,7 +96,7 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int 
 }
 
 
-void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMappings, std::map<std::string, double>& BattalionsAndCompanies, int location)
+void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMappings, std::map<std::string, std::vector<sizedRegiment>>& BattalionsAndCompanies, int location)
 {
 	for (auto divTemplate: theMilitaryMappings.getDivisionTemplates())
 	{
@@ -104,17 +118,30 @@ void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMapping
 		{
 			HoI4::DivisionType newDivision(std::to_string(divisionCounter) + ". " + divTemplate.getName(), divTemplate.getName(), location);
 
-			for (auto& unit : templateRequirements)
+			for (auto requirement: templateRequirements)
 			{
-				for (int i = 0; i < unit.second; ++i)
+				double remainingRequirement = requirement.second;
+				for (auto& regiment: BattalionsAndCompanies[requirement.first])
 				{
-					if (BattalionsAndCompanies[unit.first] > 0)
+					if (regiment.unitSize > 0)
 					{
-						BattalionsAndCompanies[unit.first]--;
+						auto decreaseAmount = std::min(regiment.unitSize, remainingRequirement);
+						regiment.unitSize -= decreaseAmount;
+						remainingRequirement -= decreaseAmount;
 					}
-					else
+				}
+				if ((theMilitaryMappings.getSubstitutes().count(requirement.first)) &&
+					 (BattalionsAndCompanies.count(theMilitaryMappings.getSubstitutes().at(requirement.first)))
+					)
+				{
+					for (auto& regiment: BattalionsAndCompanies[theMilitaryMappings.getSubstitutes().at(requirement.first)])
 					{
-						BattalionsAndCompanies[theMilitaryMappings.getSubstitutes().at(unit.first)]--;
+						if (regiment.unitSize > 0)
+						{
+							auto decreaseAmount = std::min(regiment.unitSize, remainingRequirement);
+							regiment.unitSize -= decreaseAmount;
+							remainingRequirement -= decreaseAmount;
+						}
 					}
 				}
 			}
@@ -125,20 +152,26 @@ void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMapping
 }
 
 
-bool HoI4::Army::sufficientUnits(const std::map<std::string, double>& units, const std::map<std::string, std::string>& substitutes, const std::map<std::string, int>& requiredUnits)
+bool HoI4::Army::sufficientUnits(const std::map<std::string, std::vector<sizedRegiment>>& units, const std::map<std::string, std::string>& substitutes, const std::map<std::string, int>& requiredUnits)
 {
 	for (auto requiredUnit: requiredUnits)
 	{
-		int available = 0;
+		double available = 0;
 		if (units.find(requiredUnit.first) != units.end())
 		{
-			available += static_cast<int>(units.at(requiredUnit.first));
+			for (auto unit: units.at(requiredUnit.first))
+			{
+				available += unit.unitSize;
+			}
 		}
 		if (substitutes.find(requiredUnit.first) != substitutes.end())
 		{
 			if (units.find(substitutes.at(requiredUnit.first)) != units.end())
 			{
-				available += static_cast<int>(units.at(substitutes.at(requiredUnit.first)));
+				for (auto unit: units.at(substitutes.at(requiredUnit.first)))
+				{
+					available += unit.unitSize;
+				}
 			}
 		}
 		if (available < requiredUnit.second)
