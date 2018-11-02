@@ -116,10 +116,11 @@ void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMapping
 		// Create new divisions as long as sufficient Victoria units exist, otherwise move on to next template.
 		while (sufficientUnits(BattalionsAndCompanies, theMilitaryMappings.getSubstitutes(), templateRequirements))
 		{
-			HoI4::DivisionType newDivision(std::to_string(divisionCounter) + ". " + divTemplate.getName(), divTemplate.getName(), location);
-
+			double totalExperience = 0.0;
+			double totalRequirement = 0.0;
 			for (auto requirement: templateRequirements)
 			{
+				totalRequirement += requirement.second;
 				double remainingRequirement = requirement.second;
 				for (auto& regiment: BattalionsAndCompanies[requirement.first])
 				{
@@ -128,6 +129,8 @@ void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMapping
 						auto decreaseAmount = std::min(regiment.unitSize, remainingRequirement);
 						regiment.unitSize -= decreaseAmount;
 						remainingRequirement -= decreaseAmount;
+
+						totalExperience += decreaseAmount * regiment.regiment->getExperience();
 					}
 				}
 				if ((theMilitaryMappings.getSubstitutes().count(requirement.first)) &&
@@ -141,10 +144,19 @@ void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMapping
 							auto decreaseAmount = std::min(regiment.unitSize, remainingRequirement);
 							regiment.unitSize -= decreaseAmount;
 							remainingRequirement -= decreaseAmount;
+
+							totalExperience += decreaseAmount * regiment.regiment->getExperience();
 						}
 					}
 				}
 			}
+
+			double actualExperience = totalExperience / totalRequirement / 100.0;
+			if (actualExperience > 1.0)
+			{
+				actualExperience = 1.0;
+			}
+			HoI4::DivisionType newDivision(std::to_string(divisionCounter) + ". " + divTemplate.getName(), divTemplate.getName(), location, actualExperience);
 			divisionCounter++;
 			divisions.push_back(newDivision);
 		}
