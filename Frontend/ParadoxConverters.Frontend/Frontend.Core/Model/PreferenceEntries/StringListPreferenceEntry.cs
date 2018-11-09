@@ -18,8 +18,6 @@ namespace Frontend.Core.Model.PreferenceEntries
             if (parent.Value == null) // it might not be initialised, do so.
             {
                 parent.Value = new List<string>();
-                //parent.Value.Add("Hello");
-                //parent.Value.Add("World");
             }
 
             if (this.IsSelected)

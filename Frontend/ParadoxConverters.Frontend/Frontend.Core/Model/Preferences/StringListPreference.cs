@@ -27,8 +27,7 @@ namespace Frontend.Core.Model.Preferences
                 return sb.ToString();
             }
 
-            return "# VALUE WAS NULL FOR " + FriendlyName;
-            //return base.ToString();
+            return base.ToString();
         }
     }
 }
