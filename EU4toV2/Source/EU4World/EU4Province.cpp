@@ -255,6 +255,7 @@ EU4Province::EU4Province(shared_ptr<Object> obj)
 	checkBuilding(obj, "plantations");
 	checkBuilding(obj, "farm_estate");
 	checkBuilding(obj, "tradecompany");
+	checkBuilding(obj, "furnace");
 
 	//LOG(LogLevel::Info) << "Check buildings...";
 	// base buildings 
@@ -1903,6 +1904,11 @@ vector<double> EU4Province::getProvBuildingWeight() const
     if (hasBuilding("tradecompany"))
     {
         manu_gp_mod = 1.0;
+    }
+	
+    if (hasBuilding("furnace"))
+    {
+    	manu_gp_mod = 1.0;
     }
 
     // Base buildings
