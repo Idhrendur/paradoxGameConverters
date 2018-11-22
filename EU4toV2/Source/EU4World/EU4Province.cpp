@@ -264,6 +264,10 @@ EU4Province::EU4Province(shared_ptr<Object> obj)
 	checkBuilding(obj, "fort4");
 	checkBuilding(obj, "fort5");
 	checkBuilding(obj, "fort6");
+	checkBuilding(obj, "fort_15th");
+	checkBuilding(obj, "fort_16th");
+	checkBuilding(obj, "fort_17th");
+	checkBuilding(obj, "fort_18th");
 	checkBuilding(obj, "dock");
 	checkBuilding(obj, "drydock");
 	checkBuilding(obj, "shipyard");
@@ -581,21 +585,11 @@ void EU4Province::checkProvModifier(const shared_ptr<Object> provinceObj, string
 
 void EU4Province::checkBuilding(const shared_ptr<Object> provinceObj, string building)
 {
-	vector<shared_ptr<Object>> buildingsObj;	// the object holding the building
-	buildingsObj = provinceObj->getValue("buildings");
-	if ((buildingsObj.size() > 0))
+	vector<shared_ptr<Object>> buildingObj;	// the object holding the building
+	buildingObj = provinceObj->getValue(building);
+	if ((buildingObj.size() > 0) && (buildingObj[0]->getLeaf() == "yes"))
 	{
-		vector<shared_ptr<Object>> buildingsObjs = buildingsObj[0]->getLeaves();
-        for (auto i : buildingsObjs)
-        {
-            //LOG(LogLevel::Info) << "Leaf: " << i->getLeaf();
-
-            if (i->getKey() == building && i->getLeaf() == "yes")
-            {
-                buildings[building] = true;
-                break;
-            }
-        }
+		buildings[building] = true;
 	}
 }
 
@@ -804,13 +798,6 @@ void EU4Province::determineProvinceWeight()
 		LOG(LogLevel::Error) << "Error in building weight vector: " << e.what();
 	}
 
-	// Check tag, ex. TIB has goods_produced +0.05
-	// This needs to be hard coded unless there's some other way of figuring out modded national ambitions/ideas
-	if (this->getOwnerString() == "TIB")
-	{
-		goods_produced_perc_mod += 0.05;
-	}
-
 	double goods_produced = (baseProd * 0.2) + manu_gp_mod + goods_produced_perc_mod + 0.03;
 
 	// idea effects
@@ -834,8 +821,8 @@ void EU4Province::determineProvinceWeight()
 	double production_eff_tech = 0.2; // used to be 1.0
 
 	double total_trade_value = ((getTradeGoodPrice() * goods_produced) + trade_value) * (1 + trade_value_eff);
-	double production_income = total_trade_value * (1.8 + production_eff_tech + production_eff); 
-	//the bonus 0.5 is supposed to show trade income from trade goods as there is no better way to show it atm, but it still has to be shown to show superiority of base production later on
+	double production_income = total_trade_value * (1.8 + production_eff_tech + production_eff);
+	//the bonus 0.4 is supposed to show trade income from trade goods as there is no better way to show it atm, but it still has to be shown to show superiority of base production later on
 	//LOG(LogLevel::Info) << "province name: " << this->getProvName() 
 	//	<< " trade good: " << tradeGoods 
 	//	<< " Price: " << getTradeGoodPrice() 
@@ -849,6 +836,8 @@ void EU4Province::determineProvinceWeight()
 	total_tx *= 1;
 	manpower_weight *= 1;
 	production_income *= 1;
+	// dev modifier
+	dev_modifier *= ( baseTax + baseProd + manpower );			   
 
 	provBuildingWeight	= building_weight;
 	provTaxIncome			= total_tx;
@@ -856,9 +845,6 @@ void EU4Province::determineProvinceWeight()
 	provMPWeight			= manpower_weight;
 	provTradeGoodWeight	= trade_goods_weight;
 	provDevModifier	= dev_modifier;
-	
-	// dev modifier
-	dev_modifier *= ( baseTax + baseProd + manpower );
 	
 	if (baseTax + baseProd + manpower >= 10)
 	{	
@@ -920,7 +906,7 @@ void EU4Province::determineProvinceWeight()
 		}
 	}
 
-	totalWeight = building_weight + dev_modifier + ( manpower_weight + production_income + total_tx ) + 0.5 * ( baseTax + baseProd + manpower );
+	totalWeight = building_weight + dev_modifier + ( manpower_weight + production_income + total_tx );
 	//i would change dev effect to 1, but your choice
 	if (territory == true)
 	{
@@ -1259,7 +1245,7 @@ vector<double> EU4Province::getProvBuildingWeight() const
 	double trade_value					= 0.0;
 	double trade_value_eff				= 0.0;
 	double trade_power_eff				= 0.0;
-	double dev_modifier				= 0.45; // representing forcelimit and trade power prov has from dev
+	double dev_modifier				= 1.45; // representing forcelimit and trade power prov has from dev
 
 	// unique buildings
 	/*
@@ -1878,9 +1864,9 @@ vector<double> EU4Province::getProvBuildingWeight() const
 	}*/
 
 	
-if (hasBuilding("university"))
+	if (hasBuilding("university"))
     {
-        building_weight += 6;
+        building_weight += 3;
     }
 
     // manfacturies building
@@ -1935,7 +1921,22 @@ if (hasBuilding("university"))
     if (hasBuilding("fort4"))
     {
         building_weight += 16;
-
+    }
+    if (hasBuilding("fort_15th"))
+    {
+        building_weight += 4;
+    }
+    if (hasBuilding("fort_16th"))
+    {
+        building_weight += 8;
+    }
+    if (hasBuilding("fort_17th"))
+    {
+        building_weight += 12;
+    }
+    if (hasBuilding("fort_18th"))
+    {
+        building_weight += 16;
     }
     if (hasBuilding("dock"))
     {
@@ -1949,12 +1950,12 @@ if (hasBuilding("university"))
 
     if (hasBuilding("shipyard"))
     {
-        dev_modifier += 0.1;
+        dev_modifier += 0.075;
     }
 
     if (hasBuilding("grand_shipyard"))
     {
-        dev_modifier += 0.2;
+        dev_modifier += 0.15;
     }
 
     if (hasBuilding("temple"))
@@ -2022,7 +2023,6 @@ if (hasBuilding("university"))
     {
         dev_modifier += 0.15;
     }
-
     if (hasProvModifier("center_of_trade_modifier"))
     {
         building_weight += 24;
