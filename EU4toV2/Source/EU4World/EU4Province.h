@@ -62,15 +62,20 @@ class EU4Province
 		void						removeCore(string tag);
 		void						determineProvinceWeight();
 
+							
+
 		bool						wasColonised() const;
 		bool						wasInfidelConquest() const;
 		bool						hasBuilding(string building) const;
+													   
 		std::vector<std::shared_ptr<EU4::Country>>	getCores(const std::map<std::string, std::shared_ptr<EU4::Country>>& countries) const;
 		date						getLastPossessedDate(string tag) const;
 		double getCulturePercent(string culture);
 
 		int						getNum()					const { return num; }
 		double					getBaseTax()			const { return baseTax; }
+													   
+													   
 		string					getOwnerString()		const { return ownerString; }
 		std::shared_ptr<EU4::Country> getOwner() const { return owner; }
 		bool						getInHRE()				const { return inHRE; }
@@ -96,7 +101,9 @@ class EU4Province
 
 	private:
 		void	checkBuilding(const shared_ptr<Object> provinceObj, string building);
-		void	buildPopRatios();
+		void	checkProvModifier(const shared_ptr<Object> provinceObj, string modifierToFind);
+		void	checkTerritory(const shared_ptr<Object> provinceObj);
+	void	buildPopRatios();
 		void	decayPopRatios(date oldDate, date newDate, EU4PopRatio& currentPop);
 
 		vector<double>	getProvBuildingWeight()	const;
@@ -120,6 +127,8 @@ class EU4Province
 		vector< pair<date, string> >	cultureHistory;		// the history of the cultural changes of this province
 		vector<EU4PopRatio>				popRatios;				// the population ratios of this province
 		map<string, bool>					buildings;				// the buildings in this province
+		map<string, bool>					provModifiers;				// the buildings in this province
+		bool							territory;				// the buildings in this province
 
 		string								tradeGoods;
 		int									numV2Provs;
