@@ -285,7 +285,7 @@ tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsign
 			destFlag->image_data[destIndex + 0] = sourceFlag->image_data[sourceIndex + 0];
 			destFlag->image_data[destIndex + 1] = sourceFlag->image_data[sourceIndex + 1];
 			destFlag->image_data[destIndex + 2] = sourceFlag->image_data[sourceIndex + 2];
-			destFlag->image_data[destIndex + 3] = sourceFlag->image_data[sourceIndex + 3];
+			destFlag->image_data[destIndex + 3] = 0xFF;
 		}
 	}
 
