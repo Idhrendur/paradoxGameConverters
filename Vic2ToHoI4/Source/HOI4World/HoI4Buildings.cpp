@@ -157,15 +157,15 @@ void HoI4::Buildings::placeBuildings(const HoI4States& theStates, const coastalP
 	auto actualCoastalProvinces = theCoastalProvinces.getCoastalProvinces();
 
 	placeAirports(theStates, theMapData);
+	placeAntiAir(theStates, theMapData);
 	placeArmsFactories(theStates, theMapData);
-	placeIndustrialComplexes(theStates, theMapData);
-	placeNavalBases(provinceToStateIDMap, actualCoastalProvinces, theMapData);
 	placeBunkers(provinceToStateIDMap, theMapData);
 	placeCoastalBunkers(provinceToStateIDMap, actualCoastalProvinces, theMapData);
 	placeDockyards(theStates, theCoastalProvinces, actualCoastalProvinces, theMapData);
-	placeAntiAir(theStates, theMapData);
-	placeSyntheticRefineries(theStates, theMapData);
+	placeIndustrialComplexes(theStates, theMapData);
+	placeNavalBases(provinceToStateIDMap, actualCoastalProvinces, theMapData);
 	placeNuclearReactors(theStates, theMapData);
+	placeSyntheticRefineries(theStates, theMapData);
 }
 
 
@@ -693,7 +693,7 @@ void HoI4::Buildings::output() const
 	}
 	for (auto airportLocation: airportLocations)
 	{
-		airportsFile << airportLocation.first << " = { " << airportLocation.second << " }\n";
+		airportsFile << airportLocation.first << "={" << airportLocation.second << " }\n";
 	}
 	airportsFile.close();
 }
