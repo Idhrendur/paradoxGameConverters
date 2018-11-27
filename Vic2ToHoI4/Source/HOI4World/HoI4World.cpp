@@ -1497,6 +1497,7 @@ void HoI4::World::outputRelations() const
 		}
 		out << abs(i) << " = {\n";
 		out << "\tvalue = " << i << "\n";
+		out << "\tdecay = 1\n";
 		out << "}\n";
 	}
  	out << "private_channels_trade = {\n";
