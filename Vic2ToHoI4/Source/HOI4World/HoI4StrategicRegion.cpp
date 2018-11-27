@@ -89,6 +89,7 @@ void HoI4StrategicRegion::output(const std::string& path) const
 		exit(-1);
 	}
 
+	out << "\n";
 	out << "strategic_region={\n";
 	out << "\tid=" << ID << "\n";
 	out << "\tname=\"STRATEGICREGION_" << ID << "\"\n";
@@ -100,7 +101,7 @@ void HoI4StrategicRegion::output(const std::string& path) const
 	}
 	out << "\n";
 	out << "\t}\n";
-	out << "\tweather " << weather << "\n";
+	out << "\tweather" << weather << "\n";
 	out << "}";
 
 	out.close();
