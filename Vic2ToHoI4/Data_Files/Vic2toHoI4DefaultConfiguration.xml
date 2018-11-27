@@ -107,6 +107,12 @@
 								<description>Keep default ideologies (democratic, fascist, communist).</description>
 								<isDefault>false</isDefault>
 							</entryOption>
+							<entryOption>
+								<name>specified</name>
+								<friendlyName>Specify ideologies</friendlyName>
+								<description>Specify ideologies using the ideologies choice option</description>
+								<isDefault>false</isDefault>
+							</entryOption>
 						</entryOptions>
 					</preference>
 					<preference>
@@ -141,7 +147,7 @@
 							</entryOption>
 							<entryOption>
 								<name>no</name>
-								<friendlyName>no</friendlyName>
+								<friendlyName>No</friendlyName>
 								<description>Do not create factions</description>
 								<isDefault>false</isDefault>
 							</entryOption>
@@ -163,6 +169,50 @@
 								<friendlyName>Yes</friendlyName>
 								<description>Output a debug mod</description>
 								<isDefault>false</isDefault>
+							</entryOption>
+						</entryOptions>
+					</preference>
+					<preference>
+						<name>ideologies_choice</name>
+						<friendlyName>Ideologies choice</friendlyName>
+						<description>Which ideologies are converted</description>
+						<allowMultipleSelections>true</allowMultipleSelections>
+						<entryOptions>
+							<entryOption>
+								<name>communism</name>
+								<friendlyName>Communism</friendlyName>
+								<description>Communism</description>
+								<isDefault>true</isDefault>
+							</entryOption>
+							<entryOption>
+								<name>absolutist</name>
+								<friendlyName>Absolutist</friendlyName>
+								<description>Absolutist</description>
+								<isDefault>true</isDefault>
+							</entryOption>
+							<entryOption>
+								<name>democratic</name>
+								<friendlyName>Democratic</friendlyName>
+								<description>Democratic</description>
+								<isDefault>true</isDefault>
+							</entryOption>
+							<entryOption>
+								<name>fascism</name>
+								<friendlyName>Fascism</friendlyName>
+								<description>Fascism</description>
+								<isDefault>true</isDefault>
+							</entryOption>
+							<entryOption>
+								<name>neutrality</name>
+								<friendlyName>Neutrality</friendlyName>
+								<description>Neutrality</description>
+								<isDefault>true</isDefault>
+							</entryOption>
+							<entryOption>
+								<name>radical</name>
+								<friendlyName>Radical</friendlyName>
+								<description>Radical</description>
+								<isDefault>true</isDefault>
 							</entryOption>
 						</entryOptions>
 					</preference>
