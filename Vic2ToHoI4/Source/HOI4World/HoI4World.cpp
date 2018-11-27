@@ -1369,7 +1369,7 @@ void HoI4::World::outputMap() const
 	for (auto state: states->getStates())
 	{
 		auto provinces = state.second->getProvinces();
-		rocketSitesFile << state.second->getID() << " = { " << *provinces.begin() << " }\n";
+		rocketSitesFile << state.second->getID() << "={" << *provinces.begin() << " }\n";
 	}
 	rocketSitesFile.close();
 
