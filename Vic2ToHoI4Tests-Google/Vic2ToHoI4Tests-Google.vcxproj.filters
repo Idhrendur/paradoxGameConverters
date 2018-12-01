@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2toHOI4Converter.cpp">
+      <Filter>Vic2ToHoI4 files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2ToHoI4ConverterTests.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Version.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\Log.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\WinUtils.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4World.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp">
+      <Filter>Vic2ToHoI4 files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\newParser.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\ParserHelpers.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeace.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CoastalProvinces.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decision.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MapData.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeaces.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OnActions.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Event.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Country.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ProvinceMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\V2Localisations.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AllMilitaryMappings.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4States.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryMapping.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4State.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ImpassableProvinces.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Province.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\State.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\StateDefinitions.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Ideology.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Color.cpp">
+      <Filter>Vic2ToHoI4 files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\StateCategories.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ProvinceDefinitions.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\Date.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Agreement.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Buildings.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Country.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4FocusTree.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Diplomacy.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4StrategicRegion.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologicalAdvisors.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologyFile.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4WarCreator.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Resources.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\SupplyZones.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\TechMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Airforce.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\DivisionTemplate.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Army.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regiment.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Leader.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Navy.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Relations.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Advisor.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeaGroup.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4SupplyZone.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\CommonUtils.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Idea.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\UnitMap.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Flags.cpp">
+      <Filter>Vic2ToHoI4 files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Building.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CultureGroups.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pop.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\targa.cpp">
+      <Filter>Vic2ToHoI4 files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Inventions.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Agreement.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Vic2ToHoI4 files">
+      <UniqueIdentifier>{756ae4ca-ff56-40b0-8de0-ff4c73f19b4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\common items">
+      <UniqueIdentifier>{a1c0000c-49d2-481a-bb0b-5a2853eb94a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2">
+      <UniqueIdentifier>{6bac7a05-ccf3-45c7-a61b-1793275a4494}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4">
+      <UniqueIdentifier>{7523283b-a5a3-43f6-b4fe-56840af5db68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers">
+      <UniqueIdentifier>{e30737e2-c2c7-4cf8-b4e6-636096b3d243}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
