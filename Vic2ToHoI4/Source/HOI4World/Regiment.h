@@ -50,8 +50,8 @@ class RegimentType: commonItems::parser
 		RegimentType& operator=(const RegimentType&) = delete;
 
 		std::string	type;
-		int x;
-		int y;
+		int x = 0;
+		int y = 0;
 };
 
 
