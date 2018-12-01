@@ -126,6 +126,7 @@
     <ClCompile Include="HoI4WorldTests\RegimentTests.cpp" />
     <ClCompile Include="HoI4WorldTests\UnitMapTests.cpp" />
     <ClCompile Include="Vic2ToHoI4ConverterTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Vic2AgreementTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

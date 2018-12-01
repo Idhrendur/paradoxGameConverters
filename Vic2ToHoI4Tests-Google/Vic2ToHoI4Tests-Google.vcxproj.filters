@@ -269,6 +269,9 @@
     <ClCompile Include="HoI4WorldTests\UnitMapTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Vic2AgreementTests.cpp">
+      <Filter>Vic2WorldTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -291,6 +294,9 @@
     </Filter>
     <Filter Include="HoI4WorldTests">
       <UniqueIdentifier>{08995b5a-4f3b-44d2-934b-608bacde268a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests">
+      <UniqueIdentifier>{2a1ee139-22ae-41dc-ad66-4f25c8d0b046}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
