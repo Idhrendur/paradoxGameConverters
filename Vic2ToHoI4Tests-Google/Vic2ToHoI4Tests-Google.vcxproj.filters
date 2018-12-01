@@ -248,6 +248,27 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Agreement.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\AllMilitaryMappingsTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\DivisionTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\MilitaryMappingTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\RegimentTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\UnitMapTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -267,6 +288,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Mappers">
       <UniqueIdentifier>{e30737e2-c2c7-4cf8-b4e6-636096b3d243}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests">
+      <UniqueIdentifier>{08995b5a-4f3b-44d2-934b-608bacde268a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
