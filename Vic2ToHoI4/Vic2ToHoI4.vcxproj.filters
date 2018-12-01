@@ -257,6 +257,7 @@
     <ClCompile Include="Source\HOI4World\AllMilitaryMappings.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
+    <ClCompile Include="Source\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -501,5 +502,6 @@
     <ClInclude Include="Source\HOI4World\AllMilitaryMappings.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Vic2ToHoI4Converter.h" />
   </ItemGroup>
 </Project>

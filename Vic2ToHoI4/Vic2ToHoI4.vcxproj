@@ -226,6 +226,7 @@
     <ClCompile Include="Source\HOI4World\StateCategories.cpp" />
     <ClCompile Include="Source\HOI4World\SupplyZones.cpp" />
     <ClCompile Include="Source\HOI4World\UnitMap.cpp" />
+    <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Mappers\CountryMapping.cpp" />
     <ClCompile Include="Source\Mappers\GovernmentMapper.cpp" />
     <ClCompile Include="Source\Mappers\GraphicsMapper.cpp" />
@@ -339,6 +340,7 @@
     <ClInclude Include="Source\V2World\State.h" />
     <ClInclude Include="Source\V2World\StateDefinitions.h" />
     <ClInclude Include="Source\V2World\World.h" />
+    <ClInclude Include="Source\Vic2ToHoI4Converter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
