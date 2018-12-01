@@ -30,15 +30,6 @@ void setOutputName(const std::string& V2SaveFileName);
 
 
 
-/*TEST_CLASS_INITIALIZE(ConverterMainTestsClassInitialization)
-{
-	ConfigurationFile("configuration.txt");
-}
-TEST_INITIALIZE(ConverterMainTestsMethodInitialization)
-{
-	theConfiguration.setOutputName("");
-}*/
-
 TEST(setOutputNameTests, filenameEmptyWhenGivenNoInput)
 {
 	std::string inputName = "";
