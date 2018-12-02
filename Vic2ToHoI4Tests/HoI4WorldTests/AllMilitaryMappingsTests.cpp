@@ -21,43 +21,30 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "stdafx.h"
-#include "CppUnitTest.h"
+#include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/AllMilitaryMappings.h"
 
 
 
-using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+HoI4::allMilitaryMappings allTheMappings;
 
 
 
-namespace HoI4WorldTests
+TEST(HoI4World_allMilitaryMappingsTests, getDefaultMappingsWithNoMods)
 {
-
-TEST_CLASS(allMilitaryMappingsTests)
+	std::vector<std::string> mods;
+	auto specificMappings = allTheMappings.getMilitaryMappings(mods);
+	ASSERT_EQ(std::string("default"), specificMappings.getMappingsName());
+}
+TEST(HoI4World_allMilitaryMappingsTests, getDefaultMappingsWithInvalidMod)
 {
-	public:
-		TEST_METHOD(getDefaultMappingsWithNoMods)
-		{
-			std::vector<std::string> mods;
-			auto specificMappings = allTheMappings.getMilitaryMappings(mods);
-			Assert::AreEqual(std::string("default"), specificMappings.getMappingsName());
-		}
-		TEST_METHOD(getDefaultMappingsWithInvalidMod)
-		{
-			std::vector<std::string> mods = { "NotAMod" };
-			auto specificMappings = allTheMappings.getMilitaryMappings(mods);
-			Assert::AreEqual(std::string("default"), specificMappings.getMappingsName());
-		}
-		TEST_METHOD(getPDMMappingsWithPDM)
-		{
-			std::vector<std::string> mods = { "PDM" };
-			auto specificMappings = allTheMappings.getMilitaryMappings(mods);
-			Assert::AreEqual(std::string("PDM"), specificMappings.getMappingsName());
-		}
-
-	private:
-		HoI4::allMilitaryMappings allTheMappings;
-};
-
+	std::vector<std::string> mods = { "NotAMod" };
+	auto specificMappings = allTheMappings.getMilitaryMappings(mods);
+	ASSERT_EQ(std::string("default"), specificMappings.getMappingsName());
+}
+TEST(HoI4World_allMilitaryMappingsTests, getPDMMappingsWithPDM)
+{
+	std::vector<std::string> mods = { "PDM" };
+	auto specificMappings = allTheMappings.getMilitaryMappings(mods);
+	ASSERT_EQ(std::string("PDM"), specificMappings.getMappingsName());
 }

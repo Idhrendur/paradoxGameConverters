@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{a302cb0c-8de3-4cbd-a974-282c1c7ae62d}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <ProjectName>Vic2ToHoI4Tests</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>../common_items;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ClCompile Include="..\common_items\CommonUtils.cpp" />
+    <ClCompile Include="..\common_items\Date.cpp" />
+    <ClCompile Include="..\common_items\Log.cpp" />
+    <ClCompile Include="..\common_items\newParser.cpp" />
+    <ClCompile Include="..\common_items\ParserHelpers.cpp" />
+    <ClCompile Include="..\common_items\WinUtils.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Color.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Flags.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Advisor.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeace.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeaces.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AllMilitaryMappings.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CoastalProvinces.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decision.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\DivisionTemplate.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Event.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Agreement.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Airforce.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Army.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Buildings.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Country.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Diplomacy.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4FocusTree.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Ideology.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Leader.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Navy.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Relations.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4State.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4States.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4StrategicRegion.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4SupplyZone.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Version.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4WarCreator.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4World.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Idea.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeaGroup.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologicalAdvisors.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologyFile.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ImpassableProvinces.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MapData.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OnActions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regiment.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Resources.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\StateCategories.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\SupplyZones.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\UnitMap.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryMapping.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ProvinceDefinitions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ProvinceMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\TechMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\V2Localisations.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\targa.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2toHOI4Converter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Agreement.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Building.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Country.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CultureGroups.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Inventions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pop.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Province.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\State.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\StateDefinitions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World.cpp" />
+    <ClCompile Include="HoI4WorldTests\AllMilitaryMappingsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\DivisionTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\MilitaryMappingTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\RegimentTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\UnitMapTests.cpp" />
+    <ClCompile Include="Vic2ToHoI4ConverterTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Vic2AgreementTests.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vic2ToHoI4\Vic2ToHoI4.vcxproj">
+      <Project>{f5433a7a-723c-4e55-ac01-9d146820c7b4}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemDefinitionGroup />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\Vic2ToHoI4\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.0\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets" Condition="Exists('..\Vic2ToHoI4\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.0\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets')" />
+  </ImportGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>X64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>X64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+  </ItemDefinitionGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\Vic2ToHoI4\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.0\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Vic2ToHoI4\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.0\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets'))" />
+  </Target>
+</Project>

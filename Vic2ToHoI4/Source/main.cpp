@@ -21,44 +21,41 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef HOI4_REGIMENT_H
-#define HOI4_REGIMENT_H
+#include "Log.h"
+#include "Vic2ToHoI4Converter.h"
+#include "OSCompatibilityLayer.h"
 
 
 
-#include "newParser.h"
-#include <istream>
-#include <ostream>
-#include <string>
-
-
-
-namespace HoI4
+int main(const int argc, const char* argv[])
 {
+	try
+	{
+		LOG(LogLevel::Info) << "Converter version 0.2H";
+		LOG(LogLevel::Info) << "Built on " << __DATE__ << " at " << __TIME__;
+		LOG(LogLevel::Info) << "Current directory is " << Utils::getCurrentDirectory();
 
-class RegimentType: commonItems::parser
-{
-	public:
-		explicit RegimentType(const std::string& _type, std::istream& theStream);
-		RegimentType(const RegimentType&) = default;
+		const char* const defaultV2SaveFileName = "input.v2";
+		std::string V2SaveFileName;
+		if (argc >= 2)
+		{
+			V2SaveFileName = argv[1];
+			LOG(LogLevel::Info) << "Using input file " << V2SaveFileName;
+		}
+		else
+		{
+			V2SaveFileName = defaultV2SaveFileName;
+			LOG(LogLevel::Info) << "No input file given, defaulting to " << defaultV2SaveFileName;
+		}
 
-		const std::string getType() const { return type; }
+		ConvertV2ToHoI4(V2SaveFileName);
 
-		friend std::ostream& operator << (std::ostream& out, const RegimentType& regiment);
+		return 0;
+	}
 
-	private:
-		RegimentType& operator=(const RegimentType&) = delete;
-
-		std::string	type;
-		int x = 0;
-		int y = 0;
-};
-
-
-std::ostream& operator << (std::ostream& out, const RegimentType& regiment);
-
+	catch (const std::exception& e)
+	{
+		LOG(LogLevel::Error) << e.what();
+		return -1;
+	}
 }
-
-
-
-#endif // HOI4_REGIMENT_H

@@ -60,4 +60,6 @@ ofstream& operator << (ofstream& output, HoI4Agreement& instance)
 	output << "\tend_date=\"1949.1.1\"\n";
 	output << "}\n";
 	output << "\n";
+
+	return output;
 }

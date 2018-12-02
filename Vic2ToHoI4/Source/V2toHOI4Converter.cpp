@@ -34,41 +34,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-void ConvertV2ToHoI4(const string& V2SaveFileName);
-int main(const int argc, const char* argv[])
-{
-	try
-	{
-		LOG(LogLevel::Info) << "Converter version 0.2H";
-		LOG(LogLevel::Info) << "Built on " << __DATE__ << " at " << __TIME__;
-		LOG(LogLevel::Info) << "Current directory is " << Utils::getCurrentDirectory();
-
-		const char* const defaultV2SaveFileName = "input.v2";
-		string V2SaveFileName;
-		if (argc >= 2)
-		{
-			V2SaveFileName = argv[1];
-			LOG(LogLevel::Info) << "Using input file " << V2SaveFileName;
-		}
-		else
-		{
-			V2SaveFileName = defaultV2SaveFileName;
-			LOG(LogLevel::Info) << "No input file given, defaulting to " << defaultV2SaveFileName;
-		}
-
-		ConvertV2ToHoI4(V2SaveFileName);
-
-		return 0;
-	}
-
-	catch (const std::exception& e)
-	{
-		LOG(LogLevel::Error) << e.what();
-		return -1;
-	}
-}
-
-
 void checkMods();
 void setOutputName(const string& V2SaveFileName);
 void clearOutputFolder();
