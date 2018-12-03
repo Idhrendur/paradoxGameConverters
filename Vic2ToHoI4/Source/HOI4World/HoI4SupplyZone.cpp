@@ -45,10 +45,11 @@ void HoI4SupplyZone::output(const string& _filename) const
 		LOG(LogLevel::Error) << "Could not open \"output/input/map/supplyareas/" + _filename;
 		exit(-1);
 	}
+	out << "\n";
 	out << "supply_area={" << endl;
 	out << "\tid=" << ID << endl;
-	out << "\tname= \"SUPPLYAREA_" << ID << "\"" << endl;
-	out << "\tvalue = " << value << endl;
+	out << "\tname=\"SUPPLYAREA_" << ID << "\"" << endl;
+	out << "\tvalue=" << value << endl;
 	out << "\tstates={" << endl;
 	out << "\t\t";
 	for (auto stateNum: states)

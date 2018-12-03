@@ -32,6 +32,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
+#include <iomanip>
+#include <ios>
 #include <fstream>
 #include <random>
 
@@ -187,21 +189,21 @@ void HoI4::State::output(const std::string& _filename) const
 		exit(-1);
 	}
 
+	out << "\n";
 	out << "state={" << "\n";
 	out << "\tid=" << ID << "\n";
-	out << "\tname= \"STATE_" << ID << "\"\n";
-	out << "\tmanpower = " << manpower << "\n";
-	out << "\n";
+	out << "\tname=\"STATE_" << ID << "\"\n";
 	if (resources.size() > 0)
 	{
 		out << "\tresources={\n";
+		out << std::fixed;
+		out << std::setprecision(3);
 		for (auto resource: resources)
 		{
-			out << "\t\t" << resource.first << " = " << resource.second << "\n";
+			out << "\t\t" << resource.first << "=" << resource.second << "\n";
 		}
 		out << "\t}\n";
 	}
-	out << "\tstate_category = "<< category << "\n";
 	if (impassable)
 	{
 		out << "\timpassable = yes\n";
@@ -216,14 +218,17 @@ void HoI4::State::output(const std::string& _filename) const
 	{
 		if (theConfiguration.getDebug())
 		{
-			out << "\t\tvictory_points = { " << victoryPointPosition << " " << (victoryPointValue + 10) << " }\n";
+			out << "\t\tvictory_points = {\n";
+			out << "\t\t\t" << victoryPointPosition << " " << (victoryPointValue + 10) << "\n";
+			out << "\t\t}\n";
 			for (auto VP: debugVictoryPoints)
 			{
 				if (VP == victoryPointPosition)
 				{
 					continue;
 				}
-				out << "\t\tvictory_points = { " << VP << " 5 }\n";
+				out << "\t\tvictory_points = { " << VP << " 5\n";
+				out << "\t}\n";
 			}
 			for (auto VP: secondaryDebugVictoryPoints)
 			{
@@ -236,7 +241,9 @@ void HoI4::State::output(const std::string& _filename) const
 		}
 		else
 		{
-			out << "\t\tvictory_points = { " << victoryPointPosition << " " << victoryPointValue << " }\n";
+			out << "\t\tvictory_points = {\n";
+			out << "\t\t\t" << victoryPointPosition << " " << victoryPointValue << " \n";
+			out << "\t\t}\n";
 		}
 	}
 	out << "\t\tbuildings = {\n";
@@ -278,6 +285,7 @@ void HoI4::State::output(const std::string& _filename) const
 	}
 
 	out << "\t\t\tair_base = "<< airbaseLevel << "\n";
+	out << "\n";
 	out << "\t\t}\n";
 	for (auto core: cores)
 	{
@@ -293,6 +301,9 @@ void HoI4::State::output(const std::string& _filename) const
 	}
 	out << "\n";
 	out << "\t}\n";
+	out << "\tmanpower=" << manpower << "\n";
+	out << "\tbuildings_max_level_factor=1.000\n";
+	out << "\tstate_category="<< category << "\n";
 	out << "}\n";
 
 	out.close();

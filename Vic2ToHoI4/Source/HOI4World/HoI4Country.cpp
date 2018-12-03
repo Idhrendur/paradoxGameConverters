@@ -836,7 +836,7 @@ void HoI4Country::output(const set<const HoI4::Advisor*, HoI4::advisorCompare>& 
 
 		if (nationalFocus != nullptr)
 		{
-			nationalFocus->output("output/" + theConfiguration.getOutputName() + "/common/national_focus/" + srcCountry->getTag() + "_NF.txt");
+			nationalFocus->output("output/" + theConfiguration.getOutputName() + "/common/national_focus/" + tag + "_NF.txt");
 		}
 	}
 }
