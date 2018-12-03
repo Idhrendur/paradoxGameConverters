@@ -2305,7 +2305,7 @@ falklander = {
 	weapon_companies = { "RSAF Enfield" Vauxhall "Royal Arsenal" }
 	aircraft_companies = { Supermarine "Hawker Aircraft" "De Havilland" Avro "Fairey Aviation" }
 }
-italo_americano = {
+italoamericano = {
 	female_names = { Maria Giovanna }
 	callsigns = { Buzzard Dusty Falcon Hawk Hammer Viper Banshee "The Baron" Lightning Duce Raven "Two Shot" Rosso }
 	industry_companies = { Danieli }
@@ -3149,4 +3149,976 @@ alien = {
 	naval_companies = { FTL-Sky }
 	weapon_companies = { "Synthetic Dawn" }
 	aircraft_companies = { Stellaris }
+}
+afro_carpathian = {
+	female_names = { Ágnes Agnes Éva Eva Adelaida Adelaide Agáta Agatha Amália Amelia Angyalka Anikó Aranka }
+	callsigns = { Habsburg "the Magyar" Orc Hun Attila Dracula "the Turk" }
+	electronic_companies = { MVM }
+	car_companies = { "Škoda Budapest" }
+	industry_companies = { MÁVAG }
+	naval_companies = { "Ganz Danubius" }
+	weapon_companies = { "Fegyver- és Gépgyár" }
+	aircraft_companies = { "M.W. Aircraft" }
+}
+afro_greek = {
+	female_names = { Maria Eleni Aiketerine Baslikike Sofia Aggeliki Georgia Anastasia Evangelia Demetra Eirene Anna Panagiota Ioanna Konstantina Despoina Calliope Alexandra Kyriake Paraskevi }
+	female_surnames = { Charalámpi Christáki-Zográfo Dagli Dousmani Foúmi Gonatá Chatzianésti Kallérgi Kanári Katsimiro
+		Kolokotróni Kondýli Kountourióti Kriezí Makriiánni Máno Mavrokordáto Mavrovounióti Metaxá Moúsko
+		Níder Othonaío Paláska Pan'galo Papadiamantópoulo Papadópoulo Papágo Papoúla Parakevópoulo Plapoúta
+		Plastíra Sapountzáki Saráfi Smolénski Sofoúli Soútso Spyromílio Staïkópoulo Stanota "ti Elládas"
+		Trikoúpi Tsakalóto Tsolákoglou Typáldos-Alfonsáto Tzavéla Vásso Venizélo Voúlgari Zaḯmi Zymvrakáki }
+	callsigns = { Ellinikí Spartiátis Vyzantinó Aléxandros Toúrkos Aftokrátos }
+	industry_companies = { "Ethnikés Viomichaníes" }
+	electronic_companies = { "Xénes Enérgeies" }
+	car_companies = { ELVO Korres Namco "Replicar Hellas" Sfakianakis Tangalakis-Temax }
+	weapon_companies = { "Gallikó Chályva" }
+	aircraft_companies = { GNAF }
+	naval_companies = { "Royal Hellenic Naval Shipyard" }
+}
+afro_italian = {
+	female_names = { Maria Anna }
+	callsigns = { Buzzard Dusty Falcon Hawk Hammer Viper Banshee "The Baron" Lightning Duce Raven "Two Shot" Rosso }
+	industry_companies = { Danieli }
+	electronic_companies = { ENEL }
+	car_companies = { Fiat }
+	naval_companies = { CRDA }
+	weapon_companies = { Beretta Lancia Breda }
+	aircraft_companies = { Macchi Savoia-Marchetti Caproni Biaggio }
+}
+afro_norse = {
+	female_names = { Árný Arnfrithur Bjarnhildur Boghildur Dómhildur Drótt Freydís Gunnrún Rafney }
+	female_surnames = { Arnórsdóttir Ásgeirsdóttir Benediktsdóttir Bjarnadóttir Björnsdóttir Eggersdóttir Eldjárnsdóttir Hafsteinsdóttir Hansdóttir
+		Hermannsdóttir Johánesdóttir Jónsdóttir Magnúsdóttir Stefánsdóttir Steinþosdóttir Þórdarson Þórhallson Þorláksdóttir Þursdóttir }
+	callsigns = { "the Viking" "the Norse" Volcano Geyser }
+	industry_companies = { "Innlendum Atvinnugreinum" }
+	electronic_companies = { "Rafmagn fyrir Alla" }
+	car_companies = { "Reykjavík Bílaframleiðendur" }
+	naval_companies = { Víkingasveinninn }
+	weapon_companies = { Leiðaföndur }
+	aircraft_companies = { "Riddaralið Óðins" }
+}
+afro_slavic = {
+	female_names = { Jelena Ludmila }
+	female_surnames = { Aleksseyeva Antonova Azarova Badanova Brusilova Budonnaya Chibisova Denikina
+			Dragomirova Frolova Golivina Grishina Gurkova Ivanova Koneva Konstantinova Kornilova
+			Kolchakova Kuropatkina Lazareva Makarova Men'shikova Nakhimova Nebogatova
+			Nikolayevicha Ostrovskaya Pavlova Putyatina Romanova Rozhestvenskaya Skobeleva
+			Shuvalova Surkova Tukhachevskaya Yegorova Yudenicha Vorontsova Voroshilova Zavoyko }
+	callsigns = { Anvil Hammer Fury Arrow Storm Bear "White Lily" Devil Eagle Falcon Fox Snowflake Greasy Guardian Gunman Hawk Hardball Howl Blizzard Husky Ice Killer Steel Iron Skull Striker Thunder Warrior Wardog Vodka }
+	industry_companies = { "Belograd Tractor Factory" }
+	electronic_companies = { "Aleksandragrad Industrial Institute" }
+	car_companies = { "Morozov Design Bureau" "Astrov Design Bureau" OKMO }
+	naval_companies = { "Nevskoye Design Bureau" }
+	weapon_companies = { "Grabin Design Bureau" "Tula Arms Plant" GAZ }
+	aircraft_companies = { "MiG Design Bureau" "Ilyushin Design Bureau" "Tupolev Design Bureau" "Yakovlev Design Bureau" }
+}
+dinka = {
+	female_names = { Achor Ayen Amer Nyandeng Adut Aluel Aker Akech }
+	callsigns = { Black Africa Dinka "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Sudanese Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Dinka Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+dyula = {
+	female_names = { Hawa Bintou Nassiran Korotoum Sita Assista Tenimba Barra Rokia Mariame Marième }
+	callsigns = { Black Africa Dyula "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Mali Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Dyula Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+edo = {
+	female_names = { Ivie Adesuwa Akugbe Amenze Esohe Esomo Esosa Ifueko Isoken Itohan Iziegbe Omoyemwen Osarobo Osasere Osayemwenre }
+	callsigns = { Black Africa Edo "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Nigerian Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Edo Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+ewe = {
+	female_names = { Abla Afua Akua Edem Fafa Kafui Mawuena Mawusi Yawa Ewe Quaashie }
+	callsigns = { Black Africa Ewe "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Ghanan Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Ewe Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+fang = {
+	female_names = { Nkwa }
+	callsigns = { Black Africa Fang "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Gabon Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Fang Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+fon = {
+	female_names = { Edenausegboye Ekaghogo Enomwoyi }
+	callsigns = { Black Africa Fon "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Benin Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Fon Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+fulbe = {
+	female_names = { Djenabou Aissatou Fatoumata Binta Dalanda Kadiatou }
+	callsigns = { Black Africa Fulbe "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Cameroon Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Fulbe Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+fur = {
+	female_names = { Aba Afua Ama Esi Adjoa Araba Ekua }
+	callsigns = { Black Africa Fur "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Sudanese Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Fur Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+harari = {
+	female_names = { Aasha Adey Alaso Ambro Amburo Asha Asli Astur Awa Awrala Ayaan Barni Basr Beydaan }
+	callsigns = { Black Africa Harari "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Harari Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Harari Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+hausa = {
+	female_names = { Baturiya Delu Gambo Aishatu Bahijjah Fatima Hassana Husiana }
+	callsigns = { Black Africa Hausa "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Nigerian Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Hausa Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+herero = {
+	female_names = { Jennifer Tuilika Bella Memory Lao Janice }
+	callsigns = { Black Africa Herero "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Namibian Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Herero Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+ibibio = {
+	female_names = { Adiaba Amaeka Aniekan Ayanti }
+	callsigns = { Black Africa Ibibio "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Nigerian Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Ibibio Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+ibo = {
+	female_names = { Nwaore Nwaorie Adaku Chidimma Nwafor Chinenyere Chioma }
+	callsigns = { Black Africa Ibo "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Nigerian Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Ibo Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+itsekari = {
+	female_names = { Alero Besida Orighomisan Toritsefe }
+	callsigns = { Black Africa Itsekiri "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Nigerian Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Itsekiri Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+kanuri = {
+	female_names = { Tukule Kolo Yaalta Sato }
+	callsigns = { Black Africa Kanuri "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Kanem Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Kanuri Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+kefficho = {
+	female_names = { Habesha Abeba Abrihet Adanech Adina Alaworld Alitash Amhara Ayana Bathsheba Bekele Belkis Berhane Berta }
+	callsigns = { Black Africa Kefficho "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Kaffa Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Kefficho Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+khoisan = {
+	female_names = { Behati }
+	callsigns = { Black Africa Khoisan "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Namaqua Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Khoisan Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+kikuyu = {
+	female_names = { Wanjiru Waihumbu Njoki Wairmu Wangeci Njeri Muthoni Wangari Mwihaki }
+	callsigns = { Black Africa Kikuyu "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Kenyan Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Kikuyu Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+kru = {
+	female_names = { Dechontee Fortee Janjay Mardea }
+	callsigns = { Black Africa Kru "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Liberian Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Kru Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+lomwe = {
+	female_names = { Lomwe }
+	callsigns = { Black Africa Lomwe "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Mozambique Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Lomwe Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+luba = {
+	female_names = { Meta Bakaji Kapinga Ntumba Masengo Tshibola Misenga }
+	callsigns = { Black Africa Luba "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Zaire Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Luba Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+lunda = {
+	female_names = { Jetta Vandana Zody }
+	callsigns = { Black Africa Lunda "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Zambian Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Lunda Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+luo = {
+	female_names = { Akinyi Agutu Anyango Aol Atieno }
+	callsigns = { Black Africa Luo "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Kenyan Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Luo Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+maasai = {
+	female_names = { Nasieku Naanyu Simalo Silantoi Namunyak Lasoi }
+	callsigns = { Black Africa Maasai "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Kenyan Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Maasai Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+makua = {
+	female_names = { Makou Massanje Mawa }
+	callsigns = { Black Africa Makua "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Zambezi Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Makua Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+malagasy = {
+	female_names = { Mavuto Mayamiko Mayeso Mbali Mchumba Meklit Mirembe Mojisola Monifa Mphatso Mtendere Mudiwa Munashe Mwanajuma Nakato }
+	callsigns = { Black Africa Malagasy "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Madagascar Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Malagasy Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+mande = {
+	female_names = { "Amna" "Ghadir" "Latifa" "Maha" "Ranya" Ibtisam Isra Karima Kera Khadija Layla Malika Mariam Maria Munya }
+	callsigns = { Black Africa Mande "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Mali Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Mande Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+maures = {
+	female_names = { "Fati Ba" Maria "Hawa Sall" Kristina }
+	callsigns = { Black Africa Maures "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Trarzan Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Maures Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+mongo = {
+	female_names = { Mongo }
+	callsigns = { Black Africa Mongo "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Zaire Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Mongo Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+mossi = {
+	female_names = { Poko Kenga Wenkouni }
+	callsigns = { Black Africa Mossi "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Burkinabé Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Mossi Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+nguni = {
+	female_names = { Zola }
+	callsigns = { Black Africa Nguni "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Bantu Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Nguni Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+nuba = {
+	female_names = { Nuba }
+	callsigns = { Black Africa Nuba "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Sudanese Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Nuba Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+nuer = {
+	female_names = { Nyadhial Nyayuól Nyaból Nyaluók }
+	callsigns = { Black Africa Nuer "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Nilotic Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Nuer Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+oromo = {
+	female_names = { Qananii Bayssa Dinqii Kookeeti Dumbushee }
+	callsigns = { Black Africa Oromo "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Ethiopian Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Oromo Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+ovimbundu = {
+	female_names = { Mbundu }
+	callsigns = { Black Africa Ovimbundu "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Angolan Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Ovimbundu Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+ruanda = {
+	female_names = { Nana Carene Nadege }
+	callsigns = { Black Africa Ruanda "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Rwandan Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Ruanda Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+rundi = {
+	female_names = { Nella Alida Douce Mylène }
+	callsigns = { Black Africa Rundi "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Burundi Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Rundi Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+sara = {
+	female_names = { Kameeni Sara }
+	callsigns = { Black Africa Sara "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Chad Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Sara Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+sena = {
+	female_names = { Sena }
+	callsigns = { Black Africa Sena "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Mozambique Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Sena Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+senufo = {
+	female_names = { Gnon Zele Bara Ghiré }
+	callsigns = { Black Africa Senufo "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Ivory Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Senufo Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+shona = {
+	female_names = { Rumbidzai Tambudzai Nyarai }
+	callsigns = { Black Africa Shona "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Zimbabwe Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Shona Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+sidama = {
+	female_names = { Ashille Bashshulle Caalttu Dararro }
+	callsigns = { Black Africa Sidama "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Ethiopian Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Sidama Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+somali = {
+	female_names = { Dahabo Deeq Aanbro Raawe Fademu Klokallo }
+	callsigns = { Black Africa Somali "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Somalian Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Somali Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+songhai = {
+	female_names = { "Amna" "Ghadir" "Latifa" "Maha" "Ranya" Ibtisam Isra Karima Kera Khadija Layla Malika Mariam Maria Munya }
+	callsigns = { Black Africa Songhai "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Songhai Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Songhai Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+sotho = {
+	female_names = { Tuma Kananelo Tlhokomela }
+	callsigns = { Black Africa Sotho "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Lesotho Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Sotho Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+sudanese = {
+	female_names = { Agathe Alethia Anthelia Athanasia Chaelsoñoja Chrissa Christina Douriko Egaloskoura Eikkir }
+	callsigns = { Black Africa Sudanese "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Sudanese Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Sudanese Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+sukuma = {
+	female_names = { Grace Glory Neema }
+	callsigns = { Black Africa Sukuma "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Tanzania Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Sukuma Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+swahili = {
+	female_names = { "Mwana Mwema" Fatima }
+	callsigns = { Black Africa Swahili "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Swahili Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Swahili Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+teda = {
+	female_names = { Teda }
+	callsigns = { Black Africa Teda "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Chad Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Teda Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+tigray = {
+	female_names = { Abeba Hagos Tenagne Habesha Abeba Abrihet Adanech Adina Alaworld Alitash Amhara Ayana Bathsheba Bekele }
+	callsigns = { Black Africa Tigray "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Eritrean Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Tigray Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+tiv = {
+	female_names = { Bem Boseda Gowon }
+	callsigns = { Black Africa Tiv "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Nigerian Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Tiv Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+tonga = {
+	female_names = { Mishal Memory Melina Fredah }
+	callsigns = { Black Africa Tonga "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Malawi Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Tonga Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+tswana = {
+	female_names = { Barulaganye Boipelo Bontle Botshelo }
+	callsigns = { Black Africa Tswana "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Botswana Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Tswana Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+tuareg = {
+	female_names = { Basil Dassin Illi Kahina }
+	callsigns = { Black Africa Tuareg "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Tuareg Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Tuareg Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+unyamwezi = {
+	female_names = { Nyamwezi }
+	callsigns = { Black Africa Nyamwezi "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Tanzania Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Nyamwezi Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+wolof = {
+	female_names = { "Fatoumata Sall" Fatim Fatoumata Halima Hawa Ina Kadi Kilia Kolonkan Lorane Mariam Nafissa Namandjé Namiss }
+	callsigns = { Black Africa Wolof "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Senegal Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Wolof Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+xhosa = {
+	female_names = { Anathi Akhona Cebisa }
+	callsigns = { Black Africa Xhosa "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Xhosa Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Xhosa Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+yao = {
+	female_names = { Mishal Memory Melina Fredah }
+	callsigns = { Black Africa Yao "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Malawi Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Yao Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+yoruba = {
+	female_names = { Ayoola Tiaraoluwa Digiola Oluwadabira }
+	callsigns = { Black Africa Yoruba "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Nigerian Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Yoruba Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+zulu = {
+	female_names = { Busiswa Buhle Pholile Vumile }
+	callsigns = { Black Africa Zulu Shaka "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Zulu Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Zulu Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+}
+eastern_algonquian = {
+	female_names = { Alawa Alsoomse Chepi Hausis Hurit }
+	callsigns = { "Eastern Algonquian" "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+eskaleut = {
+	female_names = { Amaruq Anjij Aput }
+	callsigns = { Eskaleut "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+guajiro = {
+	female_names = { Samantha Guajiro Yaimara }
+	callsigns = { Guajiro "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+guarani = {
+	female_names = { Ava Jael Marina Maya }
+	callsigns = { Guarani "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+hawaiian = {
+	female_names = { Akela Alani Aloha }
+	callsigns = { Hawaiian "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+iroquoian = {
+	female_names = { Ákat Degonwadonti Kahente Kanahstatsi }
+	callsigns = { Iroquoian "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+je = {
+	female_names = { Bartira Potira Porasy Jougousa Azelene }
+	callsigns = { Jê "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+maori = {
+	female_names = { Maia Manaia Anahera Ana }
+	callsigns = { Maori "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+maranon = {
+	female_names = { Axomamma Cavillaca Chia China Kantuta Nina Ana Maiara }
+	callsigns = { Maranon "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+mayan = {
+	female_names = { Sacnite Adsila Aiyana Ayasha Ayita Bly Dena Halona Kimi Magena Nayeli Kisa Eme }
+	callsigns = { Mayan "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+melanesian = {
+	female_names = { Cinta Wangi Tani Ema Nanise Rosi Salanieta Tanna }
+	callsigns = { Melanesian "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+metis = {
+	female_names = { Kammy Hera Pasiphae Electra }
+	callsigns = { Metis "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+micronesian = {
+	female_names = { Cinta Wangi Tani Ema Nanise Rosi Salanieta Tanna }
+	callsigns = { Micronesian "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+muskogean = {
+	female_names = { Llanquiray Manque Millaray Peyeche Piro Pitrel Quetroman Quimey Quintruy Quintuqueo Rayen Saqui Somoche }
+	callsigns = { Muskogean "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+na_dene = {
+	female_names = { Dahteste Ilthgozay Gouyen Lozen Tohayea  }
+	callsigns = { Na-Dene "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+nahua = {
+	female_names = { Centehua Moyolehuani Yaotl Mixcoatl Necahual Nelli Ohtli Papa Patli }
+	callsigns = { Nahua "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+native_american_minor = {
+	female_names = { Zyanya Nayeli Teiuc Teicuih Teyacapan Tepin }
+	callsigns = { "Native American Minor" "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+patagonian = {
+	female_names = { Suyai Yaima Collipal Curipan Cuyen Calfuray Cayfutray Ilchahueque Ipi Kuyen Lefitray Leflay Llanquipan }
+	callsigns = { Patagonian "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+penutian = {
+	female_names = { Kikisoblu Wewick Sholeetsa Ladalia Olahl }
+	callsigns = { Penutian "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+plains_algonquian = {
+	female_names = { Ehyophsta Misstanstur Tahtahtoisneh Paveena Shaianne Sheyanne Shian Shiana Shiann Shy Shyanna Ameo Ameone }
+	callsigns = { "Plains Algonquian" "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+polynesian = {
+	female_names = { Alamea Alaula Alika Elikapeka Halia Iokina Iolana Kailani Kalea Kamaile Kamea Kanoa Kawena Keala Keola Keona Kiele Kina }
+	callsigns = { Polynesian "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+quechua = {
+	female_names = { Axomamma Cavillaca Kantuta Nina Ana Maiara }
+	callsigns = { Quechua "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+siouan = {
+	female_names = { Tasinasapewin Thasinamani Tasinahlahlawin Dohumme Chapa Chapawee Chumani Dowanhowee Ehawee Hantaywee Kimimela }
+	callsigns = { Siouan "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+sonoran = {
+	female_names = { Ootcakao Kahavasooah Ootcakao Sacagawea Chipeta Tocmetone }
+	callsigns = { Sonoran "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+tarascan = {
+	female_names = { Ajaniame Anam Ariché "Ix Chel" Sesasi Yatzil }
+	callsigns = { Tarascan "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+tupi = {
+	female_names = { Bartira Potira Porasy Jougousa Azelene }
+	callsigns = { Tupi "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+zapotec = {
+	female_names = { Zyanya Nayeli Yoltzin Xilonen Xiloxoch Xiuhtomiyauhtzin Xochitl Xocoh Xocoyotl Yaretzi Zeltzin }
+	callsigns = { Zapotec "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+}
+frankish = {
+	female_names = { Anne Marie }
+	callsigns = { "Draco" "Fast" "Tiger" "Sparrow" "Ripper" "Sundance" "Toad" "Twitch" "Farmer" "Weasel" "Target Practice" "Invisible" "Beach Boy" "Princess" "The Mute" "Carpenter" }
+	industry_companies = { FAMH }
+	car_companies = { Renault AMX }
+	electronic_companies = { Énergem }
+	naval_companies = { FCM }
+	weapon_companies = { SOMUA MAS Schneider }
+	aircraft_companies = { Morane-Saulnier Bloch Amiot Levasseur }
+}
+suebi = {
+	female_names = { Juana Catalina Leonor Blanca }
+	callsigns = { Castilla Aragón Navarra Portugal Galicia }
+	industry_companies = { "Industrias Nacionales" }
+	electronic_companies = { Endesa }
+	car_companies = { Abadal Aspid GTA Irizar SEAT Tauro Tramontana Uro }
+	naval_companies = { SECN }
+	weapon_companies = { "Arsenal Francés" }
+	aircraft_companies = { CASA }
+}
+visigothic = {
+	female_names = { Juana Catalina Leonor Blanca }
+	callsigns = { Castilla Aragón Navarra Portugal Galicia }
+	industry_companies = { "Industrias Nacionales" }
+	electronic_companies = { Endesa }
+	car_companies = { Abadal Aspid GTA Irizar SEAT Tauro Tramontana Uro }
+	naval_companies = { SECN }
+	weapon_companies = { "Arsenal Francés" }
+	aircraft_companies = { CASA }
+}
+ostrogothic = {
+	female_names = { Jessica Emma Hanna Sofia Marie Sandra }
+	callsigns = { "Bubi" "Assi" "The Black Devil" "The Blond Knight Of Germany" "Dolfo" "Fighter of Libau" "Petit Rouge" "Pritzl" "The Red Baron" "The Red Battle-flyer" "The Red knight" "Reeste" }
+	car_companies = { Steyr-Daimler-Puch }
+	weapon_companies = { Hirtenberger }
+	industry_companies = { "IG Farben" Krupp }
+	electronic_companies = { Siemens }
+	naval_companies = { Germaniawerft "Blohm & Voss" }
+	aircraft_companies = { Messerschmitt Junkers "Focke Wulf" Heinkel Dornier }
 }
