@@ -2757,5 +2757,47 @@ ideas = {
 			picture = culture_aromanian
 			modifier = { }
 		}
+		#1.28
+		culture_outremer = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_outremer
+			modifier = { }
+		}
+
+		culture_dog_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = GFX_default_fallback_texture #This Is Dog
+			modifier = { }
+		}
+
+		culture_duck_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_duck_culture
+			modifier = { }
+		}
+
+		culture_dragon_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dragon_culture
+			modifier = { }
+		}
+
+		culture_elephant_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_elephant_culture
+			modifier = { }
+		}
+
+		culture_hedgehog_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_hedgehog_culture
+			modifier = { }
+		}
 	}
 }
