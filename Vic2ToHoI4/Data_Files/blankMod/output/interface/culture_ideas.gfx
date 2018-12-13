@@ -1944,4 +1944,29 @@ spriteTypes = {
 		name = "GFX_idea_culture_aromanian"
 		texturefile = "gfx/interface/culture/culture_aromanian.dds"
 	}
+
+	spriteType = {
+		name = "GFX_idea_culture_outremer"
+		texturefile = "gfx/interface/culture/culture_outremer.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_culture_duck_culture"
+		texturefile = "gfx/interface/culture/culture_duck_culture.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_culture_dragon_culture"
+		texturefile = "gfx/interface/ideas/idea_man_low_legitimacy5.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_culture_elephant_culture"
+		texturefile = "gfx/interface/ideas/wilkies_new_deal.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_culture_hedgehog_culture"
+		texturefile = "gfx/interface/culture/culture_hedgehog_culture.dds"
+	}
 }
