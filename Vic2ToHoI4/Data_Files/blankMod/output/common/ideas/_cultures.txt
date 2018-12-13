@@ -124,6 +124,8 @@ ideas = {
 				invasion_preparation = -0.5
 				land_reinforce_rate = 0.1
 				production_speed_nuclear_reactor_factor = 1
+				ai_get_ally_desire_factor = -1
+				ai_badass_factor = -1
 			}
 		}
 
@@ -2228,6 +2230,8 @@ ideas = {
 				attrition = -100
 				justify_war_goal_time = -1
 				trade_opinion_factor = -1
+				ai_get_ally_desire_factor = -1
+				ai_badass_factor = -1
 			}
 		}
 
@@ -2769,35 +2773,49 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = GFX_default_fallback_texture #This Is Dog
-			modifier = { }
+			modifier = { opinion_gain_monthly_factor = 0.2 }
 		}
 
 		culture_duck_culture = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_duck_culture
-			modifier = { }
+			modifier = {
+				winter_attrition_factor = 0.5
+				amphibious_invasion = 0.1 #Can ducks swim?
+			}
 		}
 
 		culture_dragon_culture = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_dragon_culture
-			modifier = { }
+			modifier = {
+				no_supply_grace = 500
+				heat_attrition_factor = -1
+				offence = 0.2
+				enemy_army_bonus_air_superiority_factor = -0.5
+				ai_get_ally_desire_factor = -100
+			}
 		}
 
 		culture_elephant_culture = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_elephant_culture
-			modifier = { }
+			modifier = {
+				army_artillery_attack_factor = 0.5
+				ai_focus_aggressive_factor = -0.5
+			}
 		}
 
 		culture_hedgehog_culture = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_hedgehog_culture
-			modifier = { }
+			modifier = { #Gotta go fast
+				army_armor_speed_factor = 0.5
+			}
 		}
 	}
 }
